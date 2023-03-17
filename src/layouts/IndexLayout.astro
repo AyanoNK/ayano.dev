@@ -1,0 +1,32 @@
+---
+import Header from "../modules/Header";
+import "@fontsource/poppins";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Ayano.dev</title>
+    <script>
+      import { webVitals } from "../lib/vitals";
+
+      let analyticsId = import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID;
+
+      if (analyticsId) {
+        webVitals({
+          path: location.pathname,
+          params: location.search,
+          analyticsId,
+        });
+      }
+    </script>
+  </head>
+  <body class="m-0 bg-stone-900 font-poppins text-white">
+    <Header />
+    <slot />
+  </body>
+</html>
