@@ -30,12 +30,12 @@ export default function Technologies() {
   return (
     <div className="flex flex-col items-center justify-center">
       <h1 className="my-5 text-3xl font-bold">Technologies</h1>
-      <div className="mb-5 flex flex-row items-center justify-center">
+      <div className="mb-5 flex flex-row items-center justify-center flex-wrap">
         {technologies.map((technology) => (
           <Tech name={technology.name} />
         ))}
       </div>
-      <div className="flex flex-row items-center justify-center">
+      <div className="flex flex-row items-center justify-center flex-wrap">
         {languages.map((language) => (
           <Tech name={language.name} />
         ))}
