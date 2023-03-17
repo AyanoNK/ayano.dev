@@ -3,6 +3,7 @@ import { Technology } from "../types/technology";
 
 const technologies: Technology[] = [
   { name: "react", color: "#61dafb" },
+  { name: "django", color: "#092e20" },
   { name: "rails", color: "#cc0000" },
 ];
 
