@@ -1,14 +1,17 @@
 ---
 import Card from "../components/Card.astro";
 import IndexLayout from "../layouts/IndexLayout.astro";
+import Redirect from "../modules/Redirect";
 import Technologies from "../modules/Technologies";
 ---
 
 <IndexLayout>
   <main class="flex flex-1 flex-col items-center justify-center">
-    <h1 class="font-bold align text-5xl py-10 sm:py-5 text-red-700">Ayano</h1>
-    <div class="py-10 flex flex-1 items-center justify-center">
+    <h1 class="align py-10 text-5xl font-bold text-red-700 sm:py-5">Ayano</h1>
+    <h5>Redirecting to GitHub...</h5>
+    <!-- <div class="flex flex-1 items-center justify-center py-10">
       <Technologies />
-    </div>
+    </div> -->
+    <Redirect client:load />
   </main>
 </IndexLayout>
