@@ -1,17 +1,58 @@
 ---
-import Card from "../components/Card.astro";
+import Title from "../components/Title.astro";
 import IndexLayout from "../layouts/IndexLayout.astro";
-import Redirect from "../modules/Redirect";
-import Technologies from "../modules/Technologies";
+import ExperienceSection from "../sections/ExperienceSection.astro";
+import ExpertiseSection from "../sections/ExpertiseSection.astro";
+import ProjectSection from "../sections/ProjectSection.astro";
+import { Icon } from "astro-icon";
+import TechnologiesSection from "../sections/TechnologiesSection.astro";
+
+const emailIcon = "fa-solid:envelope";
+
+const referenceLinks = [
+  {
+    iconName: "fa-brands:github",
+    value: import.meta.env.GITHUB,
+  },
+  {
+    iconName: "fa-brands:linkedin",
+    value: import.meta.env.LINKEDIN,
+  },
+  {
+    iconName: emailIcon,
+    value: `mailto:${import.meta.env.EMAIL}`,
+  },
+  {
+    iconName: "fa-brands:twitter",
+    value: import.meta.env.TWITTER,
+  },
+];
 ---
 
 <IndexLayout>
   <main class="flex flex-1 flex-col items-center justify-center">
-    <h1 class="align py-10 text-5xl font-bold text-red-700 sm:py-5">Ayano</h1>
-    <h5>Redirecting to GitHub...</h5>
-    <!-- <div class="flex flex-1 items-center justify-center py-10">
-      <Technologies />
-    </div> -->
-    <Redirect client:load />
+    <Title title="Sebastian Correa" />
+    <h2
+      class="align pb-3 text-center text-3xl font-bold text-lightblue hover:text-whiter"
+    >
+      Full Stack Software Engineer
+    </h2>
+    <div class="flex flex-row flex-wrap gap-10">
+      {
+        referenceLinks.map((link) => (
+          <a href={link.value} target={link.iconName !== emailIcon && "_blank"}>
+            <Icon
+              name={link.iconName}
+              class="h-6 text-whiter  hover:text-lightblue"
+            />
+          </a>
+        ))
+      }
+    </div>
+    <ExpertiseSection id="expertise-section" />
+    <TechnologiesSection id="technologies-section" />
+    <ExperienceSection id="experience-section" />
+    <ProjectSection id="project-section" />
+    <!-- <Redirect client:load /> -->
   </main>
 </IndexLayout>

@@ -1,0 +1,63 @@
+---
+import { Icon } from "astro-icon";
+import { Experience } from "../../types/technology";
+import ExperienceTimeline from "./ExperienceTimeline.astro";
+
+const {
+  title,
+  startDate,
+  endDate,
+  companyName,
+  companyURL,
+  projects,
+  description,
+  technologies,
+} = Astro.props as Experience;
+---
+
+<div class="grid grid-cols-6 gap-2 text-center text-sm font-bold leading-6">
+  <ExperienceTimeline startDate={startDate} endDate={endDate} />
+  <div class="col-span-6 rounded-lg bg-whiter p-4 sm:col-span-5">
+    <div class="flex flex-col items-start text-darkpurple">
+      <h5 class="text-left text-2xl">
+        {title}
+      </h5>
+      <a
+        href={companyURL}
+        target="_blank"
+        class="flex flex-row items-center gap-2"
+      >
+        <h6 class="text-lg">{companyName}</h6>
+        <Icon pack="fa-solid" name="external-link-square-alt" class="h-4" />
+      </a>
+      <p class="pt-4 text-start text-lg font-normal">
+        {description}
+      </p>
+      <div class="flex flex-col items-start py-4">
+        <h6 class="text-lg font-bold">Project links</h6>
+        {
+          projects.map((project) => (
+            <a
+              href={project.url}
+              target="_blank"
+              class="flex flex-row items-baseline gap-2"
+            >
+              <Icon pack="fa-solid" name="arrow-right" class="h-3" />
+              <span class="text-lg font-medium">{project.title}</span>
+              <Icon pack="fa-solid" name="external-link-alt" class="h-3" />
+            </a>
+          ))
+        }
+      </div>
+      <div class="flex flex-row flex-wrap gap-2 pt-2">
+        {
+          technologies.map((technology: string) => (
+            <span class="text-md rounded-lg bg-lightpurple py-1 px-3 text-whiter hover:bg-darkpurple">
+              {technology}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

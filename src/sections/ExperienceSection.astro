@@ -1,0 +1,111 @@
+---
+import ExperienceItem from "../components/Experience/ExperienceItem.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+import { Experience } from "../types/technology";
+
+const experiences: Experience[] = [
+  {
+    title: "Software Engineer",
+    startDate: "Aug 2022",
+    endDate: "Jun 2023",
+    companyName: "Verblio",
+    companyURL: "https://verblio.com/",
+    projects: [
+      {
+        title: "Verblio App",
+        url: "https://app.verblio.com/",
+      },
+    ],
+    description:
+      "I was one of the lead developers designing, implementating, and testing the lifecycle of new functionalities of a 10-year-old project, giving technical support throughout new and legacy features. I delivered and reviewed high-quality, robust production code for a 10-year-old project. I closely collaborated with product managers to bring customers to a new in-app business model which a 70% conversion rate.",
+    technologies: [
+      "Angular 12",
+      "Ruby on Rails",
+      "Heroku",
+      "Recurly API",
+      "JavaScript",
+      "TypeScript",
+      "Ruby",
+      "HTML",
+      "Bootstrap 4",
+      "SCSS",
+      "CSS",
+      "GraphQL",
+    ],
+  },
+  {
+    title: "Full Stack Software Developer",
+    startDate: "Jan 2021",
+    endDate: "Aug 2022",
+    companyName: "I-Comm Solutions SAS",
+    companyURL: "https://i-comm.co/",
+    projects: [
+      {
+        title: "Factcil",
+        url: "https://www.factcil.com/",
+      },
+    ],
+    description:
+      "I was one of the lead developers in charge of building custom, ground up software for Fintech organizations, involving myself in architecture & design decisions, deployment infrastructure with AWS, and implementing, testing, and deploying production-ready code following the SCRUM methodology. I fully implemented payment & subscription systems, authentication modules, and financial metrics.",
+    technologies: [
+      "React",
+      "Django",
+      "Django Rest Framework",
+      "AWS ELB",
+      "AWS EC2",
+      "Docker",
+      "Kubernetes",
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "HTML",
+      "MUI",
+      "SCSS",
+      "CSS",
+      "REST",
+    ],
+  },
+  {
+    title: "Tech Lead",
+    startDate: "Sep 2020",
+    endDate: "Dec 2020",
+    companyName: "Geomedical Health Group",
+    companyURL: "https://geomedical.co/",
+    projects: [
+      {
+        title: "Partera Vital",
+        url: "https://lac.unfpa.org/es/news/partera-vital-un-proyecto-pionero-que-articula-la-sabidur%C3%ADa-ancestral-con-los-servicios-de",
+      },
+    ],
+    description:
+      "I led a ground-up MVP mobile application that sent records to governmental entities about new births inside communities in rural areas where Internet connectivity is scarce. The application featured pregnant mothers' alerts on medical issues and data synchronization with the cloud whenever the app could connect to the Internet.",
+    technologies: [
+      "React",
+      "React Native",
+      "Flask",
+      "Google Cloud",
+      "Google App Engine",
+      "Docker",
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "HTML",
+      "CSS",
+      "SCSS",
+      "REST",
+    ],
+  },
+];
+---
+
+<SectionLayout>
+  <div class="flex flex-col items-center justify-center" id="work">
+    <SectionTitle title="Professional Experience" />
+    <div class="mx:auto container max-w-xs sm:max-w-sm md:max-w-3xl">
+      <div class="flex flex-col flex-wrap gap-4">
+        {experiences.map((experience) => <ExperienceItem {...experience} />)}
+      </div>
+    </div>
+  </div>
+</SectionLayout>

@@ -1,0 +1,19 @@
+---
+interface ExperienceTimelineProps {
+  startDate: string;
+  endDate: string;
+}
+
+const { startDate, endDate } = Astro.props as ExperienceTimelineProps;
+---
+
+<div
+  class="col-span-6 flex flex-col items-center pt-4 text-whiter sm:col-span-1"
+>
+  <span class="text-lg font-semibold">{endDate}</span>
+  <div
+    class="h-0 w-32 rounded-xl border border-solid border-gray-300 content-[''] sm:h-32 sm:w-0"
+  >
+  </div>
+  <span class="text-lg font-semibold">{startDate}</span>
+</div>

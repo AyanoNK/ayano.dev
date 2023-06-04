@@ -1,6 +1,6 @@
 ---
-import Header from "../modules/Header";
-import "@fontsource/poppins";
+import Footer from "../modules/Footer";
+import Header from "../modules/Header.astro";
 ---
 
 <!DOCTYPE html>
@@ -9,6 +9,12 @@ import "@fontsource/poppins";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>Ayano.dev</title>
     <script>
@@ -25,8 +31,11 @@ import "@fontsource/poppins";
       }
     </script>
   </head>
-  <body class="font-poppins m-0 bg-stone-900 text-white">
-    <!-- <Header /> -->
+  <body
+    class="font-inter m-0 bg-gradient-to-b from-darkpurple via-lightpurple to-darkpurple"
+  >
+    <Header />
     <slot />
+    <Footer />
   </body>
 </html>

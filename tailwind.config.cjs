@@ -1,8 +1,23 @@
 /** @type {import('tailwindcss').Config} */
+
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      fontFamily: {
+        inter: "'Inter', sans",
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+      },
+      colors: {
+        darkpurple: "#25274D",
+        lightpurple: "#464866",
+        marine: "#29648A",
+        lightblue: "#2E9CCA",
+        whiter: "#AAABB8",
+      },
       keyframes: {
         rainbow: {
           "12.5%": {

@@ -1,0 +1,26 @@
+---
+interface HeaderItemProps {
+  title: string;
+}
+
+const { title } = Astro.props as HeaderItemProps;
+---
+
+<script is:inline>
+  function scrollElement(title) {
+    var element = document.getElementById(title);
+    console.log(element);
+    element.scrollIntoView(
+      {
+        behavior: "smooth",
+        block: "start",
+        inline: "nearest",
+      },
+      100000
+    );
+  }
+</script>
+<span
+  class="cursor-pointer font-semibold text-whiter hover:text-lightblue"
+  onclick={`scrollElement('${title.toLowerCase()}')`}>{title}</span
+>

@@ -1,0 +1,64 @@
+---
+import ProjectItem from "../components/ProjectItem.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
+import { Project } from "../types/technology";
+
+const projects: Project[] = [
+  {
+    title: "Mobile Bird Recognizer",
+    url: "https://github.com/AyanoNK/atlapetes-blancae",
+    description:
+      'I fully developed an Android mobile application to recognize an endangered bird species called "Atlapetes Blancae" using a Machine Learning image classification model. I coded 100% of the application, and researchers are currently using it to recognize the endangered bird in rural areas of Antioquia, Colombia. The Humboldt Institute reserves the application usage rights, and permission is needed to download and use the application.',
+    technologies: [
+      "Kotlin",
+      "PyTorch",
+      "Android Studio",
+      "Java",
+      "CameraX",
+      "XML",
+      "Google Play Store",
+    ],
+    additionalLinks: [
+      {
+        title: "GitHub",
+        url: "https://github.com/AyanoNK/atlapetes-blancae",
+      },
+    ],
+  },
+  {
+    title: "Artist Portfolio Website - Poshaus",
+    url: "https://www.poshaus.art/",
+    description:
+      '"Poshaus" is a web portfolio built for an illustrator & designer using new technology paradigms. I successfully transformed 100% of the illustrator\'s ideas into the envisioned product, and we still include new features every month. ',
+    technologies: [
+      "Astro",
+      "React",
+      "Vercel",
+      "Tailwind CSS",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "SCSS",
+    ],
+    additionalLinks: [
+      {
+        title: "GitHub",
+        url: "https://github.com/AyanoNK/poshaus",
+      },
+    ],
+  },
+];
+---
+
+<SectionLayout>
+  <div class="flex flex-col items-center justify-center" id="projects">
+    <SectionTitle title="Projects" />
+    <div class="mx:auto container max-w-xs sm:max-w-sm md:max-w-3xl">
+      <div class="flex flex-col flex-wrap gap-16 sm:gap-4">
+        {projects.map((project) => <ProjectItem {...project} />)}
+      </div>
+    </div>
+  </div>
+</SectionLayout>

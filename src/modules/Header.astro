@@ -1,0 +1,14 @@
+---
+import HeaderItem from "../components/HeaderItem.astro";
+const headerTitles = ["Home", "About", "Work", "Projects"];
+---
+
+<header
+  class="flex flex-row flex-wrap items-center justify-center gap-10 py-10 px-4 align-middle sm:flex"
+>
+  {
+    headerTitles.map((title, index) => (
+      <HeaderItem title={title} index={index} key={index} />
+    ))
+  }
+</header>

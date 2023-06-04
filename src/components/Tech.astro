@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon";
+
+interface TechnologyProps {
+  name: string;
+}
+
+const { name } = Astro.props as TechnologyProps;
+---
+
+<div
+  class="flex flex-row items-center justify-center gap-2 rounded bg-whiter px-4 py-3 hover:bg-lightblue"
+>
+  <Icon pack="cib" name={name} class="h-8 text-darkpurple" />
+
+  <span class="font-semibold text-darkpurple">{name}</span>
+</div>

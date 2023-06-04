@@ -1,0 +1,78 @@
+---
+import { Project, ProjectAdditionalLink } from "../types/technology";
+import poshaus_gif from "../img/gif/poshaus.gif";
+import atlapetes_3 from "../img/webp/atlapetes_3.webp";
+import { Icon } from "astro-icon";
+
+const { title, description, technologies, url, additionalLinks } =
+  Astro.props as Project;
+---
+
+<div
+  class="grid grid-cols-6 gap-4 text-center text-sm font-bold leading-6 text-darkpurple"
+>
+  <div class="col-span-6 rounded-lg bg-whiter p-8 shadow-lg sm:col-span-4">
+    <div class="flex flex-col items-start">
+      <a href={url} class="flex flex-row items-center gap-2 sm:items-baseline">
+        <h6 class="text-left text-2xl">
+          {title}
+        </h6>
+        <Icon
+          pack="fa-solid"
+          name="external-link-square-alt"
+          class="h-8 sm:h-4"
+        />
+      </a>
+      <p class="py-2 text-start text-lg font-normal">
+        {description}
+      </p>
+      <div class="flex flex-row flex-wrap gap-2 py-2">
+        {
+          technologies.map((technology: string) => (
+            <span class="rounded-lg bg-lightpurple py-1 px-3 text-whiter hover:bg-darkpurple">
+              {technology}
+            </span>
+          ))
+        }
+      </div>
+      <div class="flex flex-row flex-wrap gap-2 py-2">
+        {
+          additionalLinks.map((additionalLink: ProjectAdditionalLink) => (
+            <a
+              href={additionalLink.url}
+              class="flex flex-row items-center gap-2"
+            >
+              <Icon
+                pack="fa-brands"
+                name="github"
+                class="h-5 text-darkpurple"
+              />
+              <span class="text-lg text-darkpurple">
+                {additionalLink.title}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="col-span-6 grid place-content-center place-items-center rounded-lg bg-lightpurple shadow-lg sm:col-span-2"
+  >
+    {
+      title === "Mobile Bird Recognizer" && (
+        <div class="rounded-2xl">
+          <img src={atlapetes_3} class="rounded-3xl p-4" />
+        </div>
+      )
+    }
+    {
+      title === "Artist Portfolio Website - Poshaus" && (
+        <div class="rounded-2xl">
+          <img src={poshaus_gif} class="rounded-3xl p-4" />
+        </div>
+      )
+    }
+  </div>
+</div>

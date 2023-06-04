@@ -1,0 +1,11 @@
+---
+export interface Title {
+  title: string;
+}
+
+const { title } = Astro.props as Title;
+---
+
+<h1 class="py-16 text-center text-6xl font-bold text-whiter sm:py-5">
+  {title}
+</h1>
