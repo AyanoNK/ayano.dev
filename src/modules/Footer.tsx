@@ -20,10 +20,6 @@ export default function Footer() {
       title: "LinkedIn",
       value: import.meta.env.LINKEDIN,
     },
-    {
-      title: "Twitter",
-      value: import.meta.env.TWITTER,
-    },
   ];
 
   return (

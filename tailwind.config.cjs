@@ -6,17 +6,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: "'Inter', sans",
+        sans: "'Open Sans', sans",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
       colors: {
-        darkpurple: "#25274D",
-        lightpurple: "#464866",
-        marine: "#29648A",
-        lightblue: "#2E9CCA",
-        whiter: "#AAABB8",
+        darkpurple: "#28305f",
+        lightpurple: "#17244a",
+        marine: "#ffb674",
+        lightblue: "#ffe6d6",
+        whiter: "#b1b1ba",
       },
       keyframes: {
         rainbow: {
