@@ -60,6 +60,15 @@ const { title, description, technologies, url, additionalLinks } =
     class="col-span-6 grid place-content-center place-items-center rounded-lg bg-lightpurple shadow-lg sm:col-span-2"
   >
     {
+      title === "Kanji Learning Platform - 鬼門" && (
+        <div class="rounded-2xl">
+          <video width="268" height="438" autoplay muted loop class="rounded-3xl p-4">
+            <source src="/webm/kimon.webm" type="video/webm" />
+          </video>
+        </div>
+      )
+    }
+    {
       title === "Mobile Bird Recognizer" && (
         <div class="rounded-2xl">
           <video width="242" height="540" autoplay muted loop class="rounded-3xl p-4">
