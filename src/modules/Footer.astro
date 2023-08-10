@@ -1,0 +1,59 @@
+---
+interface Footer {
+  title: string;
+  value: string;
+}
+
+const footerContact: Footer[] = [
+  {
+    title: import.meta.env.EMAIL,
+    value: `mailto:${import.meta.env.EMAIL}`,
+  },
+];
+const footerLinks: Footer[] = [
+    {
+      title: "GitHub",
+      value: import.meta.env.GITHUB,
+    },
+    {
+      title: "LinkedIn",
+      value: import.meta.env.LINKEDIN,
+    },
+  ];
+
+---
+
+<footer class="flex h-32 flex-1 flex-col items-center justify-center bg-lightpurple px-4 py-32 align-middle">
+  <div class="grid grid-cols-2 gap-32 text-center text-sm leading-6">
+    <div class="text-whiter">
+      <h4 class="pb-6 text-start text-2xl font-bold">Contact</h4>
+      <div class="flex flex-col">
+        {footerContact.map((contact: Footer) => (
+          <a
+            href={contact.value}
+            class="text-md text-start font-semibold"
+          >
+            {contact.title}
+          </a>
+        ))}
+        <span class="text-md text-start font-semibold">
+          Bogotá, Colombia
+        </span>
+      </div>
+    </div>
+    <div class="text-whiter">
+      <h4 class="pb-6 text-start text-2xl font-bold">Links</h4>
+      <div class="flex flex-col">
+        {footerLinks.map((contact: Footer) => (
+          <a
+            href={contact.value}
+            class="text-md text-start font-semibold"
+            target="_blank"
+          >
+            {contact.title}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>
