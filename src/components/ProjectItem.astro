@@ -3,6 +3,7 @@ import { Project, ProjectAdditionalLink } from "../types/technology";
 import poshaus_gif from "../img/gif/poshaus.gif";
 import atlapetes_gif from "../img/gif/atlapetes.gif";
 import { Icon } from "astro-icon";
+import TechnologyItem from "./TechnologyItem.astro";
 
 const { title, description, technologies, url, additionalLinks } =
   Astro.props as Project;
@@ -29,9 +30,7 @@ const { title, description, technologies, url, additionalLinks } =
       <div class="flex flex-row flex-wrap gap-2 py-2">
         {
           technologies.map((technology: string) => (
-            <span class="rounded-lg bg-lightpurple py-1 px-3 text-whiter hover:bg-darkpurple">
-              {technology}
-            </span>
+            <TechnologyItem technology={technology} />
           ))
         }
       </div>
