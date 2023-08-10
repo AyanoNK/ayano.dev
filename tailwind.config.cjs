@@ -14,9 +14,9 @@ module.exports = {
       colors: {
         darkpurple: "#28305f",
         lightpurple: "#17244a",
-        marine: "#ffb674",
+        marine: "#eeb674",
         lightblue: "#ffe6d6",
-        whiter: "#b1b1ba",
+        whiter: "#e1e1ea",
       },
       keyframes: {
         rainbow: {
