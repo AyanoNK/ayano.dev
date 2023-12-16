@@ -1,7 +1,5 @@
 ---
-import { Project, ProjectAdditionalLink } from "../types/technology";
-import poshaus_gif from "../img/gif/poshaus.gif";
-import atlapetes_gif from "../img/gif/atlapetes.gif";
+import { type Project, type ProjectAdditionalLink } from "../types/technology";
 import { Icon } from "astro-icon";
 import TechnologyItem from "./TechnologyItem.astro";
 
@@ -62,7 +60,14 @@ const { title, description, technologies, url, additionalLinks } =
     {
       title === "Kanji Learning Platform - 鬼門" && (
         <div class="rounded-2xl">
-          <video width="268" height="438" autoplay muted loop class="rounded-3xl p-4">
+          <video
+            width="268"
+            height="438"
+            autoplay
+            muted
+            loop
+            class="rounded-3xl p-4"
+          >
             <source src="/webm/kimon.webm" type="video/webm" />
           </video>
         </div>
@@ -71,7 +76,14 @@ const { title, description, technologies, url, additionalLinks } =
     {
       title === "Mobile Bird Recognizer" && (
         <div class="rounded-2xl">
-          <video width="242" height="540" autoplay muted loop class="rounded-3xl p-4">
+          <video
+            width="242"
+            height="540"
+            autoplay
+            muted
+            loop
+            class="rounded-3xl p-4"
+          >
             <source src="/webm/atlapetes.webm" type="video/webm" />
           </video>
         </div>
@@ -80,7 +92,14 @@ const { title, description, technologies, url, additionalLinks } =
     {
       title === "Artist Portfolio Website - Poshaus" && (
         <div class="rounded-2xl">
-          <video width="244" height="384" autoplay muted loop class="rounded-3xl p-4">
+          <video
+            width="244"
+            height="384"
+            autoplay
+            muted
+            loop
+            class="rounded-3xl p-4"
+          >
             <source src="/webm/poshaus.webm" type="video/webm" />
           </video>
         </div>
