@@ -40,3 +40,4 @@ All commands are run from the root of the project, from a terminal:
 ## Icons
 
 [SimpleIcons](https://simpleicons.org/)
+[CircleFlags](https://github.com/HatScripts/circle-flags)
