@@ -1,12 +1,16 @@
 export const languages = {
   en: "English",
   es: "Spanish",
+  ja: "Japanese",
 };
 
 export const defaultLang = "en";
 
 export const ui = {
   en: {
+    en: "English",
+    es: "Español",
+    ja: "日本語",
     "header.home": "Home",
     "header.about": "About",
     "header.work": "Work",
@@ -27,6 +31,9 @@ export const ui = {
       "Deployed both professional and personal projects using AWS S3, Google Cloud, Heroku, and Vercel.",
   },
   es: {
+    es: "Español",
+    en: "English",
+    ja: "日本語",
     "header.home": "Inicio",
     "header.about": "Sobre mí",
     "header.work": "Experiencia",
@@ -47,6 +54,9 @@ export const ui = {
       "Desplegado proyectos profesionales y personales usando AWS S3, Google Cloud, Heroku, y Vercel.",
   },
   ja: {
+    es: "Español",
+    en: "English",
+    ja: "日本語",
     "header.home": "ホーム",
     "header.about": "私について",
     "header.work": "経験",

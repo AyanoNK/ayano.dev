@@ -1,4 +1,12 @@
 ---
+import Language from "../components/Language.astro";
+import { getLocaleByPath } from "astro:i18n";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import type { defaultLang, languages } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 interface Footer {
   title: string;
   value: string;
@@ -21,9 +29,13 @@ const footerLinks: Footer[] = [
     },
   ];
 
+type TLanguage = keyof typeof languages;
+const langs: TLanguage[] = [
+  "en", "es", "ja"
+];
 ---
 
-<footer class="flex h-32 flex-1 flex-col items-center justify-center bg-lightpurple px-4 py-32 align-middle">
+<footer class="flex h-32 flex-1 flex-col items-center justify-between bg-lightpurple px-4 py-32 align-middle">
   <div class="grid grid-cols-2 gap-32 text-center text-sm leading-6">
     <div class="text-whiter">
       <h4 class="pb-6 text-start text-2xl font-bold">Contact</h4>
@@ -55,5 +67,10 @@ const footerLinks: Footer[] = [
         ))}
       </div>
     </div>
+  </div>
+  <div class="flex flex-row flex-wrap items-center justify-center gap-6 w-full border border-lightpurple border-t-whiter mt-12 py-3">
+    {langs.map((language) => (
+      <Language code={language} text={t(language)} />
+    ))}
   </div>
 </footer>

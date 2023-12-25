@@ -2,11 +2,6 @@
 import Language from "../components/Language.astro";
 import Footer from "../modules/Footer.astro";
 import Header from "../modules/Header.astro";
-
-const languages = [
-  "en", "es", "ja"
-];
-
 ---
 
 <!DOCTYPE html>
@@ -41,11 +36,6 @@ const languages = [
   <body
     class="font-sans m-0 bg-gradient-to-b from-lightpurple via-darkpurple to-lightpurple"
   >
-    <div class="absolute top-0 right-0 flex flex-row flex-wrap gap-3 p-5">
-      {languages.map((language) => (
-        <Language code={language} />
-      ))}
-    </div>
     <Header />
     <slot />
     <Footer />
