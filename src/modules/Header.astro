@@ -1,6 +1,12 @@
 ---
 import HeaderItem from "../components/HeaderItem.astro";
-const headerTitles = ["Home", "About", "Work", "Projects"];
+
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const headerTitles = [t('header.home'), t('header.about'), t('header.work'), t('header.projects')];
 ---
 
 <header

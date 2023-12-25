@@ -5,10 +5,13 @@ import ExpertiseSection from "../sections/ExpertiseSection.astro";
 import ProjectSection from "../sections/ProjectSection.astro";
 import { Icon } from "astro-icon";
 import TechnologiesSection from "../sections/TechnologiesSection.astro";
-
-const { language } = Astro.props;
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const emailIcon = "fa-solid:envelope";
+
+// TODO: see how to combine  this with Native Astro internationalization
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const referenceLinks = [
   {
@@ -30,7 +33,7 @@ const referenceLinks = [
   <h2
     class="align pb-3 text-center text-3xl font-bold text-lightblue hover:text-marine"
   >
-    Full Stack Software Engineer
+    {t('index.title')}
   </h2>
   <div class="flex flex-row flex-wrap gap-10">
     {

@@ -3,38 +3,38 @@ import Icon from "astro-icon";
 import SectionTitle from "../components/SectionTitle.astro";
 
 import SectionLayout from "../layouts/SectionLayout.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const cards = [
   {
-    title: "Frontend Development",
-    description:
-      "Experienced in React, React Native & HAML, using Redux & React Query, etc., to build responsive, performant, and accessible applications.",
+    title: t('index.expertise.frontend.title'),
+    description: t("index.expertise.frontend.description"),
     image: "cib:react",
   },
   {
-    title: "Backend Development",
-    description:
-      "Experienced in backend development with both Django & Ruby on Rails, exposing endpoints in both REST and GraphQL.",
+    title: t('index.expertise.backend.title'),
+    description: t("index.expertise.backend.description"),
     image: "eos-icons:system-image",
   },
   {
-    title: "Database Management",
-    description:
-      "Worked with relational databases like PostgreSQL and MySQL, and new ─ cutting edge NoSQL like Firebase.",
+    title: t('index.expertise.database.title'),
+    description: t("index.expertise.database.description"),
     image: "eos-icons:database",
   },
   {
-    title: "DevOps",
-    description:
-      "Deployed both professional and personal projects using AWS S3, Google Cloud, Heroku, and Vercel.",
+    title: t('index.expertise.devops.title'),
+    description: t("index.expertise.devops.description"),
     image: "cib:google-cloud",
   },
 ];
 ---
 
 <SectionLayout>
-  <div class="flex flex-col items-center justify-center" id="about">
-    <SectionTitle title="Expertise" />
+  <div class="flex flex-col items-center justify-center" id={t('header.about')}>
+    <SectionTitle title={t('index.expertise.title')} />
     <div class="mx:auto container max-w-xs sm:max-w-sm md:max-w-3xl">
       <div
         id="cards"
