@@ -1,0 +1,12 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+const { code } = Astro.props;
+
+const aboutURL = getRelativeLocaleUrl(code, "");
+
+
+---
+<a href={aboutURL} class="px-2 py-1 text-center border border-solid border-white text-white">
+  { code }
+</a>

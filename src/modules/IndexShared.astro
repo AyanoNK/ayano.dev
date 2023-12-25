@@ -1,0 +1,51 @@
+---
+import Title from "../components/Title.astro";
+import ExperienceSection from "../sections/ExperienceSection.astro";
+import ExpertiseSection from "../sections/ExpertiseSection.astro";
+import ProjectSection from "../sections/ProjectSection.astro";
+import { Icon } from "astro-icon";
+import TechnologiesSection from "../sections/TechnologiesSection.astro";
+
+const { language } = Astro.props;
+
+const emailIcon = "fa-solid:envelope";
+
+const referenceLinks = [
+  {
+    iconName: "fa-brands:github",
+    value: import.meta.env.GITHUB,
+  },
+  {
+    iconName: "fa-brands:linkedin",
+    value: import.meta.env.LINKEDIN,
+  },
+  {
+    iconName: emailIcon,
+    value: `mailto:${import.meta.env.EMAIL}`,
+  },
+];
+---
+<main class="flex flex-1 flex-col items-center justify-center">
+  <Title title="Sebastian Correa" />
+  <h2
+    class="align pb-3 text-center text-3xl font-bold text-lightblue hover:text-marine"
+  >
+    Full Stack Software Engineer
+  </h2>
+  <div class="flex flex-row flex-wrap gap-10">
+    {
+      referenceLinks.map((link) => (
+        <a href={link.value} target={link.iconName !== emailIcon && "_blank"}>
+          <Icon
+            name={link.iconName}
+            class="h-6 text-whiter  hover:text-lightblue"
+          />
+        </a>
+      ))
+    }
+  </div>
+  <ExpertiseSection id="expertise-section" />
+  <TechnologiesSection id="technologies-section" />
+  <ExperienceSection id="experience-section" />
+  <ProjectSection id="project-section" />
+</main>
