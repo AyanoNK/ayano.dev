@@ -82,13 +82,13 @@ export const ui = {
     "index.title": "Ingeniero de Software Full Stack",
     "index.expertise.frontend.title": "Desarrollo Frontend",
     "index.expertise.frontend.description":
-      "Experiencia en React, React Native & HAML, usando Redux & React Query, etc., para construir aplicaciones responsivas, de alto rendimiento y accesibles.",
+      "Con experiencia en React, React Native & HAML, usando Redux & React Query, etc., para construir aplicaciones responsivas, de alto rendimiento y accesibles.",
     "index.expertise.backend.title": "Desarrollo Backend",
     "index.expertise.backend.description":
-      "Experiencia en desarrollo backend con Django & Ruby on Rails, exponiendo endpoints en REST y GraphQL.",
+      "Con experiencia en desarrollo backend con Django & Ruby on Rails, exponiendo endpoints en REST y GraphQL.",
     "index.expertise.database.title": "Desarrollo de Base de Datos",
     "index.expertise.database.description":
-      "Trabajado con bases de datos relacionales como PostgreSQL y MySQL, y nuevas ─ de vanguardia NoSQL como Firebase.",
+      "Trabajado con bases de datos relacionales como PostgreSQL y MySQL, y nuevas ─ innovadoras NoSQL como Firebase.",
     "index.expertise.devops.title": "DevOps",
     "index.expertise.devops.description":
       "Desplegado proyectos profesionales y personales usando AWS S3, Google Cloud, Heroku, y Vercel.",
@@ -96,20 +96,20 @@ export const ui = {
     "index.experience.links": "Enlaces de Proyectos",
     "index.experience.softserve.role": "Ingeniero de Software Senior",
     "index.experience.softserve.description":
-      "Ingeniero de Software Senior en una prominente firma de encuestas en línea y análisis de datos, contribuyendo al mantenimiento de un proyecto de 20 años y la renovación de la aplicación de facturación. Utilizó Python, React, Jinja2, Docker y bibliotecas internas para integrar nuevas funcionalidades para alinearse con las demandas de la industria en evolución. Probada experiencia en la entrega de código de alta calidad y colaboración interfuncional.",
+      "Ingeniero de Software Senior en una firma de encuestas en línea y análisis de datos, contribuyendo al mantenimiento de un proyecto de 20 años y la renovación de la aplicación de facturación. Utilicé Python, React, Jinja2, Docker y bibliotecas internas para integrar nuevas funcionalidades para alinearse con las demandas de la industria en evolución. Experiencia en la entrega de código de alta calidad y colaboración interfuncional.",
     "index.experience.softserve.link.1":
       "Compañía de Marketing e Investigación",
     "index.experience.softserve.start_date": "Ago 2023",
     "index.experience.softserve.end_date": "Actual",
     "index.experience.verblio.role": "Ingeniero de Software",
     "index.experience.verblio.description":
-      "Participé en el diseño, implementación y prueba del ciclo de vida de las nuevas funcionalidades de un proyecto de 10 años, brindando soporte técnico a través de funciones nuevas y heredadas. Agregó valor al producto entregando y revisando código de producción robusto y de alta calidad para un proyecto de 10 años, colaborando con los gerentes de producto para llevar a los clientes a un nuevo modelo de negocio en la aplicación con una tasa de conversión del 70%.",
+      "Participé en el diseño, implementación y prueba del ciclo de vida de las nuevas funcionalidades de un proyecto de 10 años, brindando soporte técnico a través de funciones nuevas y heredadas. Agregué valor al producto entregando y revisando código de producción robusto y de alta calidad para un proyecto de 10 años, colaborando con los gerentes de producto para llevar a los clientes a un nuevo modelo de negocio en la aplicación con una tasa de conversión del 70%.",
     "index.experience.verblio.link.1": "Verblio App",
     "index.experience.verblio.start_date": "Ago 2022",
     "index.experience.verblio.end_date": "Jun 2023",
     "index.experience.icomm.role": "Desarrollador de Software Full Stack",
     "index.experience.icomm.description":
-      "A cargo de la construcción de software personalizado desde cero para organizaciones Fintech, involucrándome en decisiones de arquitectura y diseño, infraestructura de implementación con AWS, e implementando, probando y desplegando código de producción siguiendo la metodología SCRUM. Agregó gran valor a los productos implementando completamente sistemas de pago y suscripción, módulos de autenticación y métricas financieras.",
+      "A cargo de la construcción de software personalizado desde cero para organizaciones Fintech, involucrándome en decisiones de arquitectura y diseño, infraestructura de implementación con AWS, e implementando, probando y desplegando código de producción siguiendo la metodología SCRUM. Agregué gran valor a los productos implementando completamente sistemas de pago y suscripción, módulos de autenticación y métricas financieras.",
     "index.experience.icomm.link.1": "Factcil",
     "index.experience.icomm.start_date": "Ago 2020",
     "index.experience.icomm.end_date": "Ago 2022",
