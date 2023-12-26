@@ -6,11 +6,11 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const headerTitles = [t('header.home'), t('header.about'), t('header.work'), t('header.projects')];
+const headerTitles = [t('header.home'), t('header.work'), t('header.projects')];
 ---
 
 <header
-  class="flex flex-row flex-wrap items-center justify-center gap-10 py-10 px-4 align-middle sm:flex"
+  class="flex flex-row flex-wrap items-center justify-center gap-10 py-8 px-4 align-middle"
 >
   {
     headerTitles.map((title, index) => (
