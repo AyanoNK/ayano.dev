@@ -10,10 +10,9 @@ const t = useTranslations(lang);
 
 const projects: Project[] = [
   {
-    title: "Kanji Learning Platform - 鬼門",
+    title: t('index.projects.kimon.title'),
     url: "https://kanji-lyrics-frontend.vercel.app/",
-    description:
-      'Currently working on a web application to help Japanese Kanji learners practice with music.',
+    description: t('index.projects.kimon.description'),
     technologies: [
       "NextJS",
       "React",
@@ -31,12 +30,14 @@ const projects: Project[] = [
         url: "https://github.com/AyanoNK/kanji-lyrics-frontend",
       },
     ],
+    video_id: "kimon",
+    video_width: "268",
+    video_height: "438"
   },
   {
-    title: "Mobile Bird Recognizer",
+    title: t('index.projects.atlapetes.title'),
     url: "https://github.com/AyanoNK/atlapetes-blancae",
-    description:
-      'Fully developed an Android mobile application to recognize an endangered bird species called "Atlapetes Blancae" using a Machine Learning image classification model. Researchers are currently using it to recognize the endangered bird in rural areas of Antioquia, Colombia. The Humboldt Institute reserves the application usage rights, and permission is needed to download and use the application.',
+    description: t('index.projects.atlapetes.description'),
     technologies: [
       "Kotlin",
       "PyTorch",
@@ -52,12 +53,14 @@ const projects: Project[] = [
         url: "https://github.com/AyanoNK/atlapetes-blancae",
       },
     ],
+    video_id: "atlapetes",
+    video_width: "242",
+    video_height: "540"
   },
   {
-    title: "Artist Portfolio Website - Poshaus",
+    title: t('index.projects.poshaus.title'),
     url: "https://www.poshaus.art/",
-    description:
-      'Successfully transformed 100% of an Illustrator & Designer\'s ideas into a web portfolio called "Poshaus" using new technology paradigms. Even after finishing the envisioned product, new features are still being planned to be included. ',
+    description: t('index.projects.poshaus.description'),
     technologies: [
       "Astro",
       "React",
@@ -75,13 +78,16 @@ const projects: Project[] = [
         url: "https://github.com/AyanoNK/poshaus",
       },
     ],
+    video_id: "poshaus",
+    video_width: "244",
+    video_height: "384"
   },
 ];
 ---
 
 <SectionLayout>
   <div class="flex flex-col items-center justify-center" id={t('header.projects')}>
-    <SectionTitle title="Projects" />
+    <SectionTitle title={t("index.projects.title")} />
     <div class="mx:auto container max-w-xs sm:max-w-sm md:max-w-3xl">
       <div class="flex flex-col flex-wrap gap-16 sm:gap-8">
         {projects.map((project) => <ProjectItem {...project} />)}

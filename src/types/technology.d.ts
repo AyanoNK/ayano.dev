@@ -25,6 +25,9 @@ export interface Project {
   description: string;
   technologies: string[];
   additionalLinks: ProjectAdditionalLink[];
+  video_id: string;
+  video_height: string;
+  video_width: string;
 }
 
 export interface ProjectAdditionalLink {

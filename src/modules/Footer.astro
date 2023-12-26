@@ -20,11 +20,11 @@ const footerContact: Footer[] = [
 ];
 const footerLinks: Footer[] = [
     {
-      title: "GitHub",
+      title: t("footer.github"),
       value: import.meta.env.GITHUB,
     },
     {
-      title: "LinkedIn",
+      title: t("footer.linkedin"),
       value: import.meta.env.LINKEDIN,
     },
   ];
@@ -38,23 +38,23 @@ const langs: TLanguage[] = [
 <footer class="flex h-32 flex-1 flex-col items-center justify-between bg-lightpurple px-4 py-32 align-middle">
   <div class="grid grid-cols-2 gap-32 text-center text-sm leading-6">
     <div class="text-whiter">
-      <h4 class="pb-6 text-start text-2xl font-bold">Contact</h4>
+      <h4 class="pb-6 text-start text-2xl font-bold">{t('footer.contact')}</h4>
       <div class="flex flex-col">
         {footerContact.map((contact: Footer) => (
           <a
             href={contact.value}
             class="text-md text-start font-semibold"
           >
-            Email
+            {t('footer.email')}
           </a>
         ))}
         <span class="text-md text-start font-semibold">
-          Bogotá, Colombia
+          {t('footer.location')}
         </span>
       </div>
     </div>
     <div class="text-whiter">
-      <h4 class="pb-6 text-start text-2xl font-bold">Links</h4>
+      <h4 class="pb-6 text-start text-2xl font-bold">{t('footer.links')}</h4>
       <div class="flex flex-col">
         {footerLinks.map((contact: Footer) => (
           <a

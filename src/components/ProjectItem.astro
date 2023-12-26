@@ -3,7 +3,7 @@ import { type Project, type ProjectAdditionalLink } from "../types/technology";
 import { Icon } from "astro-icon";
 import TechnologyItem from "./TechnologyItem.astro";
 
-const { title, description, technologies, url, additionalLinks } =
+const { title, description, technologies, url, additionalLinks, video_id, video_width, video_height } =
   Astro.props as Project;
 ---
 
@@ -53,57 +53,20 @@ const { title, description, technologies, url, additionalLinks } =
       </div>
     </div>
   </div>
-
   <div
     class="col-span-6 grid place-content-center place-items-center rounded-lg bg-lightpurple shadow-lg sm:col-span-2"
   >
-    {
-      title === "Kanji Learning Platform - 鬼門" && (
         <div class="rounded-2xl">
           <video
-            width="268"
-            height="438"
+            width={video_width}
+            height={video_height}
             autoplay
             muted
             loop
             class="rounded-3xl p-4"
           >
-            <source src="/webm/kimon.webm" type="video/webm" />
+            <source src={`/webm/${video_id}.webm`} type="video/webm" />
           </video>
         </div>
-      )
-    }
-    {
-      title === "Mobile Bird Recognizer" && (
-        <div class="rounded-2xl">
-          <video
-            width="242"
-            height="540"
-            autoplay
-            muted
-            loop
-            class="rounded-3xl p-4"
-          >
-            <source src="/webm/atlapetes.webm" type="video/webm" />
-          </video>
-        </div>
-      )
-    }
-    {
-      title === "Artist Portfolio Website - Poshaus" && (
-        <div class="rounded-2xl">
-          <video
-            width="244"
-            height="384"
-            autoplay
-            muted
-            loop
-            class="rounded-3xl p-4"
-          >
-            <source src="/webm/poshaus.webm" type="video/webm" />
-          </video>
-        </div>
-      )
-    }
   </div>
 </div>

@@ -10,26 +10,26 @@ const t = useTranslations(lang);
 
 const experiences: Experience[] = [
   {
-    title: "Senior Software Engineer",
-    startDate: "Aug 2023",
-    endDate: "Current",
+    title: t('index.experience.softserve.role'),
+    startDate: t('index.experience.softserve.start_date'),
+    endDate: t('index.experience.softserve.end_date'),
     companyName: "SoftServe",
     companyURL: "https://www.softserveinc.com/",
     projects: [
       {
-        title: "Marketing & Insights Company",
+        title: t('index.experience.softserve.link.1'),
         url: "https://www.softserveinc.com/",
       },
     ],
     description:
-      "Senior Software Engineer at a prominent online survey and data analysis firm, contributing to a 20-year-old project's maintenance and the billing application's revamp. Leveraged Python, React, Jinja2, Docker, and internal libraries to integrate new functionalities to align with evolving industry demands. Proven expertise in delivering high-quality code and collaborating cross-functionally.",
+      t('index.experience.softserve.description'),
     technologies: [
       "React",
       // "Django",
       // "Django REST Framework",
       // "AWS ELB",
-      // "AWS EC2",
-      // "Docker",
+      "AWS EKS",
+      "Docker",
       // "Kubernetes",
       "JavaScript",
       "TypeScript",
@@ -41,19 +41,18 @@ const experiences: Experience[] = [
     ],
   },
   {
-    title: "Software Engineer",
-    startDate: "Aug 2022",
-    endDate: "Jun 2023",
+    title: t('index.experience.verblio.role'),
+    startDate: t('index.experience.verblio.start_date'),
+    endDate: t('index.experience.verblio.end_date'),
     companyName: "Verblio",
     companyURL: "https://verblio.com/",
     projects: [
       {
-        title: "Verblio App",
+        title: t('index.experience.verblio.link.1'),
         url: "https://app.verblio.com/",
       },
     ],
-    description:
-      "Took part in designing, implementing, and testing the lifecycle of new functionalities of a 10-year-old project, giving technical support throughout new and legacy features. Added value to the product by delivering and reviewing high-quality, robust production code for a 10-year-old project, collaborating with product managers to bring customers to a new in-app business model which a 70% conversion rate.",
+    description: t('index.experience.verblio.description'),
     technologies: [
       "Angular 12",
       "Ruby on Rails",
@@ -71,19 +70,18 @@ const experiences: Experience[] = [
     ],
   },
   {
-    title: "Full Stack Software Developer",
-    startDate: "Aug 2020",
-    endDate: "Aug 2022",
+    title: t('index.experience.icomm.role'),
+    startDate: t('index.experience.icomm.start_date'),
+    endDate: t('index.experience.icomm.end_date'),
     companyName: "I-Comm Solutions SAS",
     companyURL: "https://i-comm.co/",
     projects: [
       {
-        title: "Factcil",
+        title: t('index.experience.icomm.link.1'),
         url: "https://www.factcil.com/",
       },
     ],
-    description:
-      "In charge of building custom, ground-up software for Fintech organizations, involving myself in architecture & design decisions, deployment infrastructure with AWS, and implementing, testing, and deploying production-ready code following the SCRUM methodology. Added great value to the products by fully implementing payment & subscription systems, authentication modules, and financial metrics.",
+    description: t('index.experience.icomm.description'),
     technologies: [
       "React",
       "Django",
@@ -103,19 +101,18 @@ const experiences: Experience[] = [
     ],
   },
   {
-    title: "Tech Lead",
-    startDate: "Sep 2020",
-    endDate: "Dec 2020",
+    title: t('index.experience.geomedical.role'),
+    startDate: t('index.experience.geomedical.start_date'),
+    endDate: t('index.experience.geomedical.end_date'),
     companyName: "Geomedical Health Group",
     companyURL: "https://geomedical.co/",
     projects: [
       {
-        title: "Partera Vital",
+        title: t('index.experience.geomedical.link.1'),
         url: "https://lac.unfpa.org/es/news/partera-vital-un-proyecto-pionero-que-articula-la-sabidur%C3%ADa-ancestral-con-los-servicios-de",
       },
     ],
-    description:
-      "Led a ground-up MVP mobile application that sent records to governmental entities about new births inside communities in rural areas where Internet connectivity is scarce. The application featured pregnant mothers' alerts on medical issues and data synchronization with the cloud whenever the app could connect to the Internet.",
+    description: t('index.experience.geomedical.description'),
     technologies: [
       "React",
       "React Native",
