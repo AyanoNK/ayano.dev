@@ -4,7 +4,6 @@ import ExperienceSection from "../sections/ExperienceSection.astro";
 import ExpertiseSection from "../sections/ExpertiseSection.astro";
 import ProjectSection from "../sections/ProjectSection.astro";
 import { Icon } from "astro-icon";
-import TechnologiesSection from "../sections/TechnologiesSection.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const emailIcon = "fa-solid:envelope";
@@ -28,8 +27,8 @@ const referenceLinks = [
   },
 ];
 ---
-<main class="flex flex-1 flex-col items-center justify-center">
-  <Title title="Sebastian Correa" />
+<main class="flex flex-1 flex-col items-center justify-center" id={t('header.home')}>
+  <Title title="Sebastian Correa"/>
   <h2
     class="align pb-3 text-center text-3xl font-bold text-lightblue hover:text-marine"
   >
@@ -48,7 +47,6 @@ const referenceLinks = [
     }
   </div>
   <ExpertiseSection id="expertise-section" />
-  <TechnologiesSection id="technologies-section" />
   <ExperienceSection id="experience-section" />
   <ProjectSection id="project-section" />
 </main>
