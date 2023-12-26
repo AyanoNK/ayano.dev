@@ -145,7 +145,7 @@ export const ui = {
     "header.about": "私について",
     "header.work": "経験",
     "header.projects": "プロジェクト",
-    "index.title": "フルスタックソフトウェアエンジニア",
+    "index.title": "フルスタックソフトウェア工学者",
     "index.expertise.frontend.title": "フロントエンド開発",
     "index.expertise.frontend.description":
       "React、React Native & HAMLの経験があり、Redux & React Queryなどを使用して、応答性、パフォーマンス、アクセシビリティの高いアプリケーションを構築しています。",
