@@ -162,7 +162,7 @@ export const ui = {
     "index.experience.links": "プロジェクトリンク",
     "index.experience.softserve.role": "シニアソフトウェアエンジニア",
     "index.experience.softserve.description":
-      "20年のプロジェクトのメンテナンスと請求アプリケーションの改修に貢献している、有名なオンライン調査とデータ分析会社のシニアソフトウェアエンジニア。 Python、React、Jinja2、Docker、および内部ライブラリを活用して、新しい機能を統合し、進化する業界の要求に合わせる。 高品質のコードを提供し、横断的に協力することにおける専門知識を証明した。",
+      "20年プロジェクトのメンテナンスと請求アプリケーションの改修に貢献している、有名なオンライン調査とデータ分析会社のシニアソフトウェアエンジニア。 Python、React、Jinja2、Docker、および内部ライブラリを活用して、新しい機能を統合し、進化する業界の要求に合わせる。 高品質のコードを提供し、横断的に協力することにおける専門知識を証明した。",
     "index.experience.softserve.link.1": "マーケティング＆インサイト会社",
     "index.experience.softserve.start_date": "2023年8月",
     "index.experience.softserve.end_date": "現在",
@@ -190,7 +190,7 @@ export const ui = {
       "現在、日本語の漢字学習者が音楽で練習できるWebアプリケーションを作成中です。",
     "index.projects.atlapetes.title": "モバイル鳥認識",
     "index.projects.atlapetes.description":
-      "機械学習画像分類モデルを使用して、絶滅危惧種の鳥である「Atlapetes Blancae」という鳥を認識するAndroidモバイルアプリケーションを完全に開発しました。 現在、コロンビアのアンティオキア州の地方で絶滅危惧種の鳥を認識するために研究者がそれを使用しています。 フンボルト研究所はアプリケーションの使用権を保留し、アプリケーションのダウンロードと使用には許可が必要です。",
+      "機械学習画像分類モデルを使用して、絶滅危惧種の鳥である「Atlapetes Blancae」という鳥を認識するAndroidモバイルアプリケーションを完全に開発しました。 現在、コロンビアのアンティオキア州の地方で絶滅危惧種の鳥を認識するために研究者がそれを使用しています。 フンボルト研究所がアプリケーションの使用権を保持ちているため、アプリケーションのダウンロードと使用には許可が必要です。",
     "index.projects.poshaus.title":
       "アーティストポートフォリオウェブサイト - Poshaus",
     "index.projects.poshaus.description":
