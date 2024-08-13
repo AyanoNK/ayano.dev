@@ -27,7 +27,7 @@ export const ui = {
       "Worked with relational databases like PostgreSQL and MySQL, and new ─ cutting edge NoSQL like Firebase.",
     "index.expertise.devops.title": "DevOps",
     "index.expertise.devops.description":
-      "Deployed both professional and personal projects using AWS S3, Google Cloud, Heroku, and Vercel.",
+      "Deployed both professional and personal projects using AWS, Google Cloud, Heroku, and Vercel.",
     "index.experience.title": "Professional Experience",
     "index.experience.links": "Project Links",
     "index.experience.softserve.role": "Senior Software Engineer",
@@ -91,7 +91,7 @@ export const ui = {
       "Trabajado con bases de datos relacionales como PostgreSQL y MySQL, y nuevas ─ innovadoras NoSQL como Firebase.",
     "index.expertise.devops.title": "DevOps",
     "index.expertise.devops.description":
-      "Desplegado proyectos profesionales y personales usando AWS S3, Google Cloud, Heroku, y Vercel.",
+      "Desplegado proyectos profesionales y personales usando AWS, Google Cloud, Heroku, y Vercel.",
     "index.experience.title": "Experiencia Profesional",
     "index.experience.links": "Enlaces de Proyectos",
     "index.experience.softserve.role": "Ingeniero de Software Senior",
@@ -157,7 +157,7 @@ export const ui = {
       "PostgreSQLやMySQLなどのリレーショナルデータベース、Firebaseなどの新しい最先端のNoSQLなどを使用しています。",
     "index.expertise.devops.title": "DevOps",
     "index.expertise.devops.description":
-      "AWS S3、Google Cloud、Heroku、Vercelなどを使用して、プロジェクトをデプロイしました。",
+      "AWS、Google Cloud、Heroku、Vercelなどを使用して、プロジェクトをデプロイしました。",
     "index.experience.title": "職務経歴",
     "index.experience.links": "プロジェクトリンク",
     "index.experience.softserve.role": "シニアソフトウェアエンジニア",
