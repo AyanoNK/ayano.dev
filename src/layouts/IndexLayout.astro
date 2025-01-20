@@ -1,7 +1,7 @@
 ---
-import Language from "../components/Language.astro";
 import Footer from "../modules/Footer.astro";
 import Header from "../modules/Header.astro";
+import  SpeedInsights  from "@vercel/speed-insights/astro"
 ---
 
 <!doctype html>
@@ -42,5 +42,6 @@ import Header from "../modules/Header.astro";
     <Header />
     <slot />
     <Footer />
+    <SpeedInsights/>
   </body>
 </html>
