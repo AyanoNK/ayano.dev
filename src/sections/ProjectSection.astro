@@ -89,8 +89,8 @@ const projects: Project[] = [
 <SectionLayout>
   <div class="flex flex-col items-center justify-center" id={t('header.projects')}>
     <SectionTitle title={t("index.projects.title")} />
-    <div class="mx:auto container max-w-xs sm:max-w-sm md:max-w-3xl">
-      <div class="flex flex-col flex-wrap gap-16 sm:gap-8">
+    <div class="mx:auto container max-w-lg md:max-w-2xl lg:max-w-3xl">
+      <div class="flex flex-col flex-wrap gap-16 md:gap-8">
         {projects.map((project) => <ProjectItem {...project} />)}
       </div>
     </div>

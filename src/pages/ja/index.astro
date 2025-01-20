@@ -2,10 +2,6 @@
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import IndexLayout from "../../layouts/IndexLayout.astro";
 import IndexShared from "../../modules/IndexShared.astro";
-import { getRelativeLocaleUrl } from 'astro:i18n';
-
-// TODO: implement this into main func to prevent re-rendering
-const language  = getRelativeLocaleUrl("ja", "");
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
