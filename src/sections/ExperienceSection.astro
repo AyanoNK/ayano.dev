@@ -138,7 +138,7 @@ const experiences: Experience[] = [
 <SectionLayout>
   <div class="flex flex-col items-center justify-center" id={t('header.work')}>
     <SectionTitle title={t("index.experience.title")} />
-    <div class="mx:auto container max-w-lg md:max-w-2xl lg:max-w-3xl">
+    <div class="mx:auto container">
       <div class="flex flex-col flex-wrap gap-16 md:gap-8">
         {experiences.map((experience) => <ExperienceItem {...experience} />)}
       </div>
