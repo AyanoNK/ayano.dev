@@ -3,8 +3,16 @@ import { type Project, type ProjectAdditionalLink } from "../types/technology";
 import { Icon } from "astro-icon";
 import TechnologyItem from "./TechnologyItem.astro";
 
-const { title, description, technologies, url, additionalLinks, video_id, video_width, video_height } =
-  Astro.props as Project;
+const {
+  title,
+  description,
+  technologies,
+  url,
+  additionalLinks,
+  video_id,
+  video_width,
+  video_height,
+} = Astro.props as Project;
 ---
 
 <div
@@ -41,7 +49,7 @@ const { title, description, technologies, url, additionalLinks, video_id, video_
             >
               <Icon
                 pack="fa-brands"
-                name="github"
+                name={additionalLink.icon}
                 class="h-5 text-darkpurple"
               />
               <span class="text-lg text-darkpurple">
@@ -56,17 +64,17 @@ const { title, description, technologies, url, additionalLinks, video_id, video_
   <div
     class="col-span-6 grid place-content-center place-items-center rounded-lg bg-lightpurple shadow-lg md:col-span-2"
   >
-        <div class="rounded-2xl">
-          <video
-            width={video_width}
-            height={video_height}
-            autoplay
-            muted
-            loop
-            class="rounded-3xl p-4"
-          >
-            <source src={`/webm/${video_id}.webm`} type="video/webm" />
-          </video>
-        </div>
+    <div class="rounded-2xl">
+      <video
+        width={video_width}
+        height={video_height}
+        autoplay
+        muted
+        loop
+        class="rounded-3xl p-4"
+      >
+        <source src={`/webm/${video_id}.webm`} type="video/webm" />
+      </video>
+    </div>
   </div>
 </div>

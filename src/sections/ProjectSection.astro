@@ -10,9 +10,37 @@ const t = useTranslations(lang);
 
 const projects: Project[] = [
   {
-    title: t('index.projects.kimon.title'),
+    title: t("index.projects.bank.title"),
+    url: "https://github.com/AyanoNK/bank-sms-manager",
+    description: t("index.projects.bank.description"),
+    technologies: [
+      "Kotlin",
+      "Jetpack Compose",
+      "Material3",
+      "Jetpack Glance",
+      "XML",
+      "Google Play Store",
+    ],
+    additionalLinks: [
+      {
+        title: "Play Store (soon)",
+        icon: "google-play",
+        url: "#",
+      },
+      {
+        title: "GitHub",
+        icon: "github",
+        url: "https://github.com/AyanoNK/bank-sms-manager",
+      },
+    ],
+    video_id: "bank",
+    video_width: "246",
+    video_height: "332",
+  },
+  {
+    title: t("index.projects.kimon.title"),
     url: "https://www.kimon.app/",
-    description: t('index.projects.kimon.description'),
+    description: t("index.projects.kimon.description"),
     technologies: [
       "NextJS",
       "React",
@@ -28,17 +56,18 @@ const projects: Project[] = [
     additionalLinks: [
       {
         title: "GitHub",
+        icon: "github",
         url: "https://github.com/AyanoNK/kanji-lyrics-frontend",
       },
     ],
     video_id: "kimon",
     video_width: "268",
-    video_height: "438"
+    video_height: "438",
   },
   {
-    title: t('index.projects.atlapetes.title'),
+    title: t("index.projects.atlapetes.title"),
     url: "https://github.com/AyanoNK/atlapetes-blancae",
-    description: t('index.projects.atlapetes.description'),
+    description: t("index.projects.atlapetes.description"),
     technologies: [
       "Kotlin",
       "PyTorch",
@@ -51,17 +80,18 @@ const projects: Project[] = [
     additionalLinks: [
       {
         title: "GitHub",
+        icon: "github",
         url: "https://github.com/AyanoNK/atlapetes-blancae",
       },
     ],
     video_id: "atlapetes",
     video_width: "242",
-    video_height: "540"
+    video_height: "540",
   },
   {
-    title: t('index.projects.poshaus.title'),
+    title: t("index.projects.poshaus.title"),
     url: "https://www.poshaus.art/",
-    description: t('index.projects.poshaus.description'),
+    description: t("index.projects.poshaus.description"),
     technologies: [
       "Astro",
       "React",
@@ -76,18 +106,22 @@ const projects: Project[] = [
     additionalLinks: [
       {
         title: "GitHub",
+        icon: "github",
         url: "https://github.com/AyanoNK/poshaus",
       },
     ],
     video_id: "poshaus",
     video_width: "244",
-    video_height: "384"
+    video_height: "384",
   },
 ];
 ---
 
 <SectionLayout>
-  <div class="flex flex-col items-center justify-center" id={t('header.projects')}>
+  <div
+    class="flex flex-col items-center justify-center"
+    id={t("header.projects")}
+  >
     <SectionTitle title={t("index.projects.title")} />
     <div class="mx:auto container">
       <div class="flex flex-col flex-wrap gap-16 md:gap-8">

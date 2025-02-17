@@ -55,9 +55,12 @@ export const ui = {
     "index.experience.geomedical.start_date": "Sep 2020",
     "index.experience.geomedical.end_date": "Dec 2020",
     "index.projects.title": "Projects",
-    "index.projects.kimon.title": "Kanji Learning Platform - 鬼門",
+    "index.projects.bank.title": "Bank SMS Manager (in progress)",
+    "index.projects.bank.description":
+      "Android application to budget everyday spends reading bank SMS messages and generating metrics out of their reported expenses every month.",
+    "index.projects.kimon.title": "Kanji Learning Platform - 鬼門 (stale)",
     "index.projects.kimon.description":
-      "Currently working on a web application to help Japanese Kanji learners practice with music.",
+      "Currently working on a web application to help Japanese Kanji learners practice with music lyrics.",
     "index.projects.atlapetes.title": "Mobile Bird Recognizer",
     "index.projects.atlapetes.description":
       'Fully developed an Android mobile application to recognize an endangered bird species called "Atlapetes Blancae" using a Machine Learning image classification model. Researchers are currently using it to recognize the endangered bird in rural areas of Antioquia, Colombia. The Humboldt Institute reserves the application usage rights, and permission is needed to download and use the application.',

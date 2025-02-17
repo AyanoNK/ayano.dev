@@ -32,5 +32,6 @@ export interface Project {
 
 export interface ProjectAdditionalLink {
   title: string;
+  icon: string;
   url: string;
 }
