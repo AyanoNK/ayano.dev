@@ -32,7 +32,7 @@ export const ui = {
     "index.experience.links": "Project Links",
     "index.experience.softserve.role": "Senior Software Engineer",
     "index.experience.softserve.description":
-      "Senior Software Engineer at a prominent online survey and data analysis firm, contributing to a 20-year-old project's maintenance and the billing application's revamp. Leveraged Python, React, Jinja2, Docker, and internal libraries to integrate new functionalities to align with evolving industry demands. Proven expertise in delivering high-quality code and collaborating cross-functionally.",
+      "Senior Software Engineer for a big tech consultancy firm. I have led and contributed to projects in the online surveys and data analysis industry by leading greenfield solutions to edge AI systems, as well as migrating legacy systems to microservices and event-driven architectures. Moreover, I have contributed to 20-year-old projects' maintenance and revamp. I have leveraged Python, Go, React, Jinja2, Templ, Docker, and internal libraries to integrate new functionalities to meet evolving industry demands, delivering high-quality code and collaborating cross-functionally.",
     "index.experience.softserve.link.1": "Marketing & Insights Company",
     "index.experience.softserve.start_date": "Aug 2023",
     "index.experience.softserve.end_date": "Current",
@@ -96,7 +96,7 @@ export const ui = {
     "index.experience.links": "Enlaces de Proyectos",
     "index.experience.softserve.role": "Ingeniero de Software Senior",
     "index.experience.softserve.description":
-      "Ingeniero de Software Senior en una firma de encuestas en línea y análisis de datos, contribuyendo al mantenimiento de un proyecto de 20 años y la renovación de la aplicación de facturación. Utilicé Python, React, Jinja2, Docker y bibliotecas internas para integrar nuevas funcionalidades para alinearse con las demandas de la industria en evolución. Experiencia en la entrega de código de alta calidad y colaboración interfuncional.",
+      "Ingeniero de Software Senior en una gran consultora tecnológica. He liderado y contribuido a proyectos en el sector de las encuestas online y el análisis de datos, liderando soluciones desde cero para sistemas edge AI, así como migrando sistemas legacy a microservicios y arquitecturas por eventos. Además, he contribuido al mantenimiento y renovación de proyectos de 20 años de antigüedad. He utilizado Python, Go, React, Jinja2, Templ, Docker, y bibliotecas internas para integrar nuevas funcionalidades para satisfacer las demandas cambiantes de la industria, entregando código de alta calidad y colaborando entre equipos multidisciplinares.",
     "index.experience.softserve.link.1":
       "Compañía de Marketing e Investigación",
     "index.experience.softserve.start_date": "Ago 2023",
@@ -162,7 +162,7 @@ export const ui = {
     "index.experience.links": "プロジェクトリンク",
     "index.experience.softserve.role": "シニアソフトウェアエンジニア",
     "index.experience.softserve.description":
-      "20年プロジェクトのメンテナンスと請求アプリケーションの改修に貢献している、有名なオンライン調査とデータ分析会社のシニアソフトウェアエンジニア。 Python、React、Jinja2、Docker、および内部ライブラリを活用して、新しい機能を統合し、進化する業界の要求に合わせる。 高品質のコードを提供し、横断的に協力することにおける専門知識を証明した。",
+      "大手テクノロジー・コンサルタント会社のシニア・ソフトウェア・エンジニア。オンライン調査やデータ分析分野のプロジェクトをリードし、エッジAIシステムのスクラッチからのソリューションや、レガシーシステムのマイクロサービスやイベント駆動アーキテクチャへの移行をリードしてきました。また、20年前のプロジェクトのメンテナンスやリニューアルにも貢献してきました。Python、Go、React、Jinja2、Templ、Docker、社内ライブラリなどを駆使して、変化する業界の需要に対応する新機能を統合し、高品質なコードを提供し、多分野のチームと協業してきました。",
     "index.experience.softserve.link.1": "マーケティング＆インサイト会社",
     "index.experience.softserve.start_date": "2023年8月",
     "index.experience.softserve.end_date": "現在",
