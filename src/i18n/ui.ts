@@ -123,6 +123,9 @@ export const ui = {
     "index.experience.geomedical.start_date": "Sep 2020",
     "index.experience.geomedical.end_date": "Dic 2020",
     "index.projects.title": "Proyectos",
+    "index.projects.bank.title": "Bank SMS Manager (en progreso)",
+    "index.projects.bank.description":
+      "Aplicación de Android para presupuestar y administrar los gastos del día a día automáticamente, leyendo los mensajes de texto del banco y generando métricas a partir de sus reportes de gastos cada mes.",
     "index.projects.kimon.title": "Plataforma de Aprendizaje de Kanji - 鬼門",
     "index.projects.kimon.description":
       "Actualmente trabajando en una aplicación web para ayudar a los estudiantes de Kanji a practicar con música.",
@@ -188,6 +191,9 @@ export const ui = {
     "index.experience.geomedical.start_date": "2020年9月",
     "index.experience.geomedical.end_date": "2020年12月",
     "index.projects.title": "プロジェクト",
+    "index.projects.bank.title": "銀行SMSマネージャー（進行中）",
+    "index.projects.bank.description":
+      "銀行からのテキスト メッセージを読み取り、毎月の経費レポートから指標を生成することで、日々の経費を自動的に予算化して管理する Android アプリです。",
     "index.projects.kimon.title": "漢字学習プラットフォーム - 鬼門",
     "index.projects.kimon.description":
       "現在、日本語の漢字学習者が音楽で練習できるWebアプリケーションを作成中です。",
