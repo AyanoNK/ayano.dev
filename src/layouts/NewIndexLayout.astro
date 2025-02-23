@@ -39,13 +39,17 @@ import SpeedInsights from "@vercel/speed-insights/astro";
       const switchTheme = document.querySelector("[data-switch-theme]");
       const html = document.querySelector("html");
 
-      // if the browser has dark mode enabled by default, we should set the dark class
       if (
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: dark)").matches
       ) {
         html.classList.add("dark");
       }
+
+      // TODO: remove, debug
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "t") html.classList.toggle("dark");
+      });
 
       switchTheme.addEventListener("click", () => {
         html.classList.toggle("dark");
