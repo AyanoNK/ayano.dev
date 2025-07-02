@@ -1,0 +1,16 @@
+---
+import Title from "../components/Title.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+
+// TODO: see how to combine  this with Native Astro internationalization
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+
+---
+<main class="flex flex-1 flex-col items-center justify-center h-full" id={t('header.home')}>
+  <h1 class="py-16 text-center text-6xl font-bold sm:py-5">
+    {t("index.in_construction")}
+  </h1>
+</main>

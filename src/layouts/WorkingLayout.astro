@@ -1,0 +1,44 @@
+---
+import SpeedInsights from "@vercel/speed-insights/astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Sebastian Correa - Full Stack Software Engineer with 5+ years of experience."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>Sebastian Correa</title>
+    <script>
+      import { webVitals } from "../lib/vitals";
+
+      let analyticsId = import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID;
+
+      if (analyticsId) {
+        webVitals({
+          path: location.pathname,
+          params: location.search,
+          analyticsId,
+        });
+      }
+    </script>
+
+  </head>
+  <body
+    class="font-sans m-0 bg-white"
+  >
+    <slot />
+    <SpeedInsights />
+  </body>
+</html>
