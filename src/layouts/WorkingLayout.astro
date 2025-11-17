@@ -1,5 +1,6 @@
 ---
 import SpeedInsights from "@vercel/speed-insights/astro";
+import "../../tailwind.css";
 ---
 
 <!doctype html>
@@ -15,7 +16,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
@@ -36,7 +37,7 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 
   </head>
   <body
-    class="font-sans m-0 bg-white"
+    class="min-h-[100dvh] bg-background bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px] prose-h4:xl:text-2xl prose-h4:lg:text-xl prose-h4:text-lg -z-10"
   >
     <slot />
     <SpeedInsights />

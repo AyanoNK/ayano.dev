@@ -1,8 +1,18 @@
 ---
-import WorkingLayout from "../layouts/WorkingLayout.astro";
-import Working from "../modules/Working.astro";
+import WorkingLayout from "@/layouts/WorkingLayout.astro";
+import IndexShared from "@/modules/IndexShared.astro";
+import Working from "@/modules/Working";
+
 ---
 
 <WorkingLayout>
-  <Working/>
+  <div class="py-16 mx-auto w-container max-w-full text-foreground text-left flex flex-col items-center gap-4">
+    <h1 class="font-heading text-center 2xl:text-5xl xl:text-4xl text-3xl">Sebastian Correa</h1>
+    <div class="flex flex-col gap-2">
+      <h2 class="font-heading text-center 2xl:text-2xl xl:text-xl text-lg">I'm redoing this portfolio.</h2>
+      <h3 class="font-heading text-center 2xl:text-xl xl:text-lg text-md">このポートフォリオを作り直し中です。</h3>
+      <h2 class="font-heading text-center 2xl:text-2xl xl:text-xl text-lg">Estoy rehaciendo este portafolio.</h2>
+    </div>
+      <Working client:load />
+  </div>
 </WorkingLayout>

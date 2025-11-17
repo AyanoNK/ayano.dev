@@ -8,21 +8,32 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "astro": "^4.16.18",
-    "prettier": "^2.8.8",
-    "prettier-plugin-tailwindcss": "^0.2.8",
-    "web-vitals": "^3.5.2"
+    "@iconify-json/cib": "^1.2.3",
+    "@iconify-json/eos-icons": "^1.2.4",
+    "@iconify-json/fa-brands": "^1.2.2",
+    "@iconify-json/fa-solid": "^1.2.2",
+    "astro": "^5.15.8",
+    "prettier": "^3.6.2",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "web-vitals": "^5.1.0"
   },
   "dependencies": {
-    "@astrojs/react": "^3.6.3",
-    "@astrojs/tailwind": "^5.1.5",
-    "@types/react": "^18.3.23",
-    "@types/react-dom": "^18.3.7",
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/tailwind": "^6.0.2",
+    "@lucide/astro": "^0.554.0",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
     "@vercel/speed-insights": "^1.2.0",
-    "astro-icon": "^0.8.2",
+    "astro-icon": "^1.1.5",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "hammerjs": "^2.0.8",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "tailwindcss": "^3.4.17"
+    "lucide-react": "^0.553.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^3.4.18",
+    "tailwindcss-animate": "^1.0.7"
   }
 }

@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { type Experience } from "../../types/technology";
 import ExperienceTimeline from "./ExperienceTimeline.astro";
 import TechnologyItem from "../TechnologyItem.astro";
@@ -29,7 +29,7 @@ const {
         class="flex flex-row items-center gap-2"
       >
         <h6 class="text-lg">{companyName}</h6>
-        <Icon pack="fa-solid" name="external-link-square-alt" class="h-4" />
+        <Icon name="fa-solid:external-link-square-alt" class="h-4" />
       </a>
       <p class="pt-4 text-start text-lg font-normal">
         {description}
@@ -43,9 +43,9 @@ const {
               target="_blank"
               class="flex flex-row items-baseline gap-2"
             >
-              <Icon pack="fa-solid" name="arrow-right" class="h-3" />
+              <Icon name="fa-solid:arrow-right" class="h-3" />
               <span class="text-lg font-medium">{project.title}</span>
-              <Icon pack="fa-solid" name="external-link-alt" class="h-3" />
+              <Icon name="fa-solid:external-link-alt" class="h-3" />
             </a>
           ))
         }
