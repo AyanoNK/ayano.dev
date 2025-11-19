@@ -1,0 +1,56 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { Anchor } from "@/components/ui/anchor";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
+import LanguageSelector from "./LanguageSelector";
+
+// TODO: see how to combine  this with Native Astro internationalization
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const referenceLinks = [
+  {
+    IconName: Github,
+    value: import.meta.env.GITHUB,
+  },
+  {
+    IconName: Linkedin,
+    value: import.meta.env.LINKEDIN,
+  },
+  {
+    IconName: Mail,
+    value: `mailto:${import.meta.env.EMAIL}`,
+  },
+];
+---
+
+<div
+  class="flex flex-col items-center justify-center gap-6 py-32"
+  id={t("header.home")}
+>
+  <div class="absolute right-4 top-4">
+    <LanguageSelector client:load />
+  </div>
+  <div class="flex flex-col items-center justify-center gap-4">
+    <h1 class="text-center text-4xl font-heading xl:text-6xl 2xl:text-8xl">
+      Sebastian Correa
+    </h1>
+    <h2 class="text-center text-2xl font-heading xl:text-4xl 2xl:text-6xl">
+      {t("index.title")}
+    </h2>
+  </div>
+  <div class="flex flex-row flex-wrap gap-10">
+    {
+      referenceLinks.map((link) => (
+        <Anchor
+          variant="neutral"
+          href={link.value}
+          target={link.IconName !== Mail && "_blank"}
+        >
+          <link.IconName />
+        </Anchor>
+      ))
+    }
+  </div>
+</div>
