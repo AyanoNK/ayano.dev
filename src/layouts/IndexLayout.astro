@@ -1,7 +1,7 @@
 ---
 import Footer from "../modules/Footer.astro";
 import Header from "../modules/Header.astro";
-import  SpeedInsights  from "@vercel/speed-insights/astro"
+import SpeedInsights from "@vercel/speed-insights/astro";
 ---
 
 <!doctype html>
@@ -37,11 +37,10 @@ import  SpeedInsights  from "@vercel/speed-insights/astro"
     </script>
   </head>
   <body
-    class="font-sans m-0 bg-gradient-to-b from-lightpurple via-darkpurple to-lightpurple"
-  >
+    class="m-0 bg-gradient-to-b from-lightpurple via-darkpurple to-lightpurple font-sans">
     <Header />
     <slot />
     <Footer />
-    <SpeedInsights/>
+    <SpeedInsights />
   </body>
 </html>
