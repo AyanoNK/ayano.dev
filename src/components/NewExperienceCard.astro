@@ -1,0 +1,57 @@
+---
+import type { NewExperience, title } from "@/types/technology";
+import { ExternalLink, Globe, MoveUp, CornerDownRight } from "@lucide/astro";
+import { Badge } from "./ui/badge";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { startDate, endDate, companyName, companyURL, titles, technologies } =
+  Astro.props as NewExperience;
+---
+
+<div
+  class="overflow-hidden rounded-xl border-2 border-b border-border shadow-shadow">
+  <div
+    class="flex items-center justify-between border-b-2 border-border bg-[#5294FF] p-4 text-left text-base text-main-foreground dark:bg-[#5294FF]">
+    <a
+      class="flex cursor-pointer flex-row items-start justify-center gap-1 font-heading"
+      href={companyURL}
+      target="_blank">
+      {companyName}
+      <ExternalLink size="1rem" } />
+    </a>
+    <span class="text-sm font-semibold">{startDate} - {endDate}</span>
+  </div>
+  <div class="flex flex-col gap-6 bg-secondary-background p-4">
+    {
+      titles.map((title: title, index: number) => (
+        <div class="flex flex-col gap-6">
+          {index !== 0 && <MoveUp />}
+          <div class="flex flex-col gap-4 rounded-b-base font-base">
+            <div class="flex flex-col gap-2">
+              <div class="text-md font-bold">{title.title}</div>
+              <div class="text-sm">{title.description}</div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="text-md font-semibold">{t("index.experience.milestones")}</div>
+              <div class="flex flex-col gap-1">
+                {title.milestones.map((milestone) => (
+                  <div class="flex flex-row items-end gap-1">
+                    <CornerDownRight />
+                    <span class="text-sm">{milestone}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+
+    <div class="flex flex-row flex-wrap gap-2">
+      {technologies.map((technology: string) => <Badge>{technology}</Badge>)}
+    </div>
+  </div>
+</div>
