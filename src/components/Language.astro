@@ -1,5 +1,5 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
@@ -8,8 +8,10 @@ const t = useTranslations(lang);
 const { code, text } = Astro.props;
 
 const aboutURL = getRelativeLocaleUrl(code, "");
-
 ---
-<a href={aboutURL} class="px-2 py-1 text-xs text-center text-whiter bg-lightpurple hover:bg-darkpurple">
+
+<a
+  href={aboutURL}
+  class="bg-lightpurple px-2 py-1 text-center text-xs text-whiter hover:bg-darkpurple">
   {text}
 </a>

@@ -9,9 +9,10 @@ const { name } = Astro.props as TechnologyProps;
 ---
 
 <div
-  class="flex flex-row items-center justify-center gap-2 rounded bg-whiter px-4 py-3 hover:bg-lightblue"
->
+  class="flex flex-row items-center justify-center gap-2 rounded bg-whiter px-4 py-3 hover:bg-lightblue">
   <Icon name={`cib:${name}`} class="h-8 text-darkpurple" />
 
-  <span class="font-semibold text-darkpurple">{name.charAt(0).toUpperCase() + name.slice(1)}</span>
+  <span class="font-semibold text-darkpurple"
+    >{name.charAt(0).toUpperCase() + name.slice(1)}</span
+  >
 </div>

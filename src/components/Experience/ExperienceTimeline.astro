@@ -8,12 +8,10 @@ const { startDate, endDate } = Astro.props as ExperienceTimelineProps;
 ---
 
 <div
-  class="col-span-6 flex flex-col items-center pt-4 text-lightblue sm:col-span-1"
->
+  class="col-span-6 flex flex-col items-center pt-4 text-lightblue sm:col-span-1">
   <span class="text-lg font-semibold">{endDate}</span>
   <div
-    class="h-0 w-32 rounded-xl border border-solid border-lightblue content-[''] sm:h-32 sm:w-0"
-  >
+    class="h-0 w-32 rounded-xl border border-solid border-lightblue content-[''] sm:h-32 sm:w-0">
   </div>
   <span class="text-lg font-semibold">{startDate}</span>
 </div>
