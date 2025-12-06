@@ -3,6 +3,12 @@ export interface Technology {
   color: string;
 }
 
+type title = {
+  title: string;
+  description: string;
+  milestones: string[];
+};
+
 export interface Experience {
   title: string;
   startDate: string;
@@ -10,6 +16,16 @@ export interface Experience {
   companyURL: string;
   endDate: string;
   description: string;
+  technologies: string[];
+  projects: ExperienceProject[];
+}
+
+export interface NewExperience {
+  titles: title[];
+  startDate: string;
+  companyName: string;
+  companyURL: string;
+  endDate: string;
   technologies: string[];
   projects: ExperienceProject[];
 }

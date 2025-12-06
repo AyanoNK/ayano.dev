@@ -1,18 +1,52 @@
 ---
-import WorkingLayout from "@/layouts/WorkingLayout.astro";
-import IndexShared from "@/modules/IndexShared.astro";
-import Working from "@/modules/Working";
+// Automatic language detection and redirect
+// This page should only be seen briefly while redirecting
+const supportedLocales = ["en", "es", "ja"];
+const defaultLocale = "en";
 
+// Return early to let client-side redirect handle it
+// We can't access browser language on the server in Astro SSG
 ---
 
-<WorkingLayout>
-  <div class="py-16 mx-auto w-container max-w-full text-foreground text-left flex flex-col items-center gap-4">
-    <h1 class="font-heading text-center 2xl:text-5xl xl:text-4xl text-3xl">Sebastian Correa</h1>
-    <div class="flex flex-col gap-2">
-      <h2 class="font-heading text-center 2xl:text-2xl xl:text-xl text-lg">I'm redoing this portfolio.</h2>
-      <h3 class="font-heading text-center 2xl:text-xl xl:text-lg text-md">このポートフォリオを作り直し中です。</h3>
-      <h2 class="font-heading text-center 2xl:text-2xl xl:text-xl text-lg">Estoy rehaciendo este portafolio.</h2>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <script is:inline>
+      // Detect user's preferred language from browser
+      function detectLanguage() {
+        const supportedLocales = ["en", "es", "ja"];
+        const defaultLocale = "en";
+
+        // Get browser languages
+        const browserLanguages = navigator.languages || [
+          navigator.language || navigator.userLanguage,
+        ];
+
+        // Find first matching supported locale
+        for (const lang of browserLanguages) {
+          // Extract base language code (e.g., 'en' from 'en-US')
+          const baseLanguage = lang.split("-")[0].toLowerCase();
+
+          if (supportedLocales.includes(baseLanguage)) {
+            return baseLanguage;
+          }
+        }
+
+        return defaultLocale;
+      }
+
+      // Perform redirect
+      const detectedLang = detectLanguage();
+      window.location.href = `/${detectedLang}/`;
+    </script>
+  </head>
+  <body>
+    <div
+      style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif;">
+      <p>Redirecting to your preferred language...</p>
     </div>
-      <Working client:load />
-  </div>
-</WorkingLayout>
+  </body>
+</html>

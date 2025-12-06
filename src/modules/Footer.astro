@@ -19,58 +19,56 @@ const footerContact: Footer[] = [
   },
 ];
 const footerLinks: Footer[] = [
-    {
-      title: t("footer.github"),
-      value: import.meta.env.GITHUB,
-    },
-    {
-      title: t("footer.linkedin"),
-      value: import.meta.env.LINKEDIN,
-    },
-  ];
+  {
+    title: t("footer.github"),
+    value: import.meta.env.GITHUB,
+  },
+  {
+    title: t("footer.linkedin"),
+    value: import.meta.env.LINKEDIN,
+  },
+];
 
 type TLanguage = keyof typeof languages;
-const langs: TLanguage[] = [
-  "en", "es", "ja"
-];
+const langs: TLanguage[] = ["en", "es", "ja"];
 ---
 
-<footer class="flex h-32 flex-1 flex-col items-center justify-between bg-lightpurple px-4 py-32 align-middle">
+<footer
+  class="flex h-32 flex-1 flex-col items-center justify-between bg-lightpurple px-4 py-32 align-middle">
   <div class="grid grid-cols-2 gap-32 text-center text-sm leading-6">
     <div class="text-whiter">
-      <h4 class="pb-6 text-start text-2xl font-bold">{t('footer.contact')}</h4>
+      <h4 class="pb-6 text-start text-2xl font-bold">{t("footer.contact")}</h4>
       <div class="flex flex-col">
-        {footerContact.map((contact: Footer) => (
-          <a
-            href={contact.value}
-            class="text-md text-start font-semibold"
-          >
-            {t('footer.email')}
-          </a>
-        ))}
+        {
+          footerContact.map((contact: Footer) => (
+            <a href={contact.value} class="text-md text-start font-semibold">
+              {t("footer.email")}
+            </a>
+          ))
+        }
         <span class="text-md text-start font-semibold">
-          {t('footer.location')}
+          {t("footer.location")}
         </span>
       </div>
     </div>
     <div class="text-whiter">
-      <h4 class="pb-6 text-start text-2xl font-bold">{t('footer.links')}</h4>
+      <h4 class="pb-6 text-start text-2xl font-bold">{t("footer.links")}</h4>
       <div class="flex flex-col">
-        {footerLinks.map((contact: Footer) => (
-          <a
-            href={contact.value}
-            class="text-md text-start font-semibold"
-            target="_blank"
-          >
-            {contact.title}
-          </a>
-        ))}
+        {
+          footerLinks.map((contact: Footer) => (
+            <a
+              href={contact.value}
+              class="text-md text-start font-semibold"
+              target="_blank">
+              {contact.title}
+            </a>
+          ))
+        }
       </div>
     </div>
   </div>
-  <div class="flex flex-row flex-wrap items-center justify-center gap-6 w-full border border-lightpurple border-t-whiter mt-12 py-3">
-    {langs.map((language) => (
-      <Language code={language} text={t(language)} />
-    ))}
+  <div
+    class="mt-12 flex w-full flex-row flex-wrap items-center justify-center gap-6 border border-lightpurple border-t-whiter py-3">
+    {langs.map((language) => <Language code={language} text={t(language)} />)}
   </div>
 </footer>

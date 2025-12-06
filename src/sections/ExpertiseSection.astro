@@ -5,28 +5,29 @@ import SectionTitle from "../components/SectionTitle.astro";
 import SectionLayout from "../layouts/SectionLayout.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import Tech from "../components/Tech.astro";
+import ExpertiseCardContent from "@/components/ExpertiseCardContent.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const cards = [
   {
-    title: t('index.expertise.frontend.title'),
+    title: t("index.expertise.frontend.title"),
     description: t("index.expertise.frontend.description"),
     image: "cib:react",
   },
   {
-    title: t('index.expertise.backend.title'),
+    title: t("index.expertise.backend.title"),
     description: t("index.expertise.backend.description"),
     image: "eos-icons:system-image",
   },
   {
-    title: t('index.expertise.database.title'),
+    title: t("index.expertise.database.title"),
     description: t("index.expertise.database.description"),
     image: "eos-icons:database",
   },
   {
-    title: t('index.expertise.devops.title'),
+    title: t("index.expertise.devops.title"),
     description: t("index.expertise.devops.description"),
     image: "cib:google-cloud",
   },
@@ -37,89 +38,42 @@ const technologies = ["react", "django", "rails"];
 const languages = ["python", "javascript", "typescript", "ruby"];
 ---
 
-<SectionLayout>
-  <div class="flex flex-col items-center justify-center gap-8" id={t('header.about')}>
-    <div class="mx:auto container">
-      <div
-        id="cards"
-        class="grid gap-4 text-center text-sm leading-6 md:grid-cols-2"
-      >
-        {
-          cards.map((card) => (
-            <div class="card relative rounded-lg bg-whiter p-5 text-darkpurple">
-              <div class="flex flex-row items-center justify-start gap-4 pb-4">
-                <Icon name={card.image} class="h-10" />
-                <h4 class="text-2xl font-bold text-left">{card.title}</h4>
-              </div>
-              <div class="flex flex-row items-center justify-center">
-                <p class="text-start text-lg font-semibold">
-                  {card.description}
-                </p>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-    <div class="mx:auto container">
-      <div class="flex flex-col items-center justify-center">
-        <div class="flex flex-col items-center justify-center gap-4">
-          <div class="flex flex-row flex-wrap items-center justify-center gap-4">
-            {
-              technologies.map((technology, index) => (
-                <Tech name={technology} key={index} />
-              ))
-            }
-          </div>
-          <div class="flex flex-row flex-wrap items-center justify-center gap-4">
-            {
-              languages.map((language, index) => (
-                <Tech name={language} key={index} />
-              ))
-            }
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</SectionLayout>
-<script>
-  document.getElementById("cards").onmousemove = (e) => {
-    Array.from(
-      document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>
-    ).forEach((el) => {
-      const rect = el.getBoundingClientRect(),
-        x = e.clientX - rect.left,
-        y = e.clientY - rect.top;
-      el.style.setProperty("--mouse-x", `${x}px`);
-      el.style.setProperty("--mouse-y", `${y}px`);
-    });
-  };
-</script>
-<style>
-  .card:hover::before {
-    opacity: 1;
-  }
+<!-- New code starts here -->
+<div
+  class="grid grid-cols-1 border-b-4 border-t-4 border-border md:grid-cols-2">
+  <section
+    class="border-b-4 border-border bg-main p-5 py-7 text-main-foreground md:border-r-4 md:bg-background md:text-foreground lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16">
+    <ExpertiseCardContent
+      icon={cards[0].image}
+      title={cards[0].title}
+      description={cards[0].description}
+    />
+  </section>
 
-  .card::before,
-  .card::after {
-    border-radius: inherit;
-    content: "";
-    height: 100%;
-    left: 0px;
-    opacity: 0;
-    position: absolute;
-    top: 0px;
-    transition: opacity 500ms;
-    width: 100%;
-  }
+  <section
+    class="border-b-4 border-border bg-background p-5 py-7 text-main-foreground dark:text-foreground md:bg-main md:text-main-foreground md:dark:text-main-foreground lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16">
+    <ExpertiseCardContent
+      icon={cards[1].image}
+      title={cards[1].title}
+      description={cards[1].description}
+    />
+  </section>
 
-  .card::before {
-    background: radial-gradient(
-      800px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.3),
-      transparent 40%
-    );
-    z-index: 3;
-  }
-</style>
+  <section
+    class="border-b-4 border-border bg-main p-5 py-7 dark:text-main-foreground md:border-b-0 md:border-r-4 lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16">
+    <ExpertiseCardContent
+      icon={cards[2].image}
+      title={cards[2].title}
+      description={cards[2].description}
+    />
+  </section>
+
+  <section
+    class="bg-background p-5 py-7 lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16">
+    <ExpertiseCardContent
+      icon={cards[3].image}
+      title={cards[3].title}
+      description={cards[3].description}
+    />
+  </section>
+</div>
