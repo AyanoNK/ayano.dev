@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -14,9 +12,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export default function LanguageSelector() {
-  const [position, setPosition] = React.useState("bottom"); // fix: this is a redirect to the selected language page
+  // get current language from url
+  const position = window.location.pathname.startsWith("/es")
+    ? "es"
+    : window.location.pathname.startsWith("/ja")
+      ? "ja"
+      : "en";
+
+  const handleOnSetPosition = (value: string) => {
+    // redirect to the selected language
+    window.location.href = `/${value}`;
+  };
 
   return (
+    // TODO: redo to not use client side rendering
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="noShadow">Language selector</Button>
@@ -24,7 +33,9 @@ export default function LanguageSelector() {
       <DropdownMenuContent align="start" className="w-56">
         <DropdownMenuLabel inset>Language</DropdownMenuLabel>
         <DropdownMenuGroup>
-          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+          <DropdownMenuRadioGroup
+            value={position}
+            onValueChange={handleOnSetPosition}>
             <DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="es">Español</DropdownMenuRadioItem>
             <DropdownMenuRadioItem value="ja">日本語</DropdownMenuRadioItem>

@@ -32,48 +32,33 @@ const cards = [
     image: "cib:google-cloud",
   },
 ];
-
-const technologies = ["react", "django", "rails"];
-
-const languages = ["python", "javascript", "typescript", "ruby"];
 ---
 
-<!-- New code starts here -->
-<div
-  class="grid grid-cols-1 border-b-4 border-t-4 border-border md:grid-cols-2">
-  <section
-    class="border-b-4 border-border bg-main p-5 py-7 text-main-foreground md:border-r-4 md:bg-background md:text-foreground lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16">
-    <ExpertiseCardContent
-      icon={cards[0].image}
-      title={cards[0].title}
-      description={cards[0].description}
-    />
-  </section>
+<div class="grid grid-cols-1 border-4 border-border md:grid-cols-2">
+  {
+    cards.map((card, index) => {
+      const row = Math.floor(index / 2);
+      const col = index % 2;
+      const isAltColor = (row + col) % 2 === 1;
 
-  <section
-    class="border-b-4 border-border bg-background p-5 py-7 text-main-foreground dark:text-foreground md:bg-main md:text-main-foreground md:dark:text-main-foreground lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16">
-    <ExpertiseCardContent
-      icon={cards[1].image}
-      title={cards[1].title}
-      description={cards[1].description}
-    />
-  </section>
-
-  <section
-    class="border-b-4 border-border bg-main p-5 py-7 dark:text-main-foreground md:border-b-0 md:border-r-4 lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16">
-    <ExpertiseCardContent
-      icon={cards[2].image}
-      title={cards[2].title}
-      description={cards[2].description}
-    />
-  </section>
-
-  <section
-    class="bg-background p-5 py-7 lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16">
-    <ExpertiseCardContent
-      icon={cards[3].image}
-      title={cards[3].title}
-      description={cards[3].description}
-    />
-  </section>
+      return (
+        <div
+          class:list={[
+            "p-5 py-7 lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16",
+            "border-border",
+            col === 0 && "md:border-r-4",
+            row === 0 && "border-b-4",
+            isAltColor
+              ? "bg-main text-main-foreground"
+              : "bg-background text-foreground",
+          ]}>
+          <ExpertiseCardContent
+            icon={card.image}
+            title={card.title}
+            description={card.description}
+          />
+        </div>
+      );
+    })
+  }
 </div>
