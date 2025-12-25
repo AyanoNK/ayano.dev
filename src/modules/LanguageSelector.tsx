@@ -10,6 +10,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Languages } from "lucide-react";
 
 export default function LanguageSelector() {
   // get current language from url
@@ -28,7 +29,9 @@ export default function LanguageSelector() {
     // TODO: redo to not use client side rendering
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="noShadow">Language selector</Button>
+        <Button variant="noShadow">
+          <Languages />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-56">
         <DropdownMenuLabel inset>Language</DropdownMenuLabel>
