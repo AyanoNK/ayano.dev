@@ -16,25 +16,32 @@ const t = useTranslations(lang);
   <Title />
 
   <div
-    class="flex w-full max-w-screen-2xl flex-col items-center justify-center gap-16">
+    class="flex max-w-screen-lg flex-col border-4 border-border bg-background font-base text-foreground shadow-shadow">
+    <!-- class="flex w-full max-w-screen-xl flex-col items-center justify-center gap-16"> -->
+
     <ExpertiseSection id="expertise-section" />
-    <ExperienceSection id="experience-section" />
-    <!-- <ProjectSection id="project-section" /> -->
-    <div class="flex flex-col">
-      <span>
-        This is a work in progress. I am continuously updating my experience
-        section to better reflect my skills and projects.
-      </span>
-      <span>I am missing:</span>
-      <ul>
-        <li>Add milestones</li>
-        <li>Include detailed descriptions for each role</li>
-        <li>Add overview of the projects I have worked on</li>
-        <li>Create new view to talk about projects</li>
-        <li>Add certification</li>
-        <li>Make language selector not a client side rendering component</li>
-        <li>Add ui scratcher on website</li>
-      </ul>
-    </div>
+  </div>
+
+  <ExperienceSection id="experience-section" />
+
+  <div
+    class="flex max-w-screen-lg flex-col border-4 border-border bg-background font-base text-foreground shadow-shadow">
+    <ProjectSection id="project-section" />
+  </div>
+  <div class="flex flex-col">
+    <span>
+      This is a work in progress. I am continuously updating my experience
+      section to better reflect my skills and projects.
+    </span>
+    <span>I am missing:</span>
+    <ul>
+      <li>Add milestones</li>
+      <li>Include detailed descriptions for each role</li>
+      <li>Create new view to talk about projects</li>
+      <li>Add certification</li>
+      <li>Make language selector not a client side rendering component</li>
+      <li>Add ui scratcher on website</li>
+      <li>Add consistency between rounded and pointed corners</li>
+    </ul>
   </div>
 </main>

@@ -31,9 +31,9 @@ export const projects = {
     },
     atlapetes: {
       title: {
-        en: "Mobile Bird Recognizer",
-        es: "Reconocedor de Aves Móvil",
-        ja: "モバイル鳥認識",
+        en: "Mobile Bird Recognizer Atlapetes Blancae",
+        es: "Reconocedor de Aves Móvil Atlapetes Blancae",
+        ja: "モバイル鳥認識 Atlapetes Blancae",
       },
       description: {
         en: 'Fully developed an Android mobile application to recognize an endangered bird species called "Atlapetes Blancae" using a Machine Learning image classification model. Researchers are currently using it to recognize the endangered bird in rural areas of Antioquia, Colombia. The Humboldt Institute reserves the application usage rights, and permission is needed to download and use the application.',

@@ -1,8 +1,8 @@
 ---
 import type { NewExperience, title } from "@/types/technology";
 import { ExternalLink, Globe, MoveUp, CornerDownRight } from "@lucide/astro";
-import { Badge } from "./ui/badge";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { Badge } from "@/components/ui/badge";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -35,7 +35,9 @@ const { startDate, endDate, companyName, companyURL, titles, technologies } =
               <div class="text-sm">{title.description}</div>
             </div>
             <div class="flex flex-col gap-2">
-              <div class="text-md font-semibold">{t("index.experience.milestones")}</div>
+              <div class="text-md font-semibold">
+                {t("index.experience.milestones")}
+              </div>
               <div class="flex flex-col gap-1">
                 {title.milestones.map((milestone) => (
                   <div class="flex flex-row items-end gap-1">

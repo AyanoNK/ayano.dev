@@ -10,11 +10,6 @@ export const experience = {
       es: "Enlaces de Proyectos",
       ja: "プロジェクトリンク",
     },
-    section_title: {
-      en: "Experience.",
-      es: "Experiencia.",
-      ja: "経験。",
-    },
     milestones: {
       en: "Milestones",
       es: "Hitos",

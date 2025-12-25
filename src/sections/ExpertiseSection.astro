@@ -2,7 +2,6 @@
 import { Icon } from "astro-icon/components";
 import SectionTitle from "../components/SectionTitle.astro";
 
-import SectionLayout from "../layouts/SectionLayout.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import Tech from "../components/Tech.astro";
 import ExpertiseCardContent from "@/components/ExpertiseCardContent.astro";
@@ -34,7 +33,7 @@ const cards = [
 ];
 ---
 
-<div class="grid grid-cols-1 border-4 border-border md:grid-cols-2">
+<div class="grid grid-cols-1 md:grid-cols-2">
   {
     cards.map((card, index) => {
       const row = Math.floor(index / 2);
