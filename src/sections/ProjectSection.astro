@@ -1,42 +1,53 @@
 ---
-import ProjectItem from "../components/ProjectItem.astro";
-import SectionTitle from "../components/SectionTitle.astro";
-import SectionLayout from "../layouts/SectionLayout.astro";
 import { type Project } from "../types/technology";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Anchor } from "@/components/ui/anchor";
+import { SquareArrowOutUpRight } from "lucide-react";
+
+import { FeaturedProjectPanel } from "@/components/ui/FeaturedProjectPanel";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
+const featuredProject: Project = {
+  title: t("index.projects.bank.title"),
+  url: "https://github.com/AyanoNK/bank-sms-manager",
+  description: t("index.projects.bank.description"),
+  technologies: [
+    "Kotlin",
+    "Jetpack Compose",
+    "Material3",
+    "Jetpack Glance",
+    "XML",
+    "Google Play Store",
+  ],
+  additionalLinks: [
+    {
+      title: "Play Store (soon)",
+      icon: "google-play",
+      url: "#",
+    },
+    {
+      title: "GitHub",
+      icon: "github",
+      url: "https://github.com/AyanoNK/bank-sms-manager",
+    },
+  ],
+  video_id: "bank",
+  video_width: "246",
+  video_height: "332",
+};
+
 const projects: Project[] = [
-  {
-    title: t("index.projects.bank.title"),
-    url: "https://github.com/AyanoNK/bank-sms-manager",
-    description: t("index.projects.bank.description"),
-    technologies: [
-      "Kotlin",
-      "Jetpack Compose",
-      "Material3",
-      "Jetpack Glance",
-      "XML",
-      "Google Play Store",
-    ],
-    additionalLinks: [
-      {
-        title: "Play Store (soon)",
-        icon: "google-play",
-        url: "#",
-      },
-      {
-        title: "GitHub",
-        icon: "github",
-        url: "https://github.com/AyanoNK/bank-sms-manager",
-      },
-    ],
-    video_id: "bank",
-    video_width: "246",
-    video_height: "332",
-  },
   {
     title: t("index.projects.kimon.title"),
     url: "https://www.kimon.app/",
@@ -117,15 +128,95 @@ const projects: Project[] = [
 ];
 ---
 
-<SectionLayout>
+<section
+  class="flex w-full flex-col justify-between gap-8 bg-background bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:30px_30px] p-16 p-8 shadow-none dark:bg-[#20294B] sm:shadow-shadow"
+  id={t("header.projects")}>
+  <h2
+    class="border-2 border-border bg-white px-8 py-4 text-center text-lg shadow-shadow sm:text-xl xl:text-2xl 2xl:text-4xl">
+    {t("index.projects.title")}
+  </h2>
+
   <div
-    class="flex flex-col items-center justify-center"
-    id={t("header.projects")}>
-    <SectionTitle title={t("index.projects.title")} />
-    <div class="mx:auto container">
-      <div class="flex flex-col flex-wrap gap-16 md:gap-8">
-        {projects.map((project) => <ProjectItem {...project} />)}
-      </div>
-    </div>
+    class="grid grid-cols-1 justify-center gap-8 md:grid-cols-2 lg:grid-cols-3">
+    <Card className="col-span-1 w-full bg-white md:col-span-2 lg:col-span-3">
+      <CardHeader>
+        <CardTitle>{featuredProject.title}</CardTitle>
+      </CardHeader>
+      <CardContent className="flex flex-col">
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+          <div
+            class="col-span-4 flex flex-col justify-between gap-4 md:col-span-2 lg:col-span-3">
+            <div>{featuredProject.description}</div>
+
+            <div class="flex flex-col gap-4">
+              <div class="flex flex-row flex-wrap gap-2">
+                {
+                  featuredProject.technologies.map((technology: string) => (
+                    <Badge className="text-md">{technology}</Badge>
+                  ))
+                }
+              </div>
+              <div class="flex">
+                <Anchor
+                  variant="neutral"
+                  href={featuredProject.url}
+                  size="lg"
+                  target="_blank">
+                  <SquareArrowOutUpRight />
+                </Anchor>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid-row-span-4 md:col-span-1 lg:col-span-1">
+            <video
+              width={featuredProject.video_width}
+              height={featuredProject.video_height}
+              autoplay
+              muted
+              loop
+              class="rounded-3xl p-4">
+              <source
+                src={`/webm/${featuredProject.video_id}.webm`}
+                type="video/webm"
+              />
+            </video>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+    {
+      projects.map((project: Project) => (
+        <Card className="w-full bg-white">
+          <CardHeader>
+            <div class="flex flex-col gap-4">
+              <img
+                src={`https://picsum.photos/600/300`}
+                alt={project.title}
+                class="rounded-base"
+              />
+              <CardTitle>{project.title}</CardTitle>
+            </div>
+          </CardHeader>
+          <CardContent className="flex flex-col h-full">
+            <CardDescription>{project.description}</CardDescription>
+          </CardContent>
+          <CardFooter className="flex flex-col gap-8 items-start">
+            <div class="flex flex-row flex-wrap gap-2">
+              {project.technologies.map((technology: string) => (
+                <Badge>{technology}</Badge>
+              ))}
+            </div>
+            <Anchor
+              variant="neutral"
+              href={project.url}
+              size="lg"
+              target="_blank">
+              <SquareArrowOutUpRight />
+            </Anchor>
+          </CardFooter>
+        </Card>
+      ))
+    }
   </div>
-</SectionLayout>
+</section>
