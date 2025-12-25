@@ -26,9 +26,9 @@ const referenceLinks = [
 ---
 
 <div
-  class="flex flex-col items-center justify-center gap-6 py-32"
+  class="flex flex-col items-center justify-center gap-16 py-8 md:py-16 lg:py-24"
   id={t("header.home")}>
-  <div class="absolute right-4 top-4">
+  <div class="fixed right-4 top-4">
     <LanguageSelector client:only />
   </div>
   <div class="flex flex-col items-center justify-center gap-4">
@@ -45,6 +45,7 @@ const referenceLinks = [
         <Anchor
           variant="neutral"
           href={link.value}
+          size="lg"
           target={link.IconName !== Mail && "_blank"}>
           <link.IconName />
         </Anchor>
