@@ -43,6 +43,7 @@ const featuredProject: Project = {
   video_id: "bank",
   video_width: "246",
   video_height: "332",
+  miniature: "mini_bank",
 };
 
 const projects: Project[] = [
@@ -72,6 +73,7 @@ const projects: Project[] = [
     video_id: "kimon",
     video_width: "268",
     video_height: "438",
+    miniature: "mini_kimon",
   },
   {
     title: t("index.projects.atlapetes.title"),
@@ -96,6 +98,7 @@ const projects: Project[] = [
     video_id: "atlapetes",
     video_width: "242",
     video_height: "540",
+    miniature: "mini_atlapetes",
   },
   {
     title: t("index.projects.poshaus.title"),
@@ -122,6 +125,7 @@ const projects: Project[] = [
     video_id: "poshaus",
     video_width: "244",
     video_height: "384",
+    miniature: "mini_poshaus",
   },
 ];
 ---
@@ -189,7 +193,7 @@ const projects: Project[] = [
           <CardHeader>
             <div class="flex flex-col gap-4">
               <img
-                src={`https://picsum.photos/600/300`}
+                src={`/webp/${project.miniature}.webp`}
                 alt={project.title}
                 class="rounded-base"
               />

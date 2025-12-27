@@ -44,6 +44,7 @@ export interface Project {
   video_id: string;
   video_height: string;
   video_width: string;
+  miniature: string;
 }
 
 export interface ProjectAdditionalLink {
