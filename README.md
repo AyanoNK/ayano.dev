@@ -2,31 +2,32 @@
 
 Check out the live website at [https://www.ayano.software/](https://www.ayano.software/).
 
-## Project Structure
+## Tech Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Framework**: Astro 5 with React integration
+- **Styling**: Tailwind CSS with shadcn/ui components
+- **Font**: DM Sans
+
+## Project Structure
 
 ```
 /
 ├── public/
 │   └── favicon.ico
 ├── src/
-│   ├── components/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── components/      # Reusable components (including shadcn/ui)
+│   ├── i18n/            # Internationalization (en, es, ja)
+│   ├── layouts/         # Page layouts
+│   ├── modules/         # Shared modules (Header, Footer)
+│   ├── pages/           # Routes with language subdirectories
+│   ├── sections/        # Page sections
+│   └── lib/             # Utility functions
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components or layouts.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
 ## Commands
 
-All commands are run from the root of the project, from a terminal:
+All commands are run from the root of the project:
 
 | Command                | Action                                             |
 | :--------------------- | :------------------------------------------------- |
@@ -37,7 +38,16 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
 | `npm run astro --help` | Get help using the Astro CLI                       |
 
+## Internationalization
+
+The site supports three languages:
+- English (default): `/en/`
+- Spanish: `/es/`
+- Japanese: `/ja/`
+
+Translations are managed in `src/i18n/`.
+
 ## Icons
 
-[SimpleIcons](https://simpleicons.org/)
-[CircleFlags](https://github.com/HatScripts/circle-flags)
+- [Lucide Icons](https://lucide.dev/)
+- [CircleFlags](https://github.com/HatScripts/circle-flags)
