@@ -2,6 +2,9 @@
 dist/
 .output/
 
+# astro generated types
+.astro/
+
 # dependencies
 node_modules/
 
@@ -19,3 +22,6 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 .vercel
+
+# Claude
+CLAUDE.md
