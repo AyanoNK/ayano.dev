@@ -46,7 +46,7 @@ const referenceLinks = [
           variant="neutral"
           href={link.value}
           size="lg"
-          target={link.IconName !== Mail && "_blank"}>
+          target={link.IconName !== Mail ? "_blank" : undefined}>
           <link.IconName />
         </Anchor>
       ))
