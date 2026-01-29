@@ -1,6 +1,14 @@
 ---
 import type { NewExperience, title } from "@/types/technology";
-import { ExternalLink, Globe, MoveUp, CornerDownRight } from "@lucide/astro";
+import {
+  ExternalLink,
+  Globe,
+  MoveUp,
+  CornerDownRight,
+  ArrowRight,
+  MoveRight,
+  ChevronRight,
+} from "@lucide/astro";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
 import { Badge } from "@/components/ui/badge";
 
@@ -40,8 +48,8 @@ const { startDate, endDate, companyName, companyURL, titles, technologies } =
               </div>
               <div class="flex flex-col gap-1">
                 {title.milestones.map((milestone) => (
-                  <div class="flex flex-row items-end gap-1">
-                    <CornerDownRight />
+                  <div class="flex flex-row items-center gap-1">
+                    <MoveRight />
                     <span class="text-sm">{milestone}</span>
                   </div>
                 ))}
