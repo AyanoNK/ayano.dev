@@ -163,7 +163,8 @@ const projects: Project[] = [
                   variant="neutral"
                   href={featuredProject.url}
                   size="lg"
-                  target="_blank">
+                  target="_blank"
+                  aria-label={`Visit ${featuredProject.title}`}>
                   <SquareArrowOutUpRight />
                 </Anchor>
               </div>
@@ -213,7 +214,8 @@ const projects: Project[] = [
               variant="neutral"
               href={project.url}
               size="lg"
-              target="_blank">
+              target="_blank"
+              aria-label={`Visit ${project.title}`}>
               <SquareArrowOutUpRight />
             </Anchor>
           </CardFooter>
