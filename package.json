@@ -21,6 +21,7 @@
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/tailwind": "^6.0.2",
+    "@fontsource-variable/dm-sans": "^5.2.8",
     "@lucide/astro": "^0.562.0",
     "@radix-ui/react-accordion": "^1.2.12",
     "@radix-ui/react-dropdown-menu": "^2.1.16",

@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["DM Sans", ...defaultTheme.fontFamily.sans],
+        sans: ["DM Sans Variable", "DM Sans", ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

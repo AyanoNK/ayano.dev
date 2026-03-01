@@ -11,6 +11,9 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
+  build: {
+    inlineStylesheets: "always",
+  },
   integrations: [react(), tailwind(), icon()],
   i18n: {
     defaultLocale: "en",
