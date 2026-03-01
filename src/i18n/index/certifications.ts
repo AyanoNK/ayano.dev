@@ -7,9 +7,9 @@ export const certifications = {
     },
     jlpt_n2: {
       title: {
-        en: "JLPT N3",
-        es: "JLPT N3",
-        ja: "日本語能力試験 N3",
+        en: "JLPT N2",
+        es: "JLPT N2",
+        ja: "日本語能力試験 N2",
       },
       caption: {
         en: "July 2024 · Japan Foundation",
