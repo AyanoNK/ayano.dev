@@ -2,8 +2,7 @@
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { Anchor } from "@/components/ui/anchor";
-import { DropdownMenu } from "@/components/ui/dropdown-menu";
-import LanguageSelector from "./LanguageSelector";
+import LanguageSelector from "./LanguageSelector.astro";
 
 // TODO: see how to combine  this with Native Astro internationalization
 const lang = getLangFromUrl(Astro.url);
@@ -29,7 +28,7 @@ const referenceLinks = [
   class="flex flex-col items-center justify-center gap-16 py-8 md:py-16 lg:py-24"
   id={t("header.home")}>
   <div class="fixed right-4 top-4">
-    <LanguageSelector client:only />
+    <LanguageSelector />
   </div>
   <div class="flex flex-col items-center justify-center gap-4">
     <h1 class="text-center text-4xl font-heading xl:text-6xl 2xl:text-8xl">

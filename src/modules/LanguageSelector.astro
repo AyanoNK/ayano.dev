@@ -1,0 +1,65 @@
+---
+import { getLangFromUrl } from "../i18n/utils";
+import { Languages, Circle } from "@lucide/astro";
+
+const lang = getLangFromUrl(Astro.url);
+
+const languages = [
+  { code: "en", label: "English" },
+  { code: "es", label: "Español" },
+  { code: "ja", label: "日本語" },
+];
+---
+
+<div class="relative" id="lang-selector">
+  <button
+    type="button"
+    aria-label="Select language"
+    aria-expanded="false"
+    aria-haspopup="true"
+    class="inline-flex h-10 items-center justify-center rounded-base border-2 border-border bg-main px-4 py-2 text-sm font-base text-main-foreground"
+  >
+    <Languages size={16} />
+  </button>
+  <div
+    id="lang-dropdown"
+    class="absolute right-0 top-full z-50 mt-1 hidden w-40 overflow-hidden rounded-base border-2 border-border bg-main p-1 font-base text-main-foreground"
+  >
+    <div class="px-2 py-1.5 pl-8 text-sm font-heading">Language</div>
+    {
+      languages.map((l) => (
+        <a
+          href={`/${l.code}`}
+          class:list={[
+            "relative flex cursor-pointer select-none items-center rounded-base border-2 border-transparent py-1.5 pl-8 pr-2 text-sm font-base outline-hidden transition-colors hover:border-border",
+            { "bg-main-foreground/10": lang === l.code },
+          ]}
+        >
+          <span class="absolute left-2 flex size-3.5 items-center justify-center">
+            {lang === l.code && <Circle size={8} fill="currentColor" />}
+          </span>
+          {l.label}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  const selector = document.getElementById("lang-selector");
+  const dropdown = document.getElementById("lang-dropdown");
+  const button = selector?.querySelector("button");
+
+  button?.addEventListener("click", () => {
+    const open = !dropdown?.classList.contains("hidden");
+    dropdown?.classList.toggle("hidden");
+    button.setAttribute("aria-expanded", String(!open));
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!selector?.contains(e.target as Node)) {
+      dropdown?.classList.add("hidden");
+      button?.setAttribute("aria-expanded", "false");
+    }
+  });
+</script>
