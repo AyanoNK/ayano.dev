@@ -31,31 +31,31 @@ export const experience = {
         es: "Actual",
         ja: "現在",
       },
-      data_scientist: {
+      ai_engineer: {
         role: {
-          en: "Data Scientist",
-          es: "Científico de Datos",
-          ja: "データサイエンティスト",
+          en: "Artificial Intelligence Engineer",
+          es: "Ingeniero de Inteligencia Artificial",
+          ja: "AIエンジニア",
         },
         description: {
-          en: "Tailored data science description.",
-          es: "Descripción personalizada de ciencia de datos.",
-          ja: "データサイエンスの説明。",
+          en: "Artificial Intelligence Engineer at a big consultancy firm, partaking in various AI-driven projects and initiatives for international clients like Amazon Web Services. I have developed and deployed AI features and products using the latest advancements in GenAI and LLMs, building agents and RAGs for different business use cases.",
+          es: "Ingeniero de Inteligencia Artificial en una gran consultora, participando en diversos proyectos e iniciativas impulsados por IA para clientes internacionales como Amazon Web Services. He desarrollado y desplegado funcionalidades y productos de IA utilizando los últimos avances en IA generativa y LLMs, construyendo agentes y RAGs para diferentes casos de uso empresariales.",
+          ja: "大手コンサルティング会社のAIエンジニアとして、Amazon Web Servicesなどの国際的なクライアント向けにAI主導のプロジェクトやイニシアチブに参画。生成AIやLLMの最新技術を活用し、さまざまなビジネスユースケースに向けたエージェントやRAGの構築など、AI機能・プロダクトの開発とデプロイを行ってきました。",
         },
         milestone_1: {
-          en: "Data Science Project",
-          es: "Proyecto de Ciencia de Datos",
-          ja: "データサイエンスプロジェクト",
+          en: "Built and deployed AI Agents for interpretation, analysis, and prediction of oil and gas production in the US by extracting data from PDF scans; achieving a 70% accuracy for tested cases.",
+          es: "Construí y desplegué agentes de IA para la interpretación, análisis y predicción de la producción de petróleo y gas en los EE. UU. extrayendo datos de escaneos de PDF; logrando un 70% de precisión en los casos probados.",
+          ja: "PDFスキャンからデータを抽出して、米国の石油およびガス生産の解釈、分析、予測のためのAIエージェントを構築および展開しました。テストされたケースで70％の精度を達成しました。",
         },
         milestone_2: {
-          en: "Data Science Project",
-          es: "Proyecto de Ciencia de Datos",
-          ja: "データサイエンスプロジェクト",
+          en: "Designed and built a company-wide MCP server template with authentication, authorization, and common tooling out-of-the-box that is currently being used as a standard for all teams and is being used every time a new MCP server is created.",
+          es: "Diseñé y construí una plantilla de servidor MCP para toda la empresa con autenticación, autorización y herramientas comunes listas para usar, que actualmente se utiliza como estándar para todos los equipos y se utiliza cada vez que se crea un nuevo servidor MCP.",
+          ja: "認証、認可、および共通ツールを備えた企業全体のMCPサーバーテンプレートを設計・構築し、現在すべてのチームの標準として使用されており、新しいMCPサーバーが作成されるたびに使用されています。",
         },
         milestone_3: {
-          en: "Data Science Project",
-          es: "Proyecto de Ciencia de Datos",
-          ja: "データサイエンスプロジェクト",
+          en: "Currently working in an self-healing, self-managing AI agent orchestrator that focuses on transparency and explainability of the agent's decisions and actions, as well as on the ease of integration of new agents and tools to the system that mimics the full Software Development Life Cycle.",
+          es: "Actualmente trabajando en un orquestador de agentes de IA auto-reparables y auto-gestionables que se centra en la transparencia y explicabilidad de las decisiones y acciones del agente, así como en la facilidad de integración de nuevos agentes y herramientas al sistema que imita el ciclo completo de desarrollo de software.",
+          ja: "現在、エージェントの意思決定と行動の透明性と説明可能性に焦点を当て、新しいエージェントやツールのシステムへの統合の容易さに重点を置いた自己修復型、自己管理型のAIエージェントオーケストレーターに取り組んでいます。このシステムはソフトウェア開発ライフサイクル全体を模倣しています。",
         },
       },
       software_engineer: {
@@ -70,7 +70,7 @@ export const experience = {
           ja: "大手テクノロジー・コンサルタント会社のシニア・ソフトウェア・エンジニア。オンライン調査やデータ分析分野のプロジェクトをリードし、AIシステムのスクラッチからのソリューションや、レガシーシステムのマイクロサービスやイベント駆動アーキテクチャへの移行をリードしてきました。また、20年前のプロジェクトのメンテナンスやリニューアルにも貢献してきました。Python、Go、React、Jinja2、Templ、Docker、社内ライブラリなどを駆使して、変化する業界の需要に対応する新機能を統合し、高品質なコードを提供し、多分野のチームと協業してきました。",
         },
         milestone_1: {
-          en: "Led a 6-person team to build a greenfield AI chatbot that dynamically generates and executes queries to answer user questions. Featured at CES 2025.",
+          en: "Led a 6-person team to build a greenfield AI Agent chatbot that dynamically generates and executes queries to answer user questions. Featured at CES 2025.",
           es: "Lideré un equipo de 6 personas para construir un chatbot de IA desde cero que genera y ejecuta consultas dinámicamente para responder preguntas de usuarios. Presentado en CES 2025.",
           ja: "6人のチームを率いて、動的にクエリを生成・実行してユーザーの質問に答えるグリーンフィールドAIチャットボットを構築しました。CES 2025で紹介されました。",
         },
