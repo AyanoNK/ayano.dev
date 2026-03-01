@@ -1,0 +1,41 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import CertificationCard from "@/components/CertificationCard";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const certifications = [
+  {
+    title: t("index.certifications.jlpt_n2.title"),
+    caption: t("index.certifications.jlpt_n2.caption"),
+    imagePath: "/jpg/jlpt_n2.jpg",
+  },
+  {
+    title: t("index.certifications.aws_developer_associate.title"),
+    caption: t("index.certifications.aws_developer_associate.caption"),
+    imagePath: "/jpg/aws_developer_associate.jpg",
+  },
+];
+---
+
+<section
+  class="flex w-full flex-col justify-between gap-8 bg-background bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:30px_30px] p-8 shadow-none sm:shadow-shadow">
+  <h2
+    class="border-2 border-border bg-white px-8 py-4 text-center text-lg shadow-shadow sm:text-xl xl:text-2xl 2xl:text-4xl">
+    {t("index.certifications.title")}
+  </h2>
+
+  <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+    {
+      certifications.map((cert) => (
+        <CertificationCard
+          client:visible
+          title={cert.title}
+          caption={cert.caption}
+          imagePath={cert.imagePath}
+        />
+      ))
+    }
+  </div>
+</section>

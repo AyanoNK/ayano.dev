@@ -1,3 +1,4 @@
+import { certifications } from "@/i18n/index/certifications";
 import { experience } from "@/i18n/index/experience";
 import { expertise } from "@/i18n/index/expertise";
 import { projects } from "@/i18n/index/projects";
@@ -27,6 +28,7 @@ export const translations = {
       es: "Ingeniero de Software Full Stack",
       ja: "フルスタックソフトウェア工学者",
     },
+    ...certifications,
     ...expertise,
     ...experience,
     ...projects,

@@ -1,4 +1,5 @@
 ---
+import CertificationSection from "../sections/CertificationSection.astro";
 import ExperienceSection from "../sections/ExperienceSection.astro";
 import ExpertiseSection from "../sections/ExpertiseSection.astro";
 import ProjectSection from "../sections/ProjectSection.astro";
@@ -22,12 +23,18 @@ const t = useTranslations(lang);
     <ExpertiseSection id="expertise-section" />
   </div>
 
+  <div
+    class="flex w-full max-w-screen-lg flex-col border-4 border-border bg-background font-base text-foreground shadow-shadow">
+    <CertificationSection id="certification-section" />
+  </div>
+
   <ExperienceSection id="experience-section" />
 
   <div
     class="flex max-w-screen-lg flex-col border-4 border-border bg-background font-base text-foreground shadow-shadow">
     <ProjectSection id="project-section" />
   </div>
+
   <div class="flex flex-col">
     <span>
       This is a work in progress. I am continuously updating my experience
@@ -36,7 +43,7 @@ const t = useTranslations(lang);
     <span>I am missing:</span>
     <ul>
       <li>Create new view to talk about projects</li>
-      <li>Add certification</li>
+
       <li>Add ui scratcher on website</li>
     </ul>
   </div>

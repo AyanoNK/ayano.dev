@@ -53,6 +53,7 @@ module.exports = {
           DEFAULT: "var(--destructive)",
           foreground: "var(--destructive-foreground)",
         },
+        overlay: "var(--overlay)",
         border: "var(--border)",
         input: "var(--input)",
         ring: "var(--ring)",
