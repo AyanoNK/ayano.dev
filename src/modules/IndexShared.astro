@@ -6,7 +6,6 @@ import ProjectSection from "../sections/ProjectSection.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import Title from "./Title.astro";
 
-// TODO: see how to combine  this with Native Astro internationalization
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
@@ -44,7 +43,7 @@ const t = useTranslations(lang);
     <ul>
       <li>Create new view to talk about projects</li>
 
-      <li>Add ui scratcher on website</li>
+      <!-- <li>Add ui scratcher on website</li> -->
     </ul>
   </div>
 </main>

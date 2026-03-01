@@ -14,7 +14,7 @@ export const certifications = {
       caption: {
         en: "July 2024 · Japan Foundation",
         es: "Julio 2024 · Japan Foundation",
-        ja: "2024年7月 · 国際交流基金",
+        ja: "2025年7月 · 国際交流基金",
       },
     },
     aws_developer_associate: {
