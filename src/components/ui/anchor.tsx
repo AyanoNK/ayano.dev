@@ -22,6 +22,8 @@ const anchorVariants = cva(
         default: "h-10 px-4 py-2",
         sm: "h-9 px-3",
         lg: "h-11 px-8",
+        xl: "h-12 px-10",
+        xxxxl: "h-24 px-16",
         icon: "size-10",
       },
     },
@@ -42,8 +44,7 @@ function Anchor({
     <a
       data-slot="anchor"
       className={cn(anchorVariants({ variant, size, className }))}
-      {...props}
-    >
+      {...props}>
       {props.children}
     </a>
   );
