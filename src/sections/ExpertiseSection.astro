@@ -7,29 +7,29 @@ const t = useTranslations(lang);
 
 const cards = [
   {
-    title: t("index.expertise.frontend.title"),
-    description: t("index.expertise.frontend.description"),
-    image: "cib:react",
+    title: t("index.expertise.ai.title"),
+    description: t("index.expertise.ai.description"),
+    image: "eos-icons:ai",
   },
   {
-    title: t("index.expertise.backend.title"),
-    description: t("index.expertise.backend.description"),
-    image: "eos-icons:system-image",
+    title: t("index.expertise.software.title"),
+    description: t("index.expertise.software.description"),
+    image: "eos-icons:typing",
   },
   {
-    title: t("index.expertise.database.title"),
-    description: t("index.expertise.database.description"),
-    image: "eos-icons:database",
+    title: t("index.expertise.cloud.title"),
+    description: t("index.expertise.cloud.description"),
+    image: "eos-icons:cloud-computing",
   },
   {
-    title: t("index.expertise.devops.title"),
-    description: t("index.expertise.devops.description"),
-    image: "cib:google-cloud",
+    title: t("index.expertise.architecture.title"),
+    description: t("index.expertise.architecture.description"),
+    image: "eos-icons:cluster-management",
   },
 ];
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-2">
+<div class="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 md:auto-rows-fr">
   {
     cards.map((card, index) => {
       const row = Math.floor(index / 2);

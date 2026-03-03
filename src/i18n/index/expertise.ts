@@ -1,51 +1,51 @@
 export const expertise = {
   expertise: {
-    frontend: {
+    ai: {
       title: {
-        en: "Frontend Development",
-        es: "Desarrollo Frontend",
-        ja: "フロントエンド開発",
+        en: "AI Engineering",
+        es: "Ingeniería de IA",
+        ja: "AIエンジニアリング",
       },
       description: {
-        en: "Experienced in React, React Native & HAML, using Redux & React Query, etc., to build responsive, performant, and accessible applications.",
-        es: "Con experiencia en React, React Native & HAML, usando Redux & React Query, etc., para construir aplicaciones responsivas, de alto rendimiento y accesibles.",
-        ja: "React、React Native & HAMLの経験があり、Redux & React Queryなどを使用して、応答性、パフォーマンス、アクセシビリティの高いアプリケーションを構築しています。",
+        en: "Experienced in GenAI & LLMs, building autonomous agents, RAG pipelines, MCP servers, and AI orchestrators.",
+        es: "Experiencia en IA generativa y LLMs, construyendo agentes autónomos, pipelines RAG, servidores MCP, y orquestadores de IA.",
+        ja: "生成AIとLLMの経験があり、自律エージェント、RAGパイプライン、MCPサーバー、AIオーケストレーターを構築。",
       },
     },
-    backend: {
+    software: {
       title: {
-        en: "Backend Development",
-        es: "Desarrollo Backend",
-        ja: "バックエンド開発",
+        en: "Software Development",
+        es: "Desarrollo de Software",
+        ja: "ソフトウェア開発",
       },
       description: {
-        en: "Experienced in backend development with both Django & Ruby on Rails, exposing endpoints in both REST and GraphQL.",
-        es: "Con experiencia en desarrollo backend con Django & Ruby on Rails, exponiendo endpoints en REST y GraphQL.",
-        ja: "Django & Ruby on Railsの両方でバックエンド開発の経験があり、RESTとGraphQLの両方でエンドポイントを公開しています。",
+        en: "End-to-end development with React, Angular, React Native, Django, Ruby on Rails, Go, and Python.",
+        es: "Desarrollo integral con React, Angular, React Native, Django, Ruby on Rails, Go, y Python.",
+        ja: "React、Angular、React Native、Django、Ruby on Rails、Go、Pythonを用いたエンドツーエンド開発。",
       },
     },
-    database: {
+    cloud: {
       title: {
-        en: "Database Development",
-        es: "Desarrollo de Base de Datos",
-        ja: "データベース開発",
+        en: "Cloud & DevOps",
+        es: "Nube & DevOps",
+        ja: "クラウド & DevOps",
       },
       description: {
-        en: "Worked with relational databases like PostgreSQL and MySQL, and new ─ cutting edge NoSQL like Firebase.",
-        es: "Trabajado con bases de datos relacionales como PostgreSQL y MySQL, y nuevas ─ innovadoras NoSQL como Firebase.",
-        ja: "PostgreSQLやMySQLなどのリレーショナルデータベース、Firebaseなどの新しい最先端のNoSQLなどを使用しています。",
+        en: "Deploying and managing production systems on AWS, Google Cloud, and Heroku with Docker, Kubernetes, and CI/CD pipelines.",
+        es: "Desplegando y gestionando sistemas en producción sobre AWS, Google Cloud, y Heroku con Docker, Kubernetes, y pipelines de CI/CD.",
+        ja: "AWS、Google Cloud、Heroku上での本番システムのデプロイと管理。Docker、Kubernetes、CI/CDパイプラインを活用。",
       },
     },
-    devops: {
+    architecture: {
       title: {
-        en: "DevOps",
-        es: "DevOps",
-        ja: "DevOps",
+        en: "System Architecture",
+        es: "Arquitectura de Sistemas",
+        ja: "システムアーキテクチャ",
       },
       description: {
-        en: "Deployed both professional and personal projects using AWS, Google Cloud, Heroku, and Vercel.",
-        es: "Desplegado proyectos profesionales y personales usando AWS, Google Cloud, Heroku, y Vercel.",
-        ja: "AWS、Google Cloud、Heroku、Vercelなどを使用して、プロジェクトをデプロイしました。",
+        en: "Designing microservices, event-driven architectures, and legacy migrations. Leading greenfield projects from technical design to production.",
+        es: "Diseñando microservicios, arquitecturas basadas en eventos, y migraciones legadas. Liderando proyectos desde el diseño técnico hasta producción.",
+        ja: "マイクロサービス、イベント駆動アーキテクチャ、レガシー移行の設計。技術設計から本番環境までのプロジェクトをリード。",
       },
     },
   },
