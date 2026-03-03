@@ -1,0 +1,25 @@
+---
+import ProjectLayout from "@/layouts/ProjectLayout.astro";
+import ProjectDetailShared from "@/modules/ProjectDetailShared.astro";
+import { getAllProjectSlugs, getProjectBySlug } from "@/data/projects";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+
+export function getStaticPaths() {
+  return getAllProjectSlugs().map((slug) => ({
+    params: { slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const project = getProjectBySlug(slug!);
+const title = project ? t(project.titleKey) : "Project";
+---
+
+<ProjectLayout title={title}>
+  <div
+    class="w-container mx-auto flex max-w-full flex-col items-center gap-4 py-8 text-left text-foreground">
+    <ProjectDetailShared slug={slug!} />
+  </div>
+</ProjectLayout>

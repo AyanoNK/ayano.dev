@@ -1,6 +1,6 @@
 ---
-import { type Project } from "../types/technology";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { projectsData, type ProjectData } from "@/data/projects";
 import {
   Card,
   CardContent,
@@ -16,118 +16,8 @@ import { SquareArrowOutUpRight } from "lucide-react";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const featuredProject: Project = {
-  title: t("index.projects.bank.title"),
-  url: "https://github.com/AyanoNK/bank-sms-manager",
-  description: t("index.projects.bank.description"),
-  technologies: [
-    "Kotlin",
-    "Jetpack Compose",
-    "Material3",
-    "Jetpack Glance",
-    "XML",
-    "Google Play Store",
-  ],
-  additionalLinks: [
-    {
-      title: "Play Store (soon)",
-      icon: "google-play",
-      url: "#",
-    },
-    {
-      title: "GitHub",
-      icon: "github",
-      url: "https://github.com/AyanoNK/bank-sms-manager",
-    },
-  ],
-  video_id: "bank",
-  video_width: "246",
-  video_height: "332",
-  miniature: "mini_bank",
-};
-
-const projects: Project[] = [
-  {
-    title: t("index.projects.kimon.title"),
-    url: "https://www.kimon.app/",
-    description: t("index.projects.kimon.description"),
-    technologies: [
-      "NextJS",
-      "React",
-      "Vercel",
-      "Supabase",
-      "Tailwind CSS",
-      "JavaScript",
-      "TypeScript",
-      "HTML",
-      "CSS",
-      "SCSS",
-    ],
-    additionalLinks: [
-      {
-        title: "GitHub",
-        icon: "github",
-        url: "https://github.com/AyanoNK/kanji-lyrics-frontend",
-      },
-    ],
-    video_id: "kimon",
-    video_width: "268",
-    video_height: "438",
-    miniature: "mini_kimon",
-  },
-  {
-    title: t("index.projects.atlapetes.title"),
-    url: "https://github.com/AyanoNK/atlapetes-blancae",
-    description: t("index.projects.atlapetes.description"),
-    technologies: [
-      "Kotlin",
-      "PyTorch",
-      "Android Studio",
-      "Java",
-      "CameraX",
-      "XML",
-      "Google Play Store",
-    ],
-    additionalLinks: [
-      {
-        title: "GitHub",
-        icon: "github",
-        url: "https://github.com/AyanoNK/atlapetes-blancae",
-      },
-    ],
-    video_id: "atlapetes",
-    video_width: "242",
-    video_height: "540",
-    miniature: "mini_atlapetes",
-  },
-  {
-    title: t("index.projects.poshaus.title"),
-    url: "https://www.poshaus.art/",
-    description: t("index.projects.poshaus.description"),
-    technologies: [
-      "Astro",
-      "React",
-      "Vercel",
-      "Tailwind CSS",
-      "JavaScript",
-      "TypeScript",
-      "HTML",
-      "CSS",
-      "SCSS",
-    ],
-    additionalLinks: [
-      {
-        title: "GitHub",
-        icon: "github",
-        url: "https://github.com/AyanoNK/poshaus",
-      },
-    ],
-    video_id: "poshaus",
-    video_width: "244",
-    video_height: "384",
-    miniature: "mini_poshaus",
-  },
-];
+const featured = projectsData.find((p) => p.isFeatured)!;
+const regular = projectsData.filter((p) => !p.isFeatured);
 ---
 
 <section
@@ -140,86 +30,85 @@ const projects: Project[] = [
 
   <div
     class="grid grid-cols-1 justify-center gap-8 md:grid-cols-2 lg:grid-cols-3">
-    <Card className="col-span-1 w-full bg-white md:col-span-2 lg:col-span-3">
-      <CardHeader>
-        <CardTitle>{featuredProject.title}</CardTitle>
-      </CardHeader>
-      <CardContent className="flex flex-col">
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
-          <div
-            class="col-span-4 flex flex-col justify-between gap-4 md:col-span-2 lg:col-span-3">
-            <div>{featuredProject.description}</div>
+    <a
+      href={`/${lang}/projects/${featured.slug}`}
+      class="col-span-1 md:col-span-2 lg:col-span-3">
+      <Card
+        className="w-full bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none cursor-pointer">
+        <CardHeader>
+          <CardTitle>{t(featured.titleKey)}</CardTitle>
+        </CardHeader>
+        <CardContent className="flex flex-col">
+          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+            <div
+              class="col-span-4 flex flex-col justify-between gap-4 md:col-span-2 lg:col-span-3">
+              <div>{t(featured.shortDescriptionKey)}</div>
 
-            <div class="flex flex-col gap-4">
-              <div class="flex flex-row flex-wrap gap-2">
-                {
-                  featuredProject.technologies.map((technology: string) => (
-                    <Badge className="text-md">{technology}</Badge>
-                  ))
-                }
-              </div>
-              <div class="flex">
-                <Anchor
-                  variant="neutral"
-                  href={featuredProject.url}
-                  size="lg"
-                  target="_blank"
-                  aria-label={`Visit ${featuredProject.title}`}>
-                  <SquareArrowOutUpRight />
-                </Anchor>
+              <div class="flex flex-col gap-4">
+                <div class="flex flex-row flex-wrap gap-2">
+                  {
+                    featured.technologies.map((technology: string) => (
+                      <Badge className="text-md">{technology}</Badge>
+                    ))
+                  }
+                </div>
+                <div class="flex gap-4">
+                  <span class="text-sm font-base text-foreground/60">
+                    {t("index.projects.view_details")} &rarr;
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="grid-row-span-4 md:col-span-1 lg:col-span-1">
-            <video
-              width={featuredProject.video_width}
-              height={featuredProject.video_height}
-              autoplay
-              muted
-              loop
-              class="rounded-3xl p-4">
-              <source
-                src={`/webm/${featuredProject.video_id}.webm`}
-                type="video/webm"
-              />
-            </video>
+            <div class="grid-row-span-4 md:col-span-1 lg:col-span-1">
+              <video
+                width={featured.video_width}
+                height={featured.video_height}
+                autoplay
+                muted
+                loop
+                class="rounded-3xl p-4">
+                <source
+                  src={`/webm/${featured.video_id}.webm`}
+                  type="video/webm"
+                />
+              </video>
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </a>
     {
-      projects.map((project: Project) => (
-        <Card className="w-full bg-white">
-          <CardHeader>
-            <div class="flex flex-col gap-4">
-              <img
-                src={`/webp/${project.miniature}.webp`}
-                alt={project.title}
-                class="rounded-base"
-              />
-              <CardTitle>{project.title}</CardTitle>
-            </div>
-          </CardHeader>
-          <CardContent className="flex flex-col h-full">
-            <CardDescription>{project.description}</CardDescription>
-          </CardContent>
-          <CardFooter className="flex flex-col gap-8 items-start">
-            <div class="flex flex-row flex-wrap gap-2">
-              {project.technologies.map((technology: string) => (
-                <Badge>{technology}</Badge>
-              ))}
-            </div>
-            <Anchor
-              variant="neutral"
-              href={project.url}
-              size="lg"
-              target="_blank"
-              aria-label={`Visit ${project.title}`}>
-              <SquareArrowOutUpRight />
-            </Anchor>
-          </CardFooter>
-        </Card>
+      regular.map((project: ProjectData) => (
+        <a href={`/${lang}/projects/${project.slug}`} class="w-full">
+          <Card className="w-full h-full bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none cursor-pointer">
+            <CardHeader>
+              <div class="flex flex-col gap-4">
+                <img
+                  src={`/webp/${project.miniature}.webp`}
+                  alt={t(project.titleKey)}
+                  class="rounded-base"
+                />
+                <CardTitle>{t(project.titleKey)}</CardTitle>
+              </div>
+            </CardHeader>
+            <CardContent className="flex flex-col h-full">
+              <CardDescription>
+                {t(project.shortDescriptionKey)}
+              </CardDescription>
+            </CardContent>
+            <CardFooter className="flex flex-col gap-8 items-start">
+              <div class="flex flex-row flex-wrap gap-2">
+                {project.technologies.map((technology: string) => (
+                  <Badge>{technology}</Badge>
+                ))}
+              </div>
+              <span class="text-sm font-base text-foreground/60">
+                {t("index.projects.view_details")} &rarr;
+              </span>
+            </CardFooter>
+          </Card>
+        </a>
       ))
     }
   </div>

@@ -1,0 +1,38 @@
+---
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
+} from "@/components/ui/carousel";
+
+interface Props {
+  images: string[];
+  alt: string;
+}
+
+const { images, alt } = Astro.props;
+---
+
+{
+  images.length > 0 && (
+    <Carousel className="mx-auto w-full max-w-3xl" client:load>
+      <CarouselContent>
+        {images.map((src, index) => (
+          <CarouselItem key={index}>
+            <div className="overflow-hidden rounded-base border-2 border-border">
+              <img
+                src={src}
+                alt={`${alt} - ${index + 1}`}
+                className="w-full object-cover"
+              />
+            </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+  )
+}

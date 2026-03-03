@@ -3,6 +3,7 @@ import { getLangFromUrl } from "../i18n/utils";
 import { Languages, Circle } from "@lucide/astro";
 
 const lang = getLangFromUrl(Astro.url);
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en|es|ja)/, "");
 
 const languages = [
   { code: "en", label: "English" },
@@ -29,7 +30,7 @@ const languages = [
     {
       languages.map((l) => (
         <a
-          href={`/${l.code}`}
+          href={`/${l.code}${pathWithoutLocale}`}
           class:list={[
             "relative flex cursor-pointer select-none items-center rounded-base border-2 border-transparent py-1.5 pl-8 pr-2 text-sm font-base outline-hidden transition-colors hover:border-border",
             { "bg-main-foreground/10": lang === l.code },

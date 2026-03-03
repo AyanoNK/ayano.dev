@@ -1,0 +1,61 @@
+---
+import SpeedInsights from "@vercel/speed-insights/astro";
+import "@fontsource-variable/dm-sans";
+import "../../tailwind.css";
+import LanguageSelector from "@/modules/LanguageSelector.astro";
+import Footer from "@/modules/Footer.astro";
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { ArrowLeft } from "@lucide/astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content={`${title} - Sebastian Correa`} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Sebastian Correa</title>
+    <script>
+      import { webVitals } from "../lib/vitals";
+
+      let analyticsId = import.meta.env.PUBLIC_VERCEL_ANALYTICS_ID;
+
+      if (analyticsId) {
+        webVitals({
+          path: location.pathname,
+          params: location.search,
+          analyticsId,
+        });
+      }
+    </script>
+  </head>
+  <body
+    class="prose-h4:xl:text-2xl prose-h4:lg:text-xl prose-h4:text-lg -z-10 min-h-[100dvh] bg-background bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px]">
+    <div class="fixed right-4 top-4 z-50">
+      <LanguageSelector />
+    </div>
+    <nav class="p-4 sm:p-8">
+      <a
+        href={`/${lang}/`}
+        class="inline-flex items-center gap-2 text-sm font-base text-foreground hover:underline">
+        <ArrowLeft size={16} />
+        {t("index.projects.back")}
+      </a>
+    </nav>
+    <slot />
+    <Footer />
+    <SpeedInsights />
+  </body>
+</html>

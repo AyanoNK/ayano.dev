@@ -1,0 +1,159 @@
+---
+import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { getProjectBySlug } from "@/data/projects";
+import { Badge } from "@/components/ui/badge";
+import { Anchor } from "@/components/ui/anchor";
+import ProjectGallery from "@/components/ProjectGallery.astro";
+import { SquareArrowOutUpRight } from "lucide-react";
+
+interface Props {
+  slug: string;
+}
+
+const { slug } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const project = getProjectBySlug(slug);
+
+if (!project) {
+  return Astro.redirect(`/${lang}/`);
+}
+
+const title = t(project.titleKey);
+const shortDescription = t(project.shortDescriptionKey);
+
+// Load markdown content for long description
+const markdownFiles = import.meta.glob<{ default: { render: () => Promise<{ Content: any }> }; Content: any }>(
+  "../content/projects/**/*.md",
+  { eager: true }
+);
+const mdPath = `../content/projects/${lang}/${slug}.md`;
+const mdModule = markdownFiles[mdPath];
+const Content = mdModule?.Content;
+---
+
+<div class="mx-auto flex w-full max-w-screen-lg flex-col gap-8 px-4 py-8">
+  <!-- Representative image -->
+  {project.representativeImage && (
+    <div class="overflow-hidden rounded-base border-2 border-border shadow-shadow">
+      <img
+        src={project.representativeImage}
+        alt={title}
+        class="w-full object-cover"
+      />
+    </div>
+  )}
+
+  <!-- Title -->
+  <h1
+    class="text-2xl font-heading xl:text-4xl 2xl:text-5xl">
+    {title}
+  </h1>
+
+  <!-- Short description -->
+  <p class="text-lg text-foreground/80">
+    {shortDescription}
+  </p>
+
+  <!-- Long description (rendered Markdown) -->
+  {Content && (
+    <div class="markdown-content max-w-none rounded-base border-2 border-border bg-white p-6 shadow-shadow sm:p-8">
+      <Content />
+    </div>
+  )}
+
+  <!-- Video (if exists) -->
+  {project.video_id && (
+    <div class="flex justify-center">
+      <video
+        width={project.video_width}
+        height={project.video_height}
+        autoplay
+        muted
+        loop
+        class="rounded-3xl border-2 border-border shadow-shadow">
+        <source src={`/webm/${project.video_id}.webm`} type="video/webm" />
+      </video>
+    </div>
+  )}
+
+  <!-- Gallery carousel -->
+  {project.galleryImages.length > 0 && (
+    <div>
+      <h2 class="mb-4 text-xl font-heading">{t("index.projects.gallery")}</h2>
+      <ProjectGallery
+        images={project.galleryImages}
+        alt={title}
+      />
+    </div>
+  )}
+
+  <!-- Technologies -->
+  <div>
+    <h2 class="mb-4 text-xl font-heading">
+      {t("index.projects.technologies_label")}
+    </h2>
+    <div class="flex flex-row flex-wrap gap-2">
+      {project.technologies.map((tech) => (
+        <Badge className="text-md">{tech}</Badge>
+      ))}
+    </div>
+  </div>
+
+  <!-- External links -->
+  <div class="flex flex-wrap gap-4">
+    <Anchor
+      variant="neutral"
+      href={project.url}
+      size="lg"
+      target="_blank"
+      aria-label={`Visit ${title}`}>
+      <SquareArrowOutUpRight />
+    </Anchor>
+  </div>
+</div>
+
+<style>
+  .markdown-content :global(h1) {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .markdown-content :global(h2) {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .markdown-content :global(h3) {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .markdown-content :global(p) {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+  .markdown-content :global(ul) {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .markdown-content :global(ol) {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .markdown-content :global(li) {
+    margin-bottom: 0.35rem;
+    line-height: 1.7;
+  }
+  .markdown-content :global(strong) {
+    font-weight: 700;
+  }
+  .markdown-content :global(> *:first-child) {
+    margin-top: 0;
+  }
+</style>
