@@ -34,7 +34,7 @@ const regular = projectsData.filter((p) => !p.isFeatured);
       href={`/${lang}/projects/${featured.slug}`}
       class="col-span-1 md:col-span-2 lg:col-span-3">
       <Card
-        className="w-full bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none cursor-pointer">
+        className="w-full cursor-pointer bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none">
         <CardHeader>
           <CardTitle>{t(featured.titleKey)}</CardTitle>
         </CardHeader>
@@ -53,7 +53,7 @@ const regular = projectsData.filter((p) => !p.isFeatured);
                   }
                 </div>
                 <div class="flex gap-4">
-                  <span class="text-sm font-base text-foreground/60">
+                  <span class="text-foreground/60 text-sm font-base">
                     {t("index.projects.view_details")} &rarr;
                   </span>
                 </div>
@@ -103,7 +103,7 @@ const regular = projectsData.filter((p) => !p.isFeatured);
                   <Badge>{technology}</Badge>
                 ))}
               </div>
-              <span class="text-sm font-base text-foreground/60">
+              <span class="text-foreground/60 text-sm font-base">
                 {t("index.projects.view_details")} &rarr;
               </span>
             </CardFooter>
