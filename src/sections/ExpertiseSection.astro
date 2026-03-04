@@ -42,7 +42,8 @@ const cards = [
             "p-5 py-7 lg:p-8 lg:py-10 xl:p-10 xl:py-10 2xl:p-14 2xl:py-16",
             "border-border",
             col === 0 && "md:border-r-4",
-            row === 0 && "border-b-4",
+            index < cards.length - 1 && "border-b-4",
+            row === 1 && "md:border-b-0",
             isAltColor
               ? "bg-main text-main-foreground"
               : "bg-background text-foreground",

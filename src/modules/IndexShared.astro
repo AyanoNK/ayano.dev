@@ -11,26 +11,26 @@ const t = useTranslations(lang);
 ---
 
 <main
-  class="flex flex-1 flex-col items-center justify-center gap-16"
+  class="flex flex-1 flex-col items-center justify-center gap-0 sm:gap-16"
   id={t("header.home")}>
   <Title />
 
   <div
-    class="flex max-w-screen-lg flex-col border-4 border-border bg-background font-base text-foreground shadow-shadow">
+    class="flex max-w-screen-lg flex-col border-t-4 border-x-0 border-b-0 sm:border-4 border-border bg-background font-base text-foreground shadow-none sm:shadow-shadow">
     <!-- class="flex w-full max-w-screen-xl flex-col items-center justify-center gap-16"> -->
 
     <ExpertiseSection id="expertise-section" />
   </div>
 
   <div
-    class="flex w-full max-w-screen-lg flex-col border-4 border-border bg-background font-base text-foreground shadow-shadow">
+    class="flex w-full max-w-screen-lg flex-col border-t-4 border-x-0 border-b-0 sm:border-4 border-border bg-background font-base text-foreground shadow-none sm:shadow-shadow">
     <CertificationSection id="certification-section" />
   </div>
 
   <ExperienceSection id="experience-section" />
 
   <div
-    class="flex max-w-screen-lg flex-col border-4 border-border bg-background font-base text-foreground shadow-shadow">
+    class="flex max-w-screen-lg flex-col border-t-4 border-x-0 border-b-0 sm:border-4 border-border bg-background font-base text-foreground shadow-none sm:shadow-shadow">
     <ProjectSection id="project-section" />
   </div>
 </main>
