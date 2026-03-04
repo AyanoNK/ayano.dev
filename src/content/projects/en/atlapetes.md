@@ -1,5 +1,3 @@
-# Mobile Bird Recognizer - Atlapetes Blancae
-
 A fully developed Android mobile application to **recognize an endangered bird species** called "Atlapetes Blancae" using a Machine Learning image classification model.
 
 ## Key Features

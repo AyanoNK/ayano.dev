@@ -42,9 +42,8 @@ export default function CertificationCard({
     <Dialog>
       <DialogTrigger asChild>
         <button
-          className="w-full text-left cursor-pointer"
-          aria-label={`View ${title} certificate`}
-        >
+          className="w-full cursor-pointer text-left"
+          aria-label={`View ${title} certificate`}>
           <Card className="w-full bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none">
             <CardHeader>
               <CardTitle>{title}</CardTitle>
@@ -63,7 +62,7 @@ export default function CertificationCard({
         <img
           src={imagePath}
           alt={`${title} certificate`}
-          className="w-full h-auto max-h-[80vh] object-contain rounded-base border-2 border-border"
+          className="h-auto max-h-[80vh] w-full rounded-base border-2 border-border object-contain"
         />
       </DialogContent>
     </Dialog>

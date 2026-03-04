@@ -41,6 +41,7 @@ All commands are run from the root of the project:
 ## Internationalization
 
 The site supports three languages:
+
 - English (default): `/en/`
 - Spanish: `/es/`
 - Japanese: `/ja/`

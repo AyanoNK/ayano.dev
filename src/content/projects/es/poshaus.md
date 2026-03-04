@@ -1,5 +1,3 @@
-# Sitio Web de Portafolio de Artista - Poshaus
-
 Un portafolio web que transformó exitosamente el **100% de las ideas de un Ilustrador y Diseñador** en una vitrina digital utilizando paradigmas tecnológicos modernos.
 
 ## Características Principales

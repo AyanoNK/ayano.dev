@@ -1,5 +1,3 @@
-# Bank SMS Manager
-
 Una aplicación de Android diseñada para ayudar a los usuarios a **presupuestar sus gastos diarios** leyendo automáticamente los mensajes SMS del banco y generando métricas financieras.
 
 ## Características Principales

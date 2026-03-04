@@ -18,24 +18,21 @@ const languages = [
     aria-label="Select language"
     aria-expanded="false"
     aria-haspopup="true"
-    class="inline-flex h-10 items-center justify-center rounded-base border-2 border-border bg-main px-4 py-2 text-sm font-base text-main-foreground"
-  >
+    class="inline-flex h-10 items-center justify-center rounded-base border-2 border-border bg-main px-4 py-2 text-sm font-base text-main-foreground">
     <Languages size={16} />
   </button>
   <div
     id="lang-dropdown"
-    class="absolute right-0 top-full z-50 mt-1 hidden w-40 overflow-hidden rounded-base border-2 border-border bg-main p-1 font-base text-main-foreground"
-  >
+    class="absolute right-0 top-full z-50 mt-1 hidden w-40 overflow-hidden rounded-base border-2 border-border bg-main p-1 font-base text-main-foreground">
     <div class="px-2 py-1.5 pl-8 text-sm font-heading">Language</div>
     {
       languages.map((l) => (
         <a
           href={`/${l.code}${pathWithoutLocale}`}
           class:list={[
-            "relative flex cursor-pointer select-none items-center rounded-base border-2 border-transparent py-1.5 pl-8 pr-2 text-sm font-base outline-hidden transition-colors hover:border-border",
+            "outline-hidden relative flex cursor-pointer select-none items-center rounded-base border-2 border-transparent py-1.5 pl-8 pr-2 text-sm font-base transition-colors hover:border-border",
             { "bg-main-foreground/10": lang === l.code },
-          ]}
-        >
+          ]}>
           <span class="absolute left-2 flex size-3.5 items-center justify-center">
             {lang === l.code && <Circle size={8} fill="currentColor" />}
           </span>

@@ -1,5 +1,3 @@
-# Reconocedor de Aves Móvil - Atlapetes Blancae
-
 Una aplicación móvil Android completamente desarrollada para **reconocer una especie de ave en peligro de extinción** llamada "Atlapetes Blancae" utilizando un modelo de clasificación de imágenes de Machine Learning.
 
 ## Características Principales

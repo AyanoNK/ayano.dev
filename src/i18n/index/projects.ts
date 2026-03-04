@@ -25,6 +25,11 @@ export const projects = {
       es: "Tecnologías",
       ja: "技術スタック",
     },
+    demo: {
+      en: "Demo",
+      es: "Demo",
+      ja: "デモ",
+    },
     bank: {
       title: {
         en: "Bank SMS Manager (in progress)",

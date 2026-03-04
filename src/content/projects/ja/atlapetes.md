@@ -1,5 +1,3 @@
-# モバイル鳥認識 - Atlapetes Blancae
-
 機械学習画像分類モデルを使用して**絶滅危惧種の鳥「Atlapetes Blancae」を認識する**、完全に開発されたAndroidモバイルアプリケーションです。
 
 ## 主な機能

@@ -1,5 +1,3 @@
-# Artist Portfolio Website - Poshaus
-
 A web portfolio that successfully transformed **100% of an Illustrator & Designer's ideas** into a digital showcase using modern technology paradigms.
 
 ## Key Features

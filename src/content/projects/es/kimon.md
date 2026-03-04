@@ -1,5 +1,3 @@
-# Plataforma de Aprendizaje de Kanji - 鬼門
-
 Una aplicación web diseñada para ayudar a los **estudiantes de Kanji japonés** a practicar la lectura y el reconocimiento de kanji a través de letras de música.
 
 ## Características Principales

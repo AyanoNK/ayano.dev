@@ -20,7 +20,11 @@ export function useTranslations(lang: Lang) {
     }
 
     if (node && typeof node === "object" && lang in node) {
-      return (node as Record<string, string>)[lang] ?? (node as Record<string, string>)[defaultLang] ?? key;
+      return (
+        (node as Record<string, string>)[lang] ??
+        (node as Record<string, string>)[defaultLang] ??
+        key
+      );
     }
 
     return key;
