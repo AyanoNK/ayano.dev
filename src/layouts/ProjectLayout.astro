@@ -35,16 +35,12 @@ const { title } = Astro.props;
       <LanguageSelector />
     </div>
     <nav class="p-4 sm:p-8">
-      <Anchor
-        variant="neutral"
-        href={`/${lang}/`}
-        size="default">
+      <Anchor variant="neutral" href={`/${lang}/`} size="default">
         <ArrowLeft size={16} />
         {t("index.projects.back")}
       </Anchor>
     </nav>
     <slot />
-    <Footer />
     <SpeedInsights />
   </body>
 </html>
