@@ -4,7 +4,7 @@ Hi, my name is Sebastián Correa. I'm an AI Engineer and Senior Software Enginee
 
 I hold a degree in Software Engineering and I'm an AWS Certified Developer Associate. I'm trilingual — native in both English and Spanish, and professionally proficient in Japanese — which has allowed me to collaborate effectively with international teams across the Americas and Asia.
 
-With over five years of experience in full-stack development and cloud architecture, I've recently specialized in Artificial Intelligence — building AI-driven products and features using the latest in Generative AI and Large Language Models.
+With over six years of experience in full-stack development and cloud architecture, I've recently specialized in Artificial Intelligence — building AI-driven products and features using the latest in Generative AI and Large Language Models.
 
 Here's what that looks like in practice. For an Amazon Web Services client, I built and deployed AI Agents that extract data from PDF scans to interpret, analyze, and predict oil and gas production — reaching 70% accuracy on tested cases. I led a six-person team to build a greenfield AI chatbot that was featured at CES 2025. I also designed a company-wide MCP server template that is now adopted as the standard across all engineering teams, cutting setup time for every new MCP server.
 
