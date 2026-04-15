@@ -1,6 +1,96 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans:
+    "DM Sans Variable", "DM Sans", ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  --font-weight-base: 500;
+  --font-weight-heading: 700;
+
+  --color-darkpurple: #28305f;
+  --color-lightpurple: #17244a;
+  --color-marine: #eeb674;
+  --color-lightblue: #ffe6d6;
+  --color-whiter: #e1e1ea;
+
+  --color-main: var(--main);
+  --color-main-foreground: var(--main-foreground);
+  --color-secondary-background: var(--secondary-background);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-overlay: var(--overlay);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-base: 8px;
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --shadow-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-shadow-lg: 8px 8px 0px 0px rgba(0, 0, 0, 1);
+  --shadow-shadow-xl: 12px 12px 0px 0px rgba(0, 0, 0, 1);
+
+  --translate-boxShadowX: 4px;
+  --translate-boxShadowY: 4px;
+  --translate-reverseBoxShadowX: -4px;
+  --translate-reverseBoxShadowY: -4px;
+
+  --background-image-gradient-radial: radial-gradient(var(--tw-gradient-stops));
+
+  --animate-rainbow: rainbow 20s ease-in-out infinite;
+
+  @keyframes rainbow {
+    12.5% {
+      background-color: #ff0000;
+    }
+    25% {
+      background-color: #ffa500;
+    }
+    37.5% {
+      background-color: #ffff00;
+    }
+    50% {
+      background-color: #7fff00;
+    }
+    62.5% {
+      background-color: #00ffff;
+    }
+    75% {
+      background-color: #0000ff;
+    }
+    87.5% {
+      background-color: #9932cc;
+    }
+    100% {
+      background-color: #ff1493;
+    }
+  }
+}
 
 :root {
   --background: oklch(93.46% 0.0305 255.11);

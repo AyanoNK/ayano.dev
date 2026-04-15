@@ -1,0 +1,45 @@
+---
+import { Anchor } from "@/components/ui/anchor";
+import { MailIcon, GithubIcon, LinkedinIcon } from "@lucide/astro";
+
+const referenceLinks = [
+  {
+    IconName: GithubIcon,
+    value: import.meta.env.GITHUB,
+    label: "GitHub",
+  },
+  {
+    IconName: LinkedinIcon,
+    value: import.meta.env.LINKEDIN,
+    label: "LinkedIn",
+  },
+  {
+    IconName: MailIcon,
+    value: `mailto:${import.meta.env.EMAIL}`,
+    label: "Email",
+  },
+];
+---
+
+<footer
+  class="mt-16 sm:mt-24 md:mt-32 w-full border-t border-border bg-background py-8 flex items-center justify-center">
+  <div class="container flex flex-col items-center justify-between gap-4 md:flex-row px-4">
+    <div class="text-sm text-foreground/80">
+      &copy; {new Date().getFullYear()} Sebastian Correa. All rights reserved.
+    </div>
+    <div class="flex flex-row flex-wrap gap-4">
+      {
+        referenceLinks.map((link) => (
+          <Anchor
+            variant="neutral"
+            href={link.value}
+            size="icon"
+            aria-label={link.label}
+            target={link.IconName !== MailIcon ? "_blank" : undefined}>
+            <link.IconName class="size-5" />
+          </Anchor>
+        ))
+      }
+    </div>
+  </div>
+</footer>
