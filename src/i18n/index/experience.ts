@@ -43,19 +43,19 @@ export const experience = {
           ja: "大手コンサルティング会社のAIエンジニアとして、Amazon Web Servicesなどの国際的なクライアント向けにAI主導のプロジェクトやイニシアチブに参画。生成AIやLLMの最新技術を活用し、さまざまなビジネスユースケースに向けたエージェントやRAGの構築など、AI機能・プロダクトの開発とデプロイを行ってきました。",
         },
         milestone_1: {
-          en: "Built and deployed AI Agents for interpretation, analysis, and prediction of oil and gas production in the US by extracting data from PDF scans; achieving a 70% accuracy for tested cases.",
-          es: "Construí y desplegué agentes de IA para la interpretación, análisis y predicción de la producción de petróleo y gas en los EE. UU. extrayendo datos de escaneos de PDF; logrando un 70% de precisión en los casos probados.",
-          ja: "PDFスキャンからデータを抽出して、米国の石油およびガス生産の解釈、分析、予測のためのAIエージェントを構築および展開しました。テストされたケースで70％の精度を達成しました。",
+          en: "Directed the automation initiative for a ticketing system in an AI company that replaced ticketing bureaucracy with governance-driven, autonomous AI agents. Delivered an MVP in two months.",
+          es: "Dirigí la iniciativa de automatización de un sistema de tickets en una empresa de IA, reemplazando la burocracia de tickets con agentes de IA autónomos guiados por gobernanza. Entregué un MVP en dos meses.",
+          ja: "AI企業のチケットシステム自動化イニシアチブを指揮し、煩雑なチケット処理をガバナンス主導の自律型AIエージェントに置き換えました。2ヶ月でMVPを納品しました。",
         },
         milestone_2: {
-          en: "Designed and built a company-wide MCP server template with authentication, authorization, and common tooling out-of-the-box that is currently being used as a standard for all teams and is being used every time a new MCP server is created.",
-          es: "Diseñé y construí una plantilla de servidor MCP para toda la empresa con autenticación, autorización y herramientas comunes listas para usar, que actualmente se utiliza como estándar para todos los equipos y se utiliza cada vez que se crea un nuevo servidor MCP.",
-          ja: "認証、認可、および共通ツールを備えた企業全体のMCPサーバーテンプレートを設計・構築し、現在すべてのチームの標準として使用されており、新しいMCPサーバーが作成されるたびに使用されています。",
+          en: "Owned the development of an AI agent for a big tech client to predict oil and gas production throughout the United States.",
+          es: "Fui responsable del desarrollo de un agente de IA para un gran cliente tecnológico que predice la producción de petróleo y gas en todo Estados Unidos.",
+          ja: "大手テッククライアント向けに、米国全土の石油・ガス生産を予測するAIエージェントの開発を担当しました。",
         },
         milestone_3: {
-          en: "Currently working in an self-healing, self-managing AI agent orchestrator that focuses on transparency and explainability of the agent's decisions and actions, as well as on the ease of integration of new agents and tools to the system that mimics the full Software Development Life Cycle.",
-          es: "Actualmente trabajando en un orquestador de agentes de IA auto-reparables y auto-gestionables que se centra en la transparencia y explicabilidad de las decisiones y acciones del agente, así como en la facilidad de integración de nuevos agentes y herramientas al sistema que imita el ciclo completo de desarrollo de software.",
-          ja: "現在、エージェントの意思決定と行動の透明性と説明可能性に焦点を当て、新しいエージェントやツールのシステムへの統合の容易さに重点を置いた自己修復型、自己管理型のAIエージェントオーケストレーターに取り組んでいます。このシステムはソフトウェア開発ライフサイクル全体を模倣しています。",
+          en: "Owned the creation of a pipeline using Google Cloud's billing exports and recommendations to predict potential savings by purchasing Committed Use Discounts.",
+          es: "Fui responsable de la creación de un pipeline que utiliza las exportaciones de facturación y recomendaciones de Google Cloud para predecir ahorros potenciales mediante la compra de Committed Use Discounts.",
+          ja: "Google Cloudの請求データエクスポートとレコメンデーションを活用し、Committed Use Discountsの購入による潜在的なコスト削減を予測するパイプラインの構築を担当しました。",
         },
       },
       software_engineer: {
