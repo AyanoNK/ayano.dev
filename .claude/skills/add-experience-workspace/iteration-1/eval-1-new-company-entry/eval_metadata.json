@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "new-company-entry",
+  "prompt": "I'm adding my new job to the website. I joined Meridian Labs in March 2026 as a Staff AI Engineer, remote, still working there. Main project so far: built a document intelligence platform for a large Canadian insurance company that classifies and extracts data from claims documents, using LangGraph agents for orchestration and AWS Textract for the OCR. We got to 85% straight-through processing on claims intake and shipped the pilot in 10 weeks. Company site is https://meridianlabs.example.com. For tech badges use Python, LangGraph, AWS Textract, Docker. Project link title 'Insurance Claims AI' pointing to the same site.",
+  "assertions": [
+    "New company block exists in experience.ts with link_1, start_date, end_date, role, description, and at least one milestone, each with en, es, and ja fields",
+    "ExperienceSection.astro has a new entry with companyName Meridian Labs, the company URL, a project link titled 'Insurance Claims AI', and exactly the four requested technology badges",
+    "The insurance client is anonymized with a descriptor rather than named",
+    "Milestone texts start with verbs, state LangGraph and AWS Textract with their purposes, and include both the 85% and 10-week metrics",
+    "pnpm build passed according to notes.md",
+    "New English text contains no em-dash asides and no 'A, not B' constructions"
+  ]
+}

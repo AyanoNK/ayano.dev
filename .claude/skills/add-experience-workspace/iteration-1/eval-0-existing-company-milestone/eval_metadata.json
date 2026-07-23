@@ -1,0 +1,13 @@
+{
+  "eval_id": 0,
+  "eval_name": "existing-company-milestone",
+  "prompt": "Add a new milestone to my SoftServe AI engineer experience on the website: I built an internal MCP server template with authentication and authorization baked in, and every team now uses it whenever they create a new MCP server. It cut new server setup time from about a week to a day.",
+  "assertions": [
+    "New milestone key exists in experience.ts under softserve.ai_engineer with en, es, and ja fields",
+    "The new milestone key is referenced in the milestones array in ExperienceSection.astro",
+    "English milestone text starts with a past-tense verb and contains the week-to-a-day setup time metric",
+    "Tools are mentioned with their purpose in context, with no bare parenthetical stack list",
+    "pnpm build passed according to notes.md",
+    "New English text contains no em-dash asides and no 'A, not B' constructions"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "skill_name": "add-experience",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Add a new milestone to my SoftServe AI engineer experience on the website: I built an internal MCP server template with authentication and authorization baked in, and every team now uses it whenever they create a new MCP server. It cut new server setup time from about a week to a day.",
+      "expected_output": "New milestone key added to experience.ts under softserve.ai_engineer in en/es/ja, verb-first sentence with tools in context and the week-to-a-day metric, wired into ExperienceSection.astro, build passes.",
+      "files": [],
+      "assertions": [
+        "New milestone key exists in experience.ts under softserve.ai_engineer with en, es, and ja fields",
+        "The new milestone key is referenced in the milestones array in ExperienceSection.astro",
+        "English milestone text starts with a past-tense verb and contains the week-to-a-day setup time metric",
+        "Tools are mentioned with their purpose in context, with no bare parenthetical stack list",
+        "pnpm build passed according to notes.md",
+        "New English text contains no em-dash asides and no 'A, not B' constructions"
+      ]
+    },
+    {
+      "id": 1,
+      "prompt": "I'm adding my new job to the website. I joined Meridian Labs in March 2026 as a Staff AI Engineer, remote, still working there. Main project so far: built a document intelligence platform for a large Canadian insurance company that classifies and extracts data from claims documents, using LangGraph agents for orchestration and AWS Textract for the OCR. We got to 85% straight-through processing on claims intake and shipped the pilot in 10 weeks. Company site is https://meridianlabs.example.com. For tech badges use Python, LangGraph, AWS Textract, Docker. Project link title 'Insurance Claims AI' pointing to the same site.",
+      "expected_output": "New meridian company entry in experience.ts with link_1, dates, role, description, milestones in en/es/ja; anonymized client descriptor; new entry in ExperienceSection.astro with titles, dates, URL, project link, and the four tech badges; build passes.",
+      "files": [],
+      "assertions": [
+        "New company block exists in experience.ts with link_1, start_date, end_date, role, description, and at least one milestone, each with en, es, and ja fields",
+        "ExperienceSection.astro has a new entry with companyName Meridian Labs, the company URL, a project link titled 'Insurance Claims AI', and exactly the four requested technology badges",
+        "The insurance client is anonymized with a descriptor rather than named",
+        "Milestone texts start with verbs, state LangGraph and AWS Textract with their purposes, and include both the 85% and 10-week metrics",
+        "pnpm build passed according to notes.md",
+        "New English text contains no em-dash asides and no 'A, not B' constructions"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "add this to my verblio experience: I also set up the on-call rotation and wrote the incident runbooks for the platform team",
+      "expected_output": "Milestone written in house style without any invented metric; the agent asks for or explicitly flags the missing measurable result instead of fabricating a number.",
+      "files": [],
+      "assertions": [
+        "No invented quantitative claim appears in the new milestone text (no fabricated percentage, count, or time figure that the user never provided)",
+        "notes.md explicitly asks for or flags the missing measurable result",
+        "New milestone text starts with a verb and has en, es, and ja versions",
+        "pnpm build passed according to notes.md"
+      ]
+    }
+  ]
+}

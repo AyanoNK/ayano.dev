@@ -1,0 +1,333 @@
+{
+  "metadata": {
+    "skill_name": "add-experience",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-07-17T04:44:35Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 131.5,
+        "tokens": 43964,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "New milestone key exists in experience.ts under softserve.ai_engineer with en, es, and ja fields",
+          "passed": true,
+          "evidence": "milestone_4 inserted directly after softserve.ai_engineer.milestone_3 in experience.ts with all three fields: en: \"Built an internal MCP server template...\", es: \"Constru\u00ed una plantilla interna...\", ja: \"\u8a8d\u8a3c\u3068\u8a8d\u53ef\u3092\u7d44\u307f\u8fbc\u3093\u3060\u793e\u5185\u5411\u3051MCP\u30b5\u30fc\u30d0\u30fc\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u3092\u69cb\u7bc9\u3057\u307e\u3057\u305f...\""
+        },
+        {
+          "text": "The new milestone key is referenced in the milestones array in ExperienceSection.astro",
+          "passed": true,
+          "evidence": "Line added inside the SoftServe ai_engineer milestones array, after milestone_3: t(\"index.experience.softserve.ai_engineer.milestone_4\")"
+        },
+        {
+          "text": "English milestone text starts with a past-tense verb and contains the week-to-a-day setup time metric",
+          "passed": true,
+          "evidence": "Text starts with past-tense \"Built\" and ends \"...cutting new server setup time from about a week to one day.\""
+        },
+        {
+          "text": "Tools are mentioned with their purpose in context, with no bare parenthetical stack list",
+          "passed": true,
+          "evidence": "MCP is woven into context (\"internal MCP server template with authentication and authorization included\"); the new English text contains no parentheses and no comma-separated stack list."
+        },
+        {
+          "text": "pnpm build passed according to notes.md",
+          "passed": true,
+          "evidence": "notes.md Build result: \"pnpm install then pnpm build: succeeded, 19 pages built, no errors.\""
+        },
+        {
+          "text": "New English text contains no em-dash asides and no 'A, not B' constructions",
+          "passed": true,
+          "evidence": "Grep of the added English string found no em-dash character and no ', not ' construction."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 156.0,
+        "tokens": 48949,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "New company block exists in experience.ts with link_1, start_date, end_date, role, description, and at least one milestone, each with en, es, and ja fields",
+          "passed": true,
+          "evidence": "experience.ts gains a meridian block containing link_1, start_date, end_date, and staff_ai_engineer with role, description, milestone_1, milestone_2; every one of those keys has en, es, and ja values."
+        },
+        {
+          "text": "ExperienceSection.astro has a new entry with companyName Meridian Labs, the company URL, a project link titled 'Insurance Claims AI', and exactly the four requested technology badges",
+          "passed": true,
+          "evidence": "New first entry has companyName: \"Meridian Labs\", companyURL: \"https://meridianlabs.example.com\", a project link via t(\"index.experience.meridian.link_1\") which is \"Insurance Claims AI\" in all three languages, and technologies: [\"Python\", \"LangGraph\", \"AWS Textract\", \"Docker\"] exactly."
+        },
+        {
+          "text": "The insurance client is anonymized with a descriptor rather than named",
+          "passed": true,
+          "evidence": "Client referred to only as \"a large Canadian insurance company\" in description and never named anywhere in the new texts."
+        },
+        {
+          "text": "Milestone texts start with verbs, state LangGraph and AWS Textract with their purposes, and include both the 85% and 10-week metrics",
+          "passed": true,
+          "evidence": "milestone_1 starts \"Built\" and says \"using LangGraph agents to orchestrate the workflow and AWS Textract for OCR, reaching 85% straight-through processing on claims intake\"; milestone_2 starts \"Shipped\": \"Shipped the pilot to the client in 10 weeks.\""
+        },
+        {
+          "text": "pnpm build passed according to notes.md",
+          "passed": true,
+          "evidence": "notes.md Build result: \"pnpm build passed: 19 pages built, no missing translation keys, no type errors.\""
+        },
+        {
+          "text": "New English text contains no em-dash asides and no 'A, not B' constructions",
+          "passed": true,
+          "evidence": "Grep of all added English strings (link, dates, role, description, milestones) found no em-dash character and no ', not ' construction."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 147.3,
+        "tokens": 45325,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "No invented quantitative claim appears in the new milestone text (no fabricated percentage, count, or time figure that the user never provided)",
+          "passed": true,
+          "evidence": "New milestone_5 en text is \"Set up the on-call rotation and wrote the incident runbooks for the platform team.\" It contains no numbers at all; the es and ja versions are likewise number-free."
+        },
+        {
+          "text": "notes.md explicitly asks for or flags the missing measurable result",
+          "passed": true,
+          "evidence": "notes.md question 1: \"The skill requires a measurable result per milestone. Is there a metric for this work? ... Since I could not ask, I left the milestone qualitative rather than invent a number.\""
+        },
+        {
+          "text": "New milestone text starts with a verb and has en, es, and ja versions",
+          "passed": true,
+          "evidence": "milestone_5 starts with the verb \"Set up\" and experience.ts contains en, es (\"Configur\u00e9 la rotaci\u00f3n de guardias...\"), and ja (\"\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u30c1\u30fc\u30e0\u306e\u30aa\u30f3\u30b3\u30fc\u30eb\u30ed\u30fc\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u7acb\u3061\u4e0a\u3052...\") values."
+        },
+        {
+          "text": "pnpm build passed according to notes.md",
+          "passed": true,
+          "evidence": "notes.md Build result: \"pnpm install (node_modules was missing) then pnpm build: success, 19 pages built, no errors.\""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 6,
+        "failed": 0,
+        "total": 6,
+        "time_seconds": 119.9,
+        "tokens": 40983,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "New milestone key exists in experience.ts under softserve.ai_engineer with en, es, and ja fields",
+          "passed": true,
+          "evidence": "milestone_4 inserted directly after softserve.ai_engineer.milestone_3 in experience.ts with all three fields: en: \"Built an internal MCP server template...\", es: \"Constru\u00ed una plantilla interna...\", ja: \"\u8a8d\u8a3c\u3068\u8a8d\u53ef\u3092\u7d44\u307f\u8fbc\u3093\u3060\u793e\u5185\u5411\u3051MCP\u30b5\u30fc\u30d0\u30fc\u30c6\u30f3\u30d7\u30ec\u30fc\u30c8\u3092\u69cb\u7bc9\u3057\u307e\u3057\u305f...\""
+        },
+        {
+          "text": "The new milestone key is referenced in the milestones array in ExperienceSection.astro",
+          "passed": true,
+          "evidence": "Line added inside the SoftServe ai_engineer milestones array, after milestone_3: t(\"index.experience.softserve.ai_engineer.milestone_4\")"
+        },
+        {
+          "text": "English milestone text starts with a past-tense verb and contains the week-to-a-day setup time metric",
+          "passed": true,
+          "evidence": "Text starts with past-tense \"Built\" and ends \"...cutting setup time from a week to a day.\" (dropped the user's \"about\" but the week-to-a-day metric is present)."
+        },
+        {
+          "text": "Tools are mentioned with their purpose in context, with no bare parenthetical stack list",
+          "passed": true,
+          "evidence": "MCP is woven into context (\"internal MCP server template with authentication and authorization baked in\"); the new English text contains no parentheses and no comma-separated stack list."
+        },
+        {
+          "text": "pnpm build passed according to notes.md",
+          "passed": true,
+          "evidence": "notes.md Build result: \"pnpm install then pnpm build: success. 19 pages built, no errors.\""
+        },
+        {
+          "text": "New English text contains no em-dash asides and no 'A, not B' constructions",
+          "passed": true,
+          "evidence": "Grep of the added English string found no em-dash character and no ', not ' construction."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.8333,
+        "passed": 5,
+        "failed": 1,
+        "total": 6,
+        "time_seconds": 159.7,
+        "tokens": 49474,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "New company block exists in experience.ts with link_1, start_date, end_date, role, description, and at least one milestone, each with en, es, and ja fields",
+          "passed": true,
+          "evidence": "experience.ts gains a meridian block containing link_1, start_date, end_date, and staff_ai_engineer with role, description, milestone_1, milestone_2, milestone_3; every one of those keys has en, es, and ja values."
+        },
+        {
+          "text": "ExperienceSection.astro has a new entry with companyName Meridian Labs, the company URL, a project link titled 'Insurance Claims AI', and exactly the four requested technology badges",
+          "passed": false,
+          "evidence": "companyName \"Meridian Labs\", companyURL, and technologies [\"Python\", \"LangGraph\", \"AWS Textract\", \"Docker\"] are all correct, but the project link title requested as 'Insurance Claims AI' was translated without being asked: link_1 is es: \"IA para Reclamaciones de Seguros\", ja: \"\u4fdd\u967a\u91d1\u8acb\u6c42AI\", so the link renders with the requested title only in English. The run itself flags this in notes.md question 2."
+        },
+        {
+          "text": "The insurance client is anonymized with a descriptor rather than named",
+          "passed": true,
+          "evidence": "Client referred to only as \"a large Canadian insurance company\" in description and milestone texts; no client name appears."
+        },
+        {
+          "text": "Milestone texts start with verbs, state LangGraph and AWS Textract with their purposes, and include both the 85% and 10-week metrics",
+          "passed": true,
+          "evidence": "milestone_1 starts \"Built\" with \"using LangGraph agents for orchestration and AWS Textract for OCR\"; milestone_2 starts \"Reached\": \"Reached 85% straight-through processing on claims intake.\"; milestone_3 starts \"Shipped\": \"Shipped the pilot in 10 weeks.\""
+        },
+        {
+          "text": "pnpm build passed according to notes.md",
+          "passed": true,
+          "evidence": "notes.md Build result: \"pnpm install (node_modules was missing) then pnpm build: success, 19 pages built.\""
+        },
+        {
+          "text": "New English text contains no em-dash asides and no 'A, not B' constructions",
+          "passed": true,
+          "evidence": "Grep of all added English strings found no em-dash character and no ', not ' construction."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 130.1,
+        "tokens": 37572,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "No invented quantitative claim appears in the new milestone text (no fabricated percentage, count, or time figure that the user never provided)",
+          "passed": true,
+          "evidence": "New milestone_5 en text is \"Set up the on-call rotation and wrote the incident runbooks for the platform team.\" It contains no numbers at all; the es and ja versions are likewise number-free."
+        },
+        {
+          "text": "notes.md explicitly asks for or flags the missing measurable result",
+          "passed": true,
+          "evidence": "notes.md question 2: \"The other Verblio milestones all carry a metric (70%, 95%, 50%). Is there a number for this one (e.g. team size, MTTR improvement, number of runbooks)? I wrote it without a metric since none was given.\""
+        },
+        {
+          "text": "New milestone text starts with a verb and has en, es, and ja versions",
+          "passed": true,
+          "evidence": "milestone_5 starts with the verb \"Set up\" and experience.ts contains en, es (\"Establec\u00ed la rotaci\u00f3n de guardias...\"), and ja (\"\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u30c1\u30fc\u30e0\u306e\u30aa\u30f3\u30b3\u30fc\u30eb\u30ed\u30fc\u30c6\u30fc\u30b7\u30e7\u30f3\u3092\u69cb\u7bc9\u3057...\") values."
+        },
+        {
+          "text": "pnpm build passed according to notes.md",
+          "passed": true,
+          "evidence": "notes.md Build result: \"pnpm install (node_modules was missing) then pnpm build: success, 19 pages built, no errors.\""
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 144.9333,
+        "stddev": 12.4203,
+        "min": 131.5,
+        "max": 156.0
+      },
+      "tokens": {
+        "mean": 46079.3333,
+        "stddev": 2576.6879,
+        "min": 43964,
+        "max": 48949
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9444,
+        "stddev": 0.0962,
+        "min": 0.8333,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 136.5667,
+        "stddev": 20.673,
+        "min": 119.9,
+        "max": 159.7
+      },
+      "tokens": {
+        "mean": 42676.3333,
+        "stddev": 6129.0239,
+        "min": 37572,
+        "max": 49474
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.06",
+      "time_seconds": "+8.4",
+      "tokens": "+3403"
+    }
+  },
+  "notes": []
+}
