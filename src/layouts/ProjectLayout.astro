@@ -1,11 +1,12 @@
 ---
+import { getRelativeLocaleUrl } from "astro:i18n";
 import BaseLayout from "./BaseLayout.astro";
 import LanguageSelector from "@/modules/LanguageSelector.astro";
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { getLang, useTranslations } from "@/i18n/utils";
 import { Anchor } from "@/components/ui/anchor";
 import { ArrowLeft } from "lucide-react";
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 interface Props {
@@ -21,7 +22,7 @@ const { title, description } = Astro.props;
     <LanguageSelector />
   </div>
   <nav class="p-4 sm:p-8">
-    <Anchor variant="neutral" href={`/${lang}/`} size="default">
+    <Anchor variant="neutral" href={getRelativeLocaleUrl(lang)} size="default">
       <ArrowLeft size={16} />
       {t("index.projects.back")}
     </Anchor>

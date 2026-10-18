@@ -1,9 +1,7 @@
-import { translations, defaultLang, type Lang } from "./ui";
+import { translations, defaultLang, locales, type Lang } from "./ui";
 
-export function getLangFromUrl(url: URL): Lang {
-  const [, lang] = url.pathname.split("/");
-  if (lang === "en" || lang === "es" || lang === "ja") return lang;
-  return defaultLang;
+export function getLang(currentLocale: string | undefined): Lang {
+  return locales.find((locale) => locale === currentLocale) ?? defaultLang;
 }
 
 export function useTranslations(lang: Lang) {

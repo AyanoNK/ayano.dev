@@ -1,6 +1,6 @@
 ---
 import { render, type CollectionEntry } from "astro:content";
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { getLang, useTranslations } from "@/i18n/utils";
 import { Badge } from "@/components/ui/badge";
 import { Anchor } from "@/components/ui/anchor";
 import { Github, SquareArrowOutUpRight } from "lucide-react";
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { project, details } = Astro.props;
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 const title = t(project.data.titleKey);
 const Content = details ? (await render(details)).Content : undefined;

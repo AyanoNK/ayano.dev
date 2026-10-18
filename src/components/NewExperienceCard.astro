@@ -10,10 +10,10 @@ import {
   ChevronRight,
   CornerDownRightIcon,
 } from "@lucide/astro";
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
+import { getLang, useTranslations } from "@/i18n/utils";
 import { Badge } from "@/components/ui/badge";
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 const { startDate, endDate, companyName, companyURL, titles, technologies } =

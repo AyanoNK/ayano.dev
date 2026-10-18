@@ -1,10 +1,10 @@
 ---
 import { type NewExperience } from "../types/technology";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLang, useTranslations } from "../i18n/utils";
 import NewExperienceCard from "@/components/NewExperienceCard.astro";
 import MoveUp from "@lucide/astro/icons/move-up";
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 const experiences: NewExperience[] = [

@@ -1,10 +1,10 @@
 ---
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLang, useTranslations } from "../i18n/utils";
 import { Anchor } from "@/components/ui/anchor";
 import LanguageSelector from "./LanguageSelector.astro";
 import { CONTACT_LINKS } from "@/consts";
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 ---
 

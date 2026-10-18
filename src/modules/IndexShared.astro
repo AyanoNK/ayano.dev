@@ -3,10 +3,10 @@ import CertificationSection from "../sections/CertificationSection.astro";
 import ExperienceSection from "../sections/ExperienceSection.astro";
 import ExpertiseSection from "../sections/ExpertiseSection.astro";
 import ProjectSection from "../sections/ProjectSection.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLang, useTranslations } from "../i18n/utils";
 import Title from "./Title.astro";
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 ---
 
