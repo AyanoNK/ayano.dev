@@ -48,7 +48,7 @@
       }
     ],
     "video": { "id": "kimon", "width": 268, "height": 438 },
-    "image": "/webp/mini_kimon.webp",
+    "image": "../assets/projects/mini_kimon.webp",
     "isFeatured": false
   },
   {
@@ -73,7 +73,7 @@
       }
     ],
     "video": { "id": "atlapetes", "width": 242, "height": 540 },
-    "image": "/webp/mini_atlapetes.webp",
+    "image": "../assets/projects/mini_atlapetes.webp",
     "isFeatured": false
   },
   {
@@ -100,7 +100,7 @@
       }
     ],
     "video": { "id": "poshaus", "width": 244, "height": 384 },
-    "image": "/webp/mini_poshaus.webp",
+    "image": "../assets/projects/mini_poshaus.webp",
     "isFeatured": false
   }
 ]

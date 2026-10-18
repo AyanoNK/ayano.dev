@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import { render, type CollectionEntry } from "astro:content";
 import { getLang, useTranslations } from "@/i18n/utils";
 import { Badge } from "@/components/ui/badge";
@@ -22,7 +23,12 @@ const Content = details ? (await render(details)).Content : undefined;
   {
     project.data.image && (
       <div class="overflow-hidden rounded-base border-2 border-border shadow-shadow">
-        <img src={project.data.image} alt={title} class="w-full object-cover" />
+        <Image
+          src={project.data.image}
+          alt={title}
+          priority
+          class="w-full object-cover"
+        />
       </div>
     )
   }

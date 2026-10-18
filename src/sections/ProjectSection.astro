@@ -1,6 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { getLang, useTranslations } from "../i18n/utils";
+import { Image } from "astro:assets";
 import { getProjects } from "@/lib/projects";
 import {
   Card,
@@ -89,11 +90,13 @@ const regular = projects.filter((p) => !p.data.isFeatured);
           <Card className="w-full h-full bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none cursor-pointer">
             <CardHeader>
               <div class="flex flex-col gap-4">
-                <img
-                  src={project.data.image}
-                  alt={t(project.data.titleKey)}
-                  class="rounded-base"
-                />
+                {project.data.image && (
+                  <Image
+                    src={project.data.image}
+                    alt={t(project.data.titleKey)}
+                    class="rounded-base"
+                  />
+                )}
                 <CardTitle>{t(project.data.titleKey)}</CardTitle>
               </div>
             </CardHeader>

@@ -4,26 +4,27 @@ import { z } from "astro/zod";
 
 const projects = defineCollection({
   loader: file("src/content/projects.json"),
-  schema: z.object({
-    order: z.number(),
-    titleKey: z.string(),
-    shortDescriptionKey: z.string(),
-    technologies: z.array(z.string()),
-    additionalLinks: z.array(
-      z.object({
-        title: z.string(),
-        icon: z.enum(["github", "google-play"]),
-        url: z.string(),
+  schema: ({ image }) =>
+    z.object({
+      order: z.number(),
+      titleKey: z.string(),
+      shortDescriptionKey: z.string(),
+      technologies: z.array(z.string()),
+      additionalLinks: z.array(
+        z.object({
+          title: z.string(),
+          icon: z.enum(["github", "google-play"]),
+          url: z.string(),
+        }),
+      ),
+      video: z.object({
+        id: z.string(),
+        width: z.number(),
+        height: z.number(),
       }),
-    ),
-    video: z.object({
-      id: z.string(),
-      width: z.number(),
-      height: z.number(),
+      image: image().optional(),
+      isFeatured: z.boolean(),
     }),
-    image: z.string().optional(),
-    isFeatured: z.boolean(),
-  }),
 });
 
 const projectDetails = defineCollection({

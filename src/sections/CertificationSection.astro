@@ -1,6 +1,9 @@
 ---
 import { getLang, useTranslations } from "../i18n/utils";
+import { getImage } from "astro:assets";
 import CertificationCard from "@/components/CertificationCard";
+import jlptN2 from "@/assets/certifications/jlpt_n2.jpg";
+import awsDeveloperAssociate from "@/assets/certifications/aws_developer_associate.jpg";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -9,12 +12,12 @@ const certifications = [
   {
     title: t("index.certifications.jlpt_n2.title"),
     caption: t("index.certifications.jlpt_n2.caption"),
-    imagePath: "/jpg/jlpt_n2.jpg",
+    image: await getImage({ src: jlptN2 }),
   },
   {
     title: t("index.certifications.aws_developer_associate.title"),
     caption: t("index.certifications.aws_developer_associate.caption"),
-    imagePath: "/jpg/aws_developer_associate.jpg",
+    image: await getImage({ src: awsDeveloperAssociate }),
   },
 ];
 ---
@@ -33,7 +36,11 @@ const certifications = [
           client:visible
           title={cert.title}
           caption={cert.caption}
-          imagePath={cert.imagePath}
+          image={{
+            src: cert.image.src,
+            width: Number(cert.image.attributes.width),
+            height: Number(cert.image.attributes.height),
+          }}
         />
       ))
     }
