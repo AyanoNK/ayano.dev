@@ -9,22 +9,18 @@ const cards = [
   {
     title: t("index.expertise.ai.title"),
     description: t("index.expertise.ai.description"),
-    image: "eos-icons:ai",
   },
   {
     title: t("index.expertise.software.title"),
     description: t("index.expertise.software.description"),
-    image: "eos-icons:typing",
   },
   {
     title: t("index.expertise.cloud.title"),
     description: t("index.expertise.cloud.description"),
-    image: "eos-icons:cloud-computing",
   },
   {
     title: t("index.expertise.architecture.title"),
     description: t("index.expertise.architecture.description"),
-    image: "eos-icons:cluster-management",
   },
 ];
 ---
@@ -49,7 +45,6 @@ const cards = [
               : "bg-background text-foreground",
           ]}>
           <ExpertiseCardContent
-            icon={card.image}
             title={card.title}
             description={card.description}
           />
