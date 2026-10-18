@@ -1,45 +1,28 @@
 ---
+import { render, type CollectionEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "@/i18n/utils";
-import { getProjectBySlug } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Anchor } from "@/components/ui/anchor";
 import { Github, SquareArrowOutUpRight } from "lucide-react";
 
 interface Props {
-  slug: string;
+  project: CollectionEntry<"projects">;
+  details?: CollectionEntry<"projectDetails">;
 }
 
-const { slug } = Astro.props;
+const { project, details } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const project = getProjectBySlug(slug);
-
-if (!project) {
-  return Astro.redirect(`/${lang}/`);
-}
-
-const title = t(project.titleKey);
-
-// Load markdown content for long description
-const markdownFiles = import.meta.glob<{
-  default: { render: () => Promise<{ Content: any }> };
-  Content: any;
-}>("../content/projects/**/*.md", { eager: true });
-const mdPath = `../content/projects/${lang}/${slug}.md`;
-const mdModule = markdownFiles[mdPath];
-const Content = mdModule?.Content;
+const title = t(project.data.titleKey);
+const Content = details ? (await render(details)).Content : undefined;
 ---
 
 <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-8 px-4 py-8">
   <!-- Representative image -->
   {
-    project.representativeImage && (
+    project.data.image && (
       <div class="overflow-hidden rounded-base border-2 border-border shadow-shadow">
-        <img
-          src={project.representativeImage}
-          alt={title}
-          class="w-full object-cover"
-        />
+        <img src={project.data.image} alt={title} class="w-full object-cover" />
       </div>
     )
   }
@@ -54,7 +37,7 @@ const Content = mdModule?.Content;
     <!-- Technologies -->
     <div class="flex flex-row flex-wrap gap-2">
       {
-        project.technologies.map((tech) => (
+        project.data.technologies.map((tech) => (
           <Badge className="text-md">{tech}</Badge>
         ))
       }
@@ -70,7 +53,7 @@ const Content = mdModule?.Content;
   <!-- Links -->
   <div class="flex flex-wrap gap-4">
     {
-      project.additionalLinks.map((link) => (
+      project.data.additionalLinks.map((link) => (
         <Anchor
           variant="neutral"
           href={link.url}
@@ -85,18 +68,21 @@ const Content = mdModule?.Content;
   </div>
   <!-- Video/Demo (if exists) -->
   {
-    project.video_id && (
+    project.data.video && (
       <div>
         <h2 class="mb-4 text-xl font-heading">{t("index.projects.demo")}</h2>
         <div class="flex justify-center">
           <video
-            width={project.video_width}
-            height={project.video_height}
+            width={project.data.video.width}
+            height={project.data.video.height}
             autoplay
             muted
             loop
             class="rounded-3xl border-2 border-border shadow-shadow">
-            <source src={`/webm/${project.video_id}.webm`} type="video/webm" />
+            <source
+              src={`/webm/${project.data.video.id}.webm`}
+              type="video/webm"
+            />
           </video>
         </div>
       </div>

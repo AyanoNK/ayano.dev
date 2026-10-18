@@ -18,9 +18,3 @@ export interface ExperienceProject {
   title: string;
   url: string;
 }
-
-export interface ProjectAdditionalLink {
-  title: string;
-  icon: string;
-  url: string;
-}
