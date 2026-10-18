@@ -33,6 +33,13 @@ export const translations = {
     ...experience,
     ...projects,
   },
+  meta: {
+    description: {
+      en: "Sebastian Correa - Full Stack Software Engineer with 6+ years of experience.",
+      es: "Sebastian Correa - Ingeniero de Software Full Stack con más de 6 años de experiencia.",
+      ja: "Sebastian Correa - 6年以上の経験を持つフルスタックソフトウェアエンジニア。",
+    },
+  },
   header: {
     home: {
       en: "Home",

@@ -15,9 +15,10 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const project = getProjectBySlug(slug!);
 const title = project ? t(project.titleKey) : "Project";
+const description = project ? t(project.shortDescriptionKey) : "";
 ---
 
-<ProjectLayout title={title}>
+<ProjectLayout title={title} description={description}>
   <div
     class="w-container mx-auto flex max-w-full flex-col items-center gap-4 py-8 text-left text-foreground">
     <ProjectDetailShared slug={slug!} />
