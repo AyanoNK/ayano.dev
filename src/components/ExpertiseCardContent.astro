@@ -1,10 +1,10 @@
 ---
-interface TechnologyProps {
+interface Props {
   title: string;
   description: string;
 }
 
-const { title, description } = Astro.props as TechnologyProps;
+const { title, description } = Astro.props;
 ---
 
 <div class="mb-4 flex items-center gap-4 sm:mb-6 sm:gap-6">

@@ -1,11 +1,11 @@
-type title = {
+export interface ExperienceTitle {
   title: string;
   description: string;
   milestones: string[];
-};
+}
 
 export interface NewExperience {
-  titles: title[];
+  titles: ExperienceTitle[];
   startDate: string;
   companyName: string;
   companyURL: string;
