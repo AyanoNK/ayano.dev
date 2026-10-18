@@ -1,3 +1,22 @@
 ---
-return Astro.redirect("/");
+import { getRelativeLocaleUrl } from "astro:i18n";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Anchor from "@/components/Anchor.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
+
+<BaseLayout
+  title={`${t("not_found.title")} | Sebastian Correa`}
+  description={t("not_found.message")}>
+  <main
+    class="flex min-h-[100dvh] flex-col items-center justify-center gap-8 px-4 text-center text-foreground">
+    <h1 class="text-4xl font-heading xl:text-6xl">404</h1>
+    <p class="text-lg">{t("not_found.message")}</p>
+    <Anchor variant="neutral" href={getRelativeLocaleUrl(lang)}>
+      {t("index.projects.back")}
+    </Anchor>
+  </main>
+</BaseLayout>

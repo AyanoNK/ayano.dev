@@ -42,6 +42,18 @@ export const translations = {
       ja: "Sebastian Correa - 6年以上の経験を持つフルスタックソフトウェアエンジニア。",
     },
   },
+  not_found: {
+    title: {
+      en: "Page not found",
+      es: "Página no encontrada",
+      ja: "ページが見つかりません",
+    },
+    message: {
+      en: "The page you are looking for does not exist.",
+      es: "La página que buscas no existe.",
+      ja: "お探しのページは存在しません。",
+    },
+  },
   header: {
     home: {
       en: "Home",
