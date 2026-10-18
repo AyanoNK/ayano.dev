@@ -4,25 +4,29 @@ import { getEntry } from "astro:content";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 import ProjectDetailShared from "@/modules/ProjectDetailShared.astro";
 import { getProjects } from "@/lib/projects";
+import { locales } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
 
 export const getStaticPaths = (async () => {
   const projects = await getProjects();
   return Promise.all(
-    projects.map(async (project) => ({
-      params: { slug: project.id },
-      props: {
-        project,
-        details: await getEntry("projectDetails", `en/${project.id}`),
-      },
-    })),
+    locales.flatMap((lang) =>
+      projects.map(async (project) => ({
+        params: { lang, slug: project.id },
+        props: {
+          lang,
+          project,
+          details: await getEntry("projectDetails", `${lang}/${project.id}`),
+        },
+      })),
+    ),
   );
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-const { project, details } = Astro.props;
-const t = useTranslations("en");
+const { lang, project, details } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <ProjectLayout

@@ -13,6 +13,8 @@ export type Lang = "en" | "es" | "ja";
 
 export const defaultLang: Lang = "en";
 
+export const locales: Lang[] = ["en", "es", "ja"];
+
 export const translations = {
   en: { en: "English", es: "Español", ja: "日本語" },
   es: { en: "English", es: "Español", ja: "日本語" },
