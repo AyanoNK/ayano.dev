@@ -1,4 +1,4 @@
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
@@ -9,6 +9,21 @@ export default defineConfig({
     inlineStylesheets: "always",
   },
   integrations: [react()],
+  env: {
+    schema: {
+      GITHUB: envField.string({
+        context: "server",
+        access: "public",
+        url: true,
+      }),
+      LINKEDIN: envField.string({
+        context: "server",
+        access: "public",
+        url: true,
+      }),
+      EMAIL: envField.string({ context: "server", access: "public" }),
+    },
+  },
   fonts: [
     {
       provider: fontProviders.fontsource(),
