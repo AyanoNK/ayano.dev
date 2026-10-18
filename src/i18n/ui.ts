@@ -5,13 +5,15 @@ import { projects } from "@/i18n/index/projects";
 
 export const languages = {
   en: "English",
-  es: "Spanish",
-  ja: "Japanese",
+  es: "Español",
+  ja: "日本語",
 };
 
 export type Lang = "en" | "es" | "ja";
 
 export const defaultLang: Lang = "en";
+
+export const locales: Lang[] = ["en", "es", "ja"];
 
 export const translations = {
   en: { en: "English", es: "Español", ja: "日本語" },
@@ -32,6 +34,25 @@ export const translations = {
     ...expertise,
     ...experience,
     ...projects,
+  },
+  meta: {
+    description: {
+      en: "Sebastian Correa - Full Stack Software Engineer with 6+ years of experience.",
+      es: "Sebastian Correa - Ingeniero de Software Full Stack con más de 6 años de experiencia.",
+      ja: "Sebastian Correa - 6年以上の経験を持つフルスタックソフトウェアエンジニア。",
+    },
+  },
+  not_found: {
+    title: {
+      en: "Page not found",
+      es: "Página no encontrada",
+      ja: "ページが見つかりません",
+    },
+    message: {
+      en: "The page you are looking for does not exist.",
+      es: "La página que buscas no existe.",
+      ja: "お探しのページは存在しません。",
+    },
   },
   header: {
     home: {

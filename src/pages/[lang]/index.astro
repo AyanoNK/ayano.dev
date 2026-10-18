@@ -1,0 +1,16 @@
+---
+import type { GetStaticPaths } from "astro";
+import IndexLayout from "@/layouts/IndexLayout.astro";
+import IndexShared from "@/modules/IndexShared.astro";
+import { locales } from "@/i18n/ui";
+
+export const getStaticPaths = (() =>
+  locales.map((lang) => ({ params: { lang } }))) satisfies GetStaticPaths;
+---
+
+<IndexLayout>
+  <div
+    class="w-container mx-auto flex max-w-full flex-col items-center gap-4 py-8 text-left text-foreground sm:py-16">
+    <IndexShared />
+  </div>
+</IndexLayout>

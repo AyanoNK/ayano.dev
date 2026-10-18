@@ -1,45 +1,31 @@
 ---
-import SpeedInsights from "@vercel/speed-insights/astro";
-import "@fontsource-variable/dm-sans";
-import "../../tailwind.css";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import BaseLayout from "./BaseLayout.astro";
 import LanguageSelector from "@/modules/LanguageSelector.astro";
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
-import { Anchor } from "@/components/ui/anchor";
-import { ArrowLeft } from "lucide-react";
+import { getLang, useTranslations } from "@/i18n/utils";
+import Anchor from "@/components/Anchor.astro";
+import { ArrowLeft } from "@lucide/astro";
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 interface Props {
   title: string;
+  description: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<!doctype html>
-<html lang={lang}>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="index, follow" />
-    <meta name="description" content={`${title} - Sebastian Correa`} />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title} | Sebastian Correa</title>
-  </head>
-  <body
-    class="prose-h4:xl:text-2xl prose-h4:lg:text-xl prose-h4:text-lg -z-10 min-h-[100dvh] bg-background bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px]">
-    <div class="fixed right-4 top-4 z-50">
-      <LanguageSelector />
-    </div>
-    <nav class="p-4 sm:p-8">
-      <Anchor variant="neutral" href={`/${lang}/`} size="default">
-        <ArrowLeft size={16} />
-        {t("index.projects.back")}
-      </Anchor>
-    </nav>
-    <slot />
-    <SpeedInsights />
-  </body>
-</html>
+<BaseLayout title={`${title} | Sebastian Correa`} description={description}>
+  <div class="fixed top-4 right-4 z-50">
+    <LanguageSelector />
+  </div>
+  <nav class="p-4 sm:p-8">
+    <Anchor variant="neutral" href={getRelativeLocaleUrl(lang)} size="default">
+      <ArrowLeft size={16} />
+      {t("index.projects.back")}
+    </Anchor>
+  </nav>
+  <slot />
+</BaseLayout>

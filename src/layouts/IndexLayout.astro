@@ -1,28 +1,15 @@
 ---
-import SpeedInsights from "@vercel/speed-insights/astro";
+import BaseLayout from "./BaseLayout.astro";
 import Footer from "../components/Footer.astro";
-import "@fontsource-variable/dm-sans";
-import "../../tailwind.css";
+import { getLang, useTranslations } from "@/i18n/utils";
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="robots" content="index, follow" />
-    <meta
-      name="description"
-      content="Sebastian Correa - Full Stack Software Engineer with 6+ years of experience."
-    />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Sebastian Correa</title>
-  </head>
-  <body
-    class="prose-h4:xl:text-2xl prose-h4:lg:text-xl prose-h4:text-lg -z-10 min-h-[100dvh] bg-background bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:70px_70px]">
-    <slot />
-    <Footer />
-    <SpeedInsights />
-  </body>
-</html>
+<BaseLayout
+  title={`Sebastian Correa | ${t("index.title")}`}
+  description={t("meta.description")}>
+  <slot />
+  <Footer />
+</BaseLayout>

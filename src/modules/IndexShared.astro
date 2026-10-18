@@ -3,10 +3,10 @@ import CertificationSection from "../sections/CertificationSection.astro";
 import ExperienceSection from "../sections/ExperienceSection.astro";
 import ExpertiseSection from "../sections/ExpertiseSection.astro";
 import ProjectSection from "../sections/ProjectSection.astro";
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLang, useTranslations } from "../i18n/utils";
 import Title from "./Title.astro";
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 ---
 
@@ -16,21 +16,21 @@ const t = useTranslations(lang);
   <Title />
 
   <div
-    class="flex max-w-screen-lg flex-col border-t-4 border-x-0 border-b-0 sm:border-4 border-border bg-background font-base text-foreground shadow-none sm:shadow-shadow">
+    class="flex max-w-screen-lg flex-col border-x-0 border-t-4 border-b-0 border-border bg-background font-base text-foreground shadow-none sm:border-4 sm:shadow-shadow">
     <!-- class="flex w-full max-w-screen-xl flex-col items-center justify-center gap-16"> -->
 
     <ExpertiseSection id="expertise-section" />
   </div>
 
   <div
-    class="flex w-full max-w-screen-lg flex-col border-t-4 border-x-0 border-b-0 sm:border-4 border-border bg-background font-base text-foreground shadow-none sm:shadow-shadow">
+    class="flex w-full max-w-screen-lg flex-col border-x-0 border-t-4 border-b-0 border-border bg-background font-base text-foreground shadow-none sm:border-4 sm:shadow-shadow">
     <CertificationSection id="certification-section" />
   </div>
 
   <ExperienceSection id="experience-section" />
 
   <div
-    class="flex max-w-screen-lg flex-col border-t-4 border-x-0 border-b-0 sm:border-4 border-border bg-background font-base text-foreground shadow-none sm:shadow-shadow">
+    class="flex max-w-screen-lg flex-col border-x-0 border-t-4 border-b-0 border-border bg-background font-base text-foreground shadow-none sm:border-4 sm:shadow-shadow">
     <ProjectSection id="project-section" />
   </div>
 </main>

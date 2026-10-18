@@ -1,0 +1,106 @@
+[
+  {
+    "id": "bank",
+    "order": 1,
+    "titleKey": "index.projects.bank.title",
+    "shortDescriptionKey": "index.projects.bank.description",
+    "technologies": [
+      "Kotlin",
+      "Jetpack Compose",
+      "Material3",
+      "Jetpack Glance",
+      "XML",
+      "Google Play Store"
+    ],
+    "additionalLinks": [
+      { "title": "Play Store (soon)", "icon": "google-play", "url": "#" },
+      {
+        "title": "GitHub",
+        "icon": "github",
+        "url": "https://github.com/AyanoNK/bank-sms-manager"
+      }
+    ],
+    "video": { "id": "bank", "width": 246, "height": 332 },
+    "isFeatured": true
+  },
+  {
+    "id": "kimon",
+    "order": 2,
+    "titleKey": "index.projects.kimon.title",
+    "shortDescriptionKey": "index.projects.kimon.description",
+    "technologies": [
+      "NextJS",
+      "React",
+      "Vercel",
+      "Supabase",
+      "Tailwind CSS",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "SCSS"
+    ],
+    "additionalLinks": [
+      {
+        "title": "GitHub",
+        "icon": "github",
+        "url": "https://github.com/AyanoNK/kanji-lyrics-frontend"
+      }
+    ],
+    "video": { "id": "kimon", "width": 268, "height": 438 },
+    "image": "../assets/projects/mini_kimon.webp",
+    "isFeatured": false
+  },
+  {
+    "id": "atlapetes",
+    "order": 3,
+    "titleKey": "index.projects.atlapetes.title",
+    "shortDescriptionKey": "index.projects.atlapetes.description",
+    "technologies": [
+      "Kotlin",
+      "PyTorch",
+      "Android Studio",
+      "Java",
+      "CameraX",
+      "XML",
+      "Google Play Store"
+    ],
+    "additionalLinks": [
+      {
+        "title": "GitHub",
+        "icon": "github",
+        "url": "https://github.com/AyanoNK/atlapetes-blancae"
+      }
+    ],
+    "video": { "id": "atlapetes", "width": 242, "height": 540 },
+    "image": "../assets/projects/mini_atlapetes.webp",
+    "isFeatured": false
+  },
+  {
+    "id": "poshaus",
+    "order": 4,
+    "titleKey": "index.projects.poshaus.title",
+    "shortDescriptionKey": "index.projects.poshaus.description",
+    "technologies": [
+      "Astro",
+      "React",
+      "Vercel",
+      "Tailwind CSS",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "SCSS"
+    ],
+    "additionalLinks": [
+      {
+        "title": "GitHub",
+        "icon": "github",
+        "url": "https://github.com/AyanoNK/poshaus"
+      }
+    ],
+    "video": { "id": "poshaus", "width": 244, "height": 384 },
+    "image": "../assets/projects/mini_poshaus.webp",
+    "isFeatured": false
+  }
+]

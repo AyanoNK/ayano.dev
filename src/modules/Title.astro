@@ -1,36 +1,16 @@
 ---
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
-import { Anchor } from "@/components/ui/anchor";
+import { getLang, useTranslations } from "../i18n/utils";
+import Anchor from "@/components/Anchor.astro";
 import LanguageSelector from "./LanguageSelector.astro";
-import { MailIcon, GithubIcon, LinkedinIcon } from "@lucide/astro";
+import { CONTACT_LINKS } from "@/consts";
 
-// TODO: see how to combine  this with Native Astro internationalization
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
-
-const referenceLinks = [
-  {
-    IconName: GithubIcon,
-    value: import.meta.env.GITHUB,
-    label: "GitHub",
-  },
-  {
-    IconName: LinkedinIcon,
-    value: import.meta.env.LINKEDIN,
-    label: "LinkedIn",
-  },
-  {
-    IconName: MailIcon,
-    value: `mailto:${import.meta.env.EMAIL}`,
-    label: "Email",
-  },
-];
 ---
 
 <div
-  class="flex flex-col items-center justify-center gap-16 py-8 md:py-16 lg:py-24"
-  id={t("header.home")}>
-  <div class="fixed right-4 top-4">
+  class="flex flex-col items-center justify-center gap-16 py-8 md:py-16 lg:py-24">
+  <div class="fixed top-4 right-4">
     <LanguageSelector />
   </div>
   <div class="flex flex-col items-center justify-center gap-4">
@@ -43,14 +23,14 @@ const referenceLinks = [
   </div>
   <div class="flex flex-row flex-wrap gap-10">
     {
-      referenceLinks.map((link) => (
+      CONTACT_LINKS.map((link) => (
         <Anchor
           variant="neutral"
-          href={link.value}
+          href={link.href}
           size="lg"
           aria-label={link.label}
-          target={link.IconName !== MailIcon ? "_blank" : undefined}>
-          <link.IconName />
+          target={link.external ? "_blank" : undefined}>
+          <link.Icon />
         </Anchor>
       ))
     }

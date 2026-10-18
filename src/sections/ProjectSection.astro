@@ -1,6 +1,8 @@
 ---
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
-import { projectsData, type ProjectData } from "@/data/projects";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { getLang, useTranslations } from "../i18n/utils";
+import { Image } from "astro:assets";
+import { getProjects } from "@/lib/projects";
 import {
   Card,
   CardContent,
@@ -9,13 +11,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Badge from "@/components/Badge.astro";
 
-const lang = getLangFromUrl(Astro.url);
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
-const featured = projectsData.find((p) => p.isFeatured)!;
-const regular = projectsData.filter((p) => !p.isFeatured);
+const projects = await getProjects();
+const featured = projects.find((p) => p.data.isFeatured);
+if (!featured) {
+  throw new Error("No project has isFeatured set in src/content/projects.json");
+}
+const regular = projects.filter((p) => !p.data.isFeatured);
 ---
 
 <section
@@ -29,29 +35,29 @@ const regular = projectsData.filter((p) => !p.isFeatured);
   <div
     class="grid grid-cols-1 justify-center gap-8 md:grid-cols-2 lg:grid-cols-3">
     <a
-      href={`/${lang}/projects/${featured.slug}`}
+      href={getRelativeLocaleUrl(lang, `projects/${featured.id}`)}
       class="col-span-1 md:col-span-2 lg:col-span-3">
       <Card
         className="w-full cursor-pointer bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none">
         <CardHeader>
-          <CardTitle>{t(featured.titleKey)}</CardTitle>
+          <CardTitle>{t(featured.data.titleKey)}</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col">
           <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
             <div
               class="col-span-4 flex flex-col justify-between gap-4 md:col-span-2 lg:col-span-3">
-              <div>{t(featured.shortDescriptionKey)}</div>
+              <div>{t(featured.data.shortDescriptionKey)}</div>
 
               <div class="flex flex-col gap-4">
                 <div class="flex flex-row flex-wrap gap-2">
                   {
-                    featured.technologies.map((technology: string) => (
-                      <Badge className="text-md">{technology}</Badge>
+                    featured.data.technologies.map((technology: string) => (
+                      <Badge class="text-md">{technology}</Badge>
                     ))
                   }
                 </div>
                 <div class="flex gap-4">
-                  <span class="text-foreground/60 text-sm font-base">
+                  <span class="text-sm font-base text-foreground/60">
                     {t("index.projects.view_details")} &rarr;
                   </span>
                 </div>
@@ -60,14 +66,14 @@ const regular = projectsData.filter((p) => !p.isFeatured);
 
             <div class="grid-row-span-4 md:col-span-1 lg:col-span-1">
               <video
-                width={featured.video_width}
-                height={featured.video_height}
+                width={featured.data.video.width}
+                height={featured.data.video.height}
                 autoplay
                 muted
                 loop
                 class="rounded-3xl p-4">
                 <source
-                  src={`/webm/${featured.video_id}.webm`}
+                  src={`/webm/${featured.data.video.id}.webm`}
                   type="video/webm"
                 />
               </video>
@@ -77,31 +83,35 @@ const regular = projectsData.filter((p) => !p.isFeatured);
       </Card>
     </a>
     {
-      regular.map((project: ProjectData) => (
-        <a href={`/${lang}/projects/${project.slug}`} class="w-full">
+      regular.map((project) => (
+        <a
+          href={getRelativeLocaleUrl(lang, `projects/${project.id}`)}
+          class="w-full">
           <Card className="w-full h-full bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none cursor-pointer">
             <CardHeader>
               <div class="flex flex-col gap-4">
-                <img
-                  src={`/webp/${project.miniature}.webp`}
-                  alt={t(project.titleKey)}
-                  class="rounded-base"
-                />
-                <CardTitle>{t(project.titleKey)}</CardTitle>
+                {project.data.image && (
+                  <Image
+                    src={project.data.image}
+                    alt={t(project.data.titleKey)}
+                    class="rounded-base"
+                  />
+                )}
+                <CardTitle>{t(project.data.titleKey)}</CardTitle>
               </div>
             </CardHeader>
             <CardContent className="flex flex-col h-full">
               <CardDescription>
-                {t(project.shortDescriptionKey)}
+                {t(project.data.shortDescriptionKey)}
               </CardDescription>
             </CardContent>
             <CardFooter className="flex flex-col gap-8 items-start">
               <div class="flex flex-row flex-wrap gap-2">
-                {project.technologies.map((technology: string) => (
+                {project.data.technologies.map((technology: string) => (
                   <Badge>{technology}</Badge>
                 ))}
               </div>
-              <span class="text-foreground/60 text-sm font-base">
+              <span class="text-sm font-base text-foreground/60">
                 {t("index.projects.view_details")} &rarr;
               </span>
             </CardFooter>

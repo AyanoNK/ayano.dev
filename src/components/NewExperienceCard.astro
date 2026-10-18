@@ -1,23 +1,16 @@
 ---
-import type { NewExperience, title } from "@/types/technology";
-import {
-  ExternalLink,
-  Globe,
-  MoveUp,
-  CornerDownRight,
-  ArrowRight,
-  MoveRight,
-  ChevronRight,
-  CornerDownRightIcon,
-} from "@lucide/astro";
-import { getLangFromUrl, useTranslations } from "@/i18n/utils";
-import { Badge } from "@/components/ui/badge";
+import type { NewExperience } from "@/types/technology";
+import { ExternalLink, MoveUp, CornerDownRightIcon } from "@lucide/astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+import Badge from "@/components/Badge.astro";
 
-const lang = getLangFromUrl(Astro.url);
+type Props = NewExperience;
+
+const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 
 const { startDate, endDate, companyName, companyURL, titles, technologies } =
-  Astro.props as NewExperience;
+  Astro.props;
 ---
 
 <div
@@ -29,13 +22,13 @@ const { startDate, endDate, companyName, companyURL, titles, technologies } =
       href={companyURL}
       target="_blank">
       {companyName}
-      <ExternalLink size="1rem" } />
+      <ExternalLink size="1rem" />
     </a>
     <span class="text-sm font-semibold">{startDate} - {endDate}</span>
   </div>
   <div class="flex flex-col gap-6 bg-secondary-background p-4">
     {
-      titles.map((title: title, index: number) => (
+      titles.map((title, index) => (
         <div class="flex flex-col gap-6">
           {index !== 0 && <MoveUp />}
           <div class="flex flex-col gap-4 rounded-b-base font-base">
@@ -62,7 +55,7 @@ const { startDate, endDate, companyName, companyURL, titles, technologies } =
     }
 
     <div class="flex flex-row flex-wrap gap-2">
-      {technologies.map((technology: string) => <Badge>{technology}</Badge>)}
+      {technologies.map((technology) => <Badge>{technology}</Badge>)}
     </div>
   </div>
 </div>

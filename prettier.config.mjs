@@ -1,6 +1,6 @@
 export default {
   plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
-  tailwindConfig: "./tailwind.config.cjs",
+  tailwindStylesheet: "./tailwind.css",
   bracketSameLine: true,
   htmlWhitespaceSensitivity: "ignore",
   overrides: [

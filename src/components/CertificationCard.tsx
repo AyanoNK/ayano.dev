@@ -17,15 +17,15 @@ import {
 interface CertificationCardProps {
   title: string;
   caption: string;
-  imagePath?: string;
+  image?: { src: string; width: number; height: number };
 }
 
 export default function CertificationCard({
   title,
   caption,
-  imagePath,
+  image,
 }: CertificationCardProps) {
-  if (!imagePath) {
+  if (!image) {
     return (
       <Card className="w-full bg-white">
         <CardHeader>
@@ -60,7 +60,9 @@ export default function CertificationCard({
           <DialogDescription>{caption}</DialogDescription>
         </DialogHeader>
         <img
-          src={imagePath}
+          src={image.src}
+          width={image.width}
+          height={image.height}
           alt={`${title} certificate`}
           className="h-auto max-h-[80vh] w-full rounded-base border-2 border-border object-contain"
         />
