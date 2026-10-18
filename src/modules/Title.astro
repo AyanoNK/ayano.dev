@@ -2,29 +2,10 @@
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import { Anchor } from "@/components/ui/anchor";
 import LanguageSelector from "./LanguageSelector.astro";
-import { MailIcon, GithubIcon, LinkedinIcon } from "@lucide/astro";
+import { CONTACT_LINKS } from "@/consts";
 
-// TODO: see how to combine  this with Native Astro internationalization
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-
-const referenceLinks = [
-  {
-    IconName: GithubIcon,
-    value: import.meta.env.GITHUB,
-    label: "GitHub",
-  },
-  {
-    IconName: LinkedinIcon,
-    value: import.meta.env.LINKEDIN,
-    label: "LinkedIn",
-  },
-  {
-    IconName: MailIcon,
-    value: `mailto:${import.meta.env.EMAIL}`,
-    label: "Email",
-  },
-];
 ---
 
 <div
@@ -42,14 +23,14 @@ const referenceLinks = [
   </div>
   <div class="flex flex-row flex-wrap gap-10">
     {
-      referenceLinks.map((link) => (
+      CONTACT_LINKS.map((link) => (
         <Anchor
           variant="neutral"
-          href={link.value}
+          href={link.href}
           size="lg"
           aria-label={link.label}
-          target={link.IconName !== MailIcon ? "_blank" : undefined}>
-          <link.IconName />
+          target={link.external ? "_blank" : undefined}>
+          <link.Icon />
         </Anchor>
       ))
     }

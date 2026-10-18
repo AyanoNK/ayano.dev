@@ -1,24 +1,6 @@
 ---
 import { Anchor } from "@/components/ui/anchor";
-import { MailIcon, GithubIcon, LinkedinIcon } from "@lucide/astro";
-
-const referenceLinks = [
-  {
-    IconName: GithubIcon,
-    value: import.meta.env.GITHUB,
-    label: "GitHub",
-  },
-  {
-    IconName: LinkedinIcon,
-    value: import.meta.env.LINKEDIN,
-    label: "LinkedIn",
-  },
-  {
-    IconName: MailIcon,
-    value: `mailto:${import.meta.env.EMAIL}`,
-    label: "Email",
-  },
-];
+import { CONTACT_LINKS } from "@/consts";
 ---
 
 <footer
@@ -30,14 +12,14 @@ const referenceLinks = [
     </div>
     <div class="flex flex-row flex-wrap gap-4">
       {
-        referenceLinks.map((link) => (
+        CONTACT_LINKS.map((link) => (
           <Anchor
             variant="neutral"
-            href={link.value}
+            href={link.href}
             size="icon"
             aria-label={link.label}
-            target={link.IconName !== MailIcon ? "_blank" : undefined}>
-            <link.IconName class="size-5" />
+            target={link.external ? "_blank" : undefined}>
+            <link.Icon class="size-5" />
           </Anchor>
         ))
       }
