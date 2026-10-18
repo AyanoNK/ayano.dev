@@ -2,9 +2,9 @@
 import { Image } from "astro:assets";
 import { render, type CollectionEntry } from "astro:content";
 import { getLang, useTranslations } from "@/i18n/utils";
-import { Badge } from "@/components/ui/badge";
-import { Anchor } from "@/components/ui/anchor";
-import { Github, SquareArrowOutUpRight } from "lucide-react";
+import Badge from "@/components/Badge.astro";
+import Anchor from "@/components/Anchor.astro";
+import { Github, SquareArrowOutUpRight } from "@lucide/astro";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -44,7 +44,7 @@ const Content = details ? (await render(details)).Content : undefined;
     <div class="flex flex-row flex-wrap gap-2">
       {
         project.data.technologies.map((tech) => (
-          <Badge className="text-md">{tech}</Badge>
+          <Badge class="text-md">{tech}</Badge>
         ))
       }
     </div>

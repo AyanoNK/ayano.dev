@@ -1,8 +1,6 @@
-import { Slot } from "@radix-ui/react-slot";
+---
+import type { HTMLAttributes } from "astro/types";
 import { cva, type VariantProps } from "class-variance-authority";
-
-import * as React from "react";
-
 import { cn } from "@/lib/utils";
 
 const anchorVariants = cva(
@@ -34,20 +32,11 @@ const anchorVariants = cva(
   },
 );
 
-function Anchor({
-  className,
-  variant,
-  size,
-  ...props
-}: React.ComponentProps<"a"> & VariantProps<typeof anchorVariants>) {
-  return (
-    <a
-      data-slot="anchor"
-      className={cn(anchorVariants({ variant, size, className }))}
-      {...props}>
-      {props.children}
-    </a>
-  );
-}
+type Props = HTMLAttributes<"a"> & VariantProps<typeof anchorVariants>;
 
-export { Anchor, anchorVariants };
+const { class: className, variant, size, ...rest } = Astro.props;
+---
+
+<a class={cn(anchorVariants({ variant, size }), className)} {...rest}>
+  <slot />
+</a>

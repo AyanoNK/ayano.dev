@@ -11,7 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import Badge from "@/components/Badge.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -52,7 +52,7 @@ const regular = projects.filter((p) => !p.data.isFeatured);
                 <div class="flex flex-row flex-wrap gap-2">
                   {
                     featured.data.technologies.map((technology: string) => (
-                      <Badge className="text-md">{technology}</Badge>
+                      <Badge class="text-md">{technology}</Badge>
                     ))
                   }
                 </div>

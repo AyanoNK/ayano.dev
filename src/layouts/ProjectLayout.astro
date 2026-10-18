@@ -3,8 +3,8 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import BaseLayout from "./BaseLayout.astro";
 import LanguageSelector from "@/modules/LanguageSelector.astro";
 import { getLang, useTranslations } from "@/i18n/utils";
-import { Anchor } from "@/components/ui/anchor";
-import { ArrowLeft } from "lucide-react";
+import Anchor from "@/components/Anchor.astro";
+import { ArrowLeft } from "@lucide/astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);

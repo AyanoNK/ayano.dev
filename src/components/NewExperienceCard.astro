@@ -11,7 +11,7 @@ import {
   CornerDownRightIcon,
 } from "@lucide/astro";
 import { getLang, useTranslations } from "@/i18n/utils";
-import { Badge } from "@/components/ui/badge";
+import Badge from "@/components/Badge.astro";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
