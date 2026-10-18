@@ -5,8 +5,8 @@ import { projects } from "@/i18n/index/projects";
 
 export const languages = {
   en: "English",
-  es: "Spanish",
-  ja: "Japanese",
+  es: "Español",
+  ja: "日本語",
 };
 
 export type Lang = "en" | "es" | "ja";
