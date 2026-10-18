@@ -9,6 +9,11 @@ export default defineConfig({
     inlineStylesheets: "always",
   },
   integrations: [react()],
+  redirects: {
+    "/cv":
+      "https://mega.nz/file/GYU2RSjS#b0Aame20v7CdS0yVtuhSTOwqUhUTzJf-86ATJoB_DGc",
+    "/mega": "https://mega.nz/folder/KU1QzQ7A#XuPIABxK0MZ7tQY7cxgbHg",
+  },
   env: {
     schema: {
       GITHUB: envField.string({
