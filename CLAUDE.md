@@ -23,9 +23,10 @@ pnpm check      # astro check (type check)
 pnpm build      # Static build to ./dist/
 pnpm preview    # Serve the built site
 pnpm exec prettier --check src   # Formatting
+pnpm test       # Vitest
 ```
 
-There is no test suite and no linter.
+Vitest covers `src/lib/showcase/`. There is no linter.
 
 - `astro check` needs TypeScript 6. TypeScript 7 does not ship the API it uses, so keep `typescript` on `^6`.
 - The build reads `GITHUB`, `LINKEDIN` and `EMAIL` through `astro:env` (declared in `astro.config.mjs`). It fails if they are missing from `.env` or the Vercel project.
