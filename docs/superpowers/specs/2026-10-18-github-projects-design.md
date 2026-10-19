@@ -30,7 +30,7 @@ The goal is that each project describes itself in its own GitHub repo, and the s
 
 ### Which repos show up
 
-The GitHub token decides. Ayano gives the fine-grained token access to only the repos that should show on the site. A repo the token can see shows up if it has a `docs/showcase/` folder on its default branch. A repo without that folder is skipped with a warning in the build log, because a fine-grained token can always read public repos and GitHub may list them too.
+The GitHub token decides. Ayano gives the fine-grained token access to only the repos that should show on the site. A repo the token can see shows up if it has a `docs/showcase/` folder on its default branch. A repo without that folder is skipped (logged at debug level, plus one "loaded N of M repos" line), because a fine-grained token can always read public repos and GitHub may list them too.
 
 There is no `portfolio-tracker` topic.
 
@@ -105,7 +105,7 @@ The four current projects move to new addresses, and the old ones redirect:
 | Old | New |
 | --- | --- |
 | `/<lang>/projects/bank/` | `/<lang>/projects/bank-sms-manager/` |
-| `/<lang>/projects/kimon/` | `/<lang>/projects/kanji-lyrics-frontend/` |
+| `/<lang>/projects/kimon/` | `/<lang>/projects/kimon/` (unchanged: the repo is now named `kimon`) |
 | `/<lang>/projects/atlapetes/` | `/<lang>/projects/atlapetes-blancae/` |
 | `/<lang>/projects/poshaus/` | `/<lang>/projects/poshaus/` (unchanged) |
 
