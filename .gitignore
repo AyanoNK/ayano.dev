@@ -25,4 +25,4 @@ pnpm-debug.log*
 .vercel
 
 # Claude
-CLAUDE.md
+.claude/skills/**/run-*/*
