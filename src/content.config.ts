@@ -1,34 +1,43 @@
 import { defineCollection } from "astro:content";
-import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { projectDetailsLoader, projectsLoader } from "@/lib/showcase/loader";
+
+const text = z.object({ title: z.string(), description: z.string() });
 
 const projects = defineCollection({
-  loader: file("src/content/projects.json"),
-  schema: ({ image }) =>
-    z.object({
-      order: z.number(),
-      titleKey: z.string(),
-      shortDescriptionKey: z.string(),
-      technologies: z.array(z.string()),
-      additionalLinks: z.array(
-        z.object({
-          title: z.string(),
-          icon: z.enum(["github", "google-play"]),
-          url: z.string(),
-        }),
-      ),
-      video: z.object({
-        id: z.string(),
-        width: z.number(),
-        height: z.number(),
+  loader: projectsLoader(),
+  schema: ({ image }) => {
+    const media = z.discriminatedUnion("kind", [
+      z.object({
+        kind: z.literal("image"),
+        src: image(),
+        label: z.string().optional(),
       }),
-      image: image().optional(),
-      isFeatured: z.boolean(),
-    }),
+      z.object({
+        kind: z.literal("video"),
+        src: z.string(),
+        label: z.string().optional(),
+      }),
+    ]);
+    return z.object({
+      createdAt: z.date(),
+      isPrivate: z.boolean(),
+      url: z.string(),
+      highlight: z.boolean(),
+      bigHighlight: z.boolean(),
+      technologies: z.array(z.string()),
+      links: z.array(z.object({ title: z.string(), url: z.string() })),
+      text: z.object({ en: text, es: text, ja: text }),
+      cover: media.optional(),
+      highlightMedia: media.optional(),
+      bigHighlightMedia: media.optional(),
+      carousel: z.array(media),
+    });
+  },
 });
 
 const projectDetails = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/projects" }),
+  loader: projectDetailsLoader(),
   schema: z.object({}),
 });
 

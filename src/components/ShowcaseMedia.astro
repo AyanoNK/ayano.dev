@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Media = CollectionEntry<"projects">["data"]["carousel"][number];
+
+interface Props {
+  media: Media;
+  alt: string;
+  class?: string;
+  priority?: boolean;
+  /** Show video controls instead of playing on its own. */
+  controls?: boolean;
+}
+
+const {
+  media,
+  alt,
+  class: className,
+  priority = false,
+  controls = false,
+} = Astro.props;
+---
+
+{
+  media.kind === "image" ? (
+    <Image src={media.src} alt={alt} class={className} priority={priority} />
+  ) : controls ? (
+    <video
+      src={media.src}
+      controls
+      preload="metadata"
+      playsinline
+      aria-label={alt}
+      class={className}
+    />
+  ) : (
+    <video
+      src={media.src}
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-label={alt}
+      class={className}
+    />
+  )
+}

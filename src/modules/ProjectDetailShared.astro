@@ -1,9 +1,10 @@
 ---
-import { Image } from "astro:assets";
 import { render, type CollectionEntry } from "astro:content";
 import { getLang, useTranslations } from "@/i18n/utils";
 import Badge from "@/components/Badge.astro";
 import Anchor from "@/components/Anchor.astro";
+import Carousel from "@/components/Carousel.astro";
+import ShowcaseMedia from "@/components/ShowcaseMedia.astro";
 import { Github, SquareArrowOutUpRight } from "@lucide/astro";
 
 interface Props {
@@ -14,17 +15,23 @@ interface Props {
 const { project, details } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
-const title = t(project.data.titleKey);
+const { title } = project.data.text[lang];
 const Content = details ? (await render(details)).Content : undefined;
+const links = [
+  ...(project.data.isPrivate
+    ? []
+    : [{ title: "GitHub", url: project.data.url, icon: "github" }]),
+  ...project.data.links.map((link) => ({ ...link, icon: "external" })),
+];
 ---
 
 <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-8 px-4 py-8">
   <!-- Representative image -->
   {
-    project.data.image && (
+    project.data.cover && (
       <div class="overflow-hidden rounded-base border-2 border-border shadow-shadow">
-        <Image
-          src={project.data.image}
+        <ShowcaseMedia
+          media={project.data.cover}
           alt={title}
           priority
           class="w-full object-cover"
@@ -39,7 +46,6 @@ const Content = details ? (await render(details)).Content : undefined;
       {title}
     </h1>
 
-    <!-- Long description (rendered Markdown) -->
     <!-- Technologies -->
     <div class="flex flex-row flex-wrap gap-2">
       {
@@ -57,40 +63,29 @@ const Content = details ? (await render(details)).Content : undefined;
     )
   }
   <!-- Links -->
-  <div class="flex flex-wrap gap-4">
-    {
-      project.data.additionalLinks.map((link) => (
-        <Anchor
-          variant="neutral"
-          href={link.url}
-          size="lg"
-          target="_blank"
-          aria-label={link.title}>
-          {link.icon === "github" ? <Github /> : <SquareArrowOutUpRight />}
-          {link.title}
-        </Anchor>
-      ))
-    }
-  </div>
-  <!-- Video/Demo (if exists) -->
   {
-    project.data.video && (
+    links.length > 0 && (
+      <div class="flex flex-wrap gap-4">
+        {links.map((link) => (
+          <Anchor
+            variant="neutral"
+            href={link.url}
+            size="lg"
+            target="_blank"
+            aria-label={link.title}>
+            {link.icon === "github" ? <Github /> : <SquareArrowOutUpRight />}
+            {link.title}
+          </Anchor>
+        ))}
+      </div>
+    )
+  }
+  <!-- Gallery -->
+  {
+    project.data.carousel.length > 0 && (
       <div>
-        <h2 class="mb-4 text-xl font-heading">{t("index.projects.demo")}</h2>
-        <div class="flex justify-center">
-          <video
-            width={project.data.video.width}
-            height={project.data.video.height}
-            autoplay
-            muted
-            loop
-            class="rounded-3xl border-2 border-border shadow-shadow">
-            <source
-              src={`/webm/${project.data.video.id}.webm`}
-              type="video/webm"
-            />
-          </video>
-        </div>
+        <h2 class="mb-4 text-xl font-heading">{t("index.projects.gallery")}</h2>
+        <Carousel items={project.data.carousel} alt={title} />
       </div>
     )
   }
@@ -132,6 +127,12 @@ const Content = details ? (await render(details)).Content : undefined;
   .markdown-content :global(li) {
     margin-bottom: 0.35rem;
     line-height: 1.7;
+  }
+  .markdown-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.75rem;
+    border-radius: var(--radius-base);
   }
   .markdown-content :global(strong) {
     font-weight: 700;

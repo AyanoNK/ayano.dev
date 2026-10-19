@@ -26,3 +26,9 @@ pnpm-debug.log*
 
 # Claude
 .claude/skills/**/run-*/*
+
+# codegraph
+.codegraph/
+# showcase files downloaded from GitHub at build time
+.showcase-cache/
+public/showcase/
