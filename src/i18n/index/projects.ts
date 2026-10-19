@@ -30,6 +30,21 @@ export const projects = {
       es: "Demo",
       ja: "デモ",
     },
+    see_all: {
+      en: "See all projects",
+      es: "Ver todos los proyectos",
+      ja: "すべてのプロジェクトを見る",
+    },
+    all_title: {
+      en: "All projects",
+      es: "Todos los proyectos",
+      ja: "すべてのプロジェクト",
+    },
+    all_description: {
+      en: "Everything I have built, newest first.",
+      es: "Todo lo que he construido, del más reciente al más antiguo.",
+      ja: "これまでに作ったもの（新しい順）。",
+    },
     bank: {
       title: {
         en: "Bank SMS Manager (in progress)",

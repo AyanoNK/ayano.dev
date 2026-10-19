@@ -1,0 +1,59 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import type { CollectionEntry } from "astro:content";
+import { getLang, useTranslations } from "@/i18n/utils";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Badge from "@/components/Badge.astro";
+import ShowcaseMedia from "@/components/ShowcaseMedia.astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const { title, description } = project.data.text[lang];
+---
+
+<a href={getRelativeLocaleUrl(lang, `projects/${project.id}`)} class="w-full">
+  <Card
+    className="h-full w-full cursor-pointer bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none">
+    <CardHeader>
+      <div class="flex flex-col gap-4">
+        {
+          project.data.highlightMedia && (
+            <ShowcaseMedia
+              media={project.data.highlightMedia}
+              alt={title}
+              class="rounded-base"
+            />
+          )
+        }
+        <CardTitle>{title}</CardTitle>
+      </div>
+    </CardHeader>
+    <CardContent className="flex h-full flex-col">
+      <CardDescription>{description}</CardDescription>
+    </CardContent>
+    <CardFooter className="flex flex-col items-start gap-8">
+      <div class="flex flex-row flex-wrap gap-2">
+        {
+          project.data.technologies.map((technology: string) => (
+            <Badge>{technology}</Badge>
+          ))
+        }
+      </div>
+      <span class="text-sm font-base text-foreground/60">
+        {t("index.projects.view_details")} &rarr;
+      </span>
+    </CardFooter>
+  </Card>
+</a>
