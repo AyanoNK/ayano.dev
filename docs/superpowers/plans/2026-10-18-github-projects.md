@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- Topics: `portfolio-tracker`, `portfolio-highlight`, `portfolio-big-highlight`. Owner: `AyanoNK`.
+- Topics: `portfolio-highlight`, `portfolio-big-highlight`. Owner: `AyanoNK`. A repo is on the site when the token can see it and it has `docs/showcase/`; no `portfolio-tracker` topic (changed mid-run, see spec).
 - Folder: `docs/showcase/` on the repo's default branch. Files: `project-en.md` (required), `project-es.md`, `project-jp.md` (`jp` maps to locale `ja`; missing file falls back to `en`).
 - Named media: `cover.*`, `portfolio-highlight.*`, `portfolio-big-highlight.*`. Every other picture or video is a carousel item, sorted by file name.
 - Picture extensions: `png`, `jpg`, `jpeg`, `webp`, `gif`, `avif`. Video extensions: `webm`, `mp4`.

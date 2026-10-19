@@ -8,7 +8,7 @@ The goal is that each project describes itself in its own GitHub repo, and the s
 
 ## Goals
 
-- A new page that lists every tracked project. Clicking one opens its details page, as the home page cards do today.
+- A new page that lists every project on the site. Clicking one opens its details page, as the home page cards do today.
 - The list of projects, their text and their media come from Ayano's GitHub repos (github.com/AyanoNK), private ones included.
 - The home page projects section keeps its current look: one big featured card and three small cards. Which repos go there is set by GitHub topics.
 - All three languages (`en`, `es`, `ja`) keep translated titles, descriptions and write-ups.
@@ -28,15 +28,19 @@ The goal is that each project describes itself in its own GitHub repo, and the s
 
 ## What a repo needs
 
+### Which repos show up
+
+The GitHub token decides. Ayano gives the fine-grained token access to only the repos that should show on the site. A repo the token can see shows up if it has a `docs/showcase/` folder on its default branch. A repo without that folder is skipped with a warning in the build log, because a fine-grained token can always read public repos and GitHub may list them too.
+
+There is no `portfolio-tracker` topic.
+
 ### GitHub topics
 
 | Topic | Meaning |
 | --- | --- |
-| `portfolio-tracker` | The repo shows up on the site (the list page and its own details page). |
 | `portfolio-highlight` | The repo also shows as a small card on the home page. |
 | `portfolio-big-highlight` | The repo gets the big featured card on the home page. |
 
-A repo without `portfolio-tracker` is ignored, whatever other topics it has.
 
 ### The `docs/showcase/` folder
 
@@ -54,7 +58,7 @@ docs/showcase/
 ```
 
 - `project-jp.md` is the Japanese file and maps to the site's `ja` locale.
-- If `project-es.md` or `project-jp.md` is missing, that language uses `project-en.md`. `project-en.md` is required. A tracked repo without it fails the build with an error that names the repo.
+- If `project-es.md` or `project-jp.md` is missing, that language uses `project-en.md`. `project-en.md` is required. A repo with a `docs/showcase/` folder but no `project-en.md` fails the build with an error that names the repo.
 - Media files can be pictures or videos. `cover`, `portfolio-highlight` and `portfolio-big-highlight` are matched by name, with any supported extension.
 - A repo only needs the media files for the places it appears: `portfolio-highlight.*` if it has that topic, `portfolio-big-highlight.*` if it has that one. `cover.*` is optional; without it the details page has no big picture, as some projects do today.
 - Every other picture or video in the folder goes in the carousel, sorted by file name.
@@ -88,7 +92,7 @@ The long write-up, in Markdown...
 
 ### Finding the repos
 
-At build time, the site uses a GitHub token to list Ayano's repos (private included) and keeps the ones with the `portfolio-tracker` topic. For each one it reads `docs/showcase/` from the repo's default branch: the three Markdown files and the media.
+At build time, the site uses a GitHub token to list the repos owned by Ayano that it can see (private included). For each one that has `docs/showcase/`, it reads `docs/showcase/` from the repo's default branch: the three Markdown files and the media.
 
 Media from private repos can't be loaded by a visitor's browser, so the build downloads every media file it uses and serves it from the site. Pictures go through `astro:assets` so they are resized as today.
 
@@ -107,11 +111,11 @@ The four current projects move to new addresses, and the old ones redirect:
 
 ### Order
 
-The highlights are found by topic, so the home page may have fewer than four. Empty spots are hidden; the build does not fail (call made while writing this up). If no tracked repo has either highlight topic, the home page projects section shows only the "see all projects" link.
+The highlights are found by topic, so the home page may have fewer than four. Empty spots are hidden; the build does not fail (call made while writing this up). If no repo has either highlight topic, the home page projects section shows only the "see all projects" link.
 
 Everywhere, "newest" means the date the repo was created on GitHub.
 
-- **Projects list page**: every tracked repo, newest first.
+- **Projects list page**: every repo on the site, newest first.
 - **Big featured card**: the newest repo with `portfolio-big-highlight`. If no repo has it, the newest repo with `portfolio-highlight` takes the spot (using its `portfolio-big-highlight.*` file if it has one, otherwise its `portfolio-highlight.*` file).
 - **Small cards**: the three newest repos with `portfolio-highlight`, not counting the one in the big card. Extra `portfolio-big-highlight` repos that lost the big spot are not added as small cards unless they also have `portfolio-highlight`.
 
@@ -125,7 +129,7 @@ Same layout as today in `src/sections/ProjectSection.astro`.
 
 ### Projects list page
 
-A new page at `/<lang>/projects/` in all three languages, listing every tracked project newest first. Each item is a card like the small home page card (title, description, badges, the `portfolio-highlight.*` media if the repo has it) and links to the details page. The home page projects section gets a "see all projects" link to it. The site has no header or nav bar, and this change does not add one.
+A new page at `/<lang>/projects/` in all three languages, listing every project newest first. Each item is a card like the small home page card (title, description, badges, the `portfolio-highlight.*` media if the repo has it) and links to the details page. The home page projects section gets a "see all projects" link to it. The site has no header or nav bar, and this change does not add one.
 
 ### Details page
 
@@ -146,7 +150,7 @@ A GitHub Action in this repo calls a Vercel deploy hook once a week, and has a m
 
 ### GitHub access
 
-A fine-grained GitHub token with read-only access to contents and metadata on all of Ayano's repos. It is read through `astro:env` like `GITHUB`, `LINKEDIN` and `EMAIL`, set in Vercel and in the local `.env`. If GitHub can't be reached or the token is missing, the build fails and Vercel keeps serving the last good version.
+A fine-grained GitHub token with read-only access to contents and metadata on only the repos that should show on the site. It is read through `astro:env` like `GITHUB`, `LINKEDIN` and `EMAIL`, set in Vercel and in the local `.env`. If GitHub can't be reached or the token is missing, the build fails and Vercel keeps serving the last good version.
 
 ## Bootstrap skill
 
@@ -157,7 +161,7 @@ A Claude Code skill, built with `/skill-creator`, that sets up `docs/showcase/` 
   1. Reads the repo (README, `package.json` or similar, the code) to learn what the project is and which tools it uses.
   2. Writes `docs/showcase/project-en.md`, `project-es.md` and `project-jp.md` in the format above: the header with `technologies` and any `links`, the title, the short description and a first draft of the write-up, translated into Spanish and Japanese.
   3. Lists the media files the repo still needs (`cover.*`, `portfolio-highlight.*`, `portfolio-big-highlight.*`, carousel items) and copies in any that the user points to. It does not invent pictures.
-  4. Says which topics to add (`portfolio-tracker`, and the highlight ones if wanted) and the `gh repo edit --add-topic` command for them. It does not change topics or commit without the user saying so.
+  4. Reminds the user to give the site's GitHub token access to the repo, and says which highlight topics to add if wanted, and the `gh repo edit --add-topic` command for them. It does not change topics or commit without the user saying so.
 - **If `docs/showcase/` already exists**, it fills in only what is missing and does not overwrite files.
 - **First test repo**: `/Users/ayano/melodia-stereo-bogota` (private, an Astro site).
 - The skill is also how the four current projects get their `docs/showcase/` folder (next section), with this repo's existing text and media as the source instead of a fresh draft.
@@ -175,7 +179,7 @@ The site PR must not merge until at least the four repos have their `docs/showca
    - `cover.*` and `portfolio-highlight.*` from `src/assets/projects/mini_<id>.webp`.
    - `portfolio-big-highlight.*` from `public/webm/<id>.webm` for the repo that gets the big card.
    - The demo video `public/webm/<id>.webm` as the first carousel item.
-2. Add the `portfolio-tracker` topic to all four, `portfolio-highlight` to the three that are small cards today, and `portfolio-big-highlight` to `bank-sms-manager`.
+2. Give the site's token access to all four repos. Add `portfolio-highlight` to the three that are small cards today, and `portfolio-big-highlight` to `bank-sms-manager`.
 
 The existing `Play Store (soon)` link pointing at `#` moves into the `bank-sms-manager` header as it is.
 
