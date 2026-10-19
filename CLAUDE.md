@@ -50,12 +50,16 @@ Three locales: `en` (default), `es`, `ja`. `prefixDefaultLocale` is `true`, so e
 
 ### Content
 
-Two collections in `src/content.config.ts`:
+Projects come from GitHub at build time. `src/lib/showcase/loader.ts` lists the AyanoNK repos that `GITHUB_FINE_GRAINED_TOKEN` can see and reads each one's `docs/showcase/` folder (`project-en.md`, `project-es.md`, `project-jp.md` and media). Repos without that folder are skipped. The token also lists every public repo, so the folder is what puts a project on the site. The format is in `docs/superpowers/specs/2026-10-18-github-projects-design.md`.
 
-- `projects`: metadata in `src/content/projects.json` (`file()` loader). `order` sets the display order through `getProjects()` in `src/lib/projects.ts`. Exactly one entry must have `isFeatured: true`, or `ProjectSection.astro` throws at build time. Titles and descriptions are translation keys (`titleKey`, `shortDescriptionKey`), not text.
-- `projectDetails`: long-form Markdown in `src/content/projects/{en,es,ja}/<project id>.md`. Its entry ids are `<lang>/<project id>`.
+Two collections in `src/content.config.ts`, both filled by that loader:
 
-The project page loads both in `getStaticPaths` and passes them as props to `src/modules/ProjectDetailShared.astro`.
+- `projects`: one entry per repo, id = repo name. `getProjects()` in `src/lib/projects.ts` returns them newest first (repo creation date).
+- `projectDetails`: the rendered write-up per language. Its entry ids are `<lang>/<repo name>`.
+
+The `portfolio-highlight` and `portfolio-big-highlight` repo topics pick the home page cards (`selectHome()` in `src/lib/showcase/select.ts`). Downloads go to `.showcase-cache/` and videos to `public/showcase/`, both gitignored.
+
+The project page loads both collections in `getStaticPaths` and passes them as props to `src/modules/ProjectDetailShared.astro`.
 
 ### Layouts and components
 
@@ -69,7 +73,7 @@ The project page loads both in `getStaticPaths` and passes them as props to `src
 
 - Tailwind 4 runs through `@tailwindcss/vite`. There is no `tailwind.config.*`. Theme tokens (colors such as `darkpurple`, the `shadow-shadow*` offsets and the `boxShadowX/Y` translate values) are in `@theme` in `tailwind.css`. Light and dark values are CSS variables on `:root` and `.dark`.
 - DM Sans loads through the Astro Fonts API (`fonts` in `astro.config.mjs`) as `--font-dm-sans`.
-- Content images go in `src/assets/` and render with `<Image />`. `public/` holds only files served as-is: favicons, `robots.txt` and the `webm` demo videos.
+- Content images go in `src/assets/` and render with `<Image />`. `public/` holds only files served as-is: favicons and `robots.txt` (plus the generated `public/showcase/`).
 - Use `cn()` from `src/lib/utils.ts` (clsx + tailwind-merge) with CVA for variant classes.
 - Rendered Markdown is styled with `:global()` rules under `.markdown-content` in `ProjectDetailShared.astro`.
 - Prettier uses `prettier-plugin-astro` and `prettier-plugin-tailwindcss` (`tailwindStylesheet: ./tailwind.css`), with `bracketSameLine: true`.
