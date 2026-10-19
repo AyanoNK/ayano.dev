@@ -1,6 +1,6 @@
 # Ayano.dev
 
-Check out the live website at [https://www.ayano.software/](https://www.ayano.software/).
+Check out the live website at [https://www.ayano.dev/](https://www.ayano.dev/).
 
 ## Tech Stack
 
