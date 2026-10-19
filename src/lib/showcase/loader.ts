@@ -8,12 +8,7 @@ import {
   listShowcaseRepos,
   type ShowcaseRepo,
 } from "./github";
-import {
-  mediaKind,
-  mediaLabel,
-  sortMedia,
-  type ShowcaseMedia,
-} from "./media";
+import { mediaKind, mediaLabel, sortMedia, type ShowcaseMedia } from "./media";
 import {
   findBadPaths,
   parseHeader,
@@ -152,7 +147,7 @@ function toMedia(repo: string, fileName: string | undefined) {
 export function projectsLoader(): Loader {
   return {
     name: "showcase-projects",
-    load: async ({ store, parseData, logger }) => {
+    load: async ({ store, parseData, generateDigest, logger }) => {
       const loaded = await loadAll(logger);
       store.clear();
       for (const { repo, dir, locales, header, media } of loaded) {
@@ -163,25 +158,27 @@ export function projectsLoader(): Loader {
           }),
         );
         const filePath = join(dir, "project-en.md");
-        const data = await parseData({
+        const raw = {
+          createdAt: repo.createdAt,
+          isPrivate: repo.isPrivate,
+          url: repo.url,
+          highlight: repo.highlight,
+          bigHighlight: repo.bigHighlight,
+          technologies: header.technologies,
+          links: header.links,
+          text,
+          cover: toMedia(repo.name, media.cover),
+          highlightMedia: toMedia(repo.name, media.highlight),
+          bigHighlightMedia: toMedia(repo.name, media.bigHighlight),
+          carousel: media.carousel.map((name) => toMedia(repo.name, name)),
+        };
+        const data = await parseData({ id: repo.name, filePath, data: raw });
+        store.set({
           id: repo.name,
+          data,
           filePath,
-          data: {
-            createdAt: repo.createdAt,
-            isPrivate: repo.isPrivate,
-            url: repo.url,
-            highlight: repo.highlight,
-            bigHighlight: repo.bigHighlight,
-            technologies: header.technologies,
-            links: header.links,
-            text,
-            cover: toMedia(repo.name, media.cover),
-            highlightMedia: toMedia(repo.name, media.highlight),
-            bigHighlightMedia: toMedia(repo.name, media.bigHighlight),
-            carousel: media.carousel.map((name) => toMedia(repo.name, name)),
-          },
+          digest: generateDigest(raw),
         });
-        store.set({ id: repo.name, data, filePath });
       }
     },
   };
@@ -190,18 +187,27 @@ export function projectsLoader(): Loader {
 export function projectDetailsLoader(): Loader {
   return {
     name: "showcase-project-details",
-    load: async ({ store, logger, renderMarkdown }) => {
+    load: async ({
+      store,
+      parseData,
+      generateDigest,
+      logger,
+      renderMarkdown,
+    }) => {
       const loaded = await loadAll(logger);
       store.clear();
       for (const { repo, locales } of loaded) {
         for (const lang of LANGS) {
           const { filePath, text } = locales[lang];
+          const id = `${lang}/${repo.name}`;
+          const data = await parseData({ id, filePath, data: {} });
           const rendered = await renderMarkdown(text.body, {
             fileURL: pathToFileURL(resolve(filePath)),
           });
           store.set({
-            id: `${lang}/${repo.name}`,
-            data: {},
+            id,
+            data,
+            digest: generateDigest(text.body),
             body: text.body,
             filePath,
             rendered,
