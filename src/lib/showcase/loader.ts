@@ -49,7 +49,7 @@ async function loadRepo(
   const dir = join(CACHE_DIR, repo.name);
   const fileNames = await downloadShowcase(token, repo, dir);
   if (!fileNames) {
-    logger.warn(`${repo.name}: no docs/showcase folder, skipped`);
+    logger.debug(`${repo.name}: no docs/showcase folder, skipped`);
     return undefined;
   }
 

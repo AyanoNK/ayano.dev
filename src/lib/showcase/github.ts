@@ -98,7 +98,8 @@ export async function downloadShowcase(
     try {
       response = await get(token, contentsUrl(repo, path), fetchFn);
     } catch (error) {
-      if (path === SHOWCASE_DIR && String(error).includes("GitHub 404")) {
+      // 451: GitHub blocks the repo (for example after a DMCA notice).
+      if (path === SHOWCASE_DIR && /GitHub (404|451) /.test(String(error))) {
         return false;
       }
       throw error;

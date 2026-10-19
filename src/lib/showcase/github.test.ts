@@ -52,6 +52,14 @@ test("missing showcase folder gives undefined", async () => {
   );
 });
 
+test("blocked repo counts as no showcase folder", async () => {
+  const [tracked] = await listShowcaseRepos("t", fakeFetch([[repo("a", [])]]));
+  const blocked = async () => new Response("", { status: 451 });
+  expect(await downloadShowcase("t", tracked, "unused", blocked)).toBe(
+    undefined,
+  );
+});
+
 test("follows pagination", async () => {
   const fetchFn = fakeFetch([[repo("a", [])], [repo("b", [])]]);
   expect((await listShowcaseRepos("t", fetchFn)).map((x) => x.name)).toEqual([
