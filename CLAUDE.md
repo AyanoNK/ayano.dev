@@ -11,6 +11,9 @@ Every change goes through a pull request against `main`. Never push to `main` di
 3. Run `/astro-dev:astro-review` on the branch. Fix every FAIL that the change introduced before opening the PR.
 4. Open the PR, then run `/astro-dev:astro-code-review` on it. Fix any findings in the same PR.
 5. In the PR description, report the results of the commands and both reviews.
+6. Once the PR is merged, clean up. First confirm `gh pr view <number> --json state,baseRefName` shows `MERGED` into `main`. Then switch to `main`, pull, and delete the PR's local branch, its branch on GitHub, and any worktree made for it.
+   - Before removing a worktree, check it for uncommitted changes and for commits not on `main`. Save anything that would be lost, or ask first.
+   - Do not touch a worktree locked by another session that is still running.
 
 ## Commands
 
