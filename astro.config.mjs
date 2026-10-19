@@ -42,6 +42,10 @@ export default defineConfig({
         url: true,
       }),
       EMAIL: envField.string({ context: "server", access: "public" }),
+      GITHUB_FINE_GRAINED_TOKEN: envField.string({
+        context: "server",
+        access: "secret",
+      }),
     },
   },
   fonts: [

@@ -29,7 +29,8 @@ pnpm test       # Vitest
 Vitest covers `src/lib/showcase/`. There is no linter.
 
 - `astro check` needs TypeScript 6. TypeScript 7 does not ship the API it uses, so keep `typescript` on `^6`.
-- The build reads `GITHUB`, `LINKEDIN` and `EMAIL` through `astro:env` (declared in `astro.config.mjs`). It fails if they are missing from `.env` or the Vercel project.
+- The build reads `GITHUB`, `LINKEDIN`, `EMAIL` and `GITHUB_FINE_GRAINED_TOKEN` through `astro:env` (declared in `astro.config.mjs`). It fails if they are missing from `.env` or the Vercel project.
+- `pnpm check` and `pnpm build` fetch the projects from GitHub with that token, so they need network access.
 - `sharp` must stay installed. Without it `astro:assets` does not resize images.
 
 ## Architecture
