@@ -15,18 +15,22 @@ import {
   parseText,
   pickLocaleFile,
   type ProjectHeader,
+  type ProjectText,
 } from "./parse";
 
 const CACHE_DIR = ".showcase-cache";
 const PUBLIC_DIR = "public/showcase";
 const LANGS = ["en", "es", "ja"] as const;
 
-type LocaleFiles = Record<"en" | "es" | "jp", string | undefined>;
+type Lang = (typeof LANGS)[number];
+type FileKey = "en" | "es" | "jp";
+type LocaleFiles = Record<FileKey, string | undefined>;
+type LocaleText = { filePath: string; text: ProjectText };
 
 type LoadedRepo = {
   repo: ShowcaseRepo;
   dir: string;
-  files: LocaleFiles;
+  locales: Record<Lang, LocaleText>;
   header: ProjectHeader;
   media: ShowcaseMedia;
 };
@@ -38,6 +42,17 @@ async function readOptional(path: string): Promise<string | undefined> {
     return await readFile(path, "utf-8");
   } catch {
     return undefined;
+  }
+}
+
+// Names the repo and file in parse errors, so a broken file is easy to find.
+function inFile<T>(repo: string, file: string, parse: () => T): T {
+  try {
+    return parse();
+  } catch (error) {
+    throw new Error(
+      `${repo}/docs/showcase/${file}: ${(error as Error).message}`,
+    );
   }
 }
 
@@ -82,11 +97,24 @@ async function loadRepo(
     await copyFile(join(dir, name), target);
   }
 
+  const en = files.en;
+  const locales = Object.fromEntries(
+    LANGS.map((lang) => {
+      const wanted: FileKey = lang === "ja" ? "jp" : lang;
+      const key: FileKey = files[wanted] === undefined ? "en" : wanted;
+      const file = `project-${key}.md`;
+      const text = inFile(repo.name, file, () =>
+        parseText(pickLocaleFile(files, lang)),
+      );
+      return [lang, { filePath: join(dir, file), text }];
+    }),
+  ) as Record<Lang, LocaleText>;
+
   return {
     repo,
     dir,
-    files,
-    header: parseHeader(files.en),
+    locales,
+    header: inFile(repo.name, "project-en.md", () => parseHeader(en)),
     media,
   };
 }
@@ -121,12 +149,10 @@ export function projectsLoader(): Loader {
     load: async ({ store, parseData, logger }) => {
       const loaded = await loadAll(logger);
       store.clear();
-      for (const { repo, dir, files, header, media } of loaded) {
+      for (const { repo, dir, locales, header, media } of loaded) {
         const text = Object.fromEntries(
           LANGS.map((lang) => {
-            const { title, description } = parseText(
-              pickLocaleFile(files, lang),
-            );
+            const { title, description } = locales[lang].text;
             return [lang, { title, description }];
           }),
         );
@@ -161,20 +187,16 @@ export function projectDetailsLoader(): Loader {
     load: async ({ store, logger, renderMarkdown }) => {
       const loaded = await loadAll(logger);
       store.clear();
-      for (const { repo, dir, files } of loaded) {
+      for (const { repo, locales } of loaded) {
         for (const lang of LANGS) {
-          const fileName = files[lang === "ja" ? "jp" : lang]
-            ? `project-${lang === "ja" ? "jp" : lang}.md`
-            : "project-en.md";
-          const filePath = join(dir, fileName);
-          const { body } = parseText(pickLocaleFile(files, lang));
-          const rendered = await renderMarkdown(body, {
+          const { filePath, text } = locales[lang];
+          const rendered = await renderMarkdown(text.body, {
             fileURL: pathToFileURL(resolve(filePath)),
           });
           store.set({
             id: `${lang}/${repo.name}`,
             data: {},
-            body,
+            body: text.body,
             filePath,
             rendered,
             // Without this, Astro does not process the write-up's pictures.
