@@ -168,14 +168,17 @@ export function projectDetailsLoader(): Loader {
             : "project-en.md";
           const filePath = join(dir, fileName);
           const { body } = parseText(pickLocaleFile(files, lang));
+          const rendered = await renderMarkdown(body, {
+            fileURL: pathToFileURL(resolve(filePath)),
+          });
           store.set({
             id: `${lang}/${repo.name}`,
             data: {},
             body,
             filePath,
-            rendered: await renderMarkdown(body, {
-              fileURL: pathToFileURL(resolve(filePath)),
-            }),
+            rendered,
+            // Without this, Astro does not process the write-up's pictures.
+            assetImports: rendered.metadata?.imagePaths,
           });
         }
       }
