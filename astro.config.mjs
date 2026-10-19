@@ -7,10 +7,8 @@ import tailwindcss from "@tailwindcss/vite";
 const site = "https://www.ayano.dev";
 const defaultLocale = "en";
 const locales = ["en", "es", "ja"];
-const oldProjectSlugs = {
-  bank: "bank-sms-manager",
-  atlapetes: "atlapetes-blancae",
-};
+// Projects that are no longer on the site.
+const removedProjectSlugs = ["bank", "atlapetes"];
 
 // https://astro.build/config
 export default defineConfig({
@@ -32,12 +30,12 @@ export default defineConfig({
     "/cv":
       "https://mega.nz/file/GYU2RSjS#b0Aame20v7CdS0yVtuhSTOwqUhUTzJf-86ATJoB_DGc",
     "/mega": "https://mega.nz/folder/KU1QzQ7A#XuPIABxK0MZ7tQY7cxgbHg",
-    // Old project addresses, from before projects came from GitHub.
+    // Removed projects send shared links to the projects list.
     ...Object.fromEntries(
       locales.flatMap((locale) =>
-        Object.entries(oldProjectSlugs).map(([oldSlug, repo]) => [
-          `/${locale}/projects/${oldSlug}`,
-          `/${locale}/projects/${repo}`,
+        removedProjectSlugs.map((slug) => [
+          `/${locale}/projects/${slug}`,
+          `/${locale}/projects`,
         ]),
       ),
     ),

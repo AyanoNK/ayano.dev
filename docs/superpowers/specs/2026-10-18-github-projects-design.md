@@ -100,14 +100,14 @@ Media from private repos can't be loaded by a visitor's browser, so the build do
 
 A project's address is its repo name: `/<lang>/projects/<repo name>/`.
 
-The four current projects move to new addresses, and the old ones redirect:
+`bank-sms-manager` and `atlapetes-blancae` are no longer on the site, so their old addresses send visitors to the projects list. `kimon` and `poshaus` keep their addresses.
 
 | Old | New |
 | --- | --- |
-| `/<lang>/projects/bank/` | `/<lang>/projects/bank-sms-manager/` |
-| `/<lang>/projects/kimon/` | `/<lang>/projects/kimon/` (unchanged: the repo is now named `kimon`) |
-| `/<lang>/projects/atlapetes/` | `/<lang>/projects/atlapetes-blancae/` |
-| `/<lang>/projects/poshaus/` | `/<lang>/projects/poshaus/` (unchanged) |
+| `/<lang>/projects/bank/` | `/<lang>/projects/` |
+| `/<lang>/projects/atlapetes/` | `/<lang>/projects/` |
+| `/<lang>/projects/kimon/` | unchanged |
+| `/<lang>/projects/poshaus/` | unchanged |
 
 ### Order
 
