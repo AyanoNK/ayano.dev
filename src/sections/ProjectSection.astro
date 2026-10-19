@@ -26,13 +26,12 @@ const featuredMedia =
     {t("index.projects.title")}
   </h2>
 
-  <div
-    class="grid grid-cols-1 justify-center gap-8 md:grid-cols-2 lg:grid-cols-3">
+  <div class="grid grid-cols-1 justify-center gap-8 md:grid-cols-2">
     {
       featured && featuredText && (
         <a
           href={getRelativeLocaleUrl(lang, `projects/${featured.id}`)}
-          class="col-span-1 md:col-span-2 lg:col-span-3">
+          class="col-span-1 md:col-span-2">
           <Card className="w-full cursor-pointer bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none">
             <CardHeader>
               <CardTitle>{featuredText.title}</CardTitle>
