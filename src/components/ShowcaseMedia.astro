@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Media = CollectionEntry<"projects">["data"]["carousel"][number];
+
+interface Props {
+  media: Media;
+  alt: string;
+  class?: string;
+  priority?: boolean;
+}
+
+const { media, alt, class: className, priority = false } = Astro.props;
+---
+
+{
+  media.kind === "image" ? (
+    <Image src={media.src} alt={alt} class={className} priority={priority} />
+  ) : (
+    <video
+      src={media.src}
+      autoplay
+      muted
+      loop
+      playsinline
+      aria-label={alt}
+      class={className}
+    />
+  )
+}
