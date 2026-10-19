@@ -9,31 +9,14 @@ interface Props {
   alt: string;
   class?: string;
   priority?: boolean;
-  /** Show video controls instead of playing on its own. */
-  controls?: boolean;
 }
 
-const {
-  media,
-  alt,
-  class: className,
-  priority = false,
-  controls = false,
-} = Astro.props;
+const { media, alt, class: className, priority = false } = Astro.props;
 ---
 
 {
   media.kind === "image" ? (
     <Image src={media.src} alt={alt} class={className} priority={priority} />
-  ) : controls ? (
-    <video
-      src={media.src}
-      controls
-      preload="metadata"
-      playsinline
-      aria-label={alt}
-      class={className}
-    />
   ) : (
     <video
       src={media.src}
