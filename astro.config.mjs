@@ -4,19 +4,23 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 
+const site = "https://www.ayano.dev";
+const defaultLocale = "en";
+const locales = ["en", "es", "ja"];
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.ayano.dev",
+  site,
   build: {
     inlineStylesheets: "always",
   },
   integrations: [
     react(),
     sitemap({
-      filter: (page) => page !== "https://www.ayano.dev/",
+      filter: (page) => page !== `${site}/`,
       i18n: {
-        defaultLocale: "en",
-        locales: { en: "en", es: "es", ja: "ja" },
+        defaultLocale,
+        locales: Object.fromEntries(locales.map((locale) => [locale, locale])),
       },
     }),
   ],
@@ -54,8 +58,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   i18n: {
-    defaultLocale: "en",
-    locales: ["en", "es", "ja"],
+    defaultLocale,
+    locales,
     routing: {
       prefixDefaultLocale: true,
       redirectToDefaultLocale: false,
