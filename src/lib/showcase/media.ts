@@ -37,3 +37,12 @@ export function sortMedia(fileNames: string[]): ShowcaseMedia {
   media.carousel.sort((a, b) => a.localeCompare(b, "en", { numeric: true }));
   return media;
 }
+
+/** Turns "01-login-screen.png" into "login screen", for alt text. */
+export function mediaLabel(fileName: string): string | undefined {
+  const label = splitName(fileName)
+    .base.replace(/^[\d\s_-]+/, "")
+    .replace(/[_-]+/g, " ")
+    .trim();
+  return label || undefined;
+}

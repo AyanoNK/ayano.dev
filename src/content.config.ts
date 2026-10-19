@@ -8,8 +8,16 @@ const projects = defineCollection({
   loader: projectsLoader(),
   schema: ({ image }) => {
     const media = z.discriminatedUnion("kind", [
-      z.object({ kind: z.literal("image"), src: image() }),
-      z.object({ kind: z.literal("video"), src: z.string() }),
+      z.object({
+        kind: z.literal("image"),
+        src: image(),
+        label: z.string().optional(),
+      }),
+      z.object({
+        kind: z.literal("video"),
+        src: z.string(),
+        label: z.string().optional(),
+      }),
     ]);
     return z.object({
       createdAt: z.date(),

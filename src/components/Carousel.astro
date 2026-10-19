@@ -19,7 +19,11 @@ const { items, alt } = Astro.props;
         <div class="shrink-0 snap-center overflow-hidden rounded-base border-2 border-border shadow-shadow">
           <ShowcaseMedia
             media={media}
-            alt={`${alt} ${index + 1}`}
+            alt={
+              media.label
+                ? `${alt}: ${media.label}`
+                : `${alt}, ${index + 1} / ${items.length}`
+            }
             controls
             class="h-80 w-auto object-contain sm:h-96"
           />

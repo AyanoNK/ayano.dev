@@ -8,7 +8,12 @@ import {
   listShowcaseRepos,
   type ShowcaseRepo,
 } from "./github";
-import { mediaKind, sortMedia, type ShowcaseMedia } from "./media";
+import {
+  mediaKind,
+  mediaLabel,
+  sortMedia,
+  type ShowcaseMedia,
+} from "./media";
 import {
   findBadPaths,
   parseHeader,
@@ -138,9 +143,10 @@ function loadAll(logger: LoaderContext["logger"]): Promise<LoadedRepo[]> {
 
 function toMedia(repo: string, fileName: string | undefined) {
   if (!fileName) return undefined;
+  const label = mediaLabel(fileName);
   return mediaKind(fileName) === "video"
-    ? { kind: "video", src: `/showcase/${repo}/${fileName}` }
-    : { kind: "image", src: `./${fileName}` };
+    ? { kind: "video", src: `/showcase/${repo}/${fileName}`, label }
+    : { kind: "image", src: `./${fileName}`, label };
 }
 
 export function projectsLoader(): Loader {
