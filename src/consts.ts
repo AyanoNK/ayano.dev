@@ -1,5 +1,6 @@
 import { EMAIL, GITHUB, LINKEDIN } from "astro:env/server";
-import { MailIcon, GithubIcon, LinkedinIcon } from "@lucide/astro";
+import { MailIcon } from "@lucide/astro";
+import { GithubIcon, LinkedinIcon } from "@/lib/brandIcons";
 
 export const CONTACT_LINKS = [
   {
