@@ -8,8 +8,7 @@ const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 ---
 
-<div
-  class="flex flex-col items-center justify-center gap-16 py-8 md:py-16 lg:py-24">
+<div class="flex flex-col items-center justify-center gap-16 py-8 md:py-16 lg:py-24">
   <div class="fixed top-4 right-4">
     <LanguageSelector />
   </div>
@@ -22,17 +21,15 @@ const t = useTranslations(lang);
     </h2>
   </div>
   <div class="flex flex-row flex-wrap gap-10">
-    {
-      CONTACT_LINKS.map((link) => (
-        <Anchor
-          variant="neutral"
-          href={link.href}
-          size="lg"
-          aria-label={link.label}
-          target={link.external ? "_blank" : undefined}>
-          <link.Icon />
-        </Anchor>
-      ))
-    }
+    {CONTACT_LINKS.map((link) => (
+      <Anchor
+        variant="neutral"
+        href={link.href}
+        size="lg"
+        aria-label={link.label}
+        target={link.external ? "_blank" : undefined}>
+        <link.Icon />
+      </Anchor>
+    ))}
   </div>
 </div>

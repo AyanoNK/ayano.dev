@@ -14,18 +14,16 @@ interface Props {
 const { media, alt, class: className, priority = false } = Astro.props;
 ---
 
-{
-  media.kind === "image" ? (
-    <Image src={media.src} alt={alt} class={className} priority={priority} />
-  ) : (
-    <video
-      src={media.src}
-      autoplay
-      muted
-      loop
-      playsinline
-      aria-label={alt}
-      class={className}
-    />
-  )
-}
+{media.kind === "image" ? (
+  <Image src={media.src} alt={alt} class={className} priority={priority} />
+) : (
+  <video
+    src={media.src}
+    autoplay
+    muted
+    loop
+    playsinline
+    aria-label={alt}
+    class={className}
+  />
+)}

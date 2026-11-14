@@ -13,10 +13,8 @@ const { startDate, endDate, companyName, companyURL, titles, technologies } =
   Astro.props;
 ---
 
-<div
-  class="overflow-hidden rounded-xl border-2 border-b border-border shadow-shadow">
-  <div
-    class="flex items-center justify-between border-b-2 border-border bg-main p-4 text-left text-base text-main-foreground">
+<div class="overflow-hidden rounded-xl border-2 border-b border-border shadow-shadow">
+  <div class="flex items-center justify-between border-b-2 border-border bg-main p-4 text-left text-base text-main-foreground">
     <a
       class="flex cursor-pointer flex-row items-start justify-center gap-1 font-heading"
       href={companyURL}
@@ -24,38 +22,40 @@ const { startDate, endDate, companyName, companyURL, titles, technologies } =
       {companyName}
       <ExternalLink size="1rem" />
     </a>
-    <span class="text-sm font-semibold">{startDate} - {endDate}</span>
+    <span class="text-sm font-semibold">
+      {startDate} - {endDate}
+    </span>
   </div>
   <div class="flex flex-col gap-6 bg-secondary-background p-4">
-    {
-      titles.map((title, index) => (
-        <div class="flex flex-col gap-6">
-          {index !== 0 && <MoveUp />}
-          <div class="flex flex-col gap-4 rounded-b-base font-base">
-            <div class="flex flex-col gap-2">
-              <div class="text-md font-bold">{title.title}</div>
-              <div class="text-sm">{title.description}</div>
+    {titles.map((title, index) => (
+      <div class="flex flex-col gap-6">
+        {index !== 0 && <MoveUp />}
+        <div class="flex flex-col gap-4 rounded-b-base font-base">
+          <div class="flex flex-col gap-2">
+            <div class="text-md font-bold">{title.title}</div>
+            <div class="text-sm">{title.description}</div>
+          </div>
+          <div class="flex flex-col gap-2">
+            <div class="text-md font-semibold">
+              {t("index.experience.milestones")}
             </div>
-            <div class="flex flex-col gap-2">
-              <div class="text-md font-semibold">
-                {t("index.experience.milestones")}
-              </div>
-              <div class="flex flex-col gap-1">
-                {title.milestones.map((milestone) => (
-                  <div class="flex flex-row items-center gap-1">
-                    <CornerDownRightIcon class="mb-1 size-4 shrink-0" />
-                    <span class="text-sm">{milestone}</span>
-                  </div>
-                ))}
-              </div>
+            <div class="flex flex-col gap-1">
+              {title.milestones.map((milestone) => (
+                <div class="flex flex-row items-center gap-1">
+                  <CornerDownRightIcon class="mb-1 size-4 shrink-0" />
+                  <span class="text-sm">{milestone}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      ))
-    }
+      </div>
+    ))}
 
     <div class="flex flex-row flex-wrap gap-2">
-      {technologies.map((technology) => <Badge>{technology}</Badge>)}
+      {technologies.map((technology) => (
+        <Badge>{technology}</Badge>
+      ))}
     </div>
   </div>
 </div>

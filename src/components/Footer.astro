@@ -3,26 +3,22 @@ import Anchor from "@/components/Anchor.astro";
 import { CONTACT_LINKS } from "@/consts";
 ---
 
-<footer
-  class="mt-16 flex w-full items-center justify-center border-t border-border bg-background py-8 sm:mt-24 md:mt-32">
-  <div
-    class="container flex flex-col items-center justify-between gap-4 px-4 md:flex-row">
+<footer class="mt-16 flex w-full items-center justify-center border-t border-border bg-background py-8 sm:mt-24 md:mt-32">
+  <div class="container flex flex-col items-center justify-between gap-4 px-4 md:flex-row">
     <div class="text-sm text-foreground/80">
       &copy; {new Date().getFullYear()} Sebastian Correa. All rights reserved.
     </div>
     <div class="flex flex-row flex-wrap gap-4">
-      {
-        CONTACT_LINKS.map((link) => (
-          <Anchor
-            variant="neutral"
-            href={link.href}
-            size="icon"
-            aria-label={link.label}
-            target={link.external ? "_blank" : undefined}>
-            <link.Icon class="size-5" />
-          </Anchor>
-        ))
-      }
+      {CONTACT_LINKS.map((link) => (
+        <Anchor
+          variant="neutral"
+          href={link.href}
+          size="icon"
+          aria-label={link.label}
+          target={link.external ? "_blank" : undefined}>
+          <link.Icon class="size-5" />
+        </Anchor>
+      ))}
     </div>
   </div>
 </footer>
