@@ -1,6 +1,6 @@
 role: full-stack-engineer
 order: 2
-home: false
+home: [summary]
 technologies:
   - AWS
   - Kubernetes

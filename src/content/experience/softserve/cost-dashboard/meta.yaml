@@ -1,6 +1,6 @@
 role: ai-engineer
 order: 6
-home: false
+home: []
 technologies:
   - AWS S3
   - Databricks

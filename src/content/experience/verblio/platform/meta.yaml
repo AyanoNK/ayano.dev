@@ -1,6 +1,6 @@
 role: senior-software-engineer
 order: 1
-home: true
+home: [1, 2]
 technologies:
   - Ruby on Rails
   - Angular

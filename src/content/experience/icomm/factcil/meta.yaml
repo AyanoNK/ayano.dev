@@ -1,6 +1,6 @@
 role: full-stack-engineer
 order: 1
-home: true
+home: [1, 2]
 technologies:
   - Django
   - React

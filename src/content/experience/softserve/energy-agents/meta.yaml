@@ -1,6 +1,6 @@
 role: ai-engineer
 order: 1
-home: true
+home: [4]
 technologies:
   - Google ADK
   - ServiceNow

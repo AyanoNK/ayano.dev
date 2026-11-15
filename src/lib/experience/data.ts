@@ -3,7 +3,7 @@ import type { Lang } from "@/i18n/ui";
 import { useTranslations } from "@/i18n/utils";
 import { checkExperiences } from "./check";
 import { formatRange } from "./dates";
-import { experienceDates, groupByCompany } from "./group";
+import { experienceDates, groupByCompany, homeLines } from "./group";
 
 export type CompanyData = CollectionEntry<"companies">["data"];
 export type ExperienceMeta = CollectionEntry<"experiences">["data"];
@@ -19,6 +19,8 @@ export interface ExperienceItem {
   role: RoleData;
   detail: CollectionEntry<"experienceDetails">;
   dates: string;
+  /** The lines this section puts on the home card, in this language. */
+  homeLines: string[];
 }
 
 export interface CompanyGroup {
@@ -65,13 +67,19 @@ export async function getExperienceData(
       experiences: experiences.map((item) => {
         const { id } = item;
         const { start, end } = experienceDates(item, company);
+        const detail = details.find((d) => d.id === `${id}/${lang}`)!;
         return {
           id,
           section: id.split("/")[1],
           meta: experiencesById.get(id)!.data,
           role: company.roles.find((r) => r.id === item.role)!,
-          detail: details.find((d) => d.id === `${id}/${lang}`)!,
+          detail,
           dates: formatRange(start, end, lang, present),
+          homeLines: homeLines(
+            item.home,
+            detail.data.summary,
+            detail.data.highlights,
+          ),
         };
       }),
     }),

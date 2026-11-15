@@ -1,5 +1,10 @@
 import { expect, test } from "vitest";
-import { companyDates, experienceDates, groupByCompany } from "./group";
+import {
+  companyDates,
+  experienceDates,
+  groupByCompany,
+  homeLines,
+} from "./group";
 
 const company = {
   id: "a",
@@ -11,7 +16,7 @@ const exp = {
   company: "a",
   role: "ai",
   order: 1,
-  home: false,
+  home: [],
 };
 
 test("companies and experiences come out in order", () => {
@@ -88,4 +93,14 @@ test("experience with a start but no end uses its role's end", () => {
     start: "2024-01",
     end: "2025-05",
   });
+});
+
+test("home lines pick highlights by position and the summary by name", () => {
+  expect(
+    homeLines([2, "summary"], "The summary.", ["First.", "Second."]),
+  ).toEqual(["Second.", "The summary."]);
+});
+
+test("no home picks gives no lines", () => {
+  expect(homeLines([], "The summary.", ["First."])).toEqual([]);
 });

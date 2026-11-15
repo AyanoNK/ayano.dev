@@ -1,6 +1,9 @@
 import { locales } from "@/i18n/ui";
+import type { HomePick } from "./group";
 
 /** Markdown image whose path is not a full http(s) URL. */
+const MIN_HOME_LINES = 3;
+
 const LOCAL_IMAGE = /!\[[^\]]*\]\((?!https?:\/\/)/;
 
 export interface CompanyRef {
@@ -12,6 +15,7 @@ export interface ExperienceRef {
   id: string;
   company: string;
   role: string;
+  home: HomePick[];
 }
 
 /** `id` is "<company>/<section>/<lang>". */
@@ -74,9 +78,29 @@ export function checkExperiences(
     }
   }
 
+  for (const experience of experiences) {
+    const count = detailsById.get(`${experience.id}/en`)?.highlights.length;
+    if (count === undefined) continue;
+    for (const pick of experience.home) {
+      if (pick !== "summary" && pick > count) {
+        problems.push(
+          `${experience.id}: home picks highlight ${pick}, but there are ${count}`,
+        );
+      }
+    }
+  }
+
   for (const company of companies) {
-    if (!experiences.some((e) => e.company === company.id)) {
+    const sections = experiences.filter((e) => e.company === company.id);
+    if (sections.length === 0) {
       problems.push(`${company.id}: has no sections`);
+      continue;
+    }
+    const lines = sections.reduce((sum, e) => sum + e.home.length, 0);
+    if (lines < MIN_HOME_LINES) {
+      problems.push(
+        `${company.id}: home card has ${lines} ${lines === 1 ? "line" : "lines"}, needs at least ${MIN_HOME_LINES}`,
+      );
     }
   }
 

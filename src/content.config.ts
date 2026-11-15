@@ -84,7 +84,10 @@ const experiences = defineCollection({
     order: z.number(),
     start: month.optional(),
     end: month.optional(),
-    home: z.boolean().default(false),
+    /** Highlight positions (1-based) or "summary" to show on the home card. */
+    home: z
+      .array(z.union([z.literal("summary"), z.number().int().min(1)]))
+      .default([]),
     technologies: z.array(z.string()),
     links: z.array(z.object({ title: localeText, url: z.url() })).default([]),
   }),

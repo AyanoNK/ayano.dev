@@ -1,5 +1,5 @@
 role: senior-software-engineer
 order: 9
-home: false
+home: []
 technologies:
   - Kubernetes

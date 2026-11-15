@@ -1,6 +1,6 @@
 role: senior-software-engineer
 order: 7
-home: true
+home: [1]
 technologies:
   - LangGraph
   - LangChain

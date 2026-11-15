@@ -14,7 +14,9 @@ const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 const { start, end } = companyDates(company);
 const dates = formatRange(start, end, lang, t("index.experience.present"));
-const highlighted = experiences.filter((e) => e.meta.home);
+const lines = experiences.flatMap((e) =>
+  e.homeLines.map((text) => ({ text, section: e.section })),
+);
 const companyUrl = getRelativeLocaleUrl(lang, `experience/${company.id}`);
 ---
 
@@ -39,20 +41,20 @@ const companyUrl = getRelativeLocaleUrl(lang, `experience/${company.id}`);
       )}
       <div class="text-sm">{company.summary[lang]}</div>
     </div>
-    {highlighted.length > 0 && (
+    {lines.length > 0 && (
       <div class="flex flex-col gap-2">
         <div class="text-md font-semibold">
           {t("index.experience.highlights")}
         </div>
         <ul class="flex flex-col gap-2">
-          {highlighted.map((experience) => (
+          {lines.map((line) => (
             <li class="flex flex-row items-start gap-1">
               <CornerDownRightIcon class="mt-0.5 size-4 shrink-0" />
               <span class="text-sm">
-                {experience.detail.data.summary}{" "}
+                {line.text}{" "}
                 <a
                   class="font-semibold whitespace-nowrap underline hover:no-underline"
-                  href={`${companyUrl}#${experience.section}`}>
+                  href={`${companyUrl}#${line.section}`}>
                   {t("index.experience.view_details")} &rarr;
                 </a>
               </span>

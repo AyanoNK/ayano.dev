@@ -2,7 +2,14 @@ import { expect, test } from "vitest";
 import { checkExperiences, type DetailRef } from "./check";
 
 const companies = [{ id: "acme", roles: [{ id: "dev" }] }];
-const experiences = [{ id: "acme/x", company: "acme", role: "dev" }];
+const experiences = [
+  {
+    id: "acme/x",
+    company: "acme",
+    role: "dev",
+    home: [1, 2, "summary" as const],
+  },
+];
 const details: DetailRef[] = ["en", "es", "ja"].map((lang) => ({
   id: `acme/x/${lang}`,
   highlights: ["one", "two"],
@@ -33,7 +40,7 @@ test("highlight counts differ", () => {
 test("unknown company", () => {
   const out = checkExperiences(
     companies,
-    [{ id: "acme/x", company: "acmee", role: "dev" }],
+    [{ ...experiences[0], company: "acmee" }],
     details,
   );
   expect(out).toEqual([
@@ -45,7 +52,7 @@ test("unknown company", () => {
 test("unknown role", () => {
   const out = checkExperiences(
     companies,
-    [{ id: "acme/x", company: "acme", role: "lead" }],
+    [{ ...experiences[0], role: "lead" }],
     details,
   );
   expect(out).toEqual(['acme/x: unknown role "lead" in company "acme"']);
@@ -79,7 +86,13 @@ test("company with no sections", () => {
 
 test("zero highlights in every language is fine", () => {
   const none = details.map((d) => ({ ...d, highlights: [] }));
-  expect(checkExperiences(companies, experiences, none)).toEqual([]);
+  const summaryOnly = [
+    {
+      ...experiences[0],
+      home: ["summary" as const, "summary" as const, "summary" as const],
+    },
+  ];
+  expect(checkExperiences(companies, summaryOnly, none)).toEqual([]);
 });
 
 test("local image in a body", () => {
@@ -99,4 +112,22 @@ test("remote image in a body is fine", () => {
     body: "![Diagram](https://example.com/d.png)",
   }));
   expect(checkExperiences(companies, experiences, changed)).toEqual([]);
+});
+
+test("home card with fewer than 3 lines", () => {
+  const out = checkExperiences(
+    companies,
+    [{ ...experiences[0], home: [1] }],
+    details,
+  );
+  expect(out).toEqual(["acme: home card has 1 line, needs at least 3"]);
+});
+
+test("home pick past the last highlight", () => {
+  const out = checkExperiences(
+    companies,
+    [{ ...experiences[0], home: [1, 2, 3] }],
+    details,
+  );
+  expect(out).toEqual(["acme/x: home picks highlight 3, but there are 2"]);
 });

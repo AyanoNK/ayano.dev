@@ -1,6 +1,6 @@
 role: development-coordinator
 order: 1
-home: true
+home: [1, 2, 3]
 technologies:
   - React Native
   - Flask

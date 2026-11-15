@@ -10,6 +10,9 @@ export interface Company {
   roles: Role[];
 }
 
+/** A highlight position (1-based) or "summary", picked for the home card. */
+export type HomePick = number | "summary";
+
 export interface Experience {
   id: string;
   company: string;
@@ -17,7 +20,7 @@ export interface Experience {
   order: number;
   start?: string;
   end?: string;
-  home: boolean;
+  home: HomePick[];
 }
 
 const byOrder = (a: { order: number }, b: { order: number }) =>
@@ -67,4 +70,15 @@ export function companyDates(company: Company): {
     ? undefined
     : (ends as string[]).sort().at(-1);
   return { start: starts[0], end };
+}
+
+/** The lines a section puts on the home card, in the order they were picked. */
+export function homeLines(
+  picks: HomePick[],
+  summary: string,
+  highlights: string[],
+): string[] {
+  return picks.map((pick) =>
+    pick === "summary" ? summary : highlights[pick - 1],
+  );
 }
