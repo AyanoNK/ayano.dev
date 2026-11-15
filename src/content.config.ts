@@ -87,9 +87,7 @@ const experiences = defineCollection({
     end: month.optional(),
     home: z.boolean().default(false),
     technologies: z.array(z.string()),
-    links: z
-      .array(z.object({ title: localeText, url: z.url() }))
-      .default([]),
+    links: z.array(z.object({ title: localeText, url: z.url() })).default([]),
   }),
 });
 

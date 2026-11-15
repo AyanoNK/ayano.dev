@@ -1,0 +1,65 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { CornerDownRightIcon, ExternalLink } from "@lucide/astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+import type { CompanyGroup } from "@/lib/experience/data";
+import { formatRange } from "@/lib/experience/dates";
+import { companyDates } from "@/lib/experience/group";
+
+type Props = CompanyGroup;
+
+const { company, experiences } = Astro.props;
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const { start, end } = companyDates(company);
+const dates = formatRange(start, end, lang, t("index.experience.present"));
+const highlighted = experiences.filter((e) => e.meta.home);
+---
+
+<div class="w-full overflow-hidden rounded-xl border-2 border-border shadow-shadow">
+  <div class="flex items-center justify-between gap-4 border-b-2 border-border bg-main p-4 text-left text-base text-main-foreground">
+    <a
+      class="flex cursor-pointer flex-row items-start justify-center gap-1 font-heading"
+      href={company.url}
+      target="_blank">
+      {company.name}
+      <ExternalLink size="1rem" />
+    </a>
+    <span class="text-right text-sm font-semibold">{dates}</span>
+  </div>
+  <div class="flex flex-col gap-4 bg-secondary-background p-4">
+    <div class="flex flex-col gap-2">
+      <div class="text-md font-bold">
+        {company.roles.map((role) => role.title[lang]).join(" · ")}
+      </div>
+      <div class="text-sm">{company.summary[lang]}</div>
+    </div>
+    {highlighted.length > 0 && (
+      <div class="flex flex-col gap-2">
+        <div class="text-md font-semibold">
+          {t("index.experience.highlights")}
+        </div>
+        <ul class="flex flex-col gap-2">
+          {highlighted.map((experience) => (
+            <li>
+              <a
+                class="group flex flex-row items-start gap-1"
+                href={getRelativeLocaleUrl(
+                  lang,
+                  `experience/${experience.id}`,
+                )}>
+                <CornerDownRightIcon class="mt-0.5 size-4 shrink-0" />
+                <span class="text-sm">
+                  {experience.detail.data.summary}{" "}
+                  <span class="font-semibold whitespace-nowrap underline group-hover:no-underline">
+                    {t("index.experience.view_details")} &rarr;
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+</div>

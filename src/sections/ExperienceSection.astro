@@ -1,191 +1,14 @@
 ---
-import type { NewExperience } from "../types/technology";
-import { getLang, useTranslations } from "../i18n/utils";
-import NewExperienceCard from "@/components/NewExperienceCard.astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import MoveUp from "@lucide/astro/icons/move-up";
+import Anchor from "@/components/Anchor.astro";
+import ExperienceHomeCard from "@/components/ExperienceHomeCard.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+import { getExperienceData } from "@/lib/experience/data";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
-
-const experiences: NewExperience[] = [
-  {
-    startDate: t("index.experience.softserve.start_date"),
-    endDate: t("index.experience.softserve.end_date"),
-    companyName: "SoftServe",
-    companyURL: "https://www.softserveinc.com/",
-    projects: [
-      {
-        title: t("index.experience.softserve.link_1"),
-        url: "https://www.softserveinc.com/",
-      },
-    ],
-    titles: [
-      {
-        title: t("index.experience.softserve.ai_engineer.role"),
-        description: t("index.experience.softserve.ai_engineer.description"),
-        milestones: [
-          t("index.experience.softserve.ai_engineer.milestone_1"),
-          t("index.experience.softserve.ai_engineer.milestone_2"),
-          t("index.experience.softserve.ai_engineer.milestone_3"),
-        ],
-      },
-      {
-        title: t("index.experience.softserve.software_engineer.role"),
-        description: t(
-          "index.experience.softserve.software_engineer.description",
-        ),
-        milestones: [
-          t("index.experience.softserve.software_engineer.milestone_1"),
-          t("index.experience.softserve.software_engineer.milestone_2"),
-          t("index.experience.softserve.software_engineer.milestone_3"),
-          t("index.experience.softserve.software_engineer.milestone_4"),
-          t("index.experience.softserve.software_engineer.milestone_5"),
-        ],
-      },
-    ],
-    technologies: [
-      "React",
-      "Pyramid Web Framework",
-      "Jinja2",
-      // "Django",
-      // "Django REST Framework",
-      // "AWS ELB",
-      "AWS EKS",
-      "AWS Bedrock",
-      "Docker",
-      // "Kubernetes",
-      "JavaScript",
-      "TypeScript",
-      "Python",
-      "Go",
-      "Templ",
-      "Java",
-      "gRPC",
-      "HTML",
-      // "SCSS",
-      "CSS",
-      // "REST",
-    ],
-  },
-  {
-    titles: [
-      {
-        title: t("index.experience.verblio.software_engineer.role"),
-        description: t(
-          "index.experience.verblio.software_engineer.description",
-        ),
-        milestones: [
-          t("index.experience.verblio.software_engineer.milestone_1"),
-          t("index.experience.verblio.software_engineer.milestone_2"),
-          t("index.experience.verblio.software_engineer.milestone_3"),
-        ],
-      },
-    ],
-    startDate: t("index.experience.verblio.start_date"),
-    endDate: t("index.experience.verblio.end_date"),
-    companyName: "Verblio",
-    companyURL: "https://verblio.com/",
-    projects: [
-      {
-        title: t("index.experience.verblio.link_1"),
-        url: "https://app.verblio.com/",
-      },
-    ],
-    technologies: [
-      "Angular 12",
-      "Ruby on Rails",
-      "Heroku",
-      "Recurly API",
-      "JavaScript",
-      "TypeScript",
-      "Ruby",
-      "HTML",
-      "Bootstrap 4",
-      "Apollo",
-      "SCSS",
-      "CSS",
-      "GraphQL",
-    ],
-  },
-  {
-    titles: [
-      {
-        title: t("index.experience.icomm.software_engineer.role"),
-        description: t("index.experience.icomm.software_engineer.description"),
-        milestones: [
-          t("index.experience.icomm.software_engineer.milestone_1"),
-          t("index.experience.icomm.software_engineer.milestone_2"),
-          t("index.experience.icomm.software_engineer.milestone_3"),
-        ],
-      },
-    ],
-    startDate: t("index.experience.icomm.start_date"),
-    endDate: t("index.experience.icomm.end_date"),
-    companyName: "I-Comm Solutions SAS",
-    companyURL: "https://i-comm.co/",
-    projects: [
-      {
-        title: t("index.experience.icomm.link_1"),
-        url: "https://www.factcil.com/",
-      },
-    ],
-    technologies: [
-      "React",
-      "Django",
-      "Django REST Framework",
-      "AWS ELB",
-      "AWS EC2",
-      "Docker",
-      "Kubernetes",
-      "JavaScript",
-      "TypeScript",
-      "Python",
-      "HTML",
-      "MUI",
-      "SCSS",
-      "CSS",
-      "REST",
-    ],
-  },
-  {
-    titles: [
-      {
-        title: t("index.experience.geomedical.tech_lead.role"),
-        description: t("index.experience.geomedical.tech_lead.description"),
-        milestones: [
-          t("index.experience.geomedical.tech_lead.milestone_1"),
-          t("index.experience.geomedical.tech_lead.milestone_2"),
-          t("index.experience.geomedical.tech_lead.milestone_3"),
-        ],
-      },
-    ],
-    startDate: t("index.experience.geomedical.start_date"),
-    endDate: t("index.experience.geomedical.end_date"),
-    companyName: "Geomedical Health Group",
-    companyURL: "https://geomedical.co/",
-    projects: [
-      {
-        title: t("index.experience.geomedical.link_1"),
-        url: "https://lac.unfpa.org/es/news/partera-vital-un-proyecto-pionero-que-articula-la-sabidur%C3%ADa-ancestral-con-los-servicios-de",
-      },
-    ],
-    technologies: [
-      "React",
-      "React Native",
-      "Flask",
-      "Google Cloud",
-      "Google App Engine",
-      "Docker",
-      "JavaScript",
-      "TypeScript",
-      "Python",
-      "HTML",
-      "CSS",
-      "SCSS",
-      "REST",
-    ],
-  },
-];
+const { groups } = await getExperienceData(lang);
 ---
 
 <section class="w-full bg-background">
@@ -195,20 +18,21 @@ const experiences: NewExperience[] = [
         {t("index.experience.title")}
       </h2>
 
-      {experiences.map((experience, index) => (
+      {groups.map((group, index) => (
         <div class="flex flex-col items-center gap-8">
           {index !== 0 && <MoveUp />}
-          <NewExperienceCard
-            titles={experience.titles}
-            startDate={experience.startDate}
-            endDate={experience.endDate}
-            companyName={experience.companyName}
-            companyURL={experience.companyURL}
-            projects={experience.projects}
-            technologies={experience.technologies}
-          />
+          <ExperienceHomeCard {...group} />
         </div>
       ))}
+
+      <div class="flex justify-center">
+        <Anchor
+          variant="neutral"
+          href={getRelativeLocaleUrl(lang, "experience")}
+          size="lg">
+          {t("index.experience.view_all")} &rarr;
+        </Anchor>
+      </div>
     </div>
   </div>
 </section>
