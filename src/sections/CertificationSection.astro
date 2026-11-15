@@ -4,6 +4,7 @@ import { getImage } from "astro:assets";
 import CertificationCard from "@/components/CertificationCard";
 import jlptN2 from "@/assets/certifications/jlpt_n2.jpg";
 import awsDeveloperAssociate from "@/assets/certifications/aws_developer_associate.jpg";
+import nvidiaAcceleratedDataScience from "@/assets/certifications/nvidia_accelerated_data_science.jpg";
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
@@ -18,6 +19,11 @@ const certifications = [
     title: t("index.certifications.aws_developer_associate.title"),
     caption: t("index.certifications.aws_developer_associate.caption"),
     image: await getImage({ src: awsDeveloperAssociate }),
+  },
+  {
+    title: t("index.certifications.nvidia_accelerated_data_science.title"),
+    caption: t("index.certifications.nvidia_accelerated_data_science.caption"),
+    image: await getImage({ src: nvidiaAcceleratedDataScience }),
   },
 ];
 ---
