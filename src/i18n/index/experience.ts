@@ -50,11 +50,6 @@ export const experience = {
       es: "Volver a la experiencia",
       ja: "職務経歴に戻る",
     },
-    links: {
-      en: "Links",
-      es: "Enlaces",
-      ja: "リンク",
-    },
     view_details: {
       en: "View details",
       es: "Ver detalles",
