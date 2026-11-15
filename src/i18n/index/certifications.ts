@@ -29,5 +29,17 @@ export const certifications = {
         ja: "2025年3月 · Amazon Web Services",
       },
     },
+    nvidia_accelerated_data_science: {
+      title: {
+        en: "NVIDIA-Certified Associate: Accelerated Data Science",
+        es: "NVIDIA-Certified Associate: Accelerated Data Science",
+        ja: "NVIDIA認定アソシエイト：アクセラレーテッド データサイエンス",
+      },
+      caption: {
+        en: "June 2026 · NVIDIA",
+        es: "Junio 2026 · NVIDIA",
+        ja: "2026年6月 · NVIDIA",
+      },
+    },
   },
 } as const;
