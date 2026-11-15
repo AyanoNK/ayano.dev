@@ -129,10 +129,10 @@
     - SCSS
     - REST
   roles:
-    - id: tech-lead
+    - id: development-coordinator
       title:
-        en: Tech Lead
-        es: Líder Técnico
-        ja: テックリード
+        en: Development Coordinator
+        es: Coordinador de Desarrollo
+        ja: 開発コーディネーター
       start: "2020-09"
       end: "2020-12"
