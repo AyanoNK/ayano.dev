@@ -27,7 +27,7 @@ A first version (PR #13) gave every client its own page. Sebastian wants one pag
 ## Non-goals
 
 - Generating CVs from the site.
-- Pictures or videos on company pages. Markdown allows them later.
+- Pictures or videos on company pages. Markdown allows images from full `https://` URLs later. Local image files are not processed on company pages, and the build rejects them.
 - Changing the other home page sections.
 - A page per section.
 
