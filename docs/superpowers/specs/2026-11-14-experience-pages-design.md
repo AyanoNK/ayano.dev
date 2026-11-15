@@ -118,8 +118,8 @@ The look follows what the site has: the bordered cards with offset shadows used 
 | SoftServe | `softserve-energy-agents` | AI Engineer | Fortune 500 US energy company (ticketing agents, Claude skills marketplace) |
 | SoftServe | `softserve-aws-oil-gas` | AI Engineer | Amazon Web Services (oil and gas prediction agent) |
 | SoftServe | `softserve-gcp-savings` | AI Engineer | SoftServe internal (Committed Use Discounts savings pipeline) |
-| SoftServe | `softserve-ai-orchestrator` | to confirm | SoftServe internal (AI orchestrator) |
-| SoftServe | `softserve-cost-dashboard` | to confirm | Global professional services and consulting firm (cloud cost dashboard) |
+| SoftServe | `softserve-ai-orchestrator` | AI Engineer | SoftServe internal (AI orchestrator) |
+| SoftServe | `softserve-cost-dashboard` | AI Engineer | Global professional services and consulting firm (cloud cost dashboard) |
 | SoftServe | `softserve-media-chatbot` | Senior Software Engineer | US advertising measurement company (CES 2025 chatbot) |
 | SoftServe | `softserve-survey-payments` | Senior Software Engineer | Leading US online survey platform (Stripe payments) |
 | Verblio | `verblio-platform` | Senior Software Engineer | Verblio |
