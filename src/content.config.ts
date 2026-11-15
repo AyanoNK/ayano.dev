@@ -1,4 +1,5 @@
 import { defineCollection } from "astro:content";
+import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { projectDetailsLoader, projectsLoader } from "@/lib/showcase/loader";
 
@@ -41,4 +42,75 @@ const projectDetails = defineCollection({
   schema: z.object({}),
 });
 
-export const collections = { projects, projectDetails };
+const localeText = z.object({
+  en: z.string().min(1),
+  es: z.string().min(1),
+  ja: z.string().min(1),
+});
+const month = z.string().regex(/^\d{4}-\d{2}$/, "Use YYYY-MM");
+const experienceBase = "src/content/experience";
+
+const companies = defineCollection({
+  loader: file(`${experienceBase}/companies.yaml`),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    url: z.string().url(),
+    order: z.number(),
+    location: localeText.optional(),
+    summary: localeText,
+    technologies: z.array(z.string()).default([]),
+    roles: z
+      .array(
+        z.object({
+          id: z.string(),
+          title: localeText,
+          start: month,
+          end: month.optional(),
+        }),
+      )
+      .min(1),
+  }),
+});
+
+const experiences = defineCollection({
+  loader: glob({
+    pattern: "*/meta.yaml",
+    base: experienceBase,
+    generateId: ({ entry }) => entry.split("/")[0],
+  }),
+  schema: z.object({
+    company: z.string(),
+    role: z.string(),
+    order: z.number(),
+    start: month.optional(),
+    end: month.optional(),
+    home: z.boolean().default(false),
+    technologies: z.array(z.string()),
+    links: z
+      .array(z.object({ title: localeText, url: z.string().url() }))
+      .default([]),
+  }),
+});
+
+const experienceDetails = defineCollection({
+  loader: glob({
+    pattern: "*/{en,es,ja}.md",
+    base: experienceBase,
+    generateId: ({ entry }) => entry.replace(/\.md$/, ""),
+  }),
+  schema: z.object({
+    title: z.string().min(1),
+    client: z.string().min(1),
+    summary: z.string().min(1),
+    highlights: z.array(z.string().min(1)).min(1).max(5),
+  }),
+});
+
+export const collections = {
+  projects,
+  projectDetails,
+  companies,
+  experiences,
+  experienceDetails,
+};
