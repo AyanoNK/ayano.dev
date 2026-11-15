@@ -1,6 +1,6 @@
 ---
-import type { GetStaticPaths } from "astro";
-import { getCollection, render } from "astro:content";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { render } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { ExternalLink, SquareArrowUpRightExit } from "@lucide/astro";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
@@ -12,24 +12,27 @@ import { getLang, useTranslations } from "@/i18n/utils";
 import { getExperienceData } from "@/lib/experience/data";
 
 export const getStaticPaths = (async () => {
-  const experiences = await getCollection("experiences");
-  return locales.flatMap((lang) =>
-    experiences.map((experience) => ({
-      params: { lang, slug: experience.id },
-    })),
+  const paths = await Promise.all(
+    locales.map(async (lang) => {
+      const { groups } = await getExperienceData(lang);
+      return groups.flatMap(({ company, experiences }) =>
+        experiences.map((experience) => ({
+          params: { lang, slug: experience.id },
+          props: { company, experience },
+        })),
+      );
+    }),
   );
+  return paths.flat();
 }) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
-const { slug } = Astro.params;
-const { groups } = await getExperienceData(lang);
-const group = groups.find((g) => g.experiences.some((e) => e.id === slug))!;
-const experience = group.experiences.find((e) => e.id === slug)!;
-const { company } = group;
-const { meta, detail, dates } = experience;
+const { company, experience } = Astro.props;
+const { meta, detail, dates, role } = experience;
 const { title, client, summary, highlights } = detail.data;
-const role = company.roles.find((r) => r.id === meta.role)!;
 const { Content } = await render(detail);
 ---
 
