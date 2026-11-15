@@ -26,7 +26,7 @@ pnpm exec oxfmt --check src      # Formatting
 pnpm test       # Vitest
 ```
 
-Vitest covers `src/lib/showcase/`. There is no linter.
+Vitest covers `src/lib/showcase/`. There is no linter. CI (`.github/workflows/ci.yml`) runs the format check on every PR.
 
 - `astro check` needs TypeScript 6. TypeScript 7 does not ship the API it uses, so keep `typescript` on `^6`.
 - The build reads `GITHUB`, `LINKEDIN`, `EMAIL` and `GITHUB_FINE_GRAINED_TOKEN` through `astro:env` (declared in `astro.config.mjs`). It fails if they are missing from `.env` or the Vercel project.
