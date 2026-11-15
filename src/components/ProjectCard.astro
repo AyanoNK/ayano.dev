@@ -24,7 +24,7 @@ const t = useTranslations(lang);
 const { title, description } = project.data.text[lang];
 ---
 
-<div class="w-full">
+<div class="h-full w-full">
   <Card className="h-full w-full bg-white">
     <CardHeader>
       <div class="flex flex-col gap-4">
@@ -32,13 +32,13 @@ const { title, description } = project.data.text[lang];
           <ShowcaseMedia
             media={project.data.highlightMedia}
             alt={title}
-            class="rounded-base"
+            class="aspect-video w-full rounded-base object-contain"
           />
         )}
         <CardTitle>{title}</CardTitle>
       </div>
     </CardHeader>
-    <CardContent className="flex h-full flex-col">
+    <CardContent className="flex flex-1 flex-col">
       <CardDescription>{description}</CardDescription>
     </CardContent>
     <CardFooter className="flex flex-col items-start gap-8">
