@@ -27,10 +27,8 @@ const featuredMedia =
 
   <div class="grid grid-cols-1 justify-center gap-8 md:grid-cols-2">
     {featured && featuredText && (
-      <a
-        href={getRelativeLocaleUrl(lang, `projects/${featured.id}`)}
-        class="col-span-1 md:col-span-2">
-        <Card className="w-full cursor-pointer bg-white transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none">
+      <div class="col-span-1 md:col-span-2">
+        <Card className="w-full bg-white">
           <CardHeader>
             <CardTitle>{featuredText.title}</CardTitle>
           </CardHeader>
@@ -45,10 +43,15 @@ const featuredMedia =
                       <Badge class="text-md">{technology}</Badge>
                     ))}
                   </div>
-                  <div class="flex gap-4">
-                    <span class="text-sm font-base text-foreground/60">
+                  <div>
+                    <Anchor
+                      variant="neutral"
+                      href={getRelativeLocaleUrl(
+                        lang,
+                        `projects/${featured.id}`,
+                      )}>
                       {t("index.projects.view_details")} &rarr;
-                    </span>
+                    </Anchor>
                   </div>
                 </div>
               </div>
@@ -65,7 +68,7 @@ const featuredMedia =
             </div>
           </CardContent>
         </Card>
-      </a>
+      </div>
     )}
     {small.map((project) => (
       <ProjectCard project={project} />
