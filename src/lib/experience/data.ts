@@ -11,7 +11,10 @@ export type ExperienceMeta = CollectionEntry<"experiences">["data"];
 export type RoleData = CompanyData["roles"][number];
 
 export interface ExperienceItem {
+  /** "<company>/<section>" */
   id: string;
+  /** The section folder name, used as the anchor on the company page. */
+  section: string;
   meta: ExperienceMeta;
   role: RoleData;
   detail: CollectionEntry<"experienceDetails">;
@@ -37,7 +40,7 @@ export async function getExperienceData(
   const metas = experiences.map((e) => ({
     ...e.data,
     id: e.id,
-    company: e.data.company.id,
+    company: e.id.split("/")[0],
   }));
   const problems = checkExperiences(
     companyData,
@@ -64,6 +67,7 @@ export async function getExperienceData(
         const { start, end } = experienceDates(item, company);
         return {
           id,
+          section: id.split("/")[1],
           meta: experiencesById.get(id)!.data,
           role: company.roles.find((r) => r.id === item.role)!,
           detail: details.find((d) => d.id === `${id}/${lang}`)!,

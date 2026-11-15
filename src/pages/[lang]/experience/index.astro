@@ -1,9 +1,9 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import { ExternalLink } from "@lucide/astro";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
-import Badge from "@/components/Badge.astro";
-import ExperienceListItem from "@/components/ExperienceListItem.astro";
+import Anchor from "@/components/Anchor.astro";
 import { locales } from "@/i18n/ui";
 import { getLang, useTranslations } from "@/i18n/utils";
 import { getExperienceData } from "@/lib/experience/data";
@@ -45,23 +45,26 @@ const present = t("index.experience.present");
             ))}
           </ul>
           <p class="text-sm">{company.summary[lang]}</p>
-          {company.technologies.length > 0 && (
-            <div class="flex flex-col gap-2">
-              <p class="text-sm font-semibold">
-                {t("index.experience.company_technologies")}
-              </p>
-              <div class="flex flex-row flex-wrap gap-2">
-                {company.technologies.map((tech) => (
-                  <Badge>{tech}</Badge>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-          {experiences.map((experience) => (
-            <ExperienceListItem experience={experience} />
+        <ul class="flex flex-col gap-4">
+          {experiences.map(({ section, detail }) => (
+            <li>
+              <a
+                class="group flex flex-col gap-1 rounded-base border-2 border-border bg-white p-4 shadow-shadow transition-all hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none"
+                href={`${getRelativeLocaleUrl(lang, `experience/${company.id}`)}#${section}`}>
+                <span class="font-heading">{detail.data.title}</span>
+                <span class="text-sm font-semibold">{detail.data.client}</span>
+                <span class="text-sm">{detail.data.summary}</span>
+              </a>
+            </li>
           ))}
+        </ul>
+        <div>
+          <Anchor
+            variant="neutral"
+            href={getRelativeLocaleUrl(lang, `experience/${company.id}`)}>
+            {t("index.experience.view_details")} &rarr;
+          </Anchor>
         </div>
       </section>
     ))}

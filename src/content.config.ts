@@ -1,4 +1,4 @@
-import { defineCollection, reference } from "astro:content";
+import { defineCollection } from "astro:content";
 import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { projectDetailsLoader, projectsLoader } from "@/lib/showcase/loader";
@@ -75,12 +75,11 @@ const companies = defineCollection({
 
 const experiences = defineCollection({
   loader: glob({
-    pattern: "*/meta.yaml",
+    pattern: "*/*/meta.yaml",
     base: experienceBase,
-    generateId: ({ entry }) => entry.split("/")[0],
+    generateId: ({ entry }) => entry.replace(/\/meta\.yaml$/, ""),
   }),
   schema: z.object({
-    company: reference("companies"),
     role: z.string(),
     order: z.number(),
     start: month.optional(),
@@ -93,7 +92,7 @@ const experiences = defineCollection({
 
 const experienceDetails = defineCollection({
   loader: glob({
-    pattern: "*/{en,es,ja}.md",
+    pattern: "*/*/{en,es,ja}.md",
     base: experienceBase,
     generateId: ({ entry }) => entry.replace(/\.md$/, ""),
   }),
@@ -101,7 +100,7 @@ const experienceDetails = defineCollection({
     title: z.string().min(1),
     client: z.string().min(1),
     summary: z.string().min(1),
-    highlights: z.array(z.string().min(1)).min(1).max(5),
+    highlights: z.array(z.string().min(1)).max(5),
   }),
 });
 

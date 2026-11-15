@@ -1,0 +1,13 @@
+role: tech-lead
+order: 1
+home: true
+technologies:
+  - React Native
+  - Flask
+  - Google Cloud
+links:
+  - title:
+      en: UNFPA article
+      es: Artículo de UNFPA
+      ja: UNFPAの記事
+    url: https://lac.unfpa.org/es/news/partera-vital-un-proyecto-pionero-que-articula-la-sabidur%C3%ADa-ancestral-con-los-servicios-de

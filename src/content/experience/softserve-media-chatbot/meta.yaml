@@ -1,8 +1,0 @@
-company: softserve
-role: senior-software-engineer
-order: 6
-home: true
-technologies:
-  - LangGraph
-  - LangChain
-  - Snowflake

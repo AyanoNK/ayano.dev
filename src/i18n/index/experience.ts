@@ -20,6 +20,11 @@ export const experience = {
       es: "Cada cliente y empresa para los que Sebastian Correa ha trabajado, con lo que construyó para cada uno.",
       ja: "Sebastian Correaがこれまでに担当したすべてのクライアントと企業、そしてそれぞれで構築したもの。",
     },
+    sections: {
+      en: "Sections",
+      es: "Secciones",
+      ja: "セクション",
+    },
     highlights: {
       en: "Highlights",
       es: "Logros destacados",
