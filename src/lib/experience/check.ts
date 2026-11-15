@@ -11,7 +11,7 @@ export interface ExperienceRef {
   role: string;
 }
 
-/** `id` is "<experience id>/<lang>". */
+/** `id` is "<company>/<section>/<lang>". */
 export interface DetailRef {
   id: string;
   highlights: string[];
@@ -59,9 +59,17 @@ export function checkExperiences(
   }
 
   for (const detail of details) {
-    const [experienceId, lang] = detail.id.split("/");
+    const cut = detail.id.lastIndexOf("/");
+    const experienceId = detail.id.slice(0, cut);
+    const lang = detail.id.slice(cut + 1);
     if (!experienceIds.has(experienceId)) {
       problems.push(`${experienceId}: has ${lang}.md but no meta.yaml`);
+    }
+  }
+
+  for (const company of companies) {
+    if (!experiences.some((e) => e.company === company.id)) {
+      problems.push(`${company.id}: has no sections`);
     }
   }
 
