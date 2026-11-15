@@ -1,0 +1,9 @@
+role: ai-engineer
+order: 6
+start: 2026-03
+home: []
+technologies:
+  - Databricks
+  - PySpark
+  - Python
+  - AWS S3
