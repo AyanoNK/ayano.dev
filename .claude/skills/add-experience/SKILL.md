@@ -5,7 +5,7 @@ description: Add or update a work experience item on this portfolio website, wri
 
 # Add Experience Item
 
-Adds a work experience item to this portfolio site: a new company, a new client experience, or new results for an existing one. Produces texts in the house writing style, translates them to Spanish and Japanese, wires them into the site, and verifies the build.
+Adds a work experience item to this portfolio site: a new company, a new section (one client or one milestone) on a company page, or new results for an existing section. Produces texts in the house writing style, translates them to Spanish and Japanese, wires them into the site, and verifies the build.
 
 ## Step 1: Gather the facts
 
@@ -50,7 +50,7 @@ Write English first, then Spanish and Japanese versions of every text. Match the
 
 Experience content lives in `src/content/experience/`. Read an existing experience folder first and match it.
 
-1. **New company or role:** add it to `src/content/experience/companies.yaml` with `id`, `name`, `url`, `order`, optional `location`, `summary`, `technologies` (tools used at the company that no experience lists) and `roles` (`id`, `title`, `start`, optional `end`). Every translated field has `en`, `es` and `ja`. Dates are `YYYY-MM`, and a missing `end` means current.
+1. **New company or role:** add it to `src/content/experience/companies.yaml` with `id`, `name`, `url`, `order`, optional `location`, `summary`, `technologies` (tools used at the company that no section lists) and `roles` (`id`, `title`, `start`, optional `end`). Every translated field has `en`, `es` and `ja`. Dates are `YYYY-MM`, and a missing `end` means current.
 2. **New section:** create `src/content/experience/<company>/<section>/`, where `<company>` is the company id from `companies.yaml` and `<section>` is a short kebab-case name that becomes the link anchor (`/en/experience/softserve/#energy-agents`). It holds:
    - `meta.yaml`: `role` (a role id of that company), `order` (position on the company page, newest first), `home` (true to show it on the home page card), optional `start` and `end`, `technologies` (only tools the text names), optional `links` (`title` per language and `url`).
    - `en.md`, `es.md`, `ja.md`: front matter with `title`, `client`, `summary`, `highlights`, then the body. All three files need the same number of highlights.
@@ -60,6 +60,6 @@ Facts that do not change with language (dates, technologies, links) go only in t
 
 ## Step 5: Verify
 
-Run `pnpm build`. It fails when a language file is missing, the highlight counts differ, a field is empty, or `meta.yaml` names a company or role that does not exist. Fix anything it reports.
+Run `pnpm build`. It fails when a language file is missing or has an empty body, the highlight counts differ, a field is empty, a section folder sits under a name that is not a company id, a company has no sections, or `meta.yaml` names a role the company does not have. Fix anything it reports.
 
 Never run `git commit` in this repository. Leave the changes uncommitted for the user to review.
