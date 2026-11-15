@@ -2,10 +2,6 @@
   name: SoftServe
   url: https://www.softserveinc.com/
   order: 1
-  location:
-    en: Remote - Bogotá, Colombia
-    es: Remoto - Bogotá, Colombia
-    ja: リモート - コロンビア、ボゴタ
   summary:
     en: A large technology consulting firm. I lead greenfield AI systems and legacy system migrations for clients in the energy, cloud, data analysis and online survey industries.
     es: Una gran consultora tecnológica. Lidero sistemas de IA desde cero y migraciones de sistemas legacy para clientes de los sectores de energía, nube, análisis de datos y encuestas online.
@@ -46,10 +42,6 @@
   name: Verblio
   url: https://verblio.com/
   order: 2
-  location:
-    en: Remote - Colorado, US
-    es: Remoto - Colorado, EE. UU.
-    ja: リモート - 米国コロラド州
   summary:
     en: A US content marketing platform. I maintained and extended its decade-old web platform with new features for a new business model.
     es: Una plataforma estadounidense de marketing de contenidos. Mantuve y amplié su plataforma web de diez años con nuevas funcionalidades para un nuevo modelo de negocio.
@@ -79,10 +71,6 @@
   name: I-Comm Solutions SAS
   url: https://i-comm.co/
   order: 3
-  location:
-    en: Remote - Bogotá, Colombia
-    es: Remoto - Bogotá, Colombia
-    ja: リモート - コロンビア、ボゴタ
   summary:
     en: A Colombian software company. I built custom SaaS products for clients in the fintech and goods delivery sectors in Latin America.
     es: Una empresa colombiana de software. Construí productos SaaS a medida para clientes de los sectores fintech y de entrega de mercancías en Latinoamérica.

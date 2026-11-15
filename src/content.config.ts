@@ -57,7 +57,6 @@ const companies = defineCollection({
     name: z.string(),
     url: z.url(),
     order: z.number(),
-    location: localeText.optional(),
     summary: localeText,
     technologies: z.array(z.string()).default([]),
     roles: z

@@ -36,9 +36,6 @@ const companyUrl = getRelativeLocaleUrl(lang, `experience/${company.id}`);
       <div class="text-md font-bold">
         {company.roles.map((role) => role.title[lang]).join(" · ")}
       </div>
-      {company.location && (
-        <div class="text-sm text-foreground/70">{company.location[lang]}</div>
-      )}
       <div class="text-sm">{company.summary[lang]}</div>
     </div>
     {lines.length > 0 && (
