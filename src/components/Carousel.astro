@@ -12,22 +12,20 @@ interface Props {
 const { items, alt } = Astro.props;
 ---
 
-{
-  items.length > 0 && (
-    <div class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
-      {items.map((media, index) => (
-        <div class="shrink-0 snap-center overflow-hidden rounded-base border-2 border-border shadow-shadow">
-          <ShowcaseMedia
-            media={media}
-            alt={
-              media.label
-                ? `${alt}: ${media.label}`
-                : `${alt}, ${index + 1} / ${items.length}`
-            }
-            class="h-80 w-auto object-contain sm:h-96"
-          />
-        </div>
-      ))}
-    </div>
-  )
-}
+{items.length > 0 && (
+  <div class="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4">
+    {items.map((media, index) => (
+      <div class="shrink-0 snap-center overflow-hidden rounded-base border-2 border-border shadow-shadow">
+        <ShowcaseMedia
+          media={media}
+          alt={
+            media.label
+              ? `${alt}: ${media.label}`
+              : `${alt}, ${index + 1} / ${items.length}`
+          }
+          class="h-80 w-auto object-contain sm:h-96"
+        />
+      </div>
+    ))}
+  </div>
+)}
