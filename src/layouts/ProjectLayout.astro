@@ -12,9 +12,17 @@ const t = useTranslations(lang);
 interface Props {
   title: string;
   description: string;
+  /** Where the back link goes. Defaults to the home page. */
+  backHref?: string;
+  backLabel?: string;
 }
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description,
+  backHref = getRelativeLocaleUrl(lang),
+  backLabel = t("index.projects.back"),
+} = Astro.props;
 ---
 
 <BaseLayout title={`${title} | Sebastian Correa`} description={description}>
@@ -22,9 +30,9 @@ const { title, description } = Astro.props;
     <LanguageSelector />
   </div>
   <nav class="p-4 sm:p-8">
-    <Anchor variant="neutral" href={getRelativeLocaleUrl(lang)} size="default">
+    <Anchor variant="neutral" href={backHref} size="default">
       <ArrowLeft size={16} />
-      {t("index.projects.back")}
+      {backLabel}
     </Anchor>
   </nav>
   <slot />
