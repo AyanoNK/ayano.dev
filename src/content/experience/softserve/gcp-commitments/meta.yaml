@@ -1,0 +1,13 @@
+role: ai-engineer
+order: 7
+start: 2025-06
+end: 2026-03
+home: []
+technologies:
+  - Google Cloud
+  - BigQuery
+  - Airflow
+  - Python
+  - Polars
+  - AWS S3
+  - AWS RDS

@@ -1,11 +1,9 @@
 role: ai-engineer
 order: 6
-home: []
+start: 2026-03
+home: [1]
 technologies:
-  - AWS S3
   - Databricks
-  - Python
   - PySpark
-  - Go
-  - React
-  - Terraform
+  - Python
+  - AWS S3
