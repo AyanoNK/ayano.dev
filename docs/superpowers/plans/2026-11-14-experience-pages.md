@@ -1,5 +1,7 @@
 # Experience Pages Implementation Plan
 
+> **Replaced** by `docs/superpowers/plans/2026-11-15-experience-company-pages.md`. This plan built one page per client, which was changed to one page per employer.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Replace the long home page experience section with short company cards, a list page of every client experience, and one page per experience, all in `en`, `es` and `ja`.
