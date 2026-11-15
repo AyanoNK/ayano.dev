@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Every change goes through a pull request against `main`. Never push to `main` directly.
 
 1. Branch from the latest `origin/main`. Base every PR on `main`, not on another PR's branch: GitHub does not always retarget a stacked PR, and the change can merge into the other branch instead of `main`.
-2. Before opening the PR, run `pnpm check`, `pnpm build` and `pnpm exec prettier --check src`. All three must pass.
+2. Before opening the PR, run `pnpm check`, `pnpm build` and `pnpm exec oxfmt --check src`. All three must pass.
 3. Run `/astro-dev:astro-review` on the branch. Fix every FAIL that the change introduced before opening the PR.
 4. Open the PR, then run `/astro-dev:astro-code-review` on it. Fix any findings in the same PR.
 5. In the PR description, report the results of the commands and both reviews.
@@ -22,7 +22,7 @@ pnpm dev        # Dev server on localhost:3000
 pnpm check      # astro check (type check)
 pnpm build      # Static build to ./dist/
 pnpm preview    # Serve the built site
-pnpm exec prettier --check src   # Formatting
+pnpm exec oxfmt --check src      # Formatting
 pnpm test       # Vitest
 ```
 
@@ -76,6 +76,6 @@ The project page loads both collections in `getStaticPaths` and passes them as p
 - Content images go in `src/assets/` and render with `<Image />`. `public/` holds only files served as-is: favicons and `robots.txt` (plus the generated `public/showcase/`).
 - Use `cn()` from `src/lib/utils.ts` (clsx + tailwind-merge) with CVA for variant classes.
 - Rendered Markdown is styled with `:global()` rules under `.markdown-content` in `ProjectDetailShared.astro`.
-- Prettier uses `prettier-plugin-astro` and `prettier-plugin-tailwindcss` (`tailwindStylesheet: ./tailwind.css`), with `bracketSameLine: true`.
+- Formatting is oxfmt, set in `.oxfmtrc.json`. The `astro` key turns on `.astro` files, and `sortTailwindcss` sorts classes against `tailwind.css`.
 
 `@/*` maps to `./src/*`.
