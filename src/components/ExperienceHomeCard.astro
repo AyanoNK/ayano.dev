@@ -46,17 +46,16 @@ const companyUrl = getRelativeLocaleUrl(lang, `experience/${company.id}`);
         </div>
         <ul class="flex flex-col gap-2">
           {highlighted.map((experience) => (
-            <li>
-              <a
-                class="group flex flex-row items-start gap-1"
-                href={`${companyUrl}#${experience.section}`}>
-                <CornerDownRightIcon class="mt-0.5 size-4 shrink-0" />
-                <span class="text-sm">
-                  <span class="underline decoration-1 underline-offset-2 group-hover:no-underline">
-                    {experience.detail.data.summary}
-                  </span>
-                </span>
-              </a>
+            <li class="flex flex-row items-start gap-1">
+              <CornerDownRightIcon class="mt-0.5 size-4 shrink-0" />
+              <span class="text-sm">
+                {experience.detail.data.summary}{" "}
+                <a
+                  class="font-semibold whitespace-nowrap underline hover:no-underline"
+                  href={`${companyUrl}#${experience.section}`}>
+                  {t("index.experience.view_details")} &rarr;
+                </a>
+              </span>
             </li>
           ))}
         </ul>
