@@ -10,11 +10,11 @@ highlights:
 
 ### The client and the problem
 
-I-Comm builds custom SaaS products for clients in the fintech and goods delivery sectors in Latin America. Factcil, a Colombian fintech startup, was one of those clients. It needed custom software for its billing, payments and financial systems.
+I-Comm builds custom SaaS products for clients in the fintech and goods delivery sectors in Latin America. Factcil, a Colombian fintech startup, was one of those clients. Factcil expands the traditional factoring market to help freelancers who have to wait 30 to 90 days to get paid, and it set out to build the next neo-bank for independents, with several financial services. It needed custom software for its billing, payments and financial systems.
 
 ### What I did
 
-I led the development and ownership of multiple features, using Django for backend services, React for frontends, AWS for cloud infrastructure and GitHub Actions for CI/CD pipelines. I took part in architecture and design decisions, set up the deployment infrastructure, and implemented, tested and deployed production code following the Scrum methodology.
+I led the development and ownership of multiple features, using Django for backend services, React for frontends, AWS for cloud infrastructure, Terraform for provisioning that infrastructure as code and GitHub Actions for CI/CD pipelines. I took part in architecture and design decisions, set up the deployment infrastructure, and implemented, tested and deployed production code following the Scrum methodology.
 
 - **Electronic invoicing.** I automated the entire billing workflow by introducing electronic invoicing, integrating the financial systems and compliance workflows. The workflow reached 100% automation.
 - **Subscriptions.** I pioneered subscriptions and recurring payment options for Factcil's web platform, using Stripe integrations for the recurring billing system.

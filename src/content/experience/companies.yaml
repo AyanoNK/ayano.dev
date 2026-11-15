@@ -90,10 +90,8 @@
   technologies:
     - Django REST Framework
     - Go
-    - AWS ELB
     - AWS EC2
     - Docker
-    - Kubernetes
     - MUI
     - Python
     - JavaScript

@@ -1,0 +1,8 @@
+role: full-stack-engineer
+order: 2
+home: false
+technologies:
+  - AWS
+  - Kubernetes
+  - AWS ELB
+  - GitHub Actions
