@@ -20,13 +20,13 @@ Client naming rule: employers can be named; clients get anonymized descriptors t
 
 ## Step 2: Write the texts (house style)
 
-One experience is the work for one client. At a consultancy such as SoftServe, each client is its own experience. Each experience has these texts, per language:
+Each place of employment has one page on the site. The page is made of sections: one per client (at a consultancy such as SoftServe, each client is its own section) or one per milestone. A small milestone is a short section with one paragraph. Each section has these texts, per language:
 
 - **title**: a short name for the work ("Autonomous ticketing agents").
 - **client**: the client name or descriptor (see the naming rule).
-- **summary**: one sentence starting with a verb, with the main result. It shows on the home page card and the list page.
-- **highlights**: one to five results, each a sentence starting with a verb (Directed, Built, Migrated, Implemented) that states what was done, names its tools in context, and contains its measurable result.
-- **body**: the full write-up in Markdown. Suggested headings: the client and the problem, what was built, results. Change them when the story needs it.
+- **summary**: one sentence starting with a verb, with the main result. It shows on the home page card and the overview page.
+- **highlights**: zero to five results (zero for a short section), each a sentence starting with a verb (Directed, Built, Migrated, Implemented) that states what was done, names its tools in context, and contains its measurable result.
+- **body**: the write-up in Markdown, never empty. Headings start at `###`, because the section title is already a heading on the page. Suggested headings for a long section: the client and the problem, what was built, results. A short section is one paragraph with no headings.
 
 A company also has a one or two sentence `summary` for its home page card.
 
@@ -51,12 +51,12 @@ Write English first, then Spanish and Japanese versions of every text. Match the
 Experience content lives in `src/content/experience/`. Read an existing experience folder first and match it.
 
 1. **New company or role:** add it to `src/content/experience/companies.yaml` with `id`, `name`, `url`, `order`, optional `location`, `summary`, `technologies` (tools used at the company that no experience lists) and `roles` (`id`, `title`, `start`, optional `end`). Every translated field has `en`, `es` and `ja`. Dates are `YYYY-MM`, and a missing `end` means current.
-2. **New experience:** create `src/content/experience/<company>-<slug>/` with:
-   - `meta.yaml`: `company` and `role` (ids from `companies.yaml`), `order` (position inside the company, newest first), `home` (true to show it on the home page card), optional `start` and `end`, `technologies` (only tools the text names), optional `links` (`title` per language and `url`).
+2. **New section:** create `src/content/experience/<company>/<section>/`, where `<company>` is the company id from `companies.yaml` and `<section>` is a short kebab-case name that becomes the link anchor (`/en/experience/softserve/#energy-agents`). It holds:
+   - `meta.yaml`: `role` (a role id of that company), `order` (position on the company page, newest first), `home` (true to show it on the home page card), optional `start` and `end`, `technologies` (only tools the text names), optional `links` (`title` per language and `url`).
    - `en.md`, `es.md`, `ja.md`: front matter with `title`, `client`, `summary`, `highlights`, then the body. All three files need the same number of highlights.
-3. **New results for an existing experience:** add them to the highlights or body of all three language files.
+3. **New results for an existing section:** add them to the highlights or body of all three language files.
 
-Facts that do not change with language (dates, technologies, links) go only in the YAML files. Nothing else needs editing: the home page, the list page and the experience pages read these files.
+Facts that do not change with language (dates, technologies, links) go only in the YAML files. Nothing else needs editing: the home page, the overview page and the company pages read these files.
 
 ## Step 5: Verify
 
