@@ -1,6 +1,5 @@
 ---
 import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
-import { render } from "astro:content";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { ExternalLink, SquareArrowUpRightExit } from "@lucide/astro";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
@@ -11,6 +10,7 @@ import { locales } from "@/i18n/ui";
 import { getLang, useTranslations } from "@/i18n/utils";
 import { getExperienceData } from "@/lib/experience/data";
 import { formatRange } from "@/lib/experience/dates";
+import { prefixHeadingIds } from "@/lib/experience/headings";
 
 export const getStaticPaths = (async () => {
   const paths = await Promise.all(
@@ -31,12 +31,15 @@ const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 const { company, experiences } = Astro.props.group;
 const present = t("index.experience.present");
-const sections = await Promise.all(
-  experiences.map(async (experience) => ({
-    ...experience,
-    Content: (await render(experience.detail)).Content,
-  })),
-);
+// Repo Markdown rendered by Astro, so it is trusted. Heading ids get the section
+// name in front so they stay unique on a page with many sections.
+const sections = experiences.map((experience) => ({
+  ...experience,
+  html: prefixHeadingIds(
+    experience.detail.rendered?.html ?? "",
+    experience.section,
+  ),
+}));
 ---
 
 <ProjectLayout
@@ -96,7 +99,7 @@ const sections = await Promise.all(
       </ol>
     </nav>
 
-    {sections.map(({ section, detail, meta, role, dates, Content }) => (
+    {sections.map(({ section, detail, meta, role, dates, html }) => (
       <section id={section} class="flex scroll-mt-8 flex-col gap-4">
         <div class="flex flex-col gap-1">
           <h2 class="text-xl font-heading xl:text-3xl">{detail.data.title}</h2>
@@ -130,7 +133,7 @@ const sections = await Promise.all(
           </div>
         )}
         <MarkdownContent>
-          <Content />
+          <Fragment set:html={html} />
         </MarkdownContent>
         {meta.links.length > 0 && (
           <div class="flex flex-wrap gap-4">
