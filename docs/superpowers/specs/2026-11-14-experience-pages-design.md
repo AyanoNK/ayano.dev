@@ -85,7 +85,7 @@ The PR #13 check carries over, now per section: every section has all three lang
 
 **Overview page:** per company, the name, roles with dates and summary, then each section as a link with its title, client and summary.
 
-**Company page:** a header with name, link, roles with dates, summary and the company-wide tools. Then a short list of the sections (a table of contents) linking to their anchors. Then each section in order: title as a heading with its `id`, client, role and dates, tools, highlights if any, and the body. Navigation goes back to the overview page.
+**Company page:** layout in `docs/superpowers/wireframes/employer-experience-page.wireframe.json`. A blue header with name, link, roles with dates, summary and the company-wide tools; blue is used only there. Beside the sections, a list of them that stays in view on desktop (above them on phones). Then each section as one white card: title as a heading with its `id`, client, role and dates, tools, highlights if any as a plain list with a left rule, a divider, and the body. Navigation goes back to the overview page.
 
 ## The sections
 
