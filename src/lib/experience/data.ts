@@ -42,7 +42,11 @@ export async function getExperienceData(
   const problems = checkExperiences(
     companyData,
     metas,
-    details.map((d) => ({ id: d.id, highlights: d.data.highlights })),
+    details.map((d) => ({
+      id: d.id,
+      highlights: d.data.highlights,
+      body: d.body ?? "",
+    })),
   );
   if (problems.length > 0) {
     throw new Error(

@@ -6,6 +6,7 @@ const experiences = [{ id: "acme-x", company: "acme", role: "dev" }];
 const details: DetailRef[] = ["en", "es", "ja"].map((lang) => ({
   id: `acme-x/${lang}`,
   highlights: ["one", "two"],
+  body: "Text.",
 }));
 
 test("valid data has no problems", () => {
@@ -50,7 +51,16 @@ test("unknown role", () => {
 test("details without meta.yaml", () => {
   const out = checkExperiences(companies, experiences, [
     ...details,
-    { id: "ghost/en", highlights: ["a"] },
+    { id: "ghost/en", highlights: ["a"], body: "Text." },
   ]);
   expect(out).toEqual(["ghost: has en.md but no meta.yaml"]);
+});
+
+test("empty body", () => {
+  const changed = details.map((d) =>
+    d.id === "acme-x/ja" ? { ...d, body: "  \n" } : d,
+  );
+  expect(checkExperiences(companies, experiences, changed)).toEqual([
+    "acme-x: ja.md has no body",
+  ]);
 });

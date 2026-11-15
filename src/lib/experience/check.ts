@@ -15,6 +15,7 @@ export interface ExperienceRef {
 export interface DetailRef {
   id: string;
   highlights: string[];
+  body: string;
 }
 
 /** Returns one message per problem. An empty list means the content is complete. */
@@ -44,6 +45,8 @@ export function checkExperiences(
       const detail = detailsById.get(`${experience.id}/${lang}`);
       if (!detail) {
         problems.push(`${experience.id}: missing ${lang}.md`);
+      } else if (detail.body.trim() === "") {
+        problems.push(`${experience.id}: ${lang}.md has no body`);
       } else if (
         english &&
         detail.highlights.length !== english.highlights.length
