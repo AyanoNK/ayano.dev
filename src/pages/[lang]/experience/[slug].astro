@@ -60,10 +60,15 @@ const { Content } = await render(detail);
         </p>
       </div>
       {meta.technologies.length > 0 && (
-        <div class="flex flex-row flex-wrap gap-2">
-          {meta.technologies.map((tech) => (
-            <Badge class="text-md">{tech}</Badge>
-          ))}
+        <div class="flex flex-col gap-2">
+          <h2 class="text-sm font-semibold">
+            {t("index.experience.technologies")}
+          </h2>
+          <div class="flex flex-row flex-wrap gap-2">
+            {meta.technologies.map((tech) => (
+              <Badge class="text-md">{tech}</Badge>
+            ))}
+          </div>
         </div>
       )}
     </div>
