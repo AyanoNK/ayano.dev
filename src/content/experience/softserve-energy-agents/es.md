@@ -11,7 +11,7 @@ highlights:
 
 ## El cliente y el problema
 
-El cliente es una empresa de energía estadounidense del Fortune 500. Cada iniciativa de IA generativa dentro de la empresa debe pasar por tickets en ServiceNow y cambios de infraestructura antes de empezar. Ese proceso es lento, manual y lleno de burocracia.
+El cliente es una empresa de energía estadounidense del Fortune 500. Sus iniciativas de IA generativa pasan por un proceso de tickets en ServiceNow con mucha burocracia.
 
 ## Lo que estoy construyendo
 

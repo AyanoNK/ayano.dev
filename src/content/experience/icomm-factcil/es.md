@@ -10,7 +10,7 @@ highlights:
 
 ## El cliente y el problema
 
-I-Comm construye productos SaaS a medida para clientes de los sectores fintech y de entrega de mercancías en Latinoamérica. Factcil, una startup fintech colombiana, era uno de esos clientes. Necesitaba construir desde cero sus sistemas de facturación, pagos y finanzas, cumpliendo con las normas colombianas de facturación.
+I-Comm construye productos SaaS a medida para clientes de los sectores fintech y de entrega de mercancías en Latinoamérica. Factcil, una startup fintech colombiana, era uno de esos clientes. Necesitaba software a medida para sus sistemas de facturación, pagos y finanzas.
 
 ## Lo que hice
 

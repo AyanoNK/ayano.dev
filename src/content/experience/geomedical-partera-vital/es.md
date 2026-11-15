@@ -13,7 +13,7 @@ highlights:
 
 Partera Vital es un proyecto de salud pública de UNFPA Colombia y el DANE, el departamento nacional de estadística de Colombia. Conecta a parteras tradicionales del Chocó, Colombia con los sistemas de salud y el registro de estadísticas vitales.
 
-El Chocó tiene comunidades afrocolombianas e indígenas donde la mortalidad materna puede triplicar las cifras nacionales y la presencia del Estado es escasa. Allí muchos nacimientos no se registran, y las alertas de salud materna no llegan a tiempo a las entidades públicas.
+El Chocó tiene comunidades afrocolombianas e indígenas donde la mortalidad materna puede triplicar las cifras nacionales y la presencia del Estado es escasa.
 
 ## Lo que construí
 

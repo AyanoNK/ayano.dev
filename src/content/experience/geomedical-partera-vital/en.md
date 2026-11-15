@@ -13,7 +13,7 @@ highlights:
 
 Partera Vital is a public health project by UNFPA Colombia and DANE, Colombia's national statistics department. It connects traditional midwives in Chocó, Colombia with health systems and vital statistics registration.
 
-Chocó has Afro-Colombian and indigenous communities where maternal mortality can triple national figures and State presence is scarce. Births there often go unregistered, and maternal health alerts do not reach public entities in time.
+Chocó has Afro-Colombian and indigenous communities where maternal mortality can triple national figures and State presence is scarce.
 
 ## What I built
 

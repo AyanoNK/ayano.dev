@@ -10,7 +10,7 @@ highlights:
 
 ## The client and the problem
 
-The client is a US advertising measurement and media analytics company. Its users wanted to ask questions about their data in plain language, without writing queries against the company's Snowflake data warehouse themselves.
+The client is a US advertising measurement and media analytics company. Its data lives in Snowflake.
 
 ## What I built
 

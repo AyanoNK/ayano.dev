@@ -10,7 +10,7 @@ highlights:
 
 ## The client and the problem
 
-I-Comm builds custom SaaS products for clients in the fintech and goods delivery sectors in Latin America. Factcil, a Colombian fintech startup, was one of those clients. It needed its billing, payments and financial systems built from the ground up and kept compliant with Colombian invoicing rules.
+I-Comm builds custom SaaS products for clients in the fintech and goods delivery sectors in Latin America. Factcil, a Colombian fintech startup, was one of those clients. It needed custom software for its billing, payments and financial systems.
 
 ## What I did
 

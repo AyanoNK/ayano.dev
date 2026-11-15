@@ -10,7 +10,7 @@ highlights:
 
 ## El cliente y el problema
 
-El cliente es una empresa estadounidense de medición publicitaria y analítica de medios. Sus usuarios querían hacer preguntas sobre sus datos en lenguaje natural, sin escribir ellos mismos consultas contra el data warehouse de Snowflake de la empresa.
+El cliente es una empresa estadounidense de medición publicitaria y analítica de medios. Sus datos están en Snowflake.
 
 ## Lo que construí
 

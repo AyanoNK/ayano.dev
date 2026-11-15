@@ -11,7 +11,7 @@ highlights:
 
 ## The client and the problem
 
-The client is a Fortune 500 US energy company. Every GenAI initiative inside the company has to go through ServiceNow tickets and infrastructure changes before it can start. That process is slow, manual and full of bureaucracy.
+The client is a Fortune 500 US energy company. Its GenAI initiatives run through a ServiceNow ticketing process with a lot of bureaucracy.
 
 ## What I am building
 
