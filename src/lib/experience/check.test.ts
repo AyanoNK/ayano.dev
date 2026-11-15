@@ -81,3 +81,22 @@ test("zero highlights in every language is fine", () => {
   const none = details.map((d) => ({ ...d, highlights: [] }));
   expect(checkExperiences(companies, experiences, none)).toEqual([]);
 });
+
+test("local image in a body", () => {
+  const changed = details.map((d) =>
+    d.id === "acme/x/en"
+      ? { ...d, body: "Text.\n\n![Diagram](./diagram.png)" }
+      : d,
+  );
+  expect(checkExperiences(companies, experiences, changed)).toEqual([
+    "acme/x: en.md uses a local image, which company pages cannot show; use a full https:// URL",
+  ]);
+});
+
+test("remote image in a body is fine", () => {
+  const changed = details.map((d) => ({
+    ...d,
+    body: "![Diagram](https://example.com/d.png)",
+  }));
+  expect(checkExperiences(companies, experiences, changed)).toEqual([]);
+});

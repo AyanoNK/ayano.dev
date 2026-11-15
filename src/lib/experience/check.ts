@@ -1,5 +1,8 @@
 import { locales } from "@/i18n/ui";
 
+/** Markdown image whose path is not a full http(s) URL. */
+const LOCAL_IMAGE = /!\[[^\]]*\]\((?!https?:\/\/)/;
+
 export interface CompanyRef {
   id: string;
   roles: { id: string }[];
@@ -47,6 +50,10 @@ export function checkExperiences(
         problems.push(`${experience.id}: missing ${lang}.md`);
       } else if (detail.body.trim() === "") {
         problems.push(`${experience.id}: ${lang}.md has no body`);
+      } else if (LOCAL_IMAGE.test(detail.body)) {
+        problems.push(
+          `${experience.id}: ${lang}.md uses a local image, which company pages cannot show; use a full https:// URL`,
+        );
       } else if (
         english &&
         detail.highlights.length !== english.highlights.length
