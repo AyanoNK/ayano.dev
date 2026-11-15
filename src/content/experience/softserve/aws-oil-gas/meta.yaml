@@ -1,0 +1,10 @@
+role: ai-engineer
+order: 2
+home: [1]
+technologies:
+  - AWS Bedrock
+  - AWS Textract
+  - Pinecone
+  - LangFuse
+  - DeepEval
+  - Phoenix

@@ -1,0 +1,71 @@
+---
+import { cn } from "@/lib/utils";
+
+/** Rendered Markdown with the styles for its headings, lists and images. */
+interface Props {
+  /** Draw its own bordered white box. Off when it already sits inside a card. */
+  boxed?: boolean;
+}
+
+const { boxed = true } = Astro.props;
+---
+
+<div
+  class={cn(
+    "markdown-content max-w-none",
+    boxed &&
+      "rounded-base border-2 border-border bg-white p-6 shadow-shadow sm:p-8",
+  )}>
+  <slot />
+</div>
+
+<style>
+  .markdown-content :global(h1) {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .markdown-content :global(h2) {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .markdown-content :global(h3) {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  .markdown-content :global(p) {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+  .markdown-content :global(ul) {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .markdown-content :global(ol) {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .markdown-content :global(li) {
+    margin-bottom: 0.35rem;
+    line-height: 1.7;
+  }
+  .markdown-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 0.75rem;
+    border-radius: var(--radius-base);
+  }
+  .markdown-content :global(strong) {
+    font-weight: 700;
+  }
+  .markdown-content :global(> *:first-child) {
+    margin-top: 0;
+  }
+</style>

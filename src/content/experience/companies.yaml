@@ -1,0 +1,126 @@
+- id: softserve
+  name: SoftServe
+  url: https://www.softserveinc.com/
+  order: 1
+  summary:
+    en: A large technology consulting firm. I lead greenfield AI systems and legacy system migrations for clients in the energy, cloud, data analysis and online survey industries.
+    es: Una gran consultora tecnológica. Lidero sistemas de IA desde cero y migraciones de sistemas legacy para clientes de los sectores de energía, nube, análisis de datos y encuestas online.
+    ja: 大手テクノロジーコンサルティング会社です。エネルギー、クラウド、データ分析、オンライン調査業界のクライアント向けに、ゼロからのAIシステム構築やレガシーシステムの移行をリードしています。
+  technologies:
+    - Pyramid Web Framework
+    - Jinja2
+    - Templ
+    - Django
+    - Django REST Framework
+    - AWS ELB
+    - AWS EKS
+    - Docker
+    - gRPC
+    - Java
+    - JavaScript
+    - TypeScript
+    - HTML
+    - SCSS
+    - CSS
+    - REST
+  roles:
+    - id: ai-engineer
+      title:
+        en: AI Engineer
+        es: Ingeniero de Inteligencia Artificial
+        ja: AIエンジニア
+      start: "2025-06"
+    - id: senior-software-engineer
+      title:
+        en: Senior Software Engineer
+        es: Ingeniero de Software Senior
+        ja: シニアソフトウェアエンジニア
+      start: "2023-08"
+      end: "2025-05"
+
+- id: verblio
+  name: Verblio
+  url: https://verblio.com/
+  order: 2
+  summary:
+    en: A US content marketing platform. I maintained and extended its decade-old web platform with new features for a new business model.
+    es: Una plataforma estadounidense de marketing de contenidos. Mantuve y amplié su plataforma web de diez años con nuevas funcionalidades para un nuevo modelo de negocio.
+    ja: 米国のコンテンツマーケティングプラットフォームです。10年の歴史を持つWebプラットフォームを保守し、新しいビジネスモデルに向けた新機能で拡張しました。
+  technologies:
+    - Recurly API
+    - Python
+    - Apollo
+    - GraphQL
+    - Bootstrap 4
+    - Ruby
+    - JavaScript
+    - TypeScript
+    - HTML
+    - SCSS
+    - CSS
+  roles:
+    - id: senior-software-engineer
+      title:
+        en: Senior Software Engineer
+        es: Ingeniero de Software Senior
+        ja: シニアソフトウェアエンジニア
+      start: "2022-08"
+      end: "2023-06"
+
+- id: icomm
+  name: I-Comm Solutions SAS
+  url: https://i-comm.co/
+  order: 3
+  summary:
+    en: A Colombian software company. I built custom SaaS products for clients in the fintech and goods delivery sectors in Latin America.
+    es: Una empresa colombiana de software. Construí productos SaaS a medida para clientes de los sectores fintech y de entrega de mercancías en Latinoamérica.
+    ja: コロンビアのソフトウェア企業です。ラテンアメリカのフィンテックおよび物流分野のクライアント向けに、カスタムSaaSプロダクトを構築しました。
+  technologies:
+    - Django REST Framework
+    - Go
+    - AWS EC2
+    - Docker
+    - MUI
+    - Python
+    - JavaScript
+    - TypeScript
+    - HTML
+    - SCSS
+    - CSS
+    - REST
+  roles:
+    - id: full-stack-engineer
+      title:
+        en: Full Stack Software Engineer
+        es: Ingeniero de Software Full Stack
+        ja: フルスタックソフトウェアエンジニア
+      start: "2020-08"
+      end: "2022-08"
+
+- id: geomedical
+  name: Geomedical Health Group
+  url: https://geomedical.co/
+  order: 4
+  summary:
+    en: A health group in Colombia. I led the development of a public health mobile app built with UNFPA Colombia and DANE.
+    es: Un grupo de salud en Colombia. Lideré el desarrollo de una aplicación móvil de salud pública construida con UNFPA Colombia y el DANE.
+    ja: コロンビアのヘルスグループです。UNFPA ColombiaおよびDANEと共同で構築した公衆衛生モバイルアプリの開発をリードしました。
+  technologies:
+    - React
+    - Google App Engine
+    - Docker
+    - Python
+    - JavaScript
+    - TypeScript
+    - HTML
+    - CSS
+    - SCSS
+    - REST
+  roles:
+    - id: development-coordinator
+      title:
+        en: Development Coordinator
+        es: Coordinador de Desarrollo
+        ja: 開発コーディネーター
+      start: "2020-09"
+      end: "2020-12"

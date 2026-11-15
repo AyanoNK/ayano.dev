@@ -1,0 +1,17 @@
+role: full-stack-engineer
+order: 1
+home: [1, 2]
+technologies:
+  - Django
+  - React
+  - AWS
+  - GitHub Actions
+  - Stripe
+  - Figma
+  - Terraform
+links:
+  - title:
+      en: Factcil
+      es: Factcil
+      ja: Factcil
+    url: https://www.factcil.com/

@@ -1,0 +1,69 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { CornerDownRightIcon, ExternalLink } from "@lucide/astro";
+import Anchor from "@/components/Anchor.astro";
+import { getLang, useTranslations } from "@/i18n/utils";
+import type { CompanyGroup } from "@/lib/experience/data";
+import { formatRange } from "@/lib/experience/dates";
+import { companyDates } from "@/lib/experience/group";
+
+type Props = CompanyGroup;
+
+const { company, experiences } = Astro.props;
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const { start, end } = companyDates(company);
+const dates = formatRange(start, end, lang, t("index.experience.present"));
+const lines = experiences.flatMap((e) =>
+  e.homeLines.map((text) => ({ text, section: e.section })),
+);
+const companyUrl = getRelativeLocaleUrl(lang, `experience/${company.id}`);
+---
+
+<div class="w-full overflow-hidden rounded-xl border-2 border-border shadow-shadow">
+  <div class="flex items-center justify-between gap-4 border-b-2 border-border bg-main p-4 text-left text-base text-main-foreground">
+    <a
+      class="flex cursor-pointer flex-row items-start justify-center gap-1 font-heading"
+      href={company.url}
+      target="_blank">
+      {company.name}
+      <ExternalLink size="1rem" />
+    </a>
+    <span class="text-right text-sm font-semibold">{dates}</span>
+  </div>
+  <div class="flex flex-col gap-4 bg-secondary-background p-4">
+    <div class="flex flex-col gap-2">
+      <div class="text-md font-bold">
+        {company.roles.map((role) => role.title[lang]).join(" · ")}
+      </div>
+      <div class="text-sm">{company.summary[lang]}</div>
+    </div>
+    {lines.length > 0 && (
+      <div class="flex flex-col gap-2">
+        <div class="text-md font-semibold">
+          {t("index.experience.highlights")}
+        </div>
+        <ul class="flex flex-col gap-2">
+          {lines.map((line) => (
+            <li class="flex flex-row items-start gap-1">
+              <CornerDownRightIcon class="mt-0.5 size-4 shrink-0" />
+              <span class="text-sm">
+                {line.text}{" "}
+                <a
+                  class="font-semibold whitespace-nowrap underline hover:no-underline"
+                  href={`${companyUrl}#${line.section}`}>
+                  {t("index.experience.view_details")} &rarr;
+                </a>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+    <div>
+      <Anchor variant="neutral" href={companyUrl}>
+        {t("index.experience.view_details")} &rarr;
+      </Anchor>
+    </div>
+  </div>
+</div>

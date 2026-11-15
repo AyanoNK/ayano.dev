@@ -1,11 +1,11 @@
 ---
 name: add-experience
-description: Add or update a work experience item on this portfolio website, writing the texts in the house CV style and wiring them into the trilingual i18n system. Use whenever the user wants to add a new job, company, client project, milestone, or achievement to the website experience section, or pastes raw notes about work they did and wants them turned into experience content, even if they don't mention the word "experience".
+description: Add or update a work experience item on this portfolio website, writing the texts in the house CV style and writing them into the trilingual experience content files. Use whenever the user wants to add a new job, company, client project, milestone, or achievement to the website experience section, or pastes raw notes about work they did and wants them turned into experience content, even if they don't mention the word "experience".
 ---
 
 # Add Experience Item
 
-Adds a work experience item to this portfolio site: either a brand-new company entry or new milestones under an existing company. Produces texts in the house writing style, translates them to Spanish and Japanese, wires them into the site, and verifies the build.
+Adds a work experience item to this portfolio site: a new company, a new section (one client or one milestone) on a company page, or new results for an existing section. Produces texts in the house writing style, translates them to Spanish and Japanese, wires them into the site, and verifies the build.
 
 ## Step 1: Gather the facts
 
@@ -14,16 +14,21 @@ Collect these from the user. Never invent facts, clients, tools, or numbers; eve
 - Company, role, and dates, or which existing company and role the new content belongs under.
 - What the project was: what it does, who the client is, and the client's industry.
 - What the user did: each contribution, and for every tool involved, what it was used for.
-- A measurable result for each milestone: a percentage, USD amount, time saved, users served, data volume, or delivery timeframe. Estimations are fine. If a milestone has no metric, ask the user for one before writing; only leave a milestone qualitative if the user explicitly says no number exists.
+- A measurable result for each highlight: a percentage, USD amount, time saved, users served, data volume, or delivery timeframe. Estimations are fine. If a highlight has no metric, ask the user for one before writing; only leave a highlight qualitative if the user explicitly says no number exists.
 
-Client naming rule: employers can be named; clients get anonymized descriptors that state their size, region, and industry ("a Fortune 500 US energy company", "a leading US online survey platform"). Only name a client directly when the user confirms the relationship is public. When in doubt, ask.
+Client naming rule: employers can be named; clients get anonymized descriptors that state their size, region, and industry ("a Fortune 500 US energy company", "a leading US online survey platform"). Only name a client directly when the user confirms the relationship is public, and then always add the descriptor, because readers in the US, Europe or Asia may not know the name ("Factcil, a Colombian fintech startup"). When in doubt, ask.
 
 ## Step 2: Write the texts (house style)
 
-The experience data model is: company, role, one `description`, and numbered `milestone_N` entries. Write them like this:
+Each place of employment has one page on the site. The page is made of sections: one per client (at a consultancy such as SoftServe, each client is its own section) or one per milestone. A small milestone is a short section with one paragraph. Each section has these texts, per language:
 
-- **description**: one or two sentences of project and client context. What the engagement is, for whom, in what industry.
-- **milestones**: complete sentences starting with a verb (Directed, Built, Migrated, Implemented). Each milestone states WHAT was done, names its tools in context, and ends with or contains its measurable result.
+- **title**: a short name for the work ("Autonomous ticketing agents").
+- **client**: the client name or descriptor (see the naming rule).
+- **summary**: one sentence starting with a verb, with the main result. It shows on the home page card and the overview page.
+- **highlights**: zero to five results (zero for a short section), each a sentence starting with a verb (Directed, Built, Migrated, Implemented) that states what was done, names its tools in context, and contains its measurable result.
+- **body**: the write-up in Markdown, never empty. Headings start at `###`, because the section title is already a heading on the page. Suggested headings for a long section: the client and the problem, what was built, results. A short section is one paragraph with no headings. Images in a body must use a full `https://` URL, because company pages do not process local image files.
+
+A company also has a one or two sentence `summary` for its home page card.
 
 Tool mentions always follow "completed TASK using TOOL" or "used TOOL for TASK". Never drop tools in parentheses or list a bare stack; every tool named gets its purpose stated. Example:
 
@@ -39,23 +44,22 @@ Style rules, all absolute:
 
 ## Step 3: Translate
 
-Write English first, then Spanish and Japanese versions of every text. Match the tone of the existing entries in `src/i18n/index/experience.ts`: Spanish uses first person past ("Lideré...", "Construí..."), Japanese uses polite form ending in ました/しています. Translate meaning over words; keep product names, tool names, and metrics identical across languages.
+Write English first, then Spanish and Japanese versions of every text. Match the tone of the existing files in `src/content/experience/`: Spanish uses first person past ("Lideré...", "Construí..."), Japanese uses polite form ending in ました/しています. Translate meaning over words; keep product names, tool names, and metrics identical across languages.
 
-## Step 4: Wire into the site
+## Step 4: Write the files
 
-Two files must change together, because the component hardcodes which translation keys it renders:
+Experience content lives in `src/content/experience/`. Read an existing experience folder first and match it.
 
-1. `src/i18n/index/experience.ts` — add keys under `experience.<company_slug>`:
-   - New company: `link_1`, `start_date`, `end_date`, then `<role_key>.{role, description, milestone_1..N}`, each field an object with `en`, `es`, `ja`.
-   - Existing company: add `milestone_N` entries (and update `description` if the user asks) under the right role key.
-2. `src/sections/ExperienceSection.astro` — the `experiences` array:
-   - New company: add an entry with `titles` (role, description, milestones as `t()` calls), `startDate`, `endDate`, `companyName`, `companyURL`, `projects`, and `technologies`. Ask the user for the company URL, project links, and which technology badges to list.
-   - Existing company: add the new `t("index.experience.<company>.<role>.milestone_N")` lines to that role's `milestones` array.
+1. **New company or role:** add it to `src/content/experience/companies.yaml` with `id`, `name`, `url`, `order`, `summary`, `technologies` (tools used at the company that no section lists) and `roles` (`id`, `title`, `start`, optional `end`). Every translated field has `en`, `es` and `ja`. Dates are `YYYY-MM`, and a missing `end` means current.
+2. **New section:** create `src/content/experience/<company>/<section>/`, where `<company>` is the company id from `companies.yaml` and `<section>` is a short kebab-case name that becomes the link anchor (`/en/experience/softserve/#energy-agents`). It holds:
+   - `meta.yaml`: `role` (a role id of that company), `order` (position on the company page, newest first), `home` (which lines this section puts on the home page card: highlight positions starting at 1, or `summary`, for example `[1, 2]` or `[summary]`; `[]` for none; each company card needs at least 3 lines in total), optional `start` and `end`, `technologies` (only tools the text names), optional `links` (`title` per language and `url`).
+   - `en.md`, `es.md`, `ja.md`: front matter with `title`, `client`, `summary`, `highlights`, then the body. All three files need the same number of highlights.
+3. **New results for an existing section:** add them to the highlights or body of all three language files.
 
-Keep the existing file conventions: the translation file ends with `as const`, and keys follow the `index.experience.company.role.field` dot-path used by `useTranslations`.
+Facts that do not change with language (dates, technologies, links) go only in the YAML files. Nothing else needs editing: the home page, the overview page and the company pages read these files.
 
 ## Step 5: Verify
 
-Run `pnpm build`. It renders every page and fails on missing or mistyped translation keys. Fix anything it reports.
+Run `pnpm build`. It fails when a language file is missing or has an empty body, the highlight counts differ, a field is empty, a section folder sits under a name that is not a company id, a company has no sections, or `meta.yaml` names a role the company does not have. Fix anything it reports.
 
 Never run `git commit` in this repository. Leave the changes uncommitted for the user to review.

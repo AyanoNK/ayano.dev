@@ -1,0 +1,542 @@
+{
+  "name": "Employer Experience Page",
+  "viewport": {
+    "width": 1280,
+    "height": 1900
+  },
+  "root": {
+    "name": "Page",
+    "direction": "vertical",
+    "children": [
+      {
+        "name": "Top bar",
+        "direction": "horizontal",
+        "height": 72,
+        "padding": [
+          0,
+          32
+        ],
+        "justify": "space-between",
+        "align": "center",
+        "children": [
+          {
+            "name": "← Back to experience",
+            "type": "button",
+            "height": 40
+          },
+          {
+            "name": "Language",
+            "type": "icon",
+            "width": 32,
+            "height": 32
+          }
+        ]
+      },
+      {
+        "name": "Content column (max 1024)",
+        "direction": "vertical",
+        "maxWidth": 1024,
+        "padding": [
+          16,
+          32
+        ],
+        "gap": 32,
+        "children": [
+          {
+            "name": "Company header — the ONLY blue block",
+            "_solves": "Blue marks the employer once; everything below reads as part of it",
+            "direction": "vertical",
+            "padding": 32,
+            "gap": 12,
+            "children": [
+              {
+                "name": "Name row",
+                "direction": "horizontal",
+                "gap": 8,
+                "align": "center",
+                "children": [
+                  {
+                    "name": "SoftServe",
+                    "type": "text",
+                    "variant": "display",
+                    "height": 48
+                  },
+                  {
+                    "name": "External link",
+                    "type": "icon",
+                    "width": 20,
+                    "height": 20
+                  }
+                ]
+              },
+              {
+                "name": "AI Engineer · Jun 2025 - Present",
+                "type": "text",
+                "height": 20
+              },
+              {
+                "name": "Senior Software Engineer · Aug 2023 - May 2025",
+                "type": "text",
+                "height": 20
+              },
+              {
+                "name": "Company summary (one or two sentences)",
+                "type": "text",
+                "height": 48
+              },
+              {
+                "name": "Also used at this company",
+                "type": "text",
+                "variant": "caption",
+                "height": 16
+              },
+              {
+                "name": "Company tools",
+                "direction": "horizontal",
+                "gap": 8,
+                "wrap": true,
+                "children": [
+                  {
+                    "name": "Pyramid",
+                    "type": "button",
+                    "height": 24
+                  },
+                  {
+                    "name": "Jinja2",
+                    "type": "button",
+                    "height": 24
+                  },
+                  {
+                    "name": "Templ",
+                    "type": "button",
+                    "height": 24
+                  },
+                  {
+                    "name": "Docker",
+                    "type": "button",
+                    "height": 24
+                  },
+                  {
+                    "name": "gRPC",
+                    "type": "button",
+                    "height": 24
+                  },
+                  {
+                    "name": "…",
+                    "type": "text",
+                    "height": 24
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Body",
+            "direction": "horizontal",
+            "gap": 32,
+            "align": "flex-start",
+            "children": [
+              {
+                "name": "Sections nav — white card, sticky on desktop, above content on mobile",
+                "_solves": "Jump between clients without scrolling the whole page",
+                "direction": "vertical",
+                "width": 256,
+                "gap": 6,
+                "padding": 16,
+                "children": [
+                  {
+                    "name": "Sections",
+                    "type": "text",
+                    "variant": "caption",
+                    "height": 20
+                  },
+                  {
+                    "name": "AI ENGINEER",
+                    "type": "text",
+                    "variant": "caption",
+                    "height": 16
+                  },
+                  {
+                    "name": "Autonomous ticketing agents (current, filled)",
+                    "direction": "vertical",
+                    "padding": [
+                      8,
+                      12
+                    ],
+                    "gap": 2,
+                    "children": [
+                      {
+                        "name": "Autonomous ticketing agents",
+                        "type": "link",
+                        "height": 20
+                      },
+                      {
+                        "name": "A Fortune 500 US energy company",
+                        "type": "text",
+                        "variant": "caption",
+                        "height": 16
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Oil and gas prediction agent",
+                    "direction": "vertical",
+                    "padding": [
+                      8,
+                      12
+                    ],
+                    "gap": 2,
+                    "children": [
+                      {
+                        "name": "Oil and gas prediction agent",
+                        "type": "link",
+                        "height": 20
+                      },
+                      {
+                        "name": "Amazon Web Services (AWS)",
+                        "type": "text",
+                        "variant": "caption",
+                        "height": 16
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Cloud savings pipeline",
+                    "direction": "vertical",
+                    "padding": [
+                      8,
+                      12
+                    ],
+                    "gap": 2,
+                    "children": [
+                      {
+                        "name": "Cloud savings pipeline",
+                        "type": "link",
+                        "height": 20
+                      },
+                      {
+                        "name": "SoftServe (internal)",
+                        "type": "text",
+                        "variant": "caption",
+                        "height": 16
+                      }
+                    ]
+                  },
+                  {
+                    "name": "SENIOR SOFTWARE ENGINEER",
+                    "type": "text",
+                    "variant": "caption",
+                    "height": 16
+                  },
+                  {
+                    "name": "GenAI analytics chatbot",
+                    "direction": "vertical",
+                    "padding": [
+                      8,
+                      12
+                    ],
+                    "gap": 2,
+                    "children": [
+                      {
+                        "name": "GenAI analytics chatbot",
+                        "type": "link",
+                        "height": 20
+                      },
+                      {
+                        "name": "A US advertising measurement company",
+                        "type": "text",
+                        "variant": "caption",
+                        "height": 16
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "Sections",
+                "direction": "vertical",
+                "grow": true,
+                "gap": 24,
+                "children": [
+                  {
+                    "name": "Section card (white, bordered) — long section",
+                    "_solves": "One white card per client: highlights and write-up live together, no second colored box",
+                    "direction": "vertical",
+                    "padding": 24,
+                    "gap": 16,
+                    "children": [
+                      {
+                        "name": "Section head",
+                        "direction": "vertical",
+                        "gap": 4,
+                        "children": [
+                          {
+                            "name": "Autonomous ticketing agents",
+                            "type": "text",
+                            "variant": "heading",
+                            "height": 32
+                          },
+                          {
+                            "name": "A Fortune 500 US energy company",
+                            "type": "text",
+                            "height": 20
+                          },
+                          {
+                            "name": "AI Engineer · Jun 2025 - Present",
+                            "type": "text",
+                            "variant": "caption",
+                            "height": 16
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Section tools",
+                        "direction": "horizontal",
+                        "gap": 8,
+                        "wrap": true,
+                        "children": [
+                          {
+                            "name": "Google ADK",
+                            "type": "button",
+                            "height": 24
+                          },
+                          {
+                            "name": "ServiceNow",
+                            "type": "button",
+                            "height": 24
+                          },
+                          {
+                            "name": "Terraform",
+                            "type": "button",
+                            "height": 24
+                          },
+                          {
+                            "name": "Databricks",
+                            "type": "button",
+                            "height": 24
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Highlights — plain list with a left rule, no fill",
+                        "direction": "vertical",
+                        "gap": 8,
+                        "padding": [
+                          0,
+                          16
+                        ],
+                        "children": [
+                          {
+                            "name": "Highlights",
+                            "type": "text",
+                            "variant": "caption",
+                            "height": 16
+                          },
+                          {
+                            "name": "• Delivered the first MVP in two months.",
+                            "type": "text",
+                            "height": 20
+                          },
+                          {
+                            "name": "• Agent pipeline for ServiceNow tickets and Terraform changes.",
+                            "type": "text",
+                            "height": 20
+                          },
+                          {
+                            "name": "• Claude skills marketplace with 93 skills.",
+                            "type": "text",
+                            "height": 20
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Divider",
+                        "type": "divider"
+                      },
+                      {
+                        "name": "Write-up",
+                        "direction": "vertical",
+                        "gap": 8,
+                        "children": [
+                          {
+                            "name": "The client and the problem",
+                            "type": "text",
+                            "height": 24
+                          },
+                          {
+                            "name": "Paragraph",
+                            "type": "text",
+                            "height": 44
+                          },
+                          {
+                            "name": "What I am building",
+                            "type": "text",
+                            "height": 24
+                          },
+                          {
+                            "name": "Paragraph and bullets",
+                            "type": "text",
+                            "height": 88
+                          },
+                          {
+                            "name": "Results",
+                            "type": "text",
+                            "height": 24
+                          },
+                          {
+                            "name": "Bullets",
+                            "type": "text",
+                            "height": 44
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Section card (white, bordered) — long section",
+                    "direction": "vertical",
+                    "padding": 24,
+                    "gap": 16,
+                    "children": [
+                      {
+                        "name": "Section head",
+                        "direction": "vertical",
+                        "gap": 4,
+                        "children": [
+                          {
+                            "name": "Oil and gas production prediction agent",
+                            "type": "text",
+                            "variant": "heading",
+                            "height": 32
+                          },
+                          {
+                            "name": "Amazon Web Services (AWS)",
+                            "type": "text",
+                            "height": 20
+                          },
+                          {
+                            "name": "AI Engineer · Jun 2025 - Present",
+                            "type": "text",
+                            "variant": "caption",
+                            "height": 16
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Section tools",
+                        "direction": "horizontal",
+                        "gap": 8,
+                        "wrap": true,
+                        "children": [
+                          {
+                            "name": "AWS Bedrock",
+                            "type": "button",
+                            "height": 24
+                          },
+                          {
+                            "name": "AWS Textract",
+                            "type": "button",
+                            "height": 24
+                          },
+                          {
+                            "name": "Pinecone",
+                            "type": "button",
+                            "height": 24
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Highlights — plain list with a left rule, no fill",
+                        "direction": "vertical",
+                        "gap": 8,
+                        "padding": [
+                          0,
+                          16
+                        ],
+                        "children": [
+                          {
+                            "name": "Highlights",
+                            "type": "text",
+                            "variant": "caption",
+                            "height": 16
+                          },
+                          {
+                            "name": "• 70% accuracy within 4 to 5 months.",
+                            "type": "text",
+                            "height": 20
+                          },
+                          {
+                            "name": "• 500+ PDF scans converted.",
+                            "type": "text",
+                            "height": 20
+                          },
+                          {
+                            "name": "• 70% lower vector search cost.",
+                            "type": "text",
+                            "height": 20
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Divider",
+                        "type": "divider"
+                      },
+                      {
+                        "name": "Write-up",
+                        "type": "text",
+                        "height": 160
+                      }
+                    ]
+                  },
+                  {
+                    "name": "Section card (white, bordered) — short section, no highlights",
+                    "_solves": "Small milestones stay light: head and one paragraph",
+                    "direction": "vertical",
+                    "padding": 24,
+                    "gap": 12,
+                    "children": [
+                      {
+                        "name": "Section head",
+                        "direction": "vertical",
+                        "gap": 4,
+                        "children": [
+                          {
+                            "name": "Service reliability",
+                            "type": "text",
+                            "variant": "heading",
+                            "height": 32
+                          },
+                          {
+                            "name": "A leading US online survey platform",
+                            "type": "text",
+                            "height": 20
+                          },
+                          {
+                            "name": "Senior Software Engineer · Aug 2023 - May 2025",
+                            "type": "text",
+                            "variant": "caption",
+                            "height": 16
+                          }
+                        ]
+                      },
+                      {
+                        "name": "Kubernetes",
+                        "type": "button",
+                        "height": 24
+                      },
+                      {
+                        "name": "One paragraph",
+                        "type": "text",
+                        "height": 44
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

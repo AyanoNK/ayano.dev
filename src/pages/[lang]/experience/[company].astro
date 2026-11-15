@@ -1,0 +1,200 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { ExternalLink, SquareArrowUpRightExit } from "@lucide/astro";
+import ProjectLayout from "@/layouts/ProjectLayout.astro";
+import Anchor from "@/components/Anchor.astro";
+import Badge from "@/components/Badge.astro";
+import MarkdownContent from "@/components/MarkdownContent.astro";
+import { locales } from "@/i18n/ui";
+import { getLang, useTranslations } from "@/i18n/utils";
+import { getExperienceData } from "@/lib/experience/data";
+import { formatRange } from "@/lib/experience/dates";
+import { prefixHeadingIds } from "@/lib/experience/headings";
+
+export const getStaticPaths = (async () => {
+  const paths = await Promise.all(
+    locales.map(async (lang) => {
+      const { groups } = await getExperienceData(lang);
+      return groups.map((group) => ({
+        params: { lang, company: group.company.id },
+        props: { group },
+      }));
+    }),
+  );
+  return paths.flat();
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const lang = getLang(Astro.currentLocale);
+const t = useTranslations(lang);
+const { company, experiences } = Astro.props.group;
+const present = t("index.experience.present");
+// Repo Markdown rendered by Astro, so it is trusted. Heading ids get the section
+// name in front so they stay unique on a page with many sections.
+const sections = experiences.map((experience) => ({
+  ...experience,
+  html: prefixHeadingIds(
+    experience.detail.rendered?.html ?? "",
+    experience.section,
+  ),
+}));
+const sectionsByRole = company.roles
+  .map((role) => ({
+    role,
+    items: sections.filter((s) => s.role.id === role.id),
+  }))
+  .filter((group) => group.items.length > 0);
+---
+
+<ProjectLayout
+  title={company.name}
+  description={company.summary[lang]}
+  backHref={getRelativeLocaleUrl(lang, "experience")}
+  backLabel={t("index.experience.back_to_list")}>
+  <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-10 px-4 py-8">
+    <header class="flex flex-col gap-3 rounded-base border-2 border-border bg-main p-6 text-main-foreground shadow-shadow sm:p-8">
+      <h1 class="text-2xl font-heading xl:text-4xl 2xl:text-5xl">
+        <a
+          class="inline-flex items-start gap-2"
+          href={company.url}
+          target="_blank">
+          {company.name}
+          <ExternalLink size="1.25rem" />
+        </a>
+      </h1>
+      <ul class="flex flex-col gap-1 text-sm font-semibold">
+        {company.roles.map((role) => (
+          <li>
+            {role.title[lang]} ·{" "}
+            {formatRange(role.start, role.end, lang, present)}
+          </li>
+        ))}
+      </ul>
+      <p>{company.summary[lang]}</p>
+      {company.technologies.length > 0 && (
+        <div class="flex flex-col gap-2">
+          <p class="text-sm font-semibold">
+            {t("index.experience.company_technologies")}
+          </p>
+          <div class="flex flex-row flex-wrap gap-2">
+            {company.technologies.map((tech) => (
+              <Badge>{tech}</Badge>
+            ))}
+          </div>
+        </div>
+      )}
+    </header>
+
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-start">
+      <nav
+        aria-label={t("index.experience.sections")}
+        class="flex shrink-0 flex-col gap-4 rounded-base border-2 border-border bg-white p-4 shadow-shadow lg:sticky lg:top-8 lg:max-h-[calc(100vh-4rem)] lg:w-64 lg:overflow-y-auto">
+        <h2 class="text-sm font-heading">{t("index.experience.sections")}</h2>
+        {sectionsByRole.map(({ role, items }) => (
+          <div class="flex flex-col gap-1">
+            {sectionsByRole.length > 1 && (
+              <h3 class="px-3 text-xs font-semibold tracking-wide text-foreground/60 uppercase">
+                {role.title[lang]}
+              </h3>
+            )}
+            <ol class="flex flex-col gap-1">
+              {items.map(({ section, detail }) => (
+                <li>
+                  <a
+                    href={`#${section}`}
+                    data-section-link={section}
+                    class="flex flex-col rounded-base border-2 border-transparent px-3 py-2 transition-colors hover:border-border hover:bg-main/15 aria-[current=location]:border-border aria-[current=location]:bg-main/25">
+                    <span class="text-sm font-semibold">
+                      {detail.data.title}
+                    </span>
+                    <span class="text-xs text-foreground/60">
+                      {detail.data.client}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </nav>
+
+      <div class="flex min-w-0 grow flex-col gap-6">
+        {sections.map(({ section, detail, meta, role, dates, html }) => (
+          <section
+            id={section}
+            class="flex scroll-mt-8 flex-col gap-4 rounded-base border-2 border-border bg-white p-6 shadow-shadow">
+            <div class="flex flex-col gap-1">
+              <h2 class="text-xl font-heading xl:text-2xl">
+                {detail.data.title}
+              </h2>
+              <p class="font-semibold">{detail.data.client}</p>
+              <p class="text-sm text-foreground/70">
+                {role.title[lang]} · {dates}
+              </p>
+            </div>
+            {meta.technologies.length > 0 && (
+              <div class="flex flex-row flex-wrap gap-2">
+                {meta.technologies.map((tech) => (
+                  <Badge>{tech}</Badge>
+                ))}
+              </div>
+            )}
+            {detail.data.highlights.length > 0 && (
+              <div class="flex flex-col gap-2 border-l-4 border-border pl-4">
+                <h3 class="text-sm font-semibold text-foreground/70">
+                  {t("index.experience.highlights")}
+                </h3>
+                <ul class="flex list-disc flex-col gap-1 pl-5">
+                  {detail.data.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {detail.data.highlights.length > 0 && (
+              <hr class="border-t-2 border-border/20" />
+            )}
+            <MarkdownContent boxed={false}>
+              <Fragment set:html={html} />
+            </MarkdownContent>
+            {meta.links.length > 0 && (
+              <div class="flex flex-wrap gap-4">
+                {meta.links.map((link) => (
+                  <Anchor variant="neutral" href={link.url} target="_blank">
+                    <SquareArrowUpRightExit />
+                    {link.title[lang]}
+                  </Anchor>
+                ))}
+              </div>
+            )}
+          </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</ProjectLayout>
+
+<script>
+  // Marks the sections list entry for the section currently on screen.
+  const links = new Map(
+    [
+      ...document.querySelectorAll<HTMLAnchorElement>("[data-section-link]"),
+    ].map((link) => [link.dataset.sectionLink, link]),
+  );
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        for (const link of links.values()) link.removeAttribute("aria-current");
+        links.get(entry.target.id)?.setAttribute("aria-current", "location");
+      }
+    },
+    { rootMargin: "-20% 0px -70% 0px" },
+  );
+  for (const id of links.keys()) {
+    const section = id && document.getElementById(id);
+    if (section) observer.observe(section);
+  }
+</script>

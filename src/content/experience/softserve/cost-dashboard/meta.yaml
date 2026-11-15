@@ -1,0 +1,11 @@
+role: ai-engineer
+order: 6
+home: []
+technologies:
+  - AWS S3
+  - Databricks
+  - Python
+  - PySpark
+  - Go
+  - React
+  - Terraform
