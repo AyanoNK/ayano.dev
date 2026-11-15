@@ -17,7 +17,7 @@ A first version (PR #13) gave every client its own page. Sebastian wants one pag
 
 ## Goals
 
-- **Home page:** one card per company with location, dates, roles, a short summary and a few highlights. Each highlight is one sentence about one section and links to that section on the company page. A button opens the overview page.
+- **Home page:** one card per company with location, dates, roles, a short summary and at least 3 highlights. Each highlight is a result picked from a section (or a short section's summary), followed by a "View details" link to that section on the company page. A button opens the overview page.
 - **Overview page** at `/<lang>/experience/`: the four companies, each with its summary and a list of its sections. Each item links to that section on the company page.
 - **Company page** at `/<lang>/experience/<company>/`: everything done at that employer, with one section per client or milestone, each reachable at `#<section>`.
 - All text exists in `en`, `es` and `ja`. A missing, empty or incomplete translation fails the build.
@@ -71,7 +71,7 @@ src/content/experience/
 
 `companies.yaml` keeps its PR #13 fields: `id`, `name`, `url`, `order`, optional `location`, `summary`, `technologies` (tools with no section tied to them), `roles` (`id`, `title`, `start`, optional `end`).
 
-`meta.yaml` per section: `role`, `order` (position on the company page, newest first), `home` (shown on the home card), optional `start` and `end` (a missing `end` falls back to the role's end), `technologies`, optional `links`.
+`meta.yaml` per section: `role`, `order` (position on the company page, newest first), `home` (the lines this section puts on the home card: highlight positions starting at 1, or `summary`; every company card shows at least 3 lines, and the build fails otherwise), optional `start` and `end` (a missing `end` falls back to the role's end), `technologies`, optional `links`.
 
 `<lang>.md` front matter: `title`, `client`, `summary` (the line on the home card and the overview page), `highlights` (zero to five results; zero for a short section). The body is the write-up and must not be empty.
 
