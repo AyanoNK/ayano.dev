@@ -55,7 +55,7 @@ const companies = defineCollection({
   schema: z.object({
     id: z.string(),
     name: z.string(),
-    url: z.string().url(),
+    url: z.url(),
     order: z.number(),
     location: localeText.optional(),
     summary: localeText,
@@ -88,7 +88,7 @@ const experiences = defineCollection({
     home: z.boolean().default(false),
     technologies: z.array(z.string()),
     links: z
-      .array(z.object({ title: localeText, url: z.string().url() }))
+      .array(z.object({ title: localeText, url: z.url() }))
       .default([]),
   }),
 });
