@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { experienceDates, groupByCompany } from "./group";
+import { companyDates, experienceDates, groupByCompany } from "./group";
 
 const company = {
   id: "a",
@@ -53,4 +53,28 @@ test("experience dates win over role dates", () => {
   expect(
     experienceDates({ ...exp, start: "2024-01", end: "2024-06" }, company),
   ).toEqual({ start: "2024-01", end: "2024-06" });
+});
+
+test("company dates span all roles and stay open while one is current", () => {
+  expect(
+    companyDates({
+      ...company,
+      roles: [
+        { id: "ai", start: "2025-06" },
+        { id: "swe", start: "2023-08", end: "2025-05" },
+      ],
+    }),
+  ).toEqual({ start: "2023-08", end: undefined });
+});
+
+test("company dates end with the last role", () => {
+  expect(
+    companyDates({
+      ...company,
+      roles: [
+        { id: "a", start: "2020-01", end: "2021-03" },
+        { id: "b", start: "2021-04", end: "2022-08" },
+      ],
+    }),
+  ).toEqual({ start: "2020-01", end: "2022-08" });
 });

@@ -55,3 +55,16 @@ export function experienceDates(
   }
   return { start: role.start, end: role.end };
 }
+
+/** From the earliest role start to the latest role end. No end while any role is current. */
+export function companyDates(company: Company): {
+  start: string;
+  end?: string;
+} {
+  const starts = company.roles.map((r) => r.start).sort();
+  const ends = company.roles.map((r) => r.end);
+  const end = ends.includes(undefined)
+    ? undefined
+    : (ends as string[]).sort().at(-1);
+  return { start: starts[0], end };
+}
