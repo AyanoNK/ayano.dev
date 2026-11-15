@@ -57,6 +57,7 @@
     ja: 米国のコンテンツマーケティングプラットフォームです。10年の歴史を持つWebプラットフォームを保守し、新しいビジネスモデルに向けた新機能で拡張しました。
   technologies:
     - Recurly API
+    - Python
     - Apollo
     - GraphQL
     - Bootstrap 4
@@ -89,6 +90,7 @@
     ja: コロンビアのソフトウェア企業です。ラテンアメリカのフィンテックおよび物流分野のクライアント向けに、カスタムSaaSプロダクトを構築しました。
   technologies:
     - Django REST Framework
+    - Go
     - AWS ELB
     - AWS EC2
     - Docker
