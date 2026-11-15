@@ -4,138 +4,136 @@
 
 The "Professional Experience" section on the home page shows every role, its full description and every milestone for all four companies. It is too much text for a home page.
 
-The site is also meant to be the most complete record of Sebastian's work. CVs are cut from it for each job application, not the other way around. Today the CVs (`CV_2026_2.txt`, `factored_cv.md`) hold more detail than the site.
+The site is also meant to be the most complete record of Sebastian's work. CVs are cut from it for each job application, not the other way around. Today the CVs (`CV_2026_2.txt`, `factored_cv.md`) and LinkedIn hold more detail than the site.
 
-## What an "experience" is
+## Revision
 
-An experience is the work done for one client. At a product company (Verblio, Geomedical) the company is the client, so it has one experience. At SoftServe and I-Comm, which build software for other businesses, each client is its own experience, because each client has a different business and the work was different.
+A first version (PR #13) gave every client its own page. Sebastian wants one page per place of employment instead, because the work is divided by employer, and some milestones are too small for a page of their own (for example keeping Kubernetes services reliable). Verblio will gain more milestones over time. This document describes the revised design. Most of PR #13 carries over, and the work stays in PR #13.
 
-Internal SoftServe projects (the Google Cloud savings pipeline, the AI orchestrator) count as experiences too. Their client is SoftServe.
+## Words used here
+
+- **Company page:** one page per place of employment. Four today: SoftServe, Verblio, I-Comm, Geomedical.
+- **Section:** one block on a company page. A section is the work for one client (at SoftServe, a consultancy, each client is a section) or one milestone. A section can be long, with highlights and several headings, or short, with one paragraph.
 
 ## Goals
 
-- **Home page:** one card per company with a short company summary and a few highlights. Each highlight is one sentence about one experience and links to its page. A button opens the full list.
-- **List page** at `/<lang>/experience/`: every experience, grouped by company, newest company first.
-- **One page per experience** at `/<lang>/experience/<slug>/`: the full write-up of the work for that client.
-- All text exists in `en`, `es` and `ja`. A missing or incomplete translation fails the build.
-- The site holds everything in `factored_cv.md` and `CV_2026_2.txt`, plus the milestones the site has today that the CVs dropped.
+- **Home page:** one card per company with location, dates, roles, a short summary and a few highlights. Each highlight is one sentence about one section and links to that section on the company page. A button opens the overview page.
+- **Overview page** at `/<lang>/experience/`: the four companies, each with its summary and a list of its sections. Each item links to that section on the company page.
+- **Company page** at `/<lang>/experience/<company>/`: everything done at that employer, with one section per client or milestone, each reachable at `#<section>`.
+- All text exists in `en`, `es` and `ja`. A missing, empty or incomplete translation fails the build.
+- The site holds everything in `factored_cv.md`, `CV_2026_2.txt`, LinkedIn (read 2026-11-14) and the old site's milestones.
+- Adding a milestone to a company means adding one section folder. No code changes.
 
 ## Non-goals
 
-- Generating CVs from the site. The content is written so that it can be done later, but no script is part of this work.
-- Pictures or videos on experience pages. Markdown allows them later; none are added now.
+- Generating CVs from the site.
+- Pictures or videos on company pages. Markdown allows them later.
 - Changing the other home page sections.
+- A page per section.
 
 ## Anti-goals
 
-- Any fact, client, tool or number that is not in the CVs or on the site today. Everything must hold up in an interview.
-- Naming a client that is not public. Clients get a description of size, region and industry ("a Fortune 500 US energy company"), as in `factored_cv.md`.
-- Naming a public client without saying what it is. Readers in the US, Europe or Asia do not know a Colombian fintech by name, so a public client gets its name plus the description ("Factcil, a Colombian fintech startup").
-- A page that shows a translation key, an English sentence on the Spanish page, or an empty section because one language was missed.
-- Breaking the `#experience-section` anchor on the home page.
+- Any fact, client, tool or number that is not in the CVs, LinkedIn or the old site. Everything must hold up in an interview.
+- Naming a client that is not public. Clients get a description of size, region and industry ("a Fortune 500 US energy company").
+- Naming a public client without saying what it is ("Factcil, a Colombian fintech startup").
+- A page that shows a translation key, an English sentence on the Spanish page, or an empty section.
 
 ## Approaches
 
-- **A. Markdown files per experience and language (picked).** Short fields at the top of each file, the full write-up in the body, read by an Astro content collection. Long text is easy to edit, each page can tell its own story, and Markdown is easy to cut CVs from. It needs translation checks, because three files per experience can drift apart.
-- **B. Everything in `src/i18n/index/experience.ts`.** Smallest change, but the file is already 19 KB for four companies and can only hold plain sentences.
-- **C. One YAML file per experience with fixed fields and no free text.** Very regular, but every page would look the same, which works against each client being different.
+- **A. One write-up per company per language**, sections as `##` headings. Simplest, but sections lose their own role, client, tools and dates, and the build can only check whole files.
+- **B. Company page built from section folders (picked).** Each section is a folder with `meta.yaml` and three language files. The PR #13 write-ups and translation check carry over. Cost: a tiny milestone still needs four small files.
+- **C. One file per company per language with sections as a list in front matter.** Long prose inside YAML is hard to edit.
 
-Sebastian picked A, with the condition that translations must be guarded.
+Sebastian picked B.
 
 ## Where the content lives
 
 ```
 src/content/experience/
-  companies.yaml                 # the four companies
-  softserve-energy-agents/
-    meta.yaml                    # facts that are the same in every language
-    en.md
-    es.md
-    ja.md
-  softserve-aws-oil-gas/
+  companies.yaml                    # company facts (unchanged from PR #13)
+  softserve/
+    energy-agents/
+      meta.yaml
+      en.md
+      es.md
+      ja.md
+    aws-oil-gas/
     ...
+  verblio/
+    platform/
+  icomm/
+    factcil/
+  geomedical/
+    partera-vital/
 ```
 
-**Facts that do not change with language are written once,** in `meta.yaml` or `companies.yaml`, never in the language files. That rules out a Spanish page with a different date or tech list than the English one.
+**The company comes from the folder name.** `meta.yaml` no longer has a `company` field. The build fails when a folder name is not a company id in `companies.yaml`.
 
-`companies.yaml`, one entry per company:
+`companies.yaml` keeps its PR #13 fields: `id`, `name`, `url`, `order`, optional `location`, `summary`, `technologies` (tools with no section tied to them), `roles` (`id`, `title`, `start`, optional `end`).
 
-- `id` (`softserve`, `verblio`, `icomm`, `geomedical`), `name`, `url`, `order` (home page order)
-- `location`: optional `{ en, es, ja }` (from `CV_2026_2.txt`, for example "Remote - Texas, US"). Geomedical has none in the CVs.
-- `technologies`: tools used at the company that no client is tied to (for example Pyramid, Jinja2, Templ and gRPC at SoftServe, Recurly, Apollo and GraphQL at Verblio). Shown on the list page under the company, so no badge from today's site is lost.
-- `summary`: `{ en, es, ja }`, one or two sentences for the home card
-- `roles`: list of `{ id, title: { en, es, ja }, start, end }`. SoftServe has two roles: Senior Software Engineer from 2023-08 to 2025-05, and AI Engineer from 2025-06 to now. The others have one.
+`meta.yaml` per section: `role`, `order` (position on the company page, newest first), `home` (shown on the home card), optional `start` and `end` (a missing `end` falls back to the role's end), `technologies`, optional `links`.
 
-Dates are `YYYY-MM`. `end` is left out for current work.
-
-`meta.yaml`, one per experience:
-
-- `company` (a company `id`), `role` (a role `id` in that company)
-- `start`, `end` (optional, `YYYY-MM`; the page falls back to the role's dates)
-- `order` (position inside its company, newest first)
-- `home` (`true` when it is one of the highlights on the home card)
-- `technologies`: the badges, only tools the text ties to this client
-- `links`: optional `{ title, url }` list (for example Factcil and the Partera Vital article that the site links today)
-
-`<lang>.md` front matter:
-
-- `title`: short name of the work ("Autonomous ticketing agents")
-- `client`: the client description ("A Fortune 500 US energy company")
-- `summary`: one sentence. It is the highlight line on the home card and the line under the title on the list page.
-- `highlights`: three to five results with numbers, shown at the top of the experience page
-
-The body is the full write-up. Suggested headings: the client and the problem, what was built, results. Each page can change this when the story needs it.
+`<lang>.md` front matter: `title`, `client`, `summary` (the line on the home card and the overview page), `highlights` (zero to five results; zero for a short section). The body is the write-up and must not be empty.
 
 ## Translation guards
 
-- **Schema:** every `{ en, es, ja }` field in the YAML files is required by the Zod schema. A missing language fails the build.
-- **Matching files:** a check in `src/lib/experience/` fails the build when an experience folder lacks one of `en.md`, `es.md`, `ja.md`, or when the three files have a different number of `highlights`.
-- **References:** the same check fails when `meta.yaml` names a company or role that does not exist.
-- **Tests:** Vitest covers that check, as it covers `src/lib/showcase/` today.
-- **Page labels** ("View all experience", "Highlights", "Present", "Back") go in `src/i18n/ui.ts` like other labels. `useTranslations` returns the key itself when one is missing, so each new label must be added in all three languages.
-- **Dates** are formatted per language with `Intl.DateTimeFormat` ("Aug 2023", "Ago 2023", "2023年8月"). They are never written by hand.
+The PR #13 check carries over, now per section: every section has all three language files, no file has an empty body, highlight counts match across languages, the role exists in the company, and no language file exists without a `meta.yaml`. New: a company folder that is not in `companies.yaml` fails, and so does a company in `companies.yaml` with no sections. Labels go in `src/i18n/index/experience.ts` in all three languages. Dates are formatted by `Intl`.
 
 ## Pages
 
-**Home card (`src/sections/ExperienceSection.astro`).** Reads the collections instead of the hard-coded array. Per company: name with link, location, dates, the role titles, the company summary, then the `summary` line of each experience with `home: true`, each linking to its page. One button under the cards opens the list page. Technology badges move off the home card and onto the experience pages.
+**Home card** stays as in PR #13. Highlight links go to `/<lang>/experience/<company>/#<section>`, and a "View details" link on each card goes to the company page.
 
-**List page (`src/pages/[lang]/experience/index.astro`).** One block per company (name, dates, summary), then a card per experience: title, client, role, dates, summary, link.
+**Overview page:** per company, the name, location, roles with dates and summary, then each section as a link with its title, client and summary.
 
-**Experience page (`src/pages/[lang]/experience/[slug].astro`).** Title, client, company, role, dates, location, technology badges, the highlights list, the Markdown body, then links. Navigation goes back to the list page. The body uses the existing `.markdown-content` styles. Those rules sit inside `ProjectDetailShared.astro` today. They move to a place both pages can use.
+**Company page:** a header with name, link, location, roles with dates, summary and the company-wide tools. Then a short list of the sections (a table of contents) linking to their anchors. Then each section in order: title as a heading with its `id`, client, role and dates, tools, highlights if any, and the body. Navigation goes back to the overview page.
 
-The look follows what the site has: the bordered cards with offset shadows used by `NewExperienceCard.astro` and `ProjectCard.astro`.
+## The sections
 
-## The experiences
+**Which source wins.** `factored_cv.md` wins when sources disagree. LinkedIn, `CV_2026_2.txt` and the old site add what it lacks.
 
-**Which source wins.** `factored_cv.md` is the newest and wins when sources disagree. `CV_2026_2.txt` and today's site only add what it lacks. So Verblio's role is "Senior Software Engineer", I-Comm's is "Full Stack Software Engineer", and the ticketing client is "a Fortune 500 US energy company".
-
-**Results only on today's site** are kept:
-- "Migrated 20% of marketing and subscription renewal emails...", "Recovered thousands in tax funds..." and "Diagnosed and restored microservices to achieve 99.95% uptime" go on `softserve-survey-payments`.
-- Verblio's "Automated platform workflow to reduce administrator access... by 50%" and the CVs' "Documented... reducing questions to the development team by 50%" are two separate results. Both stay, as does "Developed and implemented new solutions to legacy code without breaking any functionalities".
-
-| Company | Slug | Role | Client |
+| Company | Section | Role | Notes |
 |---|---|---|---|
-| SoftServe | `softserve-energy-agents` | AI Engineer | Fortune 500 US energy company (ticketing agents, Claude skills marketplace) |
-| SoftServe | `softserve-aws-oil-gas` | AI Engineer | Amazon Web Services (oil and gas prediction agent) |
-| SoftServe | `softserve-gcp-savings` | AI Engineer | SoftServe internal (Committed Use Discounts savings pipeline) |
-| SoftServe | `softserve-ai-orchestrator` | AI Engineer | SoftServe internal (AI orchestrator) |
-| SoftServe | `softserve-cost-dashboard` | AI Engineer | Global professional services and consulting firm (cloud cost dashboard) |
-| SoftServe | `softserve-media-chatbot` | Senior Software Engineer | US advertising measurement company (CES 2025 chatbot) |
-| SoftServe | `softserve-survey-payments` | Senior Software Engineer | Leading US online survey platform (Stripe payments) |
-| Verblio | `verblio-platform` | Senior Software Engineer | Verblio |
-| I-Comm | `icomm-factcil` | Full Stack Software Engineer | Factcil, a Colombian fintech startup |
-| Geomedical | `geomedical-partera-vital` | Tech Lead | UNFPA Colombia and DANE (Partera Vital) |
+| SoftServe | `energy-agents` | AI Engineer | from PR #13 |
+| SoftServe | `aws-oil-gas` | AI Engineer | from PR #13 |
+| SoftServe | `ai-orchestrator` | AI Engineer | from PR #13, plus LinkedIn: self-healing, self-managing, mimics the full software development life cycle |
+| SoftServe | `mcp-template` | AI Engineer | new, from LinkedIn and Sebastian: company-wide MCP server template with authentication, authorization and common tools, now the standard for every new MCP server; cut new server setup from about a week to one day; built before the orchestrator |
+| SoftServe | `cost-dashboard` | AI Engineer | from PR #13 |
+| SoftServe | `gcp-savings` | AI Engineer | from PR #13 |
+| SoftServe | `media-chatbot` | Senior Software Engineer | from PR #13 |
+| SoftServe | `survey-payments` | Senior Software Engineer | from PR #13, without the uptime result |
+| SoftServe | `service-reliability` | Senior Software Engineer | new short section: diagnosed and restored microservices on Kubernetes to reach 99.95% uptime, for the online survey platform |
+| Verblio | `platform` | Senior Software Engineer | from PR #13 |
+| Verblio | `on-call` | Senior Software Engineer | new short section, confirmed by Sebastian: set up the on-call rotation and wrote the incident runbooks for the platform team |
+| I-Comm | `factcil` | Full Stack Software Engineer | from PR #13, plus LinkedIn: factoring for freelancers who wait 30 to 90 days for payment, a neo-bank for independents with several financial services, Terraform |
+| I-Comm | `kubernetes-deployment` | Full Stack Software Engineer | new short section, from LinkedIn and Sebastian: deployed the fintech clients' software on AWS with Kubernetes and Elastic Load Balancing, with CI through GitHub Actions, and kept those services reliable |
+| Geomedical | `partera-vital` | Development Coordinator | from PR #13 |
 
-The writing follows the house style in `.claude/skills/add-experience/SKILL.md`: verbs first, every tool with its purpose, a number on every result, no dash asides, Spanish in first person past, Japanese in polite form.
+## Decisions from Sebastian (2026-11-14)
 
-## Removed and changed
+- Keeping Kubernetes services reliable happened at both SoftServe and I-Comm. Each gets a short section.
+- The MCP template's "about a week to one day" figure is real, and the template came before the orchestrator.
+- The Verblio on-call rotation and runbooks are real.
+- Sebastian never worked at Meridian Labs. `PENDING_CHANGES.md` is deleted, since its real items now live in section folders and it describes the old way of adding experience.
+- Factcil was a client of I-Comm, so it is a section on the I-Comm page, not its own employer.
+- Verblio role: Senior Software Engineer. Geomedical role: Development Coordinator (es "Coordinador de Desarrollo", ja "開発コーディネーター").
+- SoftServe location: "Remote - Bogotá, Colombia". The headquarters are in Texas, but Sebastian works remotely from Colombia.
 
-- The experience keys in `src/i18n/index/experience.ts` go away. Only the section title and labels stay, in `ui.ts` or that file.
-- `NewExperienceCard.astro` and the `NewExperience` types are replaced by the new components.
-- The `add-experience` skill is updated to write `meta.yaml` and the three language files instead of the old keys.
+## LinkedIn facts used (read 2026-11-14)
+
+Only these LinkedIn facts are new to the site. Everything else on LinkedIn already matches the CVs or the old site.
+
+- SoftServe, AI Engineer: a company-wide MCP server template with authentication, authorization and common tooling out of the box, used as the standard by all teams every time a new MCP server is created. The orchestrator is self-healing and self-managing, focuses on transparency and explainability of the agents' decisions and actions and on easy integration of new agents and tools, and mimics the full software development life cycle.
+- I-Comm: a remote team building custom software for fintech organizations with React and Django, continuous integration with GitHub Actions, AWS deployment with Kubernetes, and Elastic Load Balancing, following Scrum.
+- Factcil: a Colombian fintech expanding the traditional factoring market to help freelancers who wait 30 to 90 days for payment, building the next neo-bank for independents with several financial services, using AWS, Django, React and Terraform.
+
+## Removed and changed from PR #13
+
+- Routes `/<lang>/experience/<client-slug>/` become `/<lang>/experience/<company>/`. PR #13 is not merged, so no redirects are needed.
+- `ExperienceListItem.astro` is replaced by the overview page's section links.
+- The `add-experience` skill is updated for section folders.
 
 ## Left to the builder
 
-- Component names and how the cards are split into components.
-- The exact Zod schema and where the translation check runs (in the loader or in a helper the pages call).
-- Card layout details, within the current site style.
+- Component names and splits.
+- How the check gets the company id from the file path.
+- Layout details within the current site style.
