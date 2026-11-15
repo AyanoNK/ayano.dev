@@ -17,7 +17,7 @@ A first version (PR #13) gave every client its own page. Sebastian wants one pag
 
 ## Goals
 
-- **Home page:** one card per company with location, dates, roles, a short summary and at least 3 highlights. Each highlight is a result picked from a section (or a short section's summary), followed by a "View details" link to that section on the company page. A button opens the overview page.
+- **Home page:** one card per company with dates, roles, a short summary and at least 3 highlights. Each highlight is a result picked from a section (or a short section's summary), followed by a "View details" link to that section on the company page. A button opens the overview page.
 - **Overview page** at `/<lang>/experience/`: the four companies, each with its summary and a list of its sections. Each item links to that section on the company page.
 - **Company page** at `/<lang>/experience/<company>/`: everything done at that employer, with one section per client or milestone, each reachable at `#<section>`.
 - All text exists in `en`, `es` and `ja`. A missing, empty or incomplete translation fails the build.
@@ -69,7 +69,7 @@ src/content/experience/
 
 **The company comes from the folder name.** `meta.yaml` no longer has a `company` field. The build fails when a folder name is not a company id in `companies.yaml`.
 
-`companies.yaml` keeps its PR #13 fields: `id`, `name`, `url`, `order`, optional `location`, `summary`, `technologies` (tools with no section tied to them), `roles` (`id`, `title`, `start`, optional `end`).
+`companies.yaml` keeps its PR #13 fields: `id`, `name`, `url`, `order`, `summary`, `technologies` (tools with no section tied to them), `roles` (`id`, `title`, `start`, optional `end`).
 
 `meta.yaml` per section: `role`, `order` (position on the company page, newest first), `home` (the lines this section puts on the home card: highlight positions starting at 1, or `summary`; every company card shows at least 3 lines, and the build fails otherwise), optional `start` and `end` (a missing `end` falls back to the role's end), `technologies`, optional `links`.
 
@@ -83,9 +83,9 @@ The PR #13 check carries over, now per section: every section has all three lang
 
 **Home card** stays as in PR #13. Highlight links go to `/<lang>/experience/<company>/#<section>`, and a "View details" link on each card goes to the company page.
 
-**Overview page:** per company, the name, location, roles with dates and summary, then each section as a link with its title, client and summary.
+**Overview page:** per company, the name, roles with dates and summary, then each section as a link with its title, client and summary.
 
-**Company page:** a header with name, link, location, roles with dates, summary and the company-wide tools. Then a short list of the sections (a table of contents) linking to their anchors. Then each section in order: title as a heading with its `id`, client, role and dates, tools, highlights if any, and the body. Navigation goes back to the overview page.
+**Company page:** a header with name, link, roles with dates, summary and the company-wide tools. Then a short list of the sections (a table of contents) linking to their anchors. Then each section in order: title as a heading with its `id`, client, role and dates, tools, highlights if any, and the body. Navigation goes back to the overview page.
 
 ## The sections
 
@@ -116,7 +116,7 @@ The PR #13 check carries over, now per section: every section has all three lang
 - Sebastian never worked at Meridian Labs. `PENDING_CHANGES.md` is deleted, since its real items now live in section folders and it describes the old way of adding experience.
 - Factcil was a client of I-Comm, so it is a section on the I-Comm page, not its own employer.
 - Verblio role: Senior Software Engineer. Geomedical role: Development Coordinator (es "Coordinador de Desarrollo", ja "開発コーディネーター").
-- SoftServe location: "Remote - Bogotá, Colombia". The headquarters are in Texas, but Sebastian works remotely from Colombia.
+- No location is shown anywhere on the site.
 
 ## LinkedIn facts used (read 2026-11-14)
 

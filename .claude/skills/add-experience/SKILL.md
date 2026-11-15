@@ -50,7 +50,7 @@ Write English first, then Spanish and Japanese versions of every text. Match the
 
 Experience content lives in `src/content/experience/`. Read an existing experience folder first and match it.
 
-1. **New company or role:** add it to `src/content/experience/companies.yaml` with `id`, `name`, `url`, `order`, optional `location`, `summary`, `technologies` (tools used at the company that no section lists) and `roles` (`id`, `title`, `start`, optional `end`). Every translated field has `en`, `es` and `ja`. Dates are `YYYY-MM`, and a missing `end` means current.
+1. **New company or role:** add it to `src/content/experience/companies.yaml` with `id`, `name`, `url`, `order`, `summary`, `technologies` (tools used at the company that no section lists) and `roles` (`id`, `title`, `start`, optional `end`). Every translated field has `en`, `es` and `ja`. Dates are `YYYY-MM`, and a missing `end` means current.
 2. **New section:** create `src/content/experience/<company>/<section>/`, where `<company>` is the company id from `companies.yaml` and `<section>` is a short kebab-case name that becomes the link anchor (`/en/experience/softserve/#energy-agents`). It holds:
    - `meta.yaml`: `role` (a role id of that company), `order` (position on the company page, newest first), `home` (which lines this section puts on the home page card: highlight positions starting at 1, or `summary`, for example `[1, 2]` or `[summary]`; `[]` for none; each company card needs at least 3 lines in total), optional `start` and `end`, `technologies` (only tools the text names), optional `links` (`title` per language and `url`).
    - `en.md`, `es.md`, `ja.md`: front matter with `title`, `client`, `summary`, `highlights`, then the body. All three files need the same number of highlights.
