@@ -10,6 +10,24 @@
     en: A large technology consulting firm. I lead greenfield AI systems and legacy system migrations for clients in the energy, cloud, data analysis and online survey industries.
     es: Una gran consultora tecnológica. Lidero sistemas de IA desde cero y migraciones de sistemas legacy para clientes de los sectores de energía, nube, análisis de datos y encuestas online.
     ja: 大手テクノロジーコンサルティング会社です。エネルギー、クラウド、データ分析、オンライン調査業界のクライアント向けに、ゼロからのAIシステム構築やレガシーシステムの移行をリードしています。
+  technologies:
+    - Pyramid Web Framework
+    - Jinja2
+    - Templ
+    - Django
+    - Django REST Framework
+    - AWS ELB
+    - AWS EKS
+    - Docker
+    - Kubernetes
+    - gRPC
+    - Java
+    - JavaScript
+    - TypeScript
+    - HTML
+    - SCSS
+    - CSS
+    - REST
   roles:
     - id: ai-engineer
       title:
@@ -37,6 +55,17 @@
     en: A US content marketing platform. I maintained and extended its decade-old web platform with new features for a new business model.
     es: Una plataforma estadounidense de marketing de contenidos. Mantuve y amplié su plataforma web de diez años con nuevas funcionalidades para un nuevo modelo de negocio.
     ja: 米国のコンテンツマーケティングプラットフォームです。10年の歴史を持つWebプラットフォームを保守し、新しいビジネスモデルに向けた新機能で拡張しました。
+  technologies:
+    - Recurly API
+    - Apollo
+    - GraphQL
+    - Bootstrap 4
+    - Ruby
+    - JavaScript
+    - TypeScript
+    - HTML
+    - SCSS
+    - CSS
   roles:
     - id: senior-software-engineer
       title:
@@ -58,6 +87,20 @@
     en: A Colombian software company. I built custom SaaS products for clients in the fintech and goods delivery sectors in Latin America.
     es: Una empresa colombiana de software. Construí productos SaaS a medida para clientes de los sectores fintech y de entrega de mercancías en Latinoamérica.
     ja: コロンビアのソフトウェア企業です。ラテンアメリカのフィンテックおよび物流分野のクライアント向けに、カスタムSaaSプロダクトを構築しました。
+  technologies:
+    - Django REST Framework
+    - AWS ELB
+    - AWS EC2
+    - Docker
+    - Kubernetes
+    - MUI
+    - Python
+    - JavaScript
+    - TypeScript
+    - HTML
+    - SCSS
+    - CSS
+    - REST
   roles:
     - id: full-stack-engineer
       title:
@@ -75,6 +118,17 @@
     en: A health group in Colombia. I led the development of a public health mobile app built with UNFPA Colombia and DANE.
     es: Un grupo de salud en Colombia. Lideré el desarrollo de una aplicación móvil de salud pública construida con UNFPA Colombia y el DANE.
     ja: コロンビアのヘルスグループです。UNFPA ColombiaおよびDANEと共同で構築した公衆衛生モバイルアプリの開発をリードしました。
+  technologies:
+    - React
+    - Google App Engine
+    - Docker
+    - Python
+    - JavaScript
+    - TypeScript
+    - HTML
+    - CSS
+    - SCSS
+    - REST
   roles:
     - id: tech-lead
       title:

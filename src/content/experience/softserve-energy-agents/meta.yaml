@@ -1,0 +1,10 @@
+company: softserve
+role: ai-engineer
+order: 1
+home: true
+technologies:
+  - Google ADK
+  - ServiceNow
+  - Terraform
+  - Databricks
+  - Claude

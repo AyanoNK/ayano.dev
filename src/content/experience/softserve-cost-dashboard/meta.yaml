@@ -1,0 +1,12 @@
+company: softserve
+role: ai-engineer
+order: 5
+home: false
+technologies:
+  - AWS S3
+  - Databricks
+  - Python
+  - PySpark
+  - Go
+  - React
+  - Terraform
