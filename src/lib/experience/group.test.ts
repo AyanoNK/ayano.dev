@@ -78,3 +78,14 @@ test("company dates end with the last role", () => {
     }),
   ).toEqual({ start: "2020-01", end: "2022-08" });
 });
+
+test("experience with a start but no end uses its role's end", () => {
+  const past = {
+    ...company,
+    roles: [{ id: "ai", start: "2023-08", end: "2025-05" }],
+  };
+  expect(experienceDates({ ...exp, start: "2024-01" }, past)).toEqual({
+    start: "2024-01",
+    end: "2025-05",
+  });
+});

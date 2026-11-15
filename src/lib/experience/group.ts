@@ -39,21 +39,21 @@ export function groupByCompany<C extends Company, E extends Experience>(
     .filter((group) => group.experiences.length > 0);
 }
 
-/** The experience's own dates when it has a start, otherwise its role's dates. */
+/** The experience's own dates when set, otherwise its role's dates. */
 export function experienceDates(
   experience: Experience,
   company: Company,
 ): { start: string; end?: string } {
-  if (experience.start) {
-    return { start: experience.start, end: experience.end };
-  }
   const role = company.roles.find((r) => r.id === experience.role);
   if (!role) {
     throw new Error(
       `${experience.id}: unknown role "${experience.role}" in company "${company.id}"`,
     );
   }
-  return { start: role.start, end: role.end };
+  return {
+    start: experience.start ?? role.start,
+    end: experience.end ?? role.end,
+  };
 }
 
 /** From the earliest role start to the latest role end. No end while any role is current. */
