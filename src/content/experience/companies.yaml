@@ -3,9 +3,9 @@
   url: https://www.softserveinc.com/
   order: 1
   location:
-    en: Remote - Texas, US
-    es: Remoto - Texas, EE. UU.
-    ja: リモート - 米国テキサス州
+    en: Remote - Bogotá, Colombia
+    es: Remoto - Bogotá, Colombia
+    ja: リモート - コロンビア、ボゴタ
   summary:
     en: A large technology consulting firm. I lead greenfield AI systems and legacy system migrations for clients in the energy, cloud, data analysis and online survey industries.
     es: Una gran consultora tecnológica. Lidero sistemas de IA desde cero y migraciones de sistemas legacy para clientes de los sectores de energía, nube, análisis de datos y encuestas online.
@@ -19,7 +19,6 @@
     - AWS ELB
     - AWS EKS
     - Docker
-    - Kubernetes
     - gRPC
     - Java
     - JavaScript

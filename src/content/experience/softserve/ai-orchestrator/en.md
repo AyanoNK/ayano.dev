@@ -13,7 +13,9 @@ This was an internal SoftServe initiative to build a platform that can generate 
 
 ### What I built
 
-I developed the AI orchestrator platform. To control its cost, I measured input and output token consumption across the orchestrator and its subagents, then introduced skills and caching so the agents send fewer tokens for the same work.
+I developed the AI orchestrator platform. It is self-healing and self-managing, and it mimics the full software development life cycle. Every decision and action an agent takes is visible and explained, and new agents and tools can be added to the system easily.
+
+To control its cost, I measured input and output token consumption across the orchestrator and its subagents, then introduced skills and caching so the agents send fewer tokens for the same work.
 
 ### Results
 

@@ -13,7 +13,9 @@ Fue una iniciativa interna de SoftServe para construir una plataforma capaz de g
 
 ### Lo que construí
 
-Desarrollé la plataforma orquestadora de IA. Para controlar su costo, medí el consumo de tokens de entrada y salida del orquestador y sus subagentes, y luego introduje skills y caché para que los agentes envíen menos tokens por el mismo trabajo.
+Desarrollé la plataforma orquestadora de IA. Se repara y se gestiona a sí misma, e imita todo el ciclo de vida del desarrollo de software. Cada decisión y acción de un agente es visible y está explicada, y se pueden agregar nuevos agentes y herramientas al sistema con facilidad.
+
+Para controlar su costo, medí el consumo de tokens de entrada y salida del orquestador y sus subagentes, y luego introduje skills y caché para que los agentes envíen menos tokens por el mismo trabajo.
 
 ### Resultados
 
