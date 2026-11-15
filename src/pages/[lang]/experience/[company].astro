@@ -81,74 +81,76 @@ const sections = experiences.map((experience) => ({
       )}
     </header>
 
-    <nav
-      aria-label={t("index.experience.sections")}
-      class="rounded-base border-2 border-border bg-white p-6 shadow-shadow">
-      <h2 class="mb-3 text-lg font-heading">
-        {t("index.experience.sections")}
-      </h2>
-      <ol class="flex list-decimal flex-col gap-1 pl-6 text-sm">
-        {sections.map(({ section, detail }) => (
-          <li>
-            <a class="underline hover:no-underline" href={`#${section}`}>
-              {detail.data.title}
-            </a>
-          </li>
-        ))}
-      </ol>
-    </nav>
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-start">
+      <nav
+        aria-label={t("index.experience.sections")}
+        class="flex shrink-0 flex-col gap-2 lg:sticky lg:top-8 lg:w-60">
+        <h2 class="text-sm font-semibold text-foreground/70">
+          {t("index.experience.sections")}
+        </h2>
+        <ol class="flex flex-col gap-1 text-sm">
+          {sections.map(({ section, detail }) => (
+            <li>
+              <a class="underline hover:no-underline" href={`#${section}`}>
+                {detail.data.title}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
 
-    {sections.map(({ section, detail, meta, role, dates, html }) => (
-      <section id={section} class="flex scroll-mt-8 flex-col gap-4">
-        <div class="flex flex-col gap-1">
-          <h2 class="text-xl font-heading xl:text-3xl">{detail.data.title}</h2>
-          <p class="font-semibold">{detail.data.client}</p>
-          <p class="text-sm text-foreground/70">
-            {role.title[lang]} · {dates}
-          </p>
-        </div>
-        {meta.technologies.length > 0 && (
-          <div class="flex flex-col gap-2">
-            <h3 class="text-sm font-semibold">
-              {t("index.experience.technologies")}
-            </h3>
-            <div class="flex flex-row flex-wrap gap-2">
-              {meta.technologies.map((tech) => (
-                <Badge class="text-md">{tech}</Badge>
-              ))}
+      <div class="flex min-w-0 grow flex-col gap-6">
+        {sections.map(({ section, detail, meta, role, dates, html }) => (
+          <section
+            id={section}
+            class="flex scroll-mt-8 flex-col gap-4 rounded-base border-2 border-border bg-white p-6 shadow-shadow">
+            <div class="flex flex-col gap-1">
+              <h2 class="text-xl font-heading xl:text-2xl">
+                {detail.data.title}
+              </h2>
+              <p class="font-semibold">{detail.data.client}</p>
+              <p class="text-sm text-foreground/70">
+                {role.title[lang]} · {dates}
+              </p>
             </div>
-          </div>
-        )}
-        {detail.data.highlights.length > 0 && (
-          <div class="flex flex-col gap-3 rounded-base border-2 border-border bg-main p-6 text-main-foreground shadow-shadow">
-            <h3 class="text-lg font-heading">
-              {t("index.experience.highlights")}
-            </h3>
-            <ul class="flex list-disc flex-col gap-2 pl-6">
-              {detail.data.highlights.map((highlight) => (
-                <li>{highlight}</li>
-              ))}
-            </ul>
-          </div>
-        )}
-        <MarkdownContent>
-          <Fragment set:html={html} />
-        </MarkdownContent>
-        {meta.links.length > 0 && (
-          <div class="flex flex-wrap gap-4">
-            {meta.links.map((link) => (
-              <Anchor
-                variant="neutral"
-                href={link.url}
-                size="lg"
-                target="_blank">
-                <SquareArrowUpRightExit />
-                {link.title[lang]}
-              </Anchor>
-            ))}
-          </div>
-        )}
-      </section>
-    ))}
+            {meta.technologies.length > 0 && (
+              <div class="flex flex-row flex-wrap gap-2">
+                {meta.technologies.map((tech) => (
+                  <Badge>{tech}</Badge>
+                ))}
+              </div>
+            )}
+            {detail.data.highlights.length > 0 && (
+              <div class="flex flex-col gap-2 border-l-4 border-border pl-4">
+                <h3 class="text-sm font-semibold text-foreground/70">
+                  {t("index.experience.highlights")}
+                </h3>
+                <ul class="flex list-disc flex-col gap-1 pl-5">
+                  {detail.data.highlights.map((highlight) => (
+                    <li>{highlight}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {detail.data.highlights.length > 0 && (
+              <hr class="border-t-2 border-border/20" />
+            )}
+            <MarkdownContent boxed={false}>
+              <Fragment set:html={html} />
+            </MarkdownContent>
+            {meta.links.length > 0 && (
+              <div class="flex flex-wrap gap-4">
+                {meta.links.map((link) => (
+                  <Anchor variant="neutral" href={link.url} target="_blank">
+                    <SquareArrowUpRightExit />
+                    {link.title[lang]}
+                  </Anchor>
+                ))}
+              </div>
+            )}
+          </section>
+        ))}
+      </div>
+    </div>
   </div>
 </ProjectLayout>

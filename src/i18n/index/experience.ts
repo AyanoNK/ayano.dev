@@ -30,11 +30,6 @@ export const experience = {
       es: "Logros destacados",
       ja: "主な成果",
     },
-    technologies: {
-      en: "Technologies",
-      es: "Tecnologías",
-      ja: "技術スタック",
-    },
     company_technologies: {
       en: "Also used at this company",
       es: "También usado en esta empresa",

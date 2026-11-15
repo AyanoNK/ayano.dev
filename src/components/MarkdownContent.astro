@@ -1,8 +1,21 @@
 ---
-/** Box for rendered Markdown, with the styles for its headings, lists and images. */
+import { cn } from "@/lib/utils";
+
+/** Rendered Markdown with the styles for its headings, lists and images. */
+interface Props {
+  /** Draw its own bordered white box. Off when it already sits inside a card. */
+  boxed?: boolean;
+}
+
+const { boxed = true } = Astro.props;
 ---
 
-<div class="markdown-content max-w-none rounded-base border-2 border-border bg-white p-6 shadow-shadow sm:p-8">
+<div
+  class={cn(
+    "markdown-content max-w-none",
+    boxed &&
+      "rounded-base border-2 border-border bg-white p-6 shadow-shadow sm:p-8",
+  )}>
   <slot />
 </div>
 
