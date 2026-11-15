@@ -1,4 +1,4 @@
-import { defineCollection } from "astro:content";
+import { defineCollection, reference } from "astro:content";
 import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { projectDetailsLoader, projectsLoader } from "@/lib/showcase/loader";
@@ -80,7 +80,7 @@ const experiences = defineCollection({
     generateId: ({ entry }) => entry.split("/")[0],
   }),
   schema: z.object({
-    company: z.string(),
+    company: reference("companies"),
     role: z.string(),
     order: z.number(),
     start: month.optional(),

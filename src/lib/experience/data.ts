@@ -8,9 +8,12 @@ import { experienceDates, groupByCompany } from "./group";
 export type CompanyData = CollectionEntry<"companies">["data"];
 export type ExperienceMeta = CollectionEntry<"experiences">["data"];
 
+export type RoleData = CompanyData["roles"][number];
+
 export interface ExperienceItem {
   id: string;
   meta: ExperienceMeta;
+  role: RoleData;
   detail: CollectionEntry<"experienceDetails">;
   dates: string;
 }
@@ -31,7 +34,11 @@ export async function getExperienceData(
   ]);
 
   const companyData = companies.map((c) => c.data);
-  const metas = experiences.map((e) => ({ ...e.data, id: e.id }));
+  const metas = experiences.map((e) => ({
+    ...e.data,
+    id: e.id,
+    company: e.data.company.id,
+  }));
   const problems = checkExperiences(
     companyData,
     metas,
@@ -44,14 +51,17 @@ export async function getExperienceData(
   }
 
   const present = useTranslations(lang)("index.experience.present");
+  const experiencesById = new Map(experiences.map((e) => [e.id, e]));
   const groups = groupByCompany(companyData, metas).map(
     ({ company, experiences }) => ({
       company,
-      experiences: experiences.map(({ id, ...meta }) => {
-        const { start, end } = experienceDates({ id, ...meta }, company);
+      experiences: experiences.map((item) => {
+        const { id } = item;
+        const { start, end } = experienceDates(item, company);
         return {
           id,
-          meta,
+          meta: experiencesById.get(id)!.data,
+          role: company.roles.find((r) => r.id === item.role)!,
           detail: details.find((d) => d.id === `${id}/${lang}`)!,
           dates: formatRange(start, end, lang, present),
         };
