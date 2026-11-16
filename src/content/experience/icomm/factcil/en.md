@@ -6,6 +6,8 @@ highlights:
   - Automated the entire billing workflow by introducing electronic invoicing, achieving 100% automation efficiency.
   - Pioneered subscriptions and recurring payment options for the web platform, using Stripe integrations for the recurring billing system.
   - Created 50% of the previous landing page, using React for the components and Figma mocks for the design handoff.
+  - "Built authentication with email and password, plus Google and Facebook sign-in."
+  - "Added subscription analytics such as monthly recurring revenue (MRR) and churn rate."
 ---
 
 ### The client and the problem
@@ -18,7 +20,11 @@ I led the development and ownership of multiple features, using Django for backe
 
 - **Electronic invoicing.** I automated the entire billing workflow by introducing electronic invoicing, integrating the financial systems and compliance workflows. The workflow reached 100% automation.
 - **Subscriptions.** I pioneered subscriptions and recurring payment options for Factcil's web platform, using Stripe integrations for the recurring billing system.
-- **Platform features.** I implemented payment systems, authentication modules and financial metrics for the product.
+- **Authentication.** I built authentication with email and password, plus Google and Facebook sign-in.
+- **Payments.** I developed the subscription modules with payment integrations, including webhooks and in-app payments.
+- **Financial metrics.** I added subscription analytics such as monthly recurring revenue (MRR) and churn rate.
+- **Background work.** I created AWS Lambda functions for work that runs in the background, such as sending emails.
+- **Performance and scale.** I researched and added Redis caching, and deployed the Django backend on AWS EC2 instances that scale automatically, with a PostgreSQL database.
 - **Landing page.** I created 50% of the previous landing page, using React for the components and Figma mocks from the designer for the handoff.
 
 ### Results
