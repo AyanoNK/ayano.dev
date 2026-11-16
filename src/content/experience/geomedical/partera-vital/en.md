@@ -7,6 +7,7 @@ highlights:
   - Enabled birth records and maternal health alerts to reach public entities in communities where maternal mortality can triple national figures.
   - Engineered offline-first data synchronization for areas where Internet connectivity is unserviceable for the most part.
   - Tackled data veracity challenges caused by the lack of technological resources at remote locations.
+  - "Exposed a secure REST endpoint so government entities can check that every newborn is registered."
 ---
 
 ### The client and the problem
@@ -22,6 +23,13 @@ I led the ground-up development of the Partera Vital MVP. I used React Native fo
 Internet connectivity in the region is so intermittent that it is unserviceable for the most part. I engineered offline-first data synchronization, so the app stores records on the phone and sends them when a connection appears.
 
 The lack of technological resources at remote locations also caused data veracity challenges, which I tackled as part of the project.
+
+### More of what I built
+
+I worked in a team of 1 to 3 people.
+
+- **Mobile app.** I developed the entire application with React Native and Expo, including alerts for pregnant mothers about medical issues and syncing the data to the cloud.
+- **Backend.** I built the Flask server between the app and the cloud database. It records new births in a MySQL database on Google Cloud, and exposes a secure REST endpoint that government entities use to make sure newborns are registered.
 
 ### Results
 
