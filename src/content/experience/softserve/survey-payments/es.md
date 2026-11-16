@@ -10,7 +10,7 @@ highlights:
 
 ### El cliente y el problema
 
-El cliente es una plataforma líder de encuestas online en Estados Unidos. Partes de su plataforma tienen 20 años, incluido el sistema que maneja el pago de facturas, y necesitaba mantenimiento y una renovación para responder a las demandas actuales de la industria.
+El cliente es una plataforma líder de encuestas online en Estados Unidos. Partes de su plataforma tienen 20 años, incluido el sistema que maneja el pago de facturas, y necesitaba mantenimiento y una renovación para responder a las demandas actuales de la industria. Las empresas usan la plataforma para crear encuestas, recoger respuestas anónimas de audiencias seleccionadas y analizar los resultados, pagando con planes de suscripción y créditos de audiencia.
 
 ### Lo que hice
 
@@ -19,6 +19,13 @@ Trabajé en el mantenimiento y la renovación de estos sistemas de 20 años, y e
 - **Pagos.** Modernicé el sistema legacy de pago de facturas, usando Stripe Payments para el manejo seguro de transacciones.
 - **Correos.** Migré el 20% de los correos de marketing y renovación de suscripciones de un servicio interno a una arquitectura productor-consumidor, donde un servicio pone los correos en cola y otro los envía.
 - **Fondos de impuestos.** Mediante un análisis financiero cuidadoso, encontré transacciones defectuosas y recuperé miles en fondos de impuestos.
+
+### Cómo está construida
+
+La plataforma funciona como microservicios construidos con Python (Pyramid), React y Java en AWS, usando AWS SQS y Kafka para los eventos y Terraform para desplegar en Kubernetes. Trabajé en ella en un equipo de más de 30 personas.
+
+- **Microservicios.** Desarrollé y mantuve microservicios en Python con Pyramid en AWS, y diseñé las APIs de backend y las integraciones en la nube para ellos.
+- **Colas de correos.** Los correos que pasaron a la nueva arquitectura ahora se envían a través de AWS SQS y Kafka.
 
 ### Resultados
 

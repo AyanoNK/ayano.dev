@@ -36,6 +36,14 @@
 "Tailwind CSS": { kind: library }
 "Templ": { kind: library }
 "Vitest": { kind: library }
+"FastAPI": { kind: library }
+"FastMCP": { kind: library }
+"SQLAlchemy": { kind: library }
+"Pydantic": { kind: library }
+"PyTest": { kind: library }
+"Redux": { kind: library }
+"React Query": { kind: library, group: React }
+"Expo": { kind: library }
 
 # Programming languages
 "CSS": { kind: language }
@@ -81,3 +89,17 @@
 "Terraform": { kind: platform }
 "Vercel": { kind: platform }
 "WordPress REST API": { kind: platform }
+"AWS ECR": { kind: platform, group: AWS }
+"AWS ECS": { kind: platform, group: AWS }
+"AWS EFS": { kind: platform, group: AWS }
+"AWS Lambda": { kind: platform, group: AWS }
+"AWS Glue": { kind: platform, group: AWS }
+"AWS CDK": { kind: platform, group: AWS }
+"AWS ElastiCache": { kind: platform, group: AWS }
+"AWS SQS": { kind: platform, group: AWS }
+"Kafka": { kind: platform }
+"Splunk": { kind: platform }
+"SignalFX": { kind: platform }
+"Datadog": { kind: platform }
+"Redis": { kind: platform }
+"MySQL": { kind: platform }

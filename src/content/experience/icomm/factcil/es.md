@@ -6,6 +6,8 @@ highlights:
   - Automaticé todo el flujo de facturación introduciendo la facturación electrónica, logrando un 100% de eficiencia en la automatización.
   - Fui pionero en las suscripciones y opciones de pago recurrente de la plataforma web, usando integraciones de Stripe para el sistema de cobro recurrente.
   - Construí el 50% de la landing page anterior, usando React para los componentes y mocks de Figma para la entrega del diseño.
+  - "Construí la autenticación con correo y contraseña, además de inicio de sesión con Google y Facebook."
+  - "Añadí analítica de suscripciones, como el ingreso recurrente mensual (MRR) y la tasa de cancelación."
 ---
 
 ### El cliente y el problema
@@ -18,7 +20,11 @@ Lideré el desarrollo y fui responsable de múltiples funcionalidades, usando Dj
 
 - **Facturación electrónica.** Automaticé todo el flujo de facturación introduciendo la facturación electrónica, integrando los sistemas financieros y los flujos de cumplimiento normativo. El flujo alcanzó un 100% de automatización.
 - **Suscripciones.** Fui pionero en las suscripciones y opciones de pago recurrente de la plataforma web de Factcil, usando integraciones de Stripe para el sistema de cobro recurrente.
-- **Funcionalidades de la plataforma.** Implementé sistemas de pago, módulos de autenticación y métricas financieras para el producto.
+- **Autenticación.** Construí la autenticación con correo y contraseña, además de inicio de sesión con Google y Facebook.
+- **Pagos.** Desarrollé los módulos de suscripción con integraciones de pago, incluyendo webhooks y pagos dentro de la aplicación.
+- **Métricas financieras.** Añadí analítica de suscripciones, como el ingreso recurrente mensual (MRR) y la tasa de cancelación.
+- **Trabajo en segundo plano.** Creé funciones de AWS Lambda para tareas que corren en segundo plano, como el envío de correos.
+- **Rendimiento y escala.** Investigué y añadí caché con Redis, y desplegué el backend en Django en instancias de AWS EC2 que escalan automáticamente, con una base de datos PostgreSQL.
 - **Landing page.** Construí el 50% de la landing page anterior, usando React para los componentes y los mocks de Figma del diseñador para la entrega.
 
 ### Resultados

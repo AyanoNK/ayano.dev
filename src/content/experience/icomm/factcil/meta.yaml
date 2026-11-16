@@ -9,6 +9,15 @@ technologies:
   - Stripe
   - Figma
   - Terraform
+  - Python
+  - Django REST Framework
+  - PostgreSQL
+  - Redis
+  - AWS EC2
+  - AWS Lambda
+  - MUI
+  - Redux
+  - React Query
 links:
   - title:
       en: Factcil

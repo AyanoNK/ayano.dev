@@ -3,3 +3,7 @@ order: 10
 home: []
 technologies:
   - Kubernetes
+  - Terraform
+  - AWS
+  - Splunk
+  - SignalFX
