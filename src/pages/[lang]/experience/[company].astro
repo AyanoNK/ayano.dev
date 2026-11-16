@@ -11,6 +11,7 @@ import { getLang, useTranslations } from "@/i18n/utils";
 import { getExperienceData } from "@/lib/experience/data";
 import { formatRange } from "@/lib/experience/dates";
 import { prefixHeadingIds } from "@/lib/experience/headings";
+import { mergeTechnologies } from "@/lib/technologies";
 
 export const getStaticPaths = (async () => {
   const paths = await Promise.all(
@@ -31,6 +32,11 @@ const lang = getLang(Astro.currentLocale);
 const t = useTranslations(lang);
 const { company, experiences } = Astro.props.group;
 const present = t("index.experience.present");
+// The header lists the company's own tools plus every tool its sections use.
+const companyTechnologies = mergeTechnologies([
+  company.technologies,
+  ...experiences.map((experience) => experience.meta.technologies),
+]);
 // Repo Markdown rendered by Astro, so it is trusted. Heading ids get the section
 // name in front so they stay unique on a page with many sections.
 const sections = experiences.map((experience) => ({
@@ -73,13 +79,13 @@ const sectionsByRole = company.roles
         ))}
       </ul>
       <p>{company.summary[lang]}</p>
-      {company.technologies.length > 0 && (
+      {companyTechnologies.length > 0 && (
         <div class="flex flex-col gap-2">
           <p class="text-sm font-semibold">
             {t("index.experience.company_technologies")}
           </p>
           <div class="flex flex-row flex-wrap gap-2">
-            <TechnologyChips technologies={company.technologies} />
+            <TechnologyChips technologies={companyTechnologies} />
           </div>
         </div>
       )}

@@ -23,3 +23,8 @@ export function sortTechnologies(
     .map((name) => ({ name, kind: kinds.get(name) }))
     .sort((a, b) => rank(a) - rank(b));
 }
+
+/** Joins several lists of names, keeping the first time each name appears. */
+export function mergeTechnologies(lists: string[][]): string[] {
+  return [...new Set(lists.flat())];
+}

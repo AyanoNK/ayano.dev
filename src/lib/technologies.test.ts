@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { sortTechnologies, type Kind } from "./technologies";
+import { mergeTechnologies, sortTechnologies, type Kind } from "./technologies";
 
 const kinds = new Map<string, Kind>([
   ["Python", "language"],
@@ -47,5 +47,21 @@ describe("sortTechnologies", () => {
 
   test("returns an empty list for no names", () => {
     expect(sortTechnologies([], kinds)).toEqual([]);
+  });
+});
+
+describe("mergeTechnologies", () => {
+  test("joins lists, keeping the first time each name appears", () => {
+    expect(
+      mergeTechnologies([
+        ["Python", "AWS"],
+        ["Go", "Python"],
+        ["AWS", "REST"],
+      ]),
+    ).toEqual(["Python", "AWS", "Go", "REST"]);
+  });
+
+  test("returns an empty list for no lists", () => {
+    expect(mergeTechnologies([])).toEqual([]);
   });
 });
