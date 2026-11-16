@@ -1,7 +1,7 @@
 ---
 import { render, type CollectionEntry } from "astro:content";
 import { getLang, useTranslations } from "@/i18n/utils";
-import Badge from "@/components/Badge.astro";
+import TechnologyChips from "@/components/TechnologyChips.astro";
 import Anchor from "@/components/Anchor.astro";
 import Carousel from "@/components/Carousel.astro";
 import ShowcaseMedia from "@/components/ShowcaseMedia.astro";
@@ -46,9 +46,10 @@ const links = [
 
     <!-- Technologies -->
     <div class="flex flex-row flex-wrap gap-2">
-      {project.data.technologies.map((tech) => (
-        <Badge class="text-md">{tech}</Badge>
-      ))}
+      <TechnologyChips
+        technologies={project.data.technologies}
+        class="text-md"
+      />
     </div>
   </div>
   {Content && (

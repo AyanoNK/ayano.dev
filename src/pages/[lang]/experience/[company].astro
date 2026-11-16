@@ -4,7 +4,7 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 import { ExternalLink, SquareArrowUpRightExit } from "@lucide/astro";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 import Anchor from "@/components/Anchor.astro";
-import Badge from "@/components/Badge.astro";
+import TechnologyChips from "@/components/TechnologyChips.astro";
 import MarkdownContent from "@/components/MarkdownContent.astro";
 import { locales } from "@/i18n/ui";
 import { getLang, useTranslations } from "@/i18n/utils";
@@ -79,9 +79,7 @@ const sectionsByRole = company.roles
             {t("index.experience.company_technologies")}
           </p>
           <div class="flex flex-row flex-wrap gap-2">
-            {company.technologies.map((tech) => (
-              <Badge>{tech}</Badge>
-            ))}
+            <TechnologyChips technologies={company.technologies} />
           </div>
         </div>
       )}
@@ -136,9 +134,7 @@ const sectionsByRole = company.roles
             </div>
             {meta.technologies.length > 0 && (
               <div class="flex flex-row flex-wrap gap-2">
-                {meta.technologies.map((tech) => (
-                  <Badge>{tech}</Badge>
-                ))}
+                <TechnologyChips technologies={meta.technologies} />
               </div>
             )}
             {detail.data.highlights.length > 0 && (

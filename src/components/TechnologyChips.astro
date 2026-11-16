@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Badge from "@/components/Badge.astro";
+import { sortTechnologies } from "@/lib/technologies";
+
+interface Props {
+  technologies: string[];
+  /** Classes added to each chip. */
+  class?: string;
+}
+
+const { technologies, class: className } = Astro.props;
+
+const entries = await getCollection("technologies");
+const kinds = new Map(entries.map((entry) => [entry.id, entry.data.kind]));
+const chips = sortTechnologies(technologies, kinds);
+---
+
+{chips.map((chip) => (
+  <Badge variant={chip.kind ?? "neutral"} class={className}>
+    {chip.name}
+  </Badge>
+))}

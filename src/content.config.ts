@@ -2,6 +2,7 @@ import { defineCollection } from "astro:content";
 import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { projectDetailsLoader, projectsLoader } from "@/lib/showcase/loader";
+import { KINDS } from "@/lib/technologies";
 
 const text = z.object({ title: z.string(), description: z.string() });
 
@@ -106,10 +107,17 @@ const experienceDetails = defineCollection({
   }),
 });
 
+/** The kind of each technology name, used to color and sort chips. */
+const technologies = defineCollection({
+  loader: file("src/content/technologies.yaml"),
+  schema: z.object({ kind: z.enum(KINDS) }),
+});
+
 export const collections = {
   projects,
   projectDetails,
   companies,
   experiences,
   experienceDetails,
+  technologies,
 };
