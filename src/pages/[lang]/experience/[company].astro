@@ -51,8 +51,7 @@ const sectionsByRole = company.roles
 <ProjectLayout
   title={company.name}
   description={company.summary[lang]}
-  backHref={getRelativeLocaleUrl(lang, "experience")}
-  backLabel={t("index.experience.back_to_list")}>
+  backHref={`${getRelativeLocaleUrl(lang)}#experience-section`}>
   <div class="mx-auto flex w-full max-w-screen-lg flex-col gap-10 px-4 py-8">
     <header class="flex flex-col gap-3 rounded-base border-2 border-border bg-main p-6 text-main-foreground shadow-shadow sm:p-8">
       <h1 class="text-3xl font-heading md:text-4xl 2xl:text-5xl">
