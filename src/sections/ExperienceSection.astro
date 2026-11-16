@@ -1,7 +1,5 @@
 ---
-import { getRelativeLocaleUrl } from "astro:i18n";
 import MoveUp from "@lucide/astro/icons/move-up";
-import Anchor from "@/components/Anchor.astro";
 import ExperienceHomeCard from "@/components/ExperienceHomeCard.astro";
 import { getLang, useTranslations } from "@/i18n/utils";
 import { getExperienceData } from "@/lib/experience/data";
@@ -11,7 +9,7 @@ const t = useTranslations(lang);
 const { groups } = await getExperienceData(lang);
 ---
 
-<section class="w-full bg-background">
+<section id="experience-section" class="w-full bg-background">
   <div class="mx-auto w-full max-w-screen-lg px-0">
     <div class="flex flex-col justify-between gap-8 border-x-0 border-t-4 border-b-0 border-border bg-background bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:30px_30px] p-8 shadow-none sm:border-4 sm:shadow-shadow">
       <h2 class="border-2 border-border bg-white px-8 py-4 text-center text-lg shadow-shadow sm:text-xl md:text-2xl 2xl:text-4xl">
@@ -24,15 +22,6 @@ const { groups } = await getExperienceData(lang);
           <ExperienceHomeCard {...group} />
         </div>
       ))}
-
-      <div class="flex justify-center">
-        <Anchor
-          variant="neutral"
-          href={getRelativeLocaleUrl(lang, "experience")}
-          size="lg">
-          {t("index.experience.view_all")} &rarr;
-        </Anchor>
-      </div>
     </div>
   </div>
 </section>
