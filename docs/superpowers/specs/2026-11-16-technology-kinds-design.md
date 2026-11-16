@@ -31,7 +31,7 @@ Sections and projects list many technologies, and the SoftServe CV will add more
 
 - **The list.** `src/content/technologies.yaml` maps each name to `protocol`, `library`, `language` or `platform`. It is read at build time.
 - **Unknown names.** A name missing from the list shows as a plain gray chip (the existing `neutral` badge) at the end of the row. The build does not fail. (User's choice.)
-- **Colors.** One color per kind from the existing palette, with black text and the existing black border: protocol `main` (blue), library `marine` (orange), language `lightblue` (peach), platform `secondary-background` (white). My call; the user sees them in the preview before merging and can change them. Unknown names use gray so they don't look like platforms.
+- **Colors.** One color per kind from the existing palette, with the existing black border and black text unless noted: protocol `darkpurple` (dark purple, white text; blue was hard to see on the blue company header), library `marine` (orange), language `lightblue` (peach), platform `secondary-background` (white). My call; the user sees them in the preview before merging and can change them. Unknown names use gray so they don't look like platforms.
 - **Sorting.** One helper takes a list of names and returns them sorted by kind, each with its kind. Every place that renders chips uses it.
 - **Company header.** The blue company header lists the company's own technologies plus every technology its sections use, each name once. Its chips are split into one row per kind, in the same order, with no labels. (User's request after the first preview.)
 
