@@ -24,7 +24,7 @@ Each place of employment has one page on the site. The page is made of sections:
 
 - **title**: a short name for the work ("Autonomous ticketing agents").
 - **client**: the client name or descriptor (see the naming rule).
-- **summary**: one sentence starting with a verb, with the main result. It shows on the home page card and the overview page.
+- **summary**: one sentence starting with a verb, with the main result. It can show on the home page card.
 - **highlights**: zero to five results (zero for a short section), each a sentence starting with a verb (Directed, Built, Migrated, Implemented) that states what was done, names its tools in context, and contains its measurable result.
 - **body**: the write-up in Markdown, never empty. Headings start at `###`, because the section title is already a heading on the page. Suggested headings for a long section: the client and the problem, what was built, results. A short section is one paragraph with no headings. Images in a body must use a full `https://` URL, because company pages do not process local image files.
 
@@ -56,7 +56,7 @@ Experience content lives in `src/content/experience/`. Read an existing experien
    - `en.md`, `es.md`, `ja.md`: front matter with `title`, `client`, `summary`, `highlights`, then the body. All three files need the same number of highlights.
 3. **New results for an existing section:** add them to the highlights or body of all three language files.
 
-Facts that do not change with language (dates, technologies, links) go only in the YAML files. Nothing else needs editing: the home page, the overview page and the company pages read these files.
+Facts that do not change with language (dates, technologies, links) go only in the YAML files. Nothing else needs editing: the home page and the company pages read these files.
 
 ## Step 5: Verify
 
