@@ -4,7 +4,7 @@ import { getLang, useTranslations } from "../i18n/utils";
 import { getProjects } from "@/lib/projects";
 import { selectHome } from "@/lib/showcase/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import Badge from "@/components/Badge.astro";
+import TechnologyChips from "@/components/TechnologyChips.astro";
 import Anchor from "@/components/Anchor.astro";
 import ProjectCard from "@/components/ProjectCard.astro";
 import ShowcaseMedia from "@/components/ShowcaseMedia.astro";
@@ -38,11 +38,10 @@ const featuredMedia =
                 <div>{featuredText.description}</div>
 
                 <div class="flex flex-col gap-4">
-                  <div class="flex flex-row flex-wrap gap-2">
-                    {featured.data.technologies.map((technology: string) => (
-                      <Badge class="text-md">{technology}</Badge>
-                    ))}
-                  </div>
+                  <TechnologyChips
+                    technologies={featured.data.technologies}
+                    class="text-md"
+                  />
                   <div>
                     <Anchor
                       variant="neutral"

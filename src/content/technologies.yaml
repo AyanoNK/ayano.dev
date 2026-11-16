@@ -1,0 +1,83 @@
+# The kind of each technology name used on the site.
+# Kinds: protocol, library, language, platform. A name missing here shows as a gray chip.
+# Names with the same group sit together inside their kind, the group's own name first.
+
+# Protocols, standards and architecture
+"REST": { kind: protocol }
+"GraphQL": { kind: protocol }
+"gRPC": { kind: protocol }
+"MCP": { kind: protocol }
+
+# Libraries and frameworks
+"Angular": { kind: library }
+"Apollo": { kind: library }
+"Astro": { kind: library }
+"Bootstrap 4": { kind: library }
+"DeepEval": { kind: library }
+"Django": { kind: library, group: Django }
+"Django REST Framework": { kind: library, group: Django }
+"Flask": { kind: library }
+"Google ADK": { kind: library }
+"hls.js": { kind: library }
+"Jinja2": { kind: library }
+"LangChain": { kind: library, group: LangChain }
+"LangGraph": { kind: library, group: LangChain }
+"MUI": { kind: library }
+"Next.js": { kind: library }
+"Playwright": { kind: library }
+"Polars": { kind: library }
+"Preact": { kind: library }
+"Pyramid Web Framework": { kind: library }
+"PySpark": { kind: library }
+"React": { kind: library, group: React }
+"React Native": { kind: library, group: React }
+"Ruby on Rails": { kind: library }
+"shadcn/ui": { kind: library }
+"Tailwind CSS": { kind: library }
+"Templ": { kind: library }
+"Vitest": { kind: library }
+
+# Programming languages
+"CSS": { kind: language }
+"Go": { kind: language }
+"HTML": { kind: language }
+"Java": { kind: language }
+"JavaScript": { kind: language }
+"Python": { kind: language }
+"Ruby": { kind: language }
+"SCSS": { kind: language }
+"TypeScript": { kind: language }
+
+# Platforms, services, databases and tools
+"Airflow": { kind: platform }
+"AWS": { kind: platform, group: AWS }
+"AWS Bedrock": { kind: platform, group: AWS }
+"AWS EC2": { kind: platform, group: AWS }
+"AWS EKS": { kind: platform, group: AWS }
+"AWS ELB": { kind: platform, group: AWS }
+"AWS RDS": { kind: platform, group: AWS }
+"AWS S3": { kind: platform, group: AWS }
+"AWS Textract": { kind: platform, group: AWS }
+"Azure": { kind: platform }
+"BigQuery": { kind: platform, group: Google Cloud }
+"Claude": { kind: platform }
+"Databricks": { kind: platform }
+"Docker": { kind: platform }
+"Figma": { kind: platform }
+"GitHub Actions": { kind: platform }
+"Google App Engine": { kind: platform, group: Google Cloud }
+"Google Cloud": { kind: platform, group: Google Cloud }
+"Heroku": { kind: platform }
+"Kubernetes": { kind: platform }
+"LangFuse": { kind: platform }
+"Phoenix": { kind: platform }
+"Pinecone": { kind: platform }
+"PostgreSQL": { kind: platform }
+"Recurly API": { kind: platform }
+"ServiceNow": { kind: platform }
+"Snowflake": { kind: platform }
+"Stripe": { kind: platform }
+"Supabase": { kind: platform }
+"Terraform": { kind: platform }
+"Vercel": { kind: platform }
+"WordPress REST API": { kind: platform }

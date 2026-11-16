@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Badge from "@/components/Badge.astro";
+import { groupByKind, sortTechnologies } from "@/lib/technologies";
+
+interface Props {
+  technologies: string[];
+  /** Classes added to each chip. */
+  class?: string;
+  /** Put each kind on its own row instead of one row for all chips. */
+  byKind?: boolean;
+}
+
+const { technologies, class: className, byKind = false } = Astro.props;
+
+const entries = await getCollection("technologies");
+const technologyList = new Map(entries.map((entry) => [entry.id, entry.data]));
+const rows = byKind
+  ? groupByKind(technologies, technologyList)
+  : [sortTechnologies(technologies, technologyList)];
+---
+
+{rows.map((row) => (
+  <div class="flex flex-row flex-wrap gap-2">
+    {row.map((chip) => (
+      <Badge variant={chip.kind ?? "neutral"} class={className}>
+        {chip.name}
+      </Badge>
+    ))}
+  </div>
+))}

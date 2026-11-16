@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Anchor from "@/components/Anchor.astro";
-import Badge from "@/components/Badge.astro";
+import TechnologyChips from "@/components/TechnologyChips.astro";
 import ShowcaseMedia from "@/components/ShowcaseMedia.astro";
 
 interface Props {
@@ -42,11 +42,7 @@ const { title, description } = project.data.text[lang];
       <CardDescription>{description}</CardDescription>
     </CardContent>
     <CardFooter className="flex flex-col items-start gap-8">
-      <div class="flex flex-row flex-wrap gap-2">
-        {project.data.technologies.map((technology: string) => (
-          <Badge>{technology}</Badge>
-        ))}
-      </div>
+      <TechnologyChips technologies={project.data.technologies} />
       <Anchor
         variant="neutral"
         href={getRelativeLocaleUrl(lang, `projects/${project.id}`)}>
