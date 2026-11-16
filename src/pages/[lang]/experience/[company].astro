@@ -84,8 +84,8 @@ const sectionsByRole = company.roles
           <p class="text-sm font-semibold">
             {t("index.experience.company_technologies")}
           </p>
-          <div class="flex flex-row flex-wrap gap-2">
-            <TechnologyChips technologies={companyTechnologies} />
+          <div class="flex flex-col gap-2">
+            <TechnologyChips technologies={companyTechnologies} byKind />
           </div>
         </div>
       )}
@@ -139,9 +139,7 @@ const sectionsByRole = company.roles
               </p>
             </div>
             {meta.technologies.length > 0 && (
-              <div class="flex flex-row flex-wrap gap-2">
-                <TechnologyChips technologies={meta.technologies} />
-              </div>
+              <TechnologyChips technologies={meta.technologies} />
             )}
             {detail.data.highlights.length > 0 && (
               <div class="flex flex-col gap-2 border-l-4 border-border pl-4">

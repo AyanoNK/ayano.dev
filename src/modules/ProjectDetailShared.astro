@@ -45,12 +45,7 @@ const links = [
     <h1 class="text-3xl font-heading md:text-4xl 2xl:text-5xl">{title}</h1>
 
     <!-- Technologies -->
-    <div class="flex flex-row flex-wrap gap-2">
-      <TechnologyChips
-        technologies={project.data.technologies}
-        class="text-md"
-      />
-    </div>
+    <TechnologyChips technologies={project.data.technologies} class="text-md" />
   </div>
   {Content && (
     <MarkdownContent>

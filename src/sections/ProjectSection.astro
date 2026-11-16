@@ -38,12 +38,10 @@ const featuredMedia =
                 <div>{featuredText.description}</div>
 
                 <div class="flex flex-col gap-4">
-                  <div class="flex flex-row flex-wrap gap-2">
-                    <TechnologyChips
-                      technologies={featured.data.technologies}
-                      class="text-md"
-                    />
-                  </div>
+                  <TechnologyChips
+                    technologies={featured.data.technologies}
+                    class="text-md"
+                  />
                   <div>
                     <Anchor
                       variant="neutral"

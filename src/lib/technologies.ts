@@ -28,3 +28,20 @@ export function sortTechnologies(
 export function mergeTechnologies(lists: string[][]): string[] {
   return [...new Set(lists.flat())];
 }
+
+/**
+ * Sorts names by kind and splits them into one row per kind, leaving out
+ * kinds with no names. Names with no kind form the last row.
+ */
+export function groupByKind(
+  names: string[],
+  kinds: ReadonlyMap<string, Kind>,
+): Chip[][] {
+  const rows: Chip[][] = [];
+  for (const chip of sortTechnologies(names, kinds)) {
+    const last = rows.at(-1);
+    if (last && last[0].kind === chip.kind) last.push(chip);
+    else rows.push([chip]);
+  }
+  return rows;
+}

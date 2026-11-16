@@ -1,5 +1,10 @@
 import { describe, expect, test } from "vitest";
-import { mergeTechnologies, sortTechnologies, type Kind } from "./technologies";
+import {
+  groupByKind,
+  mergeTechnologies,
+  sortTechnologies,
+  type Kind,
+} from "./technologies";
 
 const kinds = new Map<string, Kind>([
   ["Python", "language"],
@@ -63,5 +68,27 @@ describe("mergeTechnologies", () => {
 
   test("returns an empty list for no lists", () => {
     expect(mergeTechnologies([])).toEqual([]);
+  });
+});
+
+describe("groupByKind", () => {
+  test("returns one row per kind present, in kind order, unknown last", () => {
+    const rows = groupByKind(["AWS", "Zig", "Python", "REST", "Go"], kinds);
+    expect(rows.map((row) => row.map((chip) => chip.name))).toEqual([
+      ["REST"],
+      ["Python", "Go"],
+      ["AWS"],
+      ["Zig"],
+    ]);
+  });
+
+  test("leaves out kinds with no names", () => {
+    expect(groupByKind(["Django"], kinds)).toEqual([
+      [{ name: "Django", kind: "library" }],
+    ]);
+  });
+
+  test("returns no rows for no names", () => {
+    expect(groupByKind([], kinds)).toEqual([]);
   });
 });

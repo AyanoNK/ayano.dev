@@ -42,9 +42,7 @@ const { title, description } = project.data.text[lang];
       <CardDescription>{description}</CardDescription>
     </CardContent>
     <CardFooter className="flex flex-col items-start gap-8">
-      <div class="flex flex-row flex-wrap gap-2">
-        <TechnologyChips technologies={project.data.technologies} />
-      </div>
+      <TechnologyChips technologies={project.data.technologies} />
       <Anchor
         variant="neutral"
         href={getRelativeLocaleUrl(lang, `projects/${project.id}`)}>
