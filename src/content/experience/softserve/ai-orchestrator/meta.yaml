@@ -1,4 +1,18 @@
 role: ai-engineer
 order: 4
 home: []
-technologies: []
+technologies:
+  - Python
+  - FastAPI
+  - FastMCP
+  - SQLAlchemy
+  - Pydantic
+  - React
+  - Terraform
+  - GitHub Actions
+  - Phoenix
+  - AWS ECR
+  - AWS ECS
+  - AWS S3
+  - AWS EFS
+  - AWS RDS

@@ -7,6 +7,7 @@ highlights:
   - "AWS Textractを使用して、500以上のスキャンPDFを構造化されたMarkdownとYAMLに変換しました。"
   - "AWS Bedrock Knowledge BasesからPineconeへ移行し、ベクトル検索のコストを70%削減しました。"
   - "LangFuse、DeepEval、Phoenixでエージェントの性能をトレースおよびベンチマークし、結果の精度を20%向上させました。"
+  - "生産と規制のエージェントをTypeScriptからPythonへ、LangChain、FastAPI、PostgreSQLを使ったRAGで書き直し、システム全体をAWS CDKでAWSにデプロイしました。"
 ---
 
 ### クライアントと課題
@@ -20,6 +21,15 @@ LLMの推論にAWS Bedrock、構造化・非構造化データの検索にRAGア
 - **ドキュメント処理。** AWS Textractを使用して500以上のスキャンPDFを構造化されたMarkdownとYAMLに変換するパイプラインを実装し、エージェントによる検索と後続の分析で使えるようにしました。
 - **ベクトル検索。** Pineconeを使用して、さまざまなデータソースを横断するセマンティック検索を設計・統合しました。AWS Bedrock Knowledge Basesを置き換え、ベクトル検索のコストを70%削減しました。
 - **評価とトレース。** LangFuse、DeepEval、Phoenixを使用してエージェントの性能をトレースおよびベンチマークするLLM評価・可観測性の仕組みを実装し、結果の精度を20%向上させました。
+
+### その他の構築内容
+
+6人のチームで取り組みました。
+
+- **Pythonのエージェント。** 生産と規制のエージェントをTypeScriptからPythonに書き直しました。エージェントにはLangChain、APIにはFastAPI、構造化データにはPostgreSQLを使ったRAGを使用しています。エージェントはAWS Lambdaの関数も呼び出せます。
+- **チャット画面。** エージェントと対話するためのフロントエンド全体をReactで開発し、回答から折れ線グラフや円グラフを描画できるようにしました。
+- **デプロイ。** システム全体をPythonのAWS CDKでAWS ECS Fargateにデプロイしました。
+- **テスト。** 4つのエージェントすべてをLangFuseでテストし、正確性、真実性、文脈の理解などの性能指標を測定しました。
 
 ### 成果
 
