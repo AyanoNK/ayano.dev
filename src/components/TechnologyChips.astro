@@ -14,10 +14,10 @@ interface Props {
 const { technologies, class: className, byKind = false } = Astro.props;
 
 const entries = await getCollection("technologies");
-const kinds = new Map(entries.map((entry) => [entry.id, entry.data.kind]));
+const technologyList = new Map(entries.map((entry) => [entry.id, entry.data]));
 const rows = byKind
-  ? groupByKind(technologies, kinds)
-  : [sortTechnologies(technologies, kinds)];
+  ? groupByKind(technologies, technologyList)
+  : [sortTechnologies(technologies, technologyList)];
 ---
 
 {rows.map((row) => (

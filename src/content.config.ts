@@ -110,7 +110,7 @@ const experienceDetails = defineCollection({
 /** The kind of each technology name, used to color and sort chips. */
 const technologies = defineCollection({
   loader: file("src/content/technologies.yaml"),
-  schema: z.object({ kind: z.enum(KINDS) }),
+  schema: z.object({ kind: z.enum(KINDS), group: z.string().optional() }),
 });
 
 export const collections = {

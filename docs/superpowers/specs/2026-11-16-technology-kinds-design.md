@@ -33,6 +33,7 @@ Sections and projects list many technologies, and the SoftServe CV will add more
 - **Unknown names.** A name missing from the list shows as a plain gray chip (the existing `neutral` badge) at the end of the row. The build does not fail. (User's choice.)
 - **Colors.** One color per kind from the existing palette, with the existing black border and black text unless noted: protocol `darkpurple` (dark purple, white text; blue was hard to see on the blue company header), library `marine` (orange), language `lightblue` (peach), platform `secondary-background` (white). My call; the user sees them in the preview before merging and can change them. Unknown names use gray so they don't look like platforms.
 - **Sorting.** One helper takes a list of names and returns them sorted by kind, each with its kind. Every place that renders chips uses it.
+- **Groups.** A name can have a `group` in the list, such as `AWS` for `AWS S3`. Inside a kind, names in the same group sit together where the group first appears, with the group's own name first. Groups today: AWS, Google Cloud (with Google App Engine and BigQuery), Django, React, LangChain. (User's request after the first preview.)
 - **Company header.** The blue company header lists the company's own technologies plus every technology its sections use, each name once. Its chips are split into one row per kind, in the same order, with no labels. (User's request after the first preview.)
 
 ## Proposed kinds

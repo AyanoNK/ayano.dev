@@ -3,16 +3,19 @@ import {
   groupByKind,
   mergeTechnologies,
   sortTechnologies,
-  type Kind,
+  type Technology,
 } from "./technologies";
 
-const kinds = new Map<string, Kind>([
-  ["Python", "language"],
-  ["REST", "protocol"],
-  ["Django", "library"],
-  ["AWS", "platform"],
-  ["Go", "language"],
-  ["React", "library"],
+const kinds = new Map<string, Technology>([
+  ["Python", { kind: "language" }],
+  ["REST", { kind: "protocol" }],
+  ["Django", { kind: "library" }],
+  ["AWS", { kind: "platform", group: "AWS" }],
+  ["AWS S3", { kind: "platform", group: "AWS" }],
+  ["AWS EC2", { kind: "platform", group: "AWS" }],
+  ["Docker", { kind: "platform" }],
+  ["Go", { kind: "language" }],
+  ["React", { kind: "library" }],
 ]);
 
 const names = (list: string[]) =>
@@ -52,6 +55,22 @@ describe("sortTechnologies", () => {
 
   test("returns an empty list for no names", () => {
     expect(sortTechnologies([], kinds)).toEqual([]);
+  });
+
+  test("keeps a group together where its first name appears", () => {
+    expect(names(["AWS S3", "Docker", "AWS EC2"])).toEqual([
+      "AWS S3",
+      "AWS EC2",
+      "Docker",
+    ]);
+  });
+
+  test("puts the group's own name first in the group", () => {
+    expect(names(["AWS S3", "AWS EC2", "AWS"])).toEqual([
+      "AWS",
+      "AWS S3",
+      "AWS EC2",
+    ]);
   });
 });
 
