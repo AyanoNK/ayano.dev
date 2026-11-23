@@ -75,6 +75,7 @@
 "GitHub Actions": { kind: platform }
 "Google App Engine": { kind: platform, group: Google Cloud }
 "Google Cloud": { kind: platform, group: Google Cloud }
+"Google Cloud Run": { kind: platform, group: Google Cloud }
 "Heroku": { kind: platform }
 "Kubernetes": { kind: platform }
 "LangFuse": { kind: platform }

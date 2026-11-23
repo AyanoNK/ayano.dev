@@ -3,6 +3,8 @@ order: 1
 home: [4]
 technologies:
   - Google ADK
+  - Python
+  - Google Cloud Run
   - ServiceNow
   - Terraform
   - Databricks
