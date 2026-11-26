@@ -104,7 +104,7 @@ const verblio: CvEntry = {
 
 const icomm: CvEntry = {
   title: "Full Stack Software Engineer",
-  start: { year: 2020, month: 8 },
+  start: { year: 2019, month: 12 },
   end: { year: 2022, month: 8 },
   location: "Remote - Bogotá, Colombia",
   tech: "Python, JavaScript, Go, AWS",
@@ -154,7 +154,7 @@ export const cv: Cv = {
   name: "Sebastian Correa",
   title: "Software Engineer",
   summary:
-    "Senior software engineer and tech lead with 6 years of experience shipping production systems for enterprise clients in the US and Latin America, from AI agent systems and cloud cost data pipelines to payments and SaaS platforms. Works in Python, TypeScript and Go on AWS and GCP, and leads teams from system design to release.",
+    "Senior software engineer and tech lead with 7 years of experience shipping production systems for enterprise clients in the US and Latin America, from AI agent systems and cloud cost data pipelines to payments and SaaS platforms. Works in Python, TypeScript and Go on AWS and GCP, and leads teams from system design to release.",
   contact: {
     email: "seb.correa.wilches@gmail.com",
     site: "ayano.dev/",
@@ -236,7 +236,7 @@ const aiEngineer: Cv = {
   ...cv,
   title: "AI Engineer",
   summary:
-    "AI engineer and tech lead with 6 years of software experience, building production AI agent systems for enterprise clients. Shipped autonomous ServiceNow agents for a Fortune 500 energy company and a GenAI analytics chatbot showcased at CES 2025. Works in Python with LangGraph, Google ADK and MCP on AWS and GCP.",
+    "AI engineer and tech lead with 7 years of software experience, building production AI agent systems for enterprise clients. Shipped autonomous ServiceNow agents for a Fortune 500 energy company and a GenAI analytics chatbot showcased at CES 2025. Works in Python with LangGraph, Google ADK and MCP on AWS and GCP.",
   experience: [
     {
       ...softserve,
@@ -274,7 +274,7 @@ const dataEngineer: Cv = {
   ...cv,
   title: "Data Engineer",
   summary:
-    "Data engineer and tech lead with 6 years of software experience, building cloud cost data pipelines for a company that helps businesses manage IT assets and cloud costs. Builds batch pipelines in Python, PySpark and SQL on Databricks, BigQuery and Airflow, provisioned with Terraform.",
+    "Data engineer and tech lead with 7 years of software experience, building cloud cost data pipelines for a company that helps businesses manage IT assets and cloud costs. Builds batch pipelines in Python, PySpark and SQL on Databricks, BigQuery and Airflow, provisioned with Terraform.",
   experience: [
     {
       ...softserve,
