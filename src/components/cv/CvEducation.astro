@@ -12,9 +12,7 @@ const { education } = Astro.props;
 
 <div class="cv-item flex">
   <div class="flex-1">
-    <h3 class="font-[family-name:var(--font-raleway)] text-[14.3px] leading-[19px] font-normal">
-      {education.degree}
-    </h3>
+    <h3 class="text-[14.3px] leading-[19px] font-medium">{education.degree}</h3>
     <p class="text-[12.6px] leading-[17px] font-bold text-[#880808]">
       {education.institution}
     </p>
