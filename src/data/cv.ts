@@ -153,6 +153,8 @@ const birdRecognizer: CvEntry = {
 export const cv: Cv = {
   name: "Sebastian Correa",
   title: "Software Engineer",
+  summary:
+    "Senior software engineer and tech lead with 6 years of experience shipping production systems for enterprise clients in the US and Latin America, from AI agent systems and cloud cost data pipelines to payments and SaaS platforms. Works in Python, TypeScript and Go on AWS and GCP, and leads teams from system design to release.",
   contact: {
     email: "seb.correa.wilches@gmail.com",
     site: "ayano.dev/",
@@ -160,7 +162,7 @@ export const cv: Cv = {
     location: "Bogotá, Colombia",
   },
   experience: [softserve, verblio, icomm],
-  projects: [kimon, bankManager, birdRecognizer],
+  projects: [kimon, bankManager],
   skills: [
     {
       title: "Technologies",
