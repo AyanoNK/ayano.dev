@@ -47,6 +47,7 @@ Three locales: `en` (default), `es`, `ja`. `prefixDefaultLocale` is `true`, so e
 - Translations live in `src/i18n/ui.ts`, with the `index.*` sections split into `src/i18n/index/*.ts`. Each leaf is `{ en, es, ja }`. `useTranslations(lang)` returns `t(key)` for dot-path keys and returns the key itself when it is missing.
 - `/mega` is an external redirect in `redirects` in `astro.config.mjs`.
 - `/cv` (`src/pages/cv.astro`) is the printable CV, English only and outside the locale prefix. Its text is in `src/data/cv.ts` and its parts in `src/components/cv/`. It does not use `BaseLayout` and is left out of the sitemap. Print it from the browser to get a one-page A4 PDF. In `pnpm dev` it answers with status 404 but still renders. The built site serves it with 200.
+- Keep CV text free of CSS positioning (`relative`, `absolute`, positioned `::before`). Chromium stores positioned text after everything else in the printed PDF, so an ATS reads it out of order. Draw decorations as backgrounds instead. To check, print `/cv` to PDF and read its text back.
 - The sitemap comes from `@astrojs/sitemap`, with `/` filtered out. `public/robots.txt` points to `sitemap-index.xml`.
 
 ### Content
