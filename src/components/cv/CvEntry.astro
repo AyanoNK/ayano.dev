@@ -17,7 +17,9 @@ const { entry } = Astro.props;
   {entry.location && (
     <CvMeta icon="pin">
       <span>{entry.location}</span>
-      <span class="ml-auto pr-[20px] whitespace-nowrap">{entry.tech}</span>
+      <span class="ml-auto pr-[20px] whitespace-nowrap">
+        <span class="text-[#bbb]">|</span> {entry.tech}
+      </span>
     </CvMeta>
   )}
   <CvMeta icon="link">
