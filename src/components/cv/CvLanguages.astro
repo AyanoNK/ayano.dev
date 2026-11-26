@@ -1,0 +1,21 @@
+---
+import type { CvLanguage } from "@/data/cv";
+
+interface Props {
+  languages: CvLanguage[];
+}
+
+const { languages } = Astro.props;
+---
+
+<p class="cv-item">
+  {languages.map((language, i) => (
+    <Fragment>
+      {i > 0 && <span class="text-[#bbb]">{" | "}</span>}
+      <span class="whitespace-nowrap">
+        <span class="font-bold">{language.name}</span>
+        {` - ${language.label}`}
+      </span>
+    </Fragment>
+  ))}
+</p>

@@ -43,8 +43,6 @@ export interface CvCertification {
 export interface CvLanguage {
   name: string;
   label: string;
-  /** 1 to 5. */
-  level: number;
 }
 
 export interface CvReference {
@@ -59,8 +57,6 @@ export interface Cv {
   title: string;
   /** A short overview printed above the columns. */
   summary?: string;
-  /** Show languages on one line instead of with level bars, to save space. */
-  compactLanguages?: boolean;
   contact: { email: string; site: string; linkedin: string; location: string };
   experience: CvEntry[];
   projects: CvEntry[];
@@ -215,9 +211,9 @@ export const cv: Cv = {
     },
   ],
   languages: [
-    { name: "English", label: "Native", level: 5 },
-    { name: "Spanish", label: "Native", level: 5 },
-    { name: "Japanese", label: "Proficient", level: 4 },
+    { name: "English", label: "Native" },
+    { name: "Spanish", label: "Native" },
+    { name: "Japanese", label: "Proficient" },
   ],
   references: [
     {
@@ -237,7 +233,6 @@ export const cv: Cv = {
 const aiEngineer: Cv = {
   ...cv,
   title: "AI Engineer",
-  compactLanguages: true,
   summary:
     "AI engineer and tech lead with 6 years of software experience, building production AI agent systems for enterprise clients. Shipped autonomous ServiceNow agents for a Fortune 500 energy company and a GenAI analytics chatbot showcased at CES 2025. Works in Python with LangGraph, Google ADK and MCP on AWS and GCP.",
   experience: [
@@ -276,7 +271,6 @@ const aiEngineer: Cv = {
 const dataEngineer: Cv = {
   ...cv,
   title: "Data Engineer",
-  compactLanguages: true,
   summary:
     "Data engineer and tech lead with 6 years of software experience, building cloud cost data pipelines for a company that helps businesses manage IT assets and cloud costs. Builds batch pipelines in Python, PySpark and SQL on Databricks, BigQuery and Airflow, provisioned with Terraform.",
   experience: [
