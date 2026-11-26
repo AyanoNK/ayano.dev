@@ -104,7 +104,7 @@ const verblio: CvEntry = {
 
 const icomm: CvEntry = {
   title: "Full Stack Software Engineer",
-  start: { year: 2020, month: 8 },
+  start: { year: 2019, month: 12 },
   end: { year: 2022, month: 8 },
   location: "Remote - Bogotá, Colombia",
   tech: "Python, JavaScript, Go, AWS",
