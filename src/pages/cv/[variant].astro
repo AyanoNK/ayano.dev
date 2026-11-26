@@ -6,7 +6,7 @@ import CvCertification from "@/components/cv/CvCertification.astro";
 import CvEducation from "@/components/cv/CvEducation.astro";
 import CvEntry from "@/components/cv/CvEntry.astro";
 import CvHeader from "@/components/cv/CvHeader.astro";
-import CvLanguage from "@/components/cv/CvLanguage.astro";
+import CvLanguages from "@/components/cv/CvLanguages.astro";
 import CvReference from "@/components/cv/CvReference.astro";
 import CvSection from "@/components/cv/CvSection.astro";
 import CvStrength from "@/components/cv/CvStrength.astro";
@@ -75,21 +75,7 @@ const { cv } = Astro.props;
             ))}
           </CvSection>
           <CvSection title="Languages">
-            {cv.compactLanguages ? (
-              <p class="cv-item">
-                {cv.languages.map((language, i) => (
-                  <Fragment>
-                    {i > 0 && <span class="text-[#bbb]">{" | "}</span>}
-                    <span class="whitespace-nowrap">
-                      <span class="font-bold">{language.name}</span>
-                      {` - ${language.label}`}
-                    </span>
-                  </Fragment>
-                ))}
-              </p>
-            ) : (
-              cv.languages.map((language) => <CvLanguage language={language} />)
-            )}
+            <CvLanguages languages={cv.languages} />
           </CvSection>
           <CvSection title="References">
             {cv.references.map((reference) => (
