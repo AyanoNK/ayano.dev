@@ -1,6 +1,7 @@
 ---
 import { Font } from "astro:assets";
-import "../../tailwind.css";
+import type { GetStaticPaths, InferGetStaticPropsType } from "astro";
+import "../../../tailwind.css";
 import CvCertification from "@/components/cv/CvCertification.astro";
 import CvEducation from "@/components/cv/CvEducation.astro";
 import CvEntry from "@/components/cv/CvEntry.astro";
@@ -10,7 +11,17 @@ import CvReference from "@/components/cv/CvReference.astro";
 import CvSection from "@/components/cv/CvSection.astro";
 import CvStrength from "@/components/cv/CvStrength.astro";
 import CvTags from "@/components/cv/CvTags.astro";
-import { cv } from "@/data/cv";
+import { cvVariants } from "@/data/cv";
+
+export const getStaticPaths = (() =>
+  Object.entries(cvVariants).map(([variant, cv]) => ({
+    params: { variant },
+    props: { cv },
+  }))) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { cv } = Astro.props;
 ---
 
 <!doctype html>
