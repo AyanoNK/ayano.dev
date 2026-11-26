@@ -1,0 +1,14 @@
+---
+import type { CvCertification as Certification } from "@/data/cv";
+
+interface Props {
+  certification: Certification;
+}
+
+const { certification } = Astro.props;
+---
+
+<div class="cv-item">
+  <h3 class="text-[13px] leading-[18px] font-bold">{certification.title}</h3>
+  <p class="mt-[3px] text-[#444]">{certification.issuer}</p>
+</div>

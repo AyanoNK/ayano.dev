@@ -1,0 +1,27 @@
+---
+import type { CvLanguage as Language } from "@/data/cv";
+import { meterBars } from "@/lib/cv/format";
+
+interface Props {
+  language: Language;
+}
+
+const { language } = Astro.props;
+---
+
+<div class="cv-item flex items-center">
+  <div class="flex-1">
+    <h3 class="text-[13px] leading-[17px] font-bold">{language.name}</h3>
+    <p class="text-[#444]">{language.label}</p>
+  </div>
+  <div class="flex gap-[4px] pr-[4px]">
+    {meterBars(language.level).map((on) => (
+      <span
+        class:list={[
+          "h-[19px] w-[5px] rounded-full",
+          on ? "bg-[#880808]" : "bg-[#ddd]",
+        ]}
+      />
+    ))}
+  </div>
+</div>

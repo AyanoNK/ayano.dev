@@ -1,0 +1,24 @@
+---
+import type { CvSkillGroup } from "@/data/cv";
+
+interface Props {
+  group: CvSkillGroup;
+}
+
+const { group } = Astro.props;
+---
+
+<div class="cv-item">
+  {group.title && (
+    <h4 class="mb-[6px] text-[12.5px] font-bold text-[#880808] uppercase">
+      {group.title}
+    </h4>
+  )}
+  <ul class="flex flex-wrap gap-x-[8px] gap-y-[8px]">
+    {group.tags.map((tag) => (
+      <li class="border border-[#bbb] px-[8px] py-[4px] text-[12px] leading-[16px] font-bold">
+        {tag}
+      </li>
+    ))}
+  </ul>
+</div>

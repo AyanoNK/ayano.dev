@@ -1,0 +1,61 @@
+---
+import AtSign from "@lucide/astro/icons/at-sign";
+import Link from "@lucide/astro/icons/link";
+import MapPin from "@lucide/astro/icons/map-pin";
+import type { Cv } from "@/data/cv";
+
+interface Props {
+  cv: Cv;
+}
+
+const { cv } = Astro.props;
+const { contact } = cv;
+const items = [
+  { icon: AtSign, text: contact.email, href: `mailto:${contact.email}` },
+  { icon: Link, text: contact.site, href: `https://${contact.site}` },
+  { icon: Link, text: contact.linkedin, href: `https://${contact.linkedin}` },
+  { icon: MapPin, text: contact.location },
+];
+// Faint triangles drawn behind the header, as in the Enhancv design.
+const triangles = [
+  { x: 430, y: 40, fill: false },
+  { x: 510, y: 40, fill: true },
+  { x: 590, y: 40, fill: false },
+  { x: 670, y: 40, fill: true },
+  { x: 470, y: 90, fill: true },
+  { x: 630, y: 90, fill: false },
+  { x: 750, y: 90, fill: true },
+  { x: 710, y: 140, fill: false },
+  { x: 770, y: 140, fill: false },
+];
+---
+
+<header class="relative mb-[18px]">
+  <svg
+    class="pointer-events-none absolute -top-[30px] -right-[32px] h-[170px] w-[420px]"
+    viewBox="380 0 420 170"
+    aria-hidden="true">
+    {triangles.map(({ x, y, fill }) => (
+      <path
+        d={`M${x - 11} ${y} L${x + 11} ${y} L${x} ${y + 9} Z`}
+        fill={fill ? "#f6d9d9" : "none"}
+        stroke={fill ? "none" : "#e8e8e8"}
+        stroke-width="1.2"
+      />
+    ))}
+  </svg>
+  <h1 class="relative font-[family-name:var(--font-open-sans)] text-[37px] leading-[40px] font-bold uppercase">
+    {cv.name}
+  </h1>
+  <p class="relative text-[17px] leading-[24px] font-bold text-[#880808]">
+    {cv.title}
+  </p>
+  <ul class="relative mt-[4px] flex flex-wrap gap-x-[14px] text-[11px] font-bold text-[#333]">
+    {items.map(({ icon: Icon, text, href }) => (
+      <li class="flex items-center gap-[4px]">
+        <Icon class="size-[11px] text-[#880808]" stroke-width={2.5} />
+        {href ? <a href={href}>{text}</a> : text}
+      </li>
+    ))}
+  </ul>
+</header>

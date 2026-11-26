@@ -1,0 +1,36 @@
+---
+import type { CvEntry as Entry } from "@/data/cv";
+import { formatCvRange } from "@/lib/cv/format";
+import CvMeta from "./CvMeta.astro";
+import InlineLinks from "./InlineLinks.astro";
+
+interface Props {
+  entry: Entry;
+}
+
+const { entry } = Astro.props;
+---
+
+<article class="cv-item">
+  <h3 class="font-[family-name:var(--font-raleway)] text-[15.5px] leading-[20px]">
+    {entry.title}
+  </h3>
+  <CvMeta icon="calendar">{formatCvRange(entry.start, entry.end)}</CvMeta>
+  {entry.location && (
+    <CvMeta icon="pin">
+      <span class="w-[220px] shrink-0">{entry.location}</span>
+      <span class="ml-auto pr-[20px]">{entry.tech}</span>
+    </CvMeta>
+  )}
+  <CvMeta icon="link">{entry.link}</CvMeta>
+  <p class="mt-[4px]">{entry.description}</p>
+  {entry.bullets.length > 0 && (
+    <ul class="mt-[2px]">
+      {entry.bullets.map((bullet) => (
+        <li class="relative pl-[14px] before:absolute before:left-[3px] before:content-['•']">
+          <InlineLinks text={bullet} />
+        </li>
+      ))}
+    </ul>
+  )}
+</article>
