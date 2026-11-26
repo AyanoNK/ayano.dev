@@ -57,6 +57,8 @@ export interface CvReference {
 export interface Cv {
   name: string;
   title: string;
+  /** A short overview printed above the columns. */
+  summary?: string;
   contact: { email: string; site: string; linkedin: string; location: string };
   experience: CvEntry[];
   projects: CvEntry[];
