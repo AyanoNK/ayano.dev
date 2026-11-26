@@ -21,7 +21,7 @@ const { entry } = Astro.props;
     </CvMeta>
   )}
   <CvMeta icon="link">
-    <a href={entry.link}>{entry.link}</a>
+    <a href={entry.link}>{entry.company ?? entry.link}</a>
   </CvMeta>
   <p class="mt-[4px]">{entry.description}</p>
   {entry.bullets.length > 0 && (
