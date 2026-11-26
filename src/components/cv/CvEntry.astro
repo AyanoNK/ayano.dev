@@ -12,9 +12,7 @@ const { entry } = Astro.props;
 ---
 
 <article class="cv-item">
-  <h3 class="font-[family-name:var(--font-raleway)] text-[14.3px] leading-[19px] font-normal">
-    {entry.title}
-  </h3>
+  <h3 class="text-[14.3px] leading-[19px] font-medium">{entry.title}</h3>
   <CvMeta icon="calendar">{formatCvRange(entry.start, entry.end)}</CvMeta>
   {entry.location && (
     <CvMeta icon="pin">

@@ -10,13 +10,13 @@ const { group } = Astro.props;
 
 <div class="cv-item">
   {group.title && (
-    <h4 class="mt-[3px] mb-[12px] text-[11.5px] font-bold text-[#880808] uppercase">
+    <h4 class="mt-[3px] mb-[12px] text-[11.5px] font-bold text-darkpurple uppercase">
       {group.title}
     </h4>
   )}
   <ul class="flex flex-wrap gap-[9px]">
     {group.tags.map((tag) => (
-      <li class="border border-[#bbb] px-[6px] py-[4px] text-[12px] leading-[16px] font-bold">
+      <li class="border border-black bg-white px-[6px] py-[4px] text-[12px] leading-[16px] font-bold">
         {tag}
       </li>
     ))}

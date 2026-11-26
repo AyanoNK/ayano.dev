@@ -62,22 +62,6 @@ export default defineConfig({
   fonts: [
     {
       provider: fontProviders.fontsource(),
-      name: "Raleway",
-      cssVariable: "--font-raleway",
-      weights: ["400", "700"],
-      styles: ["normal"],
-      subsets: ["latin", "latin-ext"],
-    },
-    {
-      provider: fontProviders.fontsource(),
-      name: "Open Sans",
-      cssVariable: "--font-open-sans",
-      weights: ["400", "700"],
-      styles: ["normal"],
-      subsets: ["latin", "latin-ext"],
-    },
-    {
-      provider: fontProviders.fontsource(),
       name: "DM Sans",
       cssVariable: "--font-dm-sans",
       weights: ["100 1000"],
