@@ -12,14 +12,14 @@ const { entry } = Astro.props;
 ---
 
 <article class="cv-item">
-  <h3 class="font-[family-name:var(--font-raleway)] text-[15.5px] leading-[20px]">
+  <h3 class="font-[family-name:var(--font-raleway)] text-[14.3px] leading-[19px] font-normal">
     {entry.title}
   </h3>
   <CvMeta icon="calendar">{formatCvRange(entry.start, entry.end)}</CvMeta>
   {entry.location && (
     <CvMeta icon="pin">
-      <span class="w-[220px] shrink-0">{entry.location}</span>
-      <span class="ml-auto pr-[20px]">{entry.tech}</span>
+      <span>{entry.location}</span>
+      <span class="ml-auto pr-[20px] whitespace-nowrap">{entry.tech}</span>
     </CvMeta>
   )}
   <CvMeta icon="link">{entry.link}</CvMeta>
@@ -27,7 +27,7 @@ const { entry } = Astro.props;
   {entry.bullets.length > 0 && (
     <ul class="mt-[2px]">
       {entry.bullets.map((bullet) => (
-        <li class="relative pl-[14px] before:absolute before:left-[3px] before:content-['•']">
+        <li class="relative pl-[13px] before:absolute before:left-[3px] before:content-['•']">
           <InlineLinks text={bullet} />
         </li>
       ))}

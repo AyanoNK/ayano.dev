@@ -30,7 +30,7 @@ const triangles = [
 ];
 ---
 
-<header class="relative mb-[18px]">
+<header class="relative mb-[14px]">
   <svg
     class="pointer-events-none absolute -top-[30px] -right-[32px] h-[170px] w-[420px]"
     viewBox="380 0 420 170"
@@ -44,13 +44,13 @@ const triangles = [
       />
     ))}
   </svg>
-  <h1 class="relative font-[family-name:var(--font-open-sans)] text-[37px] leading-[40px] font-bold uppercase">
+  <h1 class="relative font-[family-name:var(--font-open-sans)] text-[32.2px] leading-[36px] font-bold uppercase">
     {cv.name}
   </h1>
-  <p class="relative text-[17px] leading-[24px] font-bold text-[#880808]">
+  <p class="relative text-[17px] leading-[22px] font-bold text-[#880808]">
     {cv.title}
   </p>
-  <ul class="relative mt-[4px] flex flex-wrap gap-x-[14px] text-[11px] font-bold text-[#333]">
+  <ul class="relative mt-[6px] flex flex-wrap gap-x-[14px] text-[11px] font-bold text-[#333]">
     {items.map(({ icon: Icon, text, href }) => (
       <li class="flex items-center gap-[4px]">
         <Icon class="size-[11px] text-[#880808]" stroke-width={2.5} />
