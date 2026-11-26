@@ -71,7 +71,7 @@ export const cv: Cv = {
   title: "Software Engineer",
   contact: {
     email: "seb.correa.wilches@gmail.com",
-    site: "ayano.software/",
+    site: "ayano.dev/",
     linkedin: "linkedin.com/in/ayanonk/",
     location: "Bogotá, Colombia",
   },
