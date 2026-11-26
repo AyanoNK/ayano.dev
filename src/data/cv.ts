@@ -124,6 +124,15 @@ export const cv: Cv = {
   ],
   projects: [
     {
+      title: "Kimon",
+      start: { year: 2023, month: 7 },
+      end: null,
+      link: "https://kimon.app",
+      description:
+        "Web game for learning kanji through Japanese music, built with Next.js and Supabase. The video pauses at a blanked-out lyric and you pick the kanji you heard.",
+      bullets: [],
+    },
+    {
       title: "Bank Manager",
       start: { year: 2024, month: 9 },
       end: null,
@@ -139,15 +148,6 @@ export const cv: Cv = {
       link: "https://github.com/AyanoNK/atlapetes-blancae",
       description:
         "Android mobile application for the Colombian Humboldt Institute that uses a phone's camera to recognize endangered tropical birds in the wilderness.",
-      bullets: [],
-    },
-    {
-      title: "Artist Portfolio Website",
-      start: { year: 2023, month: 1 },
-      end: { year: 2023, month: 3 },
-      link: "https://www.poshaus.art/",
-      description:
-        "Construction of a portfolio website for an illustrator & designer.",
       bullets: [],
     },
   ],
