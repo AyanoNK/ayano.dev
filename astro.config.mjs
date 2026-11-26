@@ -19,7 +19,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => page !== `${site}/`,
+      filter: (page) => page !== `${site}/` && page !== `${site}/resume/`,
       i18n: {
         defaultLocale,
         locales: Object.fromEntries(locales.map((locale) => [locale, locale])),
@@ -60,6 +60,22 @@ export default defineConfig({
     },
   },
   fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Raleway",
+      cssVariable: "--font-raleway",
+      weights: ["400", "700"],
+      styles: ["normal"],
+      subsets: ["latin", "latin-ext"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Open Sans",
+      cssVariable: "--font-open-sans",
+      weights: ["400", "700"],
+      styles: ["normal"],
+      subsets: ["latin", "latin-ext"],
+    },
     {
       provider: fontProviders.fontsource(),
       name: "DM Sans",

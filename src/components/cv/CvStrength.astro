@@ -1,0 +1,23 @@
+---
+import Cog from "@lucide/astro/icons/cog";
+import PersonStanding from "@lucide/astro/icons/person-standing";
+import type { CvStrength as Strength } from "@/data/cv";
+
+interface Props {
+  strength: Strength;
+}
+
+const { strength } = Astro.props;
+const Icon = strength.icon === "leader" ? PersonStanding : Cog;
+---
+
+<div class="cv-item flex gap-[14px]">
+  <Icon
+    class="mt-[1px] size-[18px] shrink-0 text-[#880808]"
+    stroke-width={2.5}
+  />
+  <div>
+    <h3 class="text-[12.6px] leading-[17px] font-bold">{strength.title}</h3>
+    <p class="mt-[3px] text-[#444]">{strength.description}</p>
+  </div>
+</div>

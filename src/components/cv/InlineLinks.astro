@@ -1,0 +1,25 @@
+---
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+// Splits "a [b](c) d" into text and link pieces.
+const pieces = text
+  .split(/(\[[^\]]+\]\([^)]+\))/)
+  .filter(Boolean)
+  .map((piece) => {
+    const match = piece.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    return match ? { text: match[1], href: match[2] } : { text: piece };
+  });
+---
+
+{pieces.map((piece) =>
+  piece.href ? (
+    <a href={piece.href} class="underline">
+      {piece.text}
+    </a>
+  ) : (
+    piece.text
+  ),
+)}

@@ -1,0 +1,17 @@
+---
+import CalendarDays from "@lucide/astro/icons/calendar-days";
+import Link from "@lucide/astro/icons/link";
+import MapPin from "@lucide/astro/icons/map-pin";
+
+interface Props {
+  icon: "calendar" | "pin" | "link";
+}
+
+const { icon } = Astro.props;
+const Icon = { calendar: CalendarDays, pin: MapPin, link: Link }[icon];
+---
+
+<div class="flex items-center gap-[5px] text-[10.1px] leading-[15px] text-[#444]">
+  <Icon class="size-[10px] shrink-0" stroke-width={2.5} />
+  <slot />
+</div>

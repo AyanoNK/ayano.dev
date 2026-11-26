@@ -46,6 +46,7 @@ Three locales: `en` (default), `es`, `ja`. `prefixDefaultLocale` is `true`, so e
 - Read the locale with `getLang(Astro.currentLocale)` from `src/i18n/utils.ts`, and build links with `getRelativeLocaleUrl()` from `astro:i18n`. Do not parse `Astro.url.pathname` or hard-code `/${lang}/`.
 - Translations live in `src/i18n/ui.ts`, with the `index.*` sections split into `src/i18n/index/*.ts`. Each leaf is `{ en, es, ja }`. `useTranslations(lang)` returns `t(key)` for dot-path keys and returns the key itself when it is missing.
 - `/cv` and `/mega` are external redirects in `redirects` in `astro.config.mjs`.
+- `/resume` (`src/pages/resume.astro`) is the printable CV, English only and outside the locale prefix. Its text is in `src/data/cv.ts` and its parts in `src/components/cv/`. It does not use `BaseLayout` and is left out of the sitemap. Print it from the browser to get a one-page A4 PDF. In `pnpm dev` it answers with status 404 but still renders. The built site serves it with 200.
 - The sitemap comes from `@astrojs/sitemap`, with `/` filtered out. `public/robots.txt` points to `sitemap-index.xml`.
 
 ### Content

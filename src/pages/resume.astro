@@ -1,0 +1,88 @@
+---
+import { Font } from "astro:assets";
+import "../../tailwind.css";
+import CvCertification from "@/components/cv/CvCertification.astro";
+import CvEducation from "@/components/cv/CvEducation.astro";
+import CvEntry from "@/components/cv/CvEntry.astro";
+import CvHeader from "@/components/cv/CvHeader.astro";
+import CvLanguage from "@/components/cv/CvLanguage.astro";
+import CvReference from "@/components/cv/CvReference.astro";
+import CvSection from "@/components/cv/CvSection.astro";
+import CvStrength from "@/components/cv/CvStrength.astro";
+import CvTags from "@/components/cv/CvTags.astro";
+import { cv } from "@/data/cv";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={`${cv.name} - ${cv.title} CV`} />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>{`${cv.name} - CV`}</title>
+    <Font cssVariable="--font-raleway" preload />
+    <Font cssVariable="--font-open-sans" preload />
+  </head>
+  <body class="bg-[#e5e5e5] py-[32px] print:bg-white print:p-0">
+    <main class="cv-sheet relative mx-auto h-[297mm] w-[210mm] overflow-hidden bg-white px-[33px] pt-[30px] font-[family-name:var(--font-open-sans)] text-[10.8px] leading-[15.5px] font-normal text-black shadow-lg print:shadow-none">
+      <CvHeader cv={cv} />
+      <div class="grid grid-cols-[419px_280px] gap-x-[29px]">
+        <div>
+          <CvSection title="Experience">
+            {cv.experience.map((entry) => (
+              <CvEntry entry={entry} />
+            ))}
+          </CvSection>
+          <CvSection title="Projects">
+            {cv.projects.map((entry) => (
+              <CvEntry entry={entry} />
+            ))}
+          </CvSection>
+        </div>
+        <div>
+          <CvSection title="Skills">
+            {cv.skills.map((group) => (
+              <CvTags group={group} />
+            ))}
+          </CvSection>
+          <CvSection title="Strengths">
+            {cv.strengths.map((strength) => (
+              <CvStrength strength={strength} />
+            ))}
+          </CvSection>
+          <CvSection title="Education">
+            <CvEducation education={cv.education} />
+          </CvSection>
+          <CvSection title="Certifications">
+            {cv.certifications.map((certification) => (
+              <CvCertification certification={certification} />
+            ))}
+          </CvSection>
+          <CvSection title="Languages">
+            {cv.languages.map((language) => (
+              <CvLanguage language={language} />
+            ))}
+          </CvSection>
+          <CvSection title="References">
+            {cv.references.map((reference) => (
+              <CvReference reference={reference} />
+            ))}
+          </CvSection>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  .cv-sheet {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+</style>

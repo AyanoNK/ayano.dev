@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<section class="cv-section mb-[10px]">
+  <h2 class="mb-[2px] border-b-[3px] border-black pb-[1px] font-[family-name:var(--font-raleway)] text-[17px] leading-tight font-bold uppercase">
+    {title}
+  </h2>
+  <slot />
+</section>
+
+<style>
+  /* Entries in a section are split by a dotted line. */
+  section > :global(.cv-item) {
+    break-inside: avoid;
+    padding-block: 2px;
+  }
+
+  section > :global(.cv-item + .cv-item) {
+    border-top: 1px dashed #c8c8c8;
+    margin-top: 2px;
+    padding-top: 4px;
+  }
+</style>
