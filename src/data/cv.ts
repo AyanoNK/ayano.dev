@@ -169,15 +169,15 @@ export const cv: Cv = {
   strengths: [
     {
       icon: "leader",
-      title: "Leadership",
+      title: "Technical leadership",
       description:
-        "Keeping close contact with stakeholders to achieve deliverables.",
+        "Lead engineering groups from design to production, and set the CI/CD, review and release practices teams adopt.",
     },
     {
       icon: "gears",
-      title: "Adaptability",
+      title: "System design",
       description:
-        "Flexibility in shifting priorities and resources during critical project phases.",
+        "Design AI agent, data pipeline and service architectures that hold up in production for enterprise clients.",
     },
   ],
   education: {
