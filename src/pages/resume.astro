@@ -75,7 +75,7 @@ import { cv } from "@/data/cv";
   </body>
 </html>
 
-<style is:global>
+<style>
   @page {
     size: A4;
     margin: 0;
@@ -84,17 +84,5 @@ import { cv } from "@/data/cv";
   .cv-sheet {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
-  }
-
-  /* Entries in a section are split by a dotted line. */
-  .cv-item {
-    break-inside: avoid;
-    padding-block: 2px;
-  }
-
-  .cv-item + .cv-item {
-    border-top: 1px dashed #c8c8c8;
-    margin-top: 2px;
-    padding-top: 4px;
   }
 </style>

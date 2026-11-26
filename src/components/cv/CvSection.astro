@@ -12,3 +12,17 @@ const { title } = Astro.props;
   </h2>
   <slot />
 </section>
+
+<style>
+  /* Entries in a section are split by a dotted line. */
+  section > :global(.cv-item) {
+    break-inside: avoid;
+    padding-block: 2px;
+  }
+
+  section > :global(.cv-item + .cv-item) {
+    border-top: 1px dashed #c8c8c8;
+    margin-top: 2px;
+    padding-top: 4px;
+  }
+</style>
