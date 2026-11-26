@@ -273,8 +273,48 @@ const aiEngineer: Cv = {
   ],
 };
 
+const dataEngineer: Cv = {
+  ...cv,
+  title: "Data Engineer",
+  compactLanguages: true,
+  summary:
+    "Data engineer and tech lead with 6 years of software experience, building cloud cost data pipelines for a company that helps businesses manage IT assets and cloud costs. Builds batch pipelines in Python, PySpark and SQL on Databricks, BigQuery and Airflow, provisioned with Terraform.",
+  experience: [
+    {
+      ...softserve,
+      tech: "Python, PySpark, SQL, Databricks, BigQuery, Airflow",
+      description:
+        "Tech lead for cloud cost data platforms and pipelines, for a company that helps businesses manage IT assets and cloud costs.",
+      bullets: [
+        "Designed the tables and built daily S3 to Databricks pipelines in Python and PySpark for a new cloud inventory product, processing about 1 GB a day and showing 1M USD in cloud spend across more than 100 accounts.",
+        "Grew the organizations receiving shared cost data in 31 days from 45 to 467 in the US, adding about 390 per-organization cost tables across three regions.",
+        "Cut a cost calculation's memory limit 8x, from 32 GiB to 4 GiB, by moving it from Python into BigQuery, and wrote about 65% of the changes in the team's main Airflow pipeline.",
+      ],
+    },
+    verblio,
+    icomm,
+  ],
+  projects: [bankManager, kimon],
+  skills: [
+    {
+      title: "Technologies",
+      tags: [
+        "Databricks",
+        "PySpark",
+        "BigQuery",
+        "Airflow",
+        "Snowflake",
+        "PostgreSQL",
+      ],
+    },
+    { tags: ["Python", "SQL", "Go"] },
+    { tags: ["AWS", "GCP", "Terraform", "Docker"] },
+  ],
+};
+
 /** Every CV variant, keyed by the last part of its URL. */
 export const cvVariants = {
   swe: cv,
   aie: aiEngineer,
+  de: dataEngineer,
 } satisfies Record<string, Cv>;
