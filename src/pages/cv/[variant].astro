@@ -75,9 +75,21 @@ const { cv } = Astro.props;
             ))}
           </CvSection>
           <CvSection title="Languages">
-            {cv.languages.map((language) => (
-              <CvLanguage language={language} />
-            ))}
+            {cv.compactLanguages ? (
+              <p class="cv-item">
+                {cv.languages.map((language, i) => (
+                  <Fragment>
+                    {i > 0 && <span class="text-[#bbb]">{" | "}</span>}
+                    <span class="whitespace-nowrap">
+                      <span class="font-bold">{language.name}</span>
+                      {` - ${language.label}`}
+                    </span>
+                  </Fragment>
+                ))}
+              </p>
+            ) : (
+              cv.languages.map((language) => <CvLanguage language={language} />)
+            )}
           </CvSection>
           <CvSection title="References">
             {cv.references.map((reference) => (

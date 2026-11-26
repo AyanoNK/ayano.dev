@@ -59,6 +59,8 @@ export interface Cv {
   title: string;
   /** A short overview printed above the columns. */
   summary?: string;
+  /** Show languages on one line instead of with level bars, to save space. */
+  compactLanguages?: boolean;
   contact: { email: string; site: string; linkedin: string; location: string };
   experience: CvEntry[];
   projects: CvEntry[];
