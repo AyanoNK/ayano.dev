@@ -3,6 +3,8 @@ import type { YearMonth } from "@/lib/cv/format";
 /** One job or project. Bullets may hold `[text](url)` links. */
 export interface CvEntry {
   title: string;
+  /** The employer. Shown as the link text, so an ATS can read it. */
+  company?: string;
   start: YearMonth;
   end: YearMonth | null;
   location?: string;
@@ -82,6 +84,7 @@ export const cv: Cv = {
       end: null,
       location: "Remote - Texas, US",
       tech: "Python, TypeScript, Go, AWS, GCP, Databricks",
+      company: "SoftServe",
       link: "https://www.softserveinc.com/",
       description:
         "Tech lead for greenfield AI agent systems and cloud cost data platforms, for clients in energy, cloud cost management, media analytics and online surveys.",
@@ -97,6 +100,7 @@ export const cv: Cv = {
       end: { year: 2023, month: 6 },
       location: "Remote - Colorado, US",
       tech: "JavaScript, Ruby, Python, Heroku",
+      company: "Verblio",
       link: "https://www.verblio.com/",
       description:
         "Extended a decade-old Ruby on Rails platform for a new business model.",
@@ -112,6 +116,7 @@ export const cv: Cv = {
       end: { year: 2022, month: 8 },
       location: "Remote - Bogotá, Colombia",
       tech: "Python, JavaScript, Go, AWS",
+      company: "I-Comm Solutions",
       link: "https://i-comm.co/",
       description:
         "Built custom SaaS products for fintech and goods delivery clients in Latin America.",

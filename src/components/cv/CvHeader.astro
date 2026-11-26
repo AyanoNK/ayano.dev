@@ -18,18 +18,11 @@ const items = [
 ];
 ---
 
-<header class="relative mb-[14px]">
-  {/* The site's square grid, only behind the header, fading out before the body text. */}
-  <div
-    class="pointer-events-none absolute -top-[30px] -right-[33px] -left-[33px] h-[150px] bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,black_45%,transparent)] bg-[size:30px_30px]"
-    aria-hidden="true"></div>
-  <h1 class="relative text-[32.2px] leading-[36px] font-bold uppercase">
-    {cv.name}
-  </h1>
-  <p class="relative text-[17px] leading-[22px] font-bold text-darkpurple">
-    {cv.title}
-  </p>
-  <ul class="relative mt-[6px] flex flex-wrap gap-x-[14px] text-[11px] font-bold text-[#333]">
+{/* The site's square grid behind the header, fading to white before the body text. It is a plain background, not a positioned layer, so the header text stays first in the PDF. */}
+<header class="-mx-[33px] -mt-[30px] bg-[linear-gradient(to_bottom,transparent_54%,white),linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:100%_100%,30px_30px,30px_30px] px-[33px] pt-[30px] pb-[14px]">
+  <h1 class="text-[32.2px] leading-[36px] font-bold uppercase">{cv.name}</h1>
+  <p class="text-[17px] leading-[22px] font-bold text-darkpurple">{cv.title}</p>
+  <ul class="mt-[6px] flex flex-wrap gap-x-[14px] text-[11px] font-bold text-[#333]">
     {items.map(({ icon: Icon, text, href }) => (
       <li class="flex items-center gap-[4px]">
         <Icon class="size-[11px] text-darkpurple" stroke-width={2.5} />
