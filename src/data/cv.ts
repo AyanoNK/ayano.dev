@@ -196,8 +196,8 @@ export const cv: Cv = {
     },
     { title: "Associate Accelerated Data Science", issuer: "NVIDIA" },
     {
-      title: "JLPT Japanese-Language Proficiency Test N2",
-      issuer: "JLPT 日本語能力試験",
+      title: "JLPT N2",
+      issuer: "JLPT - Japanese Language Proficiency Test",
     },
   ],
   languages: [
