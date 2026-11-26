@@ -19,7 +19,7 @@ export default defineConfig({
   integrations: [
     react(),
     sitemap({
-      filter: (page) => page !== `${site}/` && page !== `${site}/resume/`,
+      filter: (page) => page !== `${site}/` && page !== `${site}/cv/`,
       i18n: {
         defaultLocale,
         locales: Object.fromEntries(locales.map((locale) => [locale, locale])),
@@ -27,8 +27,6 @@ export default defineConfig({
     }),
   ],
   redirects: {
-    "/cv":
-      "https://mega.nz/file/GYU2RSjS#b0Aame20v7CdS0yVtuhSTOwqUhUTzJf-86ATJoB_DGc",
     "/mega": "https://mega.nz/folder/KU1QzQ7A#XuPIABxK0MZ7tQY7cxgbHg",
     // Removed projects send shared links to the projects list.
     ...Object.fromEntries(
