@@ -88,7 +88,7 @@ export const cv: Cv = {
       bullets: [
         "Architected and led AI agents that replace ServiceNow ticketing for a Fortune 500 energy company. Shipped the MVP in two months, live since August 2026, filing about 200 requests at an 8.6-minute median to the first ticket.",
         "Led a 6-engineer group within a team of more than 25, from system design to production, on a GenAI analytics chatbot over Snowflake. Showcased at CES 2025, with 100 active users at launch.",
-        "Led end-to-end delivery of an AWS agent system that predicts US oil and gas production at 70% accuracy in 5 months, and cut vector search costs by 70% by moving to Pinecone.",
+        "Led end-to-end delivery of an AWS agent system that predicts US oil and gas production at 70% accuracy in 5 months, built on more than 500 scanned PDFs turned into structured data with AWS Textract.",
       ],
     },
     {
