@@ -22,7 +22,9 @@ const { entry } = Astro.props;
       <span class="ml-auto pr-[20px] whitespace-nowrap">{entry.tech}</span>
     </CvMeta>
   )}
-  <CvMeta icon="link">{entry.link}</CvMeta>
+  <CvMeta icon="link">
+    <a href={entry.link}>{entry.link}</a>
+  </CvMeta>
   <p class="mt-[4px]">{entry.description}</p>
   {entry.bullets.length > 0 && (
     <ul class="mt-[2px]">
