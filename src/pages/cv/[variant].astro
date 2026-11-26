@@ -31,7 +31,7 @@ const { cv } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={`${cv.name} - ${cv.title} CV`} />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <title>{`${cv.name} - CV`}</title>
+    <title>{`${cv.name} - ${cv.title} CV`}</title>
     <Font cssVariable="--font-dm-sans" preload />
   </head>
   <body class="bg-[#e5e5e5] py-[32px] print:bg-white print:p-0">
