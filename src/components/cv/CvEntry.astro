@@ -25,9 +25,9 @@ const { entry } = Astro.props;
   </CvMeta>
   <p class="mt-[4px]">{entry.description}</p>
   {entry.bullets.length > 0 && (
-    <ul class="mt-[2px]">
+    <ul class="mt-[2px] list-disc pl-[13px]">
       {entry.bullets.map((bullet) => (
-        <li class="relative pl-[13px] before:absolute before:left-[3px] before:content-['•']">
+        <li>
           <InlineLinks text={bullet} />
         </li>
       ))}
