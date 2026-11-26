@@ -71,7 +71,7 @@ export const cv: Cv = {
   title: "Software Engineer",
   contact: {
     email: "seb.correa.wilches@gmail.com",
-    site: "ayano.software/",
+    site: "ayano.dev/",
     linkedin: "linkedin.com/in/ayanonk/",
     location: "Bogotá, Colombia",
   },
@@ -81,15 +81,14 @@ export const cv: Cv = {
       start: { year: 2023, month: 8 },
       end: null,
       location: "Remote - Texas, US",
-      tech: "Python, JavaScript, Java, Go, AWS, GCP",
+      tech: "Python, TypeScript, Go, AWS, GCP, Databricks",
       link: "https://www.softserveinc.com/",
       description:
-        "Led projects in the Data Analysis and Cloud industries by leading greenfield solutions that leverage AI systems, and legacy systems migrations.",
+        "Tech lead for greenfield AI agent systems and cloud cost data platforms, for clients in energy, cloud cost management, media analytics and online surveys.",
       bullets: [
-        "Directed the automation initiative for a ticketing system in an AI company that replaced ticketing bureaucracy with governance-driven, autonomous AI agents. Delivered an MVP in two months.",
-        "Led a 6 people team in building a greenfield GenAI chatbot that answers users' questions by running dynamic queries in Snowflake. Featured in CES 2025.",
-        "Owned the development of an AI agent for a big tech client to predict oil and gas production throughout the United States.",
-        "Owned the creation of a pipeline using Google Cloud's billing exports and recommendations to predict potential savings by purchasing Committed Use Discounts.",
+        "Architected and led AI agents that replace ServiceNow ticketing for a Fortune 500 energy company. Shipped the MVP in two months, live since August 2026, filing about 200 requests at an 8.6-minute median to the first ticket.",
+        "Led a 6-engineer group within a team of more than 25, from system design to production, on a GenAI analytics chatbot over Snowflake. Showcased at CES 2025, with 100 active users at launch.",
+        "Led end-to-end delivery of an AWS agent system that predicts US oil and gas production at 70% accuracy in 5 months, built on more than 500 scanned PDFs turned into structured data with AWS Textract.",
       ],
     },
     {
@@ -100,11 +99,11 @@ export const cv: Cv = {
       tech: "JavaScript, Ruby, Python, Heroku",
       link: "https://www.verblio.com/",
       description:
-        "Contributed to a development team tasked with maintaining a decade-old web platform and implementing new features for a novel business model.",
+        "Extended a decade-old Ruby on Rails platform for a new business model.",
       bullets: [
-        "Executed a seamless transition of 70% of customers into a new, reimagined business line.",
-        "Successfully implemented a robust fraud detection system, resulting in a 95% reduction in active fraudulent accounts.",
-        "Documented complex technical processes about price lists and in-app credits' lifecycles, reducing questions to the development team by 50%.",
+        "Migrated 70% of customers to a new business line without breaking existing features in the legacy code.",
+        "Built behavioral and rule-based fraud detection, cutting active fraudulent accounts by 95%.",
+        "Documented price list and in-app credit lifecycles, cutting questions to the development team by 50%.",
       ],
     },
     {
@@ -115,15 +114,24 @@ export const cv: Cv = {
       tech: "Python, JavaScript, Go, AWS",
       link: "https://i-comm.co/",
       description:
-        "Led the development and ownership of multiple features for clients in the fintech and goods delivery sectors, providing innovative SaaS solutions.",
+        "Built custom SaaS products for fintech and goods delivery clients in Latin America.",
       bullets: [
-        "Automated the entire billing workflow for [Factcil](https://www.factcil.com/) by introducing electronic invoicing, achieving 100% automation efficiency.",
-        "Pioneered the implementation of subscriptions and recurring payment options for [Factcil](https://www.factcil.com/)'s web platform.",
-        "Created 50% of [Factcil](https://www.factcil.com/)'s previous landing page based on designer Figma mocks.",
+        "Automated 100% of [Factcil](https://www.factcil.com/)'s billing workflow by introducing electronic invoicing.",
+        "Launched subscriptions and recurring payments for [Factcil](https://www.factcil.com/) with Stripe, including MRR and churn reporting.",
+        "Deployed clients' services to AWS with Kubernetes and Elastic Load Balancing, with CI/CD through GitHub Actions.",
       ],
     },
   ],
   projects: [
+    {
+      title: "Kimon",
+      start: { year: 2023, month: 7 },
+      end: null,
+      link: "https://kimon.app",
+      description:
+        "Web game for learning kanji through Japanese music, built with Next.js and Supabase. The video pauses at a blanked-out lyric and you pick the kanji you heard.",
+      bullets: [],
+    },
     {
       title: "Bank Manager",
       start: { year: 2024, month: 9 },
@@ -142,43 +150,34 @@ export const cv: Cv = {
         "Android mobile application for the Colombian Humboldt Institute that uses a phone's camera to recognize endangered tropical birds in the wilderness.",
       bullets: [],
     },
-    {
-      title: "Artist Portfolio Website",
-      start: { year: 2023, month: 1 },
-      end: { year: 2023, month: 3 },
-      link: "https://www.poshaus.art/",
-      description:
-        "Construction of a portfolio website for an illustrator & designer.",
-      bullets: [],
-    },
   ],
   skills: [
     {
       title: "Technologies",
       tags: [
         "LangGraph",
+        "Google ADK",
         "MCP",
         "FastAPI",
-        "Apache Airflow",
         "Databricks",
         "React",
       ],
     },
     { tags: ["Python", "TypeScript", "SQL", "Go"] },
-    { tags: ["AWS", "Google Cloud", "Docker", "GitHub"] },
+    { tags: ["AWS", "GCP", "Terraform", "Docker"] },
   ],
   strengths: [
     {
       icon: "leader",
-      title: "Leadership",
+      title: "Technical leadership",
       description:
-        "Keeping close contact with stakeholders to achieve deliverables.",
+        "Lead engineering groups from design to production, and set the CI/CD, review and release practices teams adopt.",
     },
     {
       icon: "gears",
-      title: "Adaptability",
+      title: "System design",
       description:
-        "Flexibility in shifting priorities and resources during critical project phases.",
+        "Design AI agent, data pipeline and service architectures that hold up in production for enterprise clients.",
     },
   ],
   education: {
@@ -197,8 +196,8 @@ export const cv: Cv = {
     },
     { title: "Associate Accelerated Data Science", issuer: "NVIDIA" },
     {
-      title: "JLPT Japanese-Language Proficiency Test N2",
-      issuer: "JLPT 日本語能力試験",
+      title: "JLPT N2",
+      issuer: "JLPT - Japanese Language Proficiency Test",
     },
   ],
   languages: [
