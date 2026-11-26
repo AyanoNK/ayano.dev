@@ -234,7 +234,47 @@ export const cv: Cv = {
   ],
 };
 
+const aiEngineer: Cv = {
+  ...cv,
+  title: "AI Engineer",
+  compactLanguages: true,
+  summary:
+    "AI engineer and tech lead with 6 years of software experience, building production AI agent systems for enterprise clients. Shipped autonomous ServiceNow agents for a Fortune 500 energy company and a GenAI analytics chatbot showcased at CES 2025. Works in Python with LangGraph, Google ADK and MCP on AWS and GCP.",
+  experience: [
+    {
+      ...softserve,
+      tech: "Python, LangGraph, Google ADK, MCP, AWS Bedrock, GCP",
+      description:
+        "Tech lead for greenfield AI agent systems, for clients in energy, media analytics and cloud cost management.",
+      bullets: [
+        softserve.bullets[0],
+        softserve.bullets[1],
+        "Led end-to-end delivery of an AWS agent system that predicts US oil and gas production at 70% accuracy in 5 months, and raised accuracy by 20% with LangFuse, DeepEval and Phoenix tracing.",
+      ],
+    },
+    verblio,
+    icomm,
+  ],
+  projects: [bankManager, birdRecognizer],
+  skills: [
+    {
+      title: "Technologies",
+      tags: [
+        "LangGraph",
+        "LangChain",
+        "Google ADK",
+        "MCP",
+        "AWS Bedrock",
+        "LangFuse",
+      ],
+    },
+    { tags: ["Python", "TypeScript", "SQL", "RAG"] },
+    { tags: ["AWS", "GCP", "Terraform", "Docker"] },
+  ],
+};
+
 /** Every CV variant, keyed by the last part of its URL. */
 export const cvVariants = {
   swe: cv,
+  aie: aiEngineer,
 } satisfies Record<string, Cv>;
