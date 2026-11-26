@@ -156,15 +156,15 @@ export const cv: Cv = {
       title: "Technologies",
       tags: [
         "LangGraph",
+        "Google ADK",
         "MCP",
         "FastAPI",
-        "Apache Airflow",
         "Databricks",
         "React",
       ],
     },
     { tags: ["Python", "TypeScript", "SQL", "Go"] },
-    { tags: ["AWS", "Google Cloud", "Docker", "GitHub"] },
+    { tags: ["AWS", "GCP", "Terraform", "Docker"] },
   ],
   strengths: [
     {
