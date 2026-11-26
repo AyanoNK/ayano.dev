@@ -16,34 +16,13 @@ const items = [
   { icon: Link, text: contact.linkedin, href: `https://${contact.linkedin}` },
   { icon: MapPin, text: contact.location },
 ];
-// Faint triangles drawn behind the header, as in the Enhancv design.
-const triangles = [
-  { x: 430, y: 40, fill: false },
-  { x: 510, y: 40, fill: true },
-  { x: 590, y: 40, fill: false },
-  { x: 670, y: 40, fill: true },
-  { x: 470, y: 90, fill: true },
-  { x: 630, y: 90, fill: false },
-  { x: 750, y: 90, fill: true },
-  { x: 710, y: 140, fill: false },
-  { x: 770, y: 140, fill: false },
-];
 ---
 
 <header class="relative mb-[14px]">
-  <svg
-    class="pointer-events-none absolute -top-[30px] -right-[32px] h-[170px] w-[420px]"
-    viewBox="380 0 420 170"
-    aria-hidden="true">
-    {triangles.map(({ x, y, fill }) => (
-      <path
-        d={`M${x - 11} ${y} L${x + 11} ${y} L${x} ${y + 9} Z`}
-        fill={fill ? "#f6d9d9" : "none"}
-        stroke={fill ? "none" : "#e8e8e8"}
-        stroke-width="1.2"
-      />
-    ))}
-  </svg>
+  {/* The site's square grid, only behind the header, fading out before the body text. */}
+  <div
+    class="pointer-events-none absolute -top-[30px] -right-[33px] -left-[33px] h-[150px] bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] [mask-image:linear-gradient(to_bottom,black_45%,transparent)] bg-[size:30px_30px]"
+    aria-hidden="true"></div>
   <h1 class="relative text-[32.2px] leading-[36px] font-bold uppercase">
     {cv.name}
   </h1>
